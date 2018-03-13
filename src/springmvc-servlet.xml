@@ -32,11 +32,12 @@
     <mvc:resources location="classpath:/content/" mapping="/content/**" cache-period="864000" /><!-- 24 * 3600 * 10 -->
     <mvc:resources location="/ueditor/" mapping="/ueditor/**" cache-period="864000" /><!-- 24 * 3600 * 10 -->
     <mvc:resources location="/login_reg_files/" mapping="/login_reg_files/**" cache-period="864000" /><!-- 24 * 3600 * 10 -->
-    <mvc:resources location="/img/" mapping="/img/**" cache-period="864000" /><!-- 24 * 3600 * 10 -->
-      <mvc:resources location="/css/" mapping="/css/**" cache-period="864000" /><!-- 24 * 3600 * 10 -->
+    <mvc:resources location="/img/" mapping="/img/**" cache-period="864000" /><!-- 24 * 3600 * 10 --> 
+    <mvc:resources location="/css/" mapping="/css/**" cache-period="864000" /><!-- 24 * 3600 * 10 -->
     <mvc:resources location="/upload/" mapping="/upload/**" cache-period="864000" /><!-- 24 * 3600 * 10 -->
     <mvc:resources location="/template/" mapping="/template/**" cache-period="864000" /><!-- 24 * 3600 * 10 -->
-    <mvc:resources location="/login_home_files/" mapping="/login_home_files/**" cache-period="864000" /><!-- 24 * 3600 * 10 -->
+    <mvc:resources location="/login_home_files/" mapping="/login_home_files/**" cache-period="864000" /><!-- 24 * 3600 * 10 --> 
+    <mvc:resources location="/script/" mapping="/script/**" cache-period="864000" /><!-- 24 * 3600 * 10 -->
     
 		
     
