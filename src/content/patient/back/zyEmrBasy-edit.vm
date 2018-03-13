@@ -1,0 +1,1485 @@
+<!DOCTYPE html>
+<html lang="en">
+#parse("content/base/back/common/head.vm")
+<body style='overflow:scroll;overflow-x:hidden'>
+	<div class="container bs-docs-container" style="width:100%;">
+		<div class="row">
+			<div class="panel panel-default">
+				<div class="panel-heading">编辑</div>
+				<div class="panel-body">
+					<form class="form-horizontal" role="form" id="dailogForm" action="$!{basePath}/patient/back/zyEmrBasy/doEdit.html" method="POST">
+						 <input type="hidden" id="btn_sub" class="btn_sub" />
+						 <input type="hidden" value="$!{zyEmrBasy.id}" name="id" id="id" />
+												<div class="form-group mno">
+												    <label for="inputEmail3" class="col-sm-2 control-label" style="text-align:left;">医院名称</label>
+												    <div class="col-sm-8">
+												      <input type="text" value="$!{zyEmrBasy.hospitaldesc}" name="hospitaldesc" id="hospitaldesc" class="form-control"/>
+												    </div>
+												</div>
+												<div class="form-group mno">
+												    <label for="inputEmail3" class="col-sm-2 control-label" style="text-align:left;">治疗情况</label>
+												    <div class="col-sm-8">
+												      <input type="text" value="$!{zyEmrBasy.hospitalcode}" name="hospitalcode" id="hospitalcode" class="form-control"/>
+												    </div>
+												</div>
+												<div class="form-group mno">
+												    <label for="inputEmail3" class="col-sm-2 control-label" style="text-align:left;"></label>
+												    <div class="col-sm-8">
+												      <input type="text" value="$!{zyEmrBasy.admno}" name="admno" id="admno" class="form-control"/>
+												    </div>
+												</div>
+												<div class="form-group mno">
+												    <label for="inputEmail3" class="col-sm-2 control-label" style="text-align:left;"></label>
+												    <div class="col-sm-8">
+												      <input type="text" value="$!{zyEmrBasy.visitno}" name="visitno" id="visitno" class="form-control"/>
+												    </div>
+												</div>
+												<div class="form-group mno">
+												    <label for="inputEmail3" class="col-sm-2 control-label" style="text-align:left;"></label>
+												    <div class="col-sm-8">
+												      <input type="text" value="$!{zyEmrBasy.paycode}" name="paycode" id="paycode" class="form-control"/>
+												    </div>
+												</div>
+												<div class="form-group mno">
+												    <label for="inputEmail3" class="col-sm-2 control-label" style="text-align:left;"></label>
+												    <div class="col-sm-8">
+												      <input type="text" value="$!{zyEmrBasy.healthcardid}" name="healthcardid" id="healthcardid" class="form-control"/>
+												    </div>
+												</div>
+												<div class="form-group mno">
+												    <label for="inputEmail3" class="col-sm-2 control-label" style="text-align:left;"></label>
+												    <div class="col-sm-8">
+												      <input type="text" value="$!{zyEmrBasy.visitnum}" name="visitnum" id="visitnum" class="form-control"/>
+												    </div>
+												</div>
+												<div class="form-group mno">
+												    <label for="inputEmail3" class="col-sm-2 control-label" style="text-align:left;"></label>
+												    <div class="col-sm-8">
+												      <input type="text" value="$!{zyEmrBasy.documentid}" name="documentid" id="documentid" class="form-control"/>
+												    </div>
+												</div>
+												<div class="form-group mno">
+												    <label for="inputEmail3" class="col-sm-2 control-label" style="text-align:left;">病人唯一ID</label>
+												    <div class="col-sm-8">
+												      <input type="text" value="$!{zyEmrBasy.inpatient}" name="inpatient" id="inpatient" class="form-control"/>
+												    </div>
+												</div>
+												<div class="form-group mno">
+												    <label for="inputEmail3" class="col-sm-2 control-label" style="text-align:left;"></label>
+												    <div class="col-sm-8">
+												      <input type="text" value="$!{zyEmrBasy.patname}" name="patname" id="patname" class="form-control"/>
+												    </div>
+												</div>
+												<div class="form-group mno">
+												    <label for="inputEmail3" class="col-sm-2 control-label" style="text-align:left;"></label>
+												    <div class="col-sm-8">
+												      <input type="text" value="$!{zyEmrBasy.sex}" name="sex" id="sex" class="form-control"/>
+												    </div>
+												</div>
+												<div class="form-group mno">
+												    <label for="inputEmail3" class="col-sm-2 control-label" style="text-align:left;"></label>
+												    <div class="col-sm-8">
+												      <input type="text" value="$!{zyEmrBasy.birthday}" name="birthday" id="birthday" class="form-control"/>
+												    </div>
+												</div>
+												<div class="form-group mno">
+												    <label for="inputEmail3" class="col-sm-2 control-label" style="text-align:left;"></label>
+												    <div class="col-sm-8">
+												      <input type="text" value="$!{zyEmrBasy.ageyear}" name="ageyear" id="ageyear" class="form-control"/>
+												    </div>
+												</div>
+												<div class="form-group mno">
+												    <label for="inputEmail3" class="col-sm-2 control-label" style="text-align:left;"></label>
+												    <div class="col-sm-8">
+												      <input type="text" value="$!{zyEmrBasy.nationality}" name="nationality" id="nationality" class="form-control"/>
+												    </div>
+												</div>
+												<div class="form-group mno">
+												    <label for="inputEmail3" class="col-sm-2 control-label" style="text-align:left;"></label>
+												    <div class="col-sm-8">
+												      <input type="text" value="$!{zyEmrBasy.agemonth}" name="agemonth" id="agemonth" class="form-control"/>
+												    </div>
+												</div>
+												<div class="form-group mno">
+												    <label for="inputEmail3" class="col-sm-2 control-label" style="text-align:left;"></label>
+												    <div class="col-sm-8">
+												      <input type="text" value="$!{zyEmrBasy.babybornweight}" name="babybornweight" id="babybornweight" class="form-control"/>
+												    </div>
+												</div>
+												<div class="form-group mno">
+												    <label for="inputEmail3" class="col-sm-2 control-label" style="text-align:left;"></label>
+												    <div class="col-sm-8">
+												      <input type="text" value="$!{zyEmrBasy.babyadmweight}" name="babyadmweight" id="babyadmweight" class="form-control"/>
+												    </div>
+												</div>
+												<div class="form-group mno">
+												    <label for="inputEmail3" class="col-sm-2 control-label" style="text-align:left;"></label>
+												    <div class="col-sm-8">
+												      <input type="text" value="$!{zyEmrBasy.bornprovince}" name="bornprovince" id="bornprovince" class="form-control"/>
+												    </div>
+												</div>
+												<div class="form-group mno">
+												    <label for="inputEmail3" class="col-sm-2 control-label" style="text-align:left;"></label>
+												    <div class="col-sm-8">
+												      <input type="text" value="$!{zyEmrBasy.borncity}" name="borncity" id="borncity" class="form-control"/>
+												    </div>
+												</div>
+												<div class="form-group mno">
+												    <label for="inputEmail3" class="col-sm-2 control-label" style="text-align:left;"></label>
+												    <div class="col-sm-8">
+												      <input type="text" value="$!{zyEmrBasy.borncounty}" name="borncounty" id="borncounty" class="form-control"/>
+												    </div>
+												</div>
+												<div class="form-group mno">
+												    <label for="inputEmail3" class="col-sm-2 control-label" style="text-align:left;"></label>
+												    <div class="col-sm-8">
+												      <input type="text" value="$!{zyEmrBasy.nativeprovince}" name="nativeprovince" id="nativeprovince" class="form-control"/>
+												    </div>
+												</div>
+												<div class="form-group mno">
+												    <label for="inputEmail3" class="col-sm-2 control-label" style="text-align:left;"></label>
+												    <div class="col-sm-8">
+												      <input type="text" value="$!{zyEmrBasy.nativecity}" name="nativecity" id="nativecity" class="form-control"/>
+												    </div>
+												</div>
+												<div class="form-group mno">
+												    <label for="inputEmail3" class="col-sm-2 control-label" style="text-align:left;"></label>
+												    <div class="col-sm-8">
+												      <input type="text" value="$!{zyEmrBasy.nation}" name="nation" id="nation" class="form-control"/>
+												    </div>
+												</div>
+												<div class="form-group mno">
+												    <label for="inputEmail3" class="col-sm-2 control-label" style="text-align:left;"></label>
+												    <div class="col-sm-8">
+												      <input type="text" value="$!{zyEmrBasy.credentialtype}" name="credentialtype" id="credentialtype" class="form-control"/>
+												    </div>
+												</div>
+												<div class="form-group mno">
+												    <label for="inputEmail3" class="col-sm-2 control-label" style="text-align:left;"></label>
+												    <div class="col-sm-8">
+												      <input type="text" value="$!{zyEmrBasy.credentialno}" name="credentialno" id="credentialno" class="form-control"/>
+												    </div>
+												</div>
+												<div class="form-group mno">
+												    <label for="inputEmail3" class="col-sm-2 control-label" style="text-align:left;"></label>
+												    <div class="col-sm-8">
+												      <input type="text" value="$!{zyEmrBasy.occupationcode}" name="occupationcode" id="occupationcode" class="form-control"/>
+												    </div>
+												</div>
+												<div class="form-group mno">
+												    <label for="inputEmail3" class="col-sm-2 control-label" style="text-align:left;"></label>
+												    <div class="col-sm-8">
+												      <input type="text" value="$!{zyEmrBasy.marrycode}" name="marrycode" id="marrycode" class="form-control"/>
+												    </div>
+												</div>
+												<div class="form-group mno">
+												    <label for="inputEmail3" class="col-sm-2 control-label" style="text-align:left;"></label>
+												    <div class="col-sm-8">
+												      <input type="text" value="$!{zyEmrBasy.addressprovince}" name="addressprovince" id="addressprovince" class="form-control"/>
+												    </div>
+												</div>
+												<div class="form-group mno">
+												    <label for="inputEmail3" class="col-sm-2 control-label" style="text-align:left;"></label>
+												    <div class="col-sm-8">
+												      <input type="text" value="$!{zyEmrBasy.diaDisicd5}" name="diaDisicd5" id="diaDisicd5" class="form-control"/>
+												    </div>
+												</div>
+												<div class="form-group mno">
+												    <label for="inputEmail3" class="col-sm-2 control-label" style="text-align:left;"></label>
+												    <div class="col-sm-8">
+												      <input type="text" value="$!{zyEmrBasy.diaDisdesc6}" name="diaDisdesc6" id="diaDisdesc6" class="form-control"/>
+												    </div>
+												</div>
+												<div class="form-group mno">
+												    <label for="inputEmail3" class="col-sm-2 control-label" style="text-align:left;"></label>
+												    <div class="col-sm-8">
+												      <input type="text" value="$!{zyEmrBasy.diaDisicd6}" name="diaDisicd6" id="diaDisicd6" class="form-control"/>
+												    </div>
+												</div>
+												<div class="form-group mno">
+												    <label for="inputEmail3" class="col-sm-2 control-label" style="text-align:left;"></label>
+												    <div class="col-sm-8">
+												      <input type="text" value="$!{zyEmrBasy.admwardcode}" name="admwardcode" id="admwardcode" class="form-control"/>
+												    </div>
+												</div>
+												<div class="form-group mno">
+												    <label for="inputEmail3" class="col-sm-2 control-label" style="text-align:left;"></label>
+												    <div class="col-sm-8">
+												      <input type="text" value="$!{zyEmrBasy.diswardcode}" name="diswardcode" id="diswardcode" class="form-control"/>
+												    </div>
+												</div>
+												<div class="form-group mno">
+												    <label for="inputEmail3" class="col-sm-2 control-label" style="text-align:left;"></label>
+												    <div class="col-sm-8">
+												      <input type="text" value="$!{zyEmrBasy.is2zzhi30}" name="is2zzhi30" id="is2zzhi30" class="form-control"/>
+												    </div>
+												</div>
+												<div class="form-group mno">
+												    <label for="inputEmail3" class="col-sm-2 control-label" style="text-align:left;"></label>
+												    <div class="col-sm-8">
+												      <input type="text" value="$!{zyEmrBasy.is2zzhi14}" name="is2zzhi14" id="is2zzhi14" class="form-control"/>
+												    </div>
+												</div>
+												<div class="form-group mno">
+												    <label for="inputEmail3" class="col-sm-2 control-label" style="text-align:left;"></label>
+												    <div class="col-sm-8">
+												      <input type="text" value="$!{zyEmrBasy.is231}" name="is231" id="is231" class="form-control"/>
+												    </div>
+												</div>
+												<div class="form-group mno">
+												    <label for="inputEmail3" class="col-sm-2 control-label" style="text-align:left;"></label>
+												    <div class="col-sm-8">
+												      <input type="text" value="$!{zyEmrBasy.is00}" name="is00" id="is00" class="form-control"/>
+												    </div>
+												</div>
+												<div class="form-group mno">
+												    <label for="inputEmail3" class="col-sm-2 control-label" style="text-align:left;"></label>
+												    <div class="col-sm-8">
+												      <input type="text" value="$!{zyEmrBasy.is231Visitno}" name="is231Visitno" id="is231Visitno" class="form-control"/>
+												    </div>
+												</div>
+												<div class="form-group mno">
+												    <label for="inputEmail3" class="col-sm-2 control-label" style="text-align:left;"></label>
+												    <div class="col-sm-8">
+												      <input type="text" value="$!{zyEmrBasy.is2zzhi30Visitno}" name="is2zzhi30Visitno" id="is2zzhi30Visitno" class="form-control"/>
+												    </div>
+												</div>
+												<div class="form-group mno">
+												    <label for="inputEmail3" class="col-sm-2 control-label" style="text-align:left;"></label>
+												    <div class="col-sm-8">
+												      <input type="text" value="$!{zyEmrBasy.is00Visitno}" name="is00Visitno" id="is00Visitno" class="form-control"/>
+												    </div>
+												</div>
+												<div class="form-group mno">
+												    <label for="inputEmail3" class="col-sm-2 control-label" style="text-align:left;"></label>
+												    <div class="col-sm-8">
+												      <input type="text" value="$!{zyEmrBasy.is2zzhi14Visitno}" name="is2zzhi14Visitno" id="is2zzhi14Visitno" class="form-control"/>
+												    </div>
+												</div>
+												<div class="form-group mno">
+												    <label for="inputEmail3" class="col-sm-2 control-label" style="text-align:left;"></label>
+												    <div class="col-sm-8">
+												      <input type="text" value="$!{zyEmrBasy.zfy}" name="zfy" id="zfy" class="form-control"/>
+												    </div>
+												</div>
+												<div class="form-group mno">
+												    <label for="inputEmail3" class="col-sm-2 control-label" style="text-align:left;"></label>
+												    <div class="col-sm-8">
+												      <input type="text" value="$!{zyEmrBasy.yf}" name="yf" id="yf" class="form-control"/>
+												    </div>
+												</div>
+												<div class="form-group mno">
+												    <label for="inputEmail3" class="col-sm-2 control-label" style="text-align:left;"></label>
+												    <div class="col-sm-8">
+												      <input type="text" value="$!{zyEmrBasy.addresscity}" name="addresscity" id="addresscity" class="form-control"/>
+												    </div>
+												</div>
+												<div class="form-group mno">
+												    <label for="inputEmail3" class="col-sm-2 control-label" style="text-align:left;"></label>
+												    <div class="col-sm-8">
+												      <input type="text" value="$!{zyEmrBasy.addresscountry}" name="addresscountry" id="addresscountry" class="form-control"/>
+												    </div>
+												</div>
+												<div class="form-group mno">
+												    <label for="inputEmail3" class="col-sm-2 control-label" style="text-align:left;"></label>
+												    <div class="col-sm-8">
+												      <input type="text" value="$!{zyEmrBasy.addressxiang}" name="addressxiang" id="addressxiang" class="form-control"/>
+												    </div>
+												</div>
+												<div class="form-group mno">
+												    <label for="inputEmail3" class="col-sm-2 control-label" style="text-align:left;"></label>
+												    <div class="col-sm-8">
+												      <input type="text" value="$!{zyEmrBasy.addressvillage}" name="addressvillage" id="addressvillage" class="form-control"/>
+												    </div>
+												</div>
+												<div class="form-group mno">
+												    <label for="inputEmail3" class="col-sm-2 control-label" style="text-align:left;"></label>
+												    <div class="col-sm-8">
+												      <input type="text" value="$!{zyEmrBasy.addressnumber}" name="addressnumber" id="addressnumber" class="form-control"/>
+												    </div>
+												</div>
+												<div class="form-group mno">
+												    <label for="inputEmail3" class="col-sm-2 control-label" style="text-align:left;"></label>
+												    <div class="col-sm-8">
+												      <input type="text" value="$!{zyEmrBasy.telephone}" name="telephone" id="telephone" class="form-control"/>
+												    </div>
+												</div>
+												<div class="form-group mno">
+												    <label for="inputEmail3" class="col-sm-2 control-label" style="text-align:left;"></label>
+												    <div class="col-sm-8">
+												      <input type="text" value="$!{zyEmrBasy.addresspostcode}" name="addresspostcode" id="addresspostcode" class="form-control"/>
+												    </div>
+												</div>
+												<div class="form-group mno">
+												    <label for="inputEmail3" class="col-sm-2 control-label" style="text-align:left;"></label>
+												    <div class="col-sm-8">
+												      <input type="text" value="$!{zyEmrBasy.residentprovince}" name="residentprovince" id="residentprovince" class="form-control"/>
+												    </div>
+												</div>
+												<div class="form-group mno">
+												    <label for="inputEmail3" class="col-sm-2 control-label" style="text-align:left;"></label>
+												    <div class="col-sm-8">
+												      <input type="text" value="$!{zyEmrBasy.residentcity}" name="residentcity" id="residentcity" class="form-control"/>
+												    </div>
+												</div>
+												<div class="form-group mno">
+												    <label for="inputEmail3" class="col-sm-2 control-label" style="text-align:left;"></label>
+												    <div class="col-sm-8">
+												      <input type="text" value="$!{zyEmrBasy.residentcountry}" name="residentcountry" id="residentcountry" class="form-control"/>
+												    </div>
+												</div>
+												<div class="form-group mno">
+												    <label for="inputEmail3" class="col-sm-2 control-label" style="text-align:left;"></label>
+												    <div class="col-sm-8">
+												      <input type="text" value="$!{zyEmrBasy.residentxiang}" name="residentxiang" id="residentxiang" class="form-control"/>
+												    </div>
+												</div>
+												<div class="form-group mno">
+												    <label for="inputEmail3" class="col-sm-2 control-label" style="text-align:left;"></label>
+												    <div class="col-sm-8">
+												      <input type="text" value="$!{zyEmrBasy.residentvillage}" name="residentvillage" id="residentvillage" class="form-control"/>
+												    </div>
+												</div>
+												<div class="form-group mno">
+												    <label for="inputEmail3" class="col-sm-2 control-label" style="text-align:left;"></label>
+												    <div class="col-sm-8">
+												      <input type="text" value="$!{zyEmrBasy.residentnumber}" name="residentnumber" id="residentnumber" class="form-control"/>
+												    </div>
+												</div>
+												<div class="form-group mno">
+												    <label for="inputEmail3" class="col-sm-2 control-label" style="text-align:left;"></label>
+												    <div class="col-sm-8">
+												      <input type="text" value="$!{zyEmrBasy.residentpostcode}" name="residentpostcode" id="residentpostcode" class="form-control"/>
+												    </div>
+												</div>
+												<div class="form-group mno">
+												    <label for="inputEmail3" class="col-sm-2 control-label" style="text-align:left;"></label>
+												    <div class="col-sm-8">
+												      <input type="text" value="$!{zyEmrBasy.workdesc}" name="workdesc" id="workdesc" class="form-control"/>
+												    </div>
+												</div>
+												<div class="form-group mno">
+												    <label for="inputEmail3" class="col-sm-2 control-label" style="text-align:left;"></label>
+												    <div class="col-sm-8">
+												      <input type="text" value="$!{zyEmrBasy.workprovince}" name="workprovince" id="workprovince" class="form-control"/>
+												    </div>
+												</div>
+												<div class="form-group mno">
+												    <label for="inputEmail3" class="col-sm-2 control-label" style="text-align:left;"></label>
+												    <div class="col-sm-8">
+												      <input type="text" value="$!{zyEmrBasy.workcity}" name="workcity" id="workcity" class="form-control"/>
+												    </div>
+												</div>
+												<div class="form-group mno">
+												    <label for="inputEmail3" class="col-sm-2 control-label" style="text-align:left;"></label>
+												    <div class="col-sm-8">
+												      <input type="text" value="$!{zyEmrBasy.workcountry}" name="workcountry" id="workcountry" class="form-control"/>
+												    </div>
+												</div>
+												<div class="form-group mno">
+												    <label for="inputEmail3" class="col-sm-2 control-label" style="text-align:left;"></label>
+												    <div class="col-sm-8">
+												      <input type="text" value="$!{zyEmrBasy.workxiang}" name="workxiang" id="workxiang" class="form-control"/>
+												    </div>
+												</div>
+												<div class="form-group mno">
+												    <label for="inputEmail3" class="col-sm-2 control-label" style="text-align:left;"></label>
+												    <div class="col-sm-8">
+												      <input type="text" value="$!{zyEmrBasy.workvillage}" name="workvillage" id="workvillage" class="form-control"/>
+												    </div>
+												</div>
+												<div class="form-group mno">
+												    <label for="inputEmail3" class="col-sm-2 control-label" style="text-align:left;"></label>
+												    <div class="col-sm-8">
+												      <input type="text" value="$!{zyEmrBasy.worknumber}" name="worknumber" id="worknumber" class="form-control"/>
+												    </div>
+												</div>
+												<div class="form-group mno">
+												    <label for="inputEmail3" class="col-sm-2 control-label" style="text-align:left;"></label>
+												    <div class="col-sm-8">
+												      <input type="text" value="$!{zyEmrBasy.worktelephone}" name="worktelephone" id="worktelephone" class="form-control"/>
+												    </div>
+												</div>
+												<div class="form-group mno">
+												    <label for="inputEmail3" class="col-sm-2 control-label" style="text-align:left;"></label>
+												    <div class="col-sm-8">
+												      <input type="text" value="$!{zyEmrBasy.workpostcode}" name="workpostcode" id="workpostcode" class="form-control"/>
+												    </div>
+												</div>
+												<div class="form-group mno">
+												    <label for="inputEmail3" class="col-sm-2 control-label" style="text-align:left;"></label>
+												    <div class="col-sm-8">
+												      <input type="text" value="$!{zyEmrBasy.linkname}" name="linkname" id="linkname" class="form-control"/>
+												    </div>
+												</div>
+												<div class="form-group mno">
+												    <label for="inputEmail3" class="col-sm-2 control-label" style="text-align:left;"></label>
+												    <div class="col-sm-8">
+												      <input type="text" value="$!{zyEmrBasy.relationcode}" name="relationcode" id="relationcode" class="form-control"/>
+												    </div>
+												</div>
+												<div class="form-group mno">
+												    <label for="inputEmail3" class="col-sm-2 control-label" style="text-align:left;"></label>
+												    <div class="col-sm-8">
+												      <input type="text" value="$!{zyEmrBasy.linkprovince}" name="linkprovince" id="linkprovince" class="form-control"/>
+												    </div>
+												</div>
+												<div class="form-group mno">
+												    <label for="inputEmail3" class="col-sm-2 control-label" style="text-align:left;"></label>
+												    <div class="col-sm-8">
+												      <input type="text" value="$!{zyEmrBasy.linkcity}" name="linkcity" id="linkcity" class="form-control"/>
+												    </div>
+												</div>
+												<div class="form-group mno">
+												    <label for="inputEmail3" class="col-sm-2 control-label" style="text-align:left;"></label>
+												    <div class="col-sm-8">
+												      <input type="text" value="$!{zyEmrBasy.linkcountry}" name="linkcountry" id="linkcountry" class="form-control"/>
+												    </div>
+												</div>
+												<div class="form-group mno">
+												    <label for="inputEmail3" class="col-sm-2 control-label" style="text-align:left;"></label>
+												    <div class="col-sm-8">
+												      <input type="text" value="$!{zyEmrBasy.linkxiang}" name="linkxiang" id="linkxiang" class="form-control"/>
+												    </div>
+												</div>
+												<div class="form-group mno">
+												    <label for="inputEmail3" class="col-sm-2 control-label" style="text-align:left;"></label>
+												    <div class="col-sm-8">
+												      <input type="text" value="$!{zyEmrBasy.linkvillage}" name="linkvillage" id="linkvillage" class="form-control"/>
+												    </div>
+												</div>
+												<div class="form-group mno">
+												    <label for="inputEmail3" class="col-sm-2 control-label" style="text-align:left;"></label>
+												    <div class="col-sm-8">
+												      <input type="text" value="$!{zyEmrBasy.linknumber}" name="linknumber" id="linknumber" class="form-control"/>
+												    </div>
+												</div>
+												<div class="form-group mno">
+												    <label for="inputEmail3" class="col-sm-2 control-label" style="text-align:left;"></label>
+												    <div class="col-sm-8">
+												      <input type="text" value="$!{zyEmrBasy.linktelephone}" name="linktelephone" id="linktelephone" class="form-control"/>
+												    </div>
+												</div>
+												<div class="form-group mno">
+												    <label for="inputEmail3" class="col-sm-2 control-label" style="text-align:left;"></label>
+												    <div class="col-sm-8">
+												      <input type="text" value="$!{zyEmrBasy.admtrace}" name="admtrace" id="admtrace" class="form-control"/>
+												    </div>
+												</div>
+												<div class="form-group mno">
+												    <label for="inputEmail3" class="col-sm-2 control-label" style="text-align:left;"></label>
+												    <div class="col-sm-8">
+												      <input type="text" value="$!{zyEmrBasy.admsdate}" name="admsdate" id="admsdate" class="form-control"/>
+												    </div>
+												</div>
+												<div class="form-group mno">
+												    <label for="inputEmail3" class="col-sm-2 control-label" style="text-align:left;"></label>
+												    <div class="col-sm-8">
+												      <input type="text" value="$!{zyEmrBasy.admsdept}" name="admsdept" id="admsdept" class="form-control"/>
+												    </div>
+												</div>
+												<div class="form-group mno">
+												    <label for="inputEmail3" class="col-sm-2 control-label" style="text-align:left;"></label>
+												    <div class="col-sm-8">
+												      <input type="text" value="$!{zyEmrBasy.admsward}" name="admsward" id="admsward" class="form-control"/>
+												    </div>
+												</div>
+												<div class="form-group mno">
+												    <label for="inputEmail3" class="col-sm-2 control-label" style="text-align:left;"></label>
+												    <div class="col-sm-8">
+												      <input type="text" value="$!{zyEmrBasy.trandept}" name="trandept" id="trandept" class="form-control"/>
+												    </div>
+												</div>
+												<div class="form-group mno">
+												    <label for="inputEmail3" class="col-sm-2 control-label" style="text-align:left;"></label>
+												    <div class="col-sm-8">
+												      <input type="text" value="$!{zyEmrBasy.admddate}" name="admddate" id="admddate" class="form-control"/>
+												    </div>
+												</div>
+												<div class="form-group mno">
+												    <label for="inputEmail3" class="col-sm-2 control-label" style="text-align:left;"></label>
+												    <div class="col-sm-8">
+												      <input type="text" value="$!{zyEmrBasy.admddept}" name="admddept" id="admddept" class="form-control"/>
+												    </div>
+												</div>
+												<div class="form-group mno">
+												    <label for="inputEmail3" class="col-sm-2 control-label" style="text-align:left;"></label>
+												    <div class="col-sm-8">
+												      <input type="text" value="$!{zyEmrBasy.admdward}" name="admdward" id="admdward" class="form-control"/>
+												    </div>
+												</div>
+												<div class="form-group mno">
+												    <label for="inputEmail3" class="col-sm-2 control-label" style="text-align:left;">住院天数</label>
+												    <div class="col-sm-8">
+												      <input type="text" value="$!{zyEmrBasy.admdays}" name="admdays" id="admdays" class="form-control"/>
+												    </div>
+												</div>
+												<div class="form-group mno">
+												    <label for="inputEmail3" class="col-sm-2 control-label" style="text-align:left;"></label>
+												    <div class="col-sm-8">
+												      <input type="text" value="$!{zyEmrBasy.feathflag}" name="feathflag" id="feathflag" class="form-control"/>
+												    </div>
+												</div>
+												<div class="form-group mno">
+												    <label for="inputEmail3" class="col-sm-2 control-label" style="text-align:left;"></label>
+												    <div class="col-sm-8">
+												      <input type="text" value="$!{zyEmrBasy.admblood}" name="admblood" id="admblood" class="form-control"/>
+												    </div>
+												</div>
+												<div class="form-group mno">
+												    <label for="inputEmail3" class="col-sm-2 control-label" style="text-align:left;"></label>
+												    <div class="col-sm-8">
+												      <input type="text" value="$!{zyEmrBasy.admrhcode}" name="admrhcode" id="admrhcode" class="form-control"/>
+												    </div>
+												</div>
+												<div class="form-group mno">
+												    <label for="inputEmail3" class="col-sm-2 control-label" style="text-align:left;"></label>
+												    <div class="col-sm-8">
+												      <input type="text" value="$!{zyEmrBasy.deptdirectordesc}" name="deptdirectordesc" id="deptdirectordesc" class="form-control"/>
+												    </div>
+												</div>
+												<div class="form-group mno">
+												    <label for="inputEmail3" class="col-sm-2 control-label" style="text-align:left;"></label>
+												    <div class="col-sm-8">
+												      <input type="text" value="$!{zyEmrBasy.directordesc}" name="directordesc" id="directordesc" class="form-control"/>
+												    </div>
+												</div>
+												<div class="form-group mno">
+												    <label for="inputEmail3" class="col-sm-2 control-label" style="text-align:left;"></label>
+												    <div class="col-sm-8">
+												      <input type="text" value="$!{zyEmrBasy.attendingdesc}" name="attendingdesc" id="attendingdesc" class="form-control"/>
+												    </div>
+												</div>
+												<div class="form-group mno">
+												    <label for="inputEmail3" class="col-sm-2 control-label" style="text-align:left;"></label>
+												    <div class="col-sm-8">
+												      <input type="text" value="$!{zyEmrBasy.aesculapiusdesc}" name="aesculapiusdesc" id="aesculapiusdesc" class="form-control"/>
+												    </div>
+												</div>
+												<div class="form-group mno">
+												    <label for="inputEmail3" class="col-sm-2 control-label" style="text-align:left;"></label>
+												    <div class="col-sm-8">
+												      <input type="text" value="$!{zyEmrBasy.dutynursedesc}" name="dutynursedesc" id="dutynursedesc" class="form-control"/>
+												    </div>
+												</div>
+												<div class="form-group mno">
+												    <label for="inputEmail3" class="col-sm-2 control-label" style="text-align:left;"></label>
+												    <div class="col-sm-8">
+												      <input type="text" value="$!{zyEmrBasy.studydoctordesc}" name="studydoctordesc" id="studydoctordesc" class="form-control"/>
+												    </div>
+												</div>
+												<div class="form-group mno">
+												    <label for="inputEmail3" class="col-sm-2 control-label" style="text-align:left;"></label>
+												    <div class="col-sm-8">
+												      <input type="text" value="$!{zyEmrBasy.practicedoctordesc}" name="practicedoctordesc" id="practicedoctordesc" class="form-control"/>
+												    </div>
+												</div>
+												<div class="form-group mno">
+												    <label for="inputEmail3" class="col-sm-2 control-label" style="text-align:left;"></label>
+												    <div class="col-sm-8">
+												      <input type="text" value="$!{zyEmrBasy.documentusername}" name="documentusername" id="documentusername" class="form-control"/>
+												    </div>
+												</div>
+												<div class="form-group mno">
+												    <label for="inputEmail3" class="col-sm-2 control-label" style="text-align:left;"></label>
+												    <div class="col-sm-8">
+												      <input type="text" value="$!{zyEmrBasy.quality}" name="quality" id="quality" class="form-control"/>
+												    </div>
+												</div>
+												<div class="form-group mno">
+												    <label for="inputEmail3" class="col-sm-2 control-label" style="text-align:left;"></label>
+												    <div class="col-sm-8">
+												      <input type="text" value="$!{zyEmrBasy.qualitydoctor}" name="qualitydoctor" id="qualitydoctor" class="form-control"/>
+												    </div>
+												</div>
+												<div class="form-group mno">
+												    <label for="inputEmail3" class="col-sm-2 control-label" style="text-align:left;"></label>
+												    <div class="col-sm-8">
+												      <input type="text" value="$!{zyEmrBasy.qualitynurse}" name="qualitynurse" id="qualitynurse" class="form-control"/>
+												    </div>
+												</div>
+												<div class="form-group mno">
+												    <label for="inputEmail3" class="col-sm-2 control-label" style="text-align:left;"></label>
+												    <div class="col-sm-8">
+												      <input type="text" value="$!{zyEmrBasy.qualitydays}" name="qualitydays" id="qualitydays" class="form-control"/>
+												    </div>
+												</div>
+												<div class="form-group mno">
+												    <label for="inputEmail3" class="col-sm-2 control-label" style="text-align:left;"></label>
+												    <div class="col-sm-8">
+												      <input type="text" value="$!{zyEmrBasy.admoutmode}" name="admoutmode" id="admoutmode" class="form-control"/>
+												    </div>
+												</div>
+												<div class="form-group mno">
+												    <label for="inputEmail3" class="col-sm-2 control-label" style="text-align:left;"></label>
+												    <div class="col-sm-8">
+												      <input type="text" value="$!{zyEmrBasy.dummyhospital}" name="dummyhospital" id="dummyhospital" class="form-control"/>
+												    </div>
+												</div>
+												<div class="form-group mno">
+												    <label for="inputEmail3" class="col-sm-2 control-label" style="text-align:left;"></label>
+												    <div class="col-sm-8">
+												      <input type="text" value="$!{zyEmrBasy.admagainflag}" name="admagainflag" id="admagainflag" class="form-control"/>
+												    </div>
+												</div>
+												<div class="form-group mno">
+												    <label for="inputEmail3" class="col-sm-2 control-label" style="text-align:left;"></label>
+												    <div class="col-sm-8">
+												      <input type="text" value="$!{zyEmrBasy.admagainaim}" name="admagainaim" id="admagainaim" class="form-control"/>
+												    </div>
+												</div>
+												<div class="form-group mno">
+												    <label for="inputEmail3" class="col-sm-2 control-label" style="text-align:left;"></label>
+												    <div class="col-sm-8">
+												      <input type="text" value="$!{zyEmrBasy.admsleepsday}" name="admsleepsday" id="admsleepsday" class="form-control"/>
+												    </div>
+												</div>
+												<div class="form-group mno">
+												    <label for="inputEmail3" class="col-sm-2 control-label" style="text-align:left;"></label>
+												    <div class="col-sm-8">
+												      <input type="text" value="$!{zyEmrBasy.admsleepshour}" name="admsleepshour" id="admsleepshour" class="form-control"/>
+												    </div>
+												</div>
+												<div class="form-group mno">
+												    <label for="inputEmail3" class="col-sm-2 control-label" style="text-align:left;"></label>
+												    <div class="col-sm-8">
+												      <input type="text" value="$!{zyEmrBasy.admsleepsminu}" name="admsleepsminu" id="admsleepsminu" class="form-control"/>
+												    </div>
+												</div>
+												<div class="form-group mno">
+												    <label for="inputEmail3" class="col-sm-2 control-label" style="text-align:left;"></label>
+												    <div class="col-sm-8">
+												      <input type="text" value="$!{zyEmrBasy.admsleepeday}" name="admsleepeday" id="admsleepeday" class="form-control"/>
+												    </div>
+												</div>
+												<div class="form-group mno">
+												    <label for="inputEmail3" class="col-sm-2 control-label" style="text-align:left;"></label>
+												    <div class="col-sm-8">
+												      <input type="text" value="$!{zyEmrBasy.admsleepehour}" name="admsleepehour" id="admsleepehour" class="form-control"/>
+												    </div>
+												</div>
+												<div class="form-group mno">
+												    <label for="inputEmail3" class="col-sm-2 control-label" style="text-align:left;"></label>
+												    <div class="col-sm-8">
+												      <input type="text" value="$!{zyEmrBasy.admsleepeminu}" name="admsleepeminu" id="admsleepeminu" class="form-control"/>
+												    </div>
+												</div>
+												<div class="form-group mno">
+												    <label for="inputEmail3" class="col-sm-2 control-label" style="text-align:left;"></label>
+												    <div class="col-sm-8">
+												      <input type="text" value="$!{zyEmrBasy.breathmachine}" name="breathmachine" id="breathmachine" class="form-control"/>
+												    </div>
+												</div>
+												<div class="form-group mno">
+												    <label for="inputEmail3" class="col-sm-2 control-label" style="text-align:left;"></label>
+												    <div class="col-sm-8">
+												      <input type="text" value="$!{zyEmrBasy.knubt}" name="knubt" id="knubt" class="form-control"/>
+												    </div>
+												</div>
+												<div class="form-group mno">
+												    <label for="inputEmail3" class="col-sm-2 control-label" style="text-align:left;"></label>
+												    <div class="col-sm-8">
+												      <input type="text" value="$!{zyEmrBasy.knubn}" name="knubn" id="knubn" class="form-control"/>
+												    </div>
+												</div>
+												<div class="form-group mno">
+												    <label for="inputEmail3" class="col-sm-2 control-label" style="text-align:left;"></label>
+												    <div class="col-sm-8">
+												      <input type="text" value="$!{zyEmrBasy.knubm}" name="knubm" id="knubm" class="form-control"/>
+												    </div>
+												</div>
+												<div class="form-group mno">
+												    <label for="inputEmail3" class="col-sm-2 control-label" style="text-align:left;"></label>
+												    <div class="col-sm-8">
+												      <input type="text" value="$!{zyEmrBasy.knubrobson}" name="knubrobson" id="knubrobson" class="form-control"/>
+												    </div>
+												</div>
+												<div class="form-group mno">
+												    <label for="inputEmail3" class="col-sm-2 control-label" style="text-align:left;"></label>
+												    <div class="col-sm-8">
+												      <input type="text" value="$!{zyEmrBasy.admslive}" name="admslive" id="admslive" class="form-control"/>
+												    </div>
+												</div>
+												<div class="form-group mno">
+												    <label for="inputEmail3" class="col-sm-2 control-label" style="text-align:left;"></label>
+												    <div class="col-sm-8">
+												      <input type="text" value="$!{zyEmrBasy.admdlive}" name="admdlive" id="admdlive" class="form-control"/>
+												    </div>
+												</div>
+												<div class="form-group mno">
+												    <label for="inputEmail3" class="col-sm-2 control-label" style="text-align:left;"></label>
+												    <div class="col-sm-8">
+												      <input type="text" value="$!{zyEmrBasy.relationdesc}" name="relationdesc" id="relationdesc" class="form-control"/>
+												    </div>
+												</div>
+												<div class="form-group mno">
+												    <label for="inputEmail3" class="col-sm-2 control-label" style="text-align:left;"></label>
+												    <div class="col-sm-8">
+												      <input type="text" value="$!{zyEmrBasy.nationalitydesc}" name="nationalitydesc" id="nationalitydesc" class="form-control"/>
+												    </div>
+												</div>
+												<div class="form-group mno">
+												    <label for="inputEmail3" class="col-sm-2 control-label" style="text-align:left;"></label>
+												    <div class="col-sm-8">
+												      <input type="text" value="$!{zyEmrBasy.occupationdesc}" name="occupationdesc" id="occupationdesc" class="form-control"/>
+												    </div>
+												</div>
+												<div class="form-group mno">
+												    <label for="inputEmail3" class="col-sm-2 control-label" style="text-align:left;"></label>
+												    <div class="col-sm-8">
+												      <input type="text" value="$!{zyEmrBasy.linkaddress}" name="linkaddress" id="linkaddress" class="form-control"/>
+												    </div>
+												</div>
+												<div class="form-group mno">
+												    <label for="inputEmail3" class="col-sm-2 control-label" style="text-align:left;"></label>
+												    <div class="col-sm-8">
+												      <input type="text" value="$!{zyEmrBasy.critical}" name="critical" id="critical" class="form-control"/>
+												    </div>
+												</div>
+												<div class="form-group mno">
+												    <label for="inputEmail3" class="col-sm-2 control-label" style="text-align:left;"></label>
+												    <div class="col-sm-8">
+												      <input type="text" value="$!{zyEmrBasy.difficulty}" name="difficulty" id="difficulty" class="form-control"/>
+												    </div>
+												</div>
+												<div class="form-group mno">
+												    <label for="inputEmail3" class="col-sm-2 control-label" style="text-align:left;"></label>
+												    <div class="col-sm-8">
+												      <input type="text" value="$!{zyEmrBasy.salvagenumber}" name="salvagenumber" id="salvagenumber" class="form-control"/>
+												    </div>
+												</div>
+												<div class="form-group mno">
+												    <label for="inputEmail3" class="col-sm-2 control-label" style="text-align:left;"></label>
+												    <div class="col-sm-8">
+												      <input type="text" value="$!{zyEmrBasy.succeednumber}" name="succeednumber" id="succeednumber" class="form-control"/>
+												    </div>
+												</div>
+												<div class="form-group mno">
+												    <label for="inputEmail3" class="col-sm-2 control-label" style="text-align:left;"></label>
+												    <div class="col-sm-8">
+												      <input type="text" value="$!{zyEmrBasy.followup}" name="followup" id="followup" class="form-control"/>
+												    </div>
+												</div>
+												<div class="form-group mno">
+												    <label for="inputEmail3" class="col-sm-2 control-label" style="text-align:left;"></label>
+												    <div class="col-sm-8">
+												      <input type="text" value="$!{zyEmrBasy.followupday}" name="followupday" id="followupday" class="form-control"/>
+												    </div>
+												</div>
+												<div class="form-group mno">
+												    <label for="inputEmail3" class="col-sm-2 control-label" style="text-align:left;"></label>
+												    <div class="col-sm-8">
+												      <input type="text" value="$!{zyEmrBasy.doctordesc}" name="doctordesc" id="doctordesc" class="form-control"/>
+												    </div>
+												</div>
+												<div class="form-group mno">
+												    <label for="inputEmail3" class="col-sm-2 control-label" style="text-align:left;"></label>
+												    <div class="col-sm-8">
+												      <input type="text" value="$!{zyEmrBasy.doctorcode}" name="doctorcode" id="doctorcode" class="form-control"/>
+												    </div>
+												</div>
+												<div class="form-group mno">
+												    <label for="inputEmail3" class="col-sm-2 control-label" style="text-align:left;"></label>
+												    <div class="col-sm-8">
+												      <input type="text" value="$!{zyEmrBasy.deptdirectorcode}" name="deptdirectorcode" id="deptdirectorcode" class="form-control"/>
+												    </div>
+												</div>
+												<div class="form-group mno">
+												    <label for="inputEmail3" class="col-sm-2 control-label" style="text-align:left;"></label>
+												    <div class="col-sm-8">
+												      <input type="text" value="$!{zyEmrBasy.directorcode}" name="directorcode" id="directorcode" class="form-control"/>
+												    </div>
+												</div>
+												<div class="form-group mno">
+												    <label for="inputEmail3" class="col-sm-2 control-label" style="text-align:left;">主治医生</label>
+												    <div class="col-sm-8">
+												      <input type="text" value="$!{zyEmrBasy.attendingcode}" name="attendingcode" id="attendingcode" class="form-control"/>
+												    </div>
+												</div>
+												<div class="form-group mno">
+												    <label for="inputEmail3" class="col-sm-2 control-label" style="text-align:left;"></label>
+												    <div class="col-sm-8">
+												      <input type="text" value="$!{zyEmrBasy.aesculapiuscode}" name="aesculapiuscode" id="aesculapiuscode" class="form-control"/>
+												    </div>
+												</div>
+												<div class="form-group mno">
+												    <label for="inputEmail3" class="col-sm-2 control-label" style="text-align:left;"></label>
+												    <div class="col-sm-8">
+												      <input type="text" value="$!{zyEmrBasy.dutynursecode}" name="dutynursecode" id="dutynursecode" class="form-control"/>
+												    </div>
+												</div>
+												<div class="form-group mno">
+												    <label for="inputEmail3" class="col-sm-2 control-label" style="text-align:left;"></label>
+												    <div class="col-sm-8">
+												      <input type="text" value="$!{zyEmrBasy.studydoctorcode}" name="studydoctorcode" id="studydoctorcode" class="form-control"/>
+												    </div>
+												</div>
+												<div class="form-group mno">
+												    <label for="inputEmail3" class="col-sm-2 control-label" style="text-align:left;"></label>
+												    <div class="col-sm-8">
+												      <input type="text" value="$!{zyEmrBasy.practicedoctorcode}" name="practicedoctorcode" id="practicedoctorcode" class="form-control"/>
+												    </div>
+												</div>
+												<div class="form-group mno">
+												    <label for="inputEmail3" class="col-sm-2 control-label" style="text-align:left;"></label>
+												    <div class="col-sm-8">
+												      <input type="text" value="$!{zyEmrBasy.documentusercode}" name="documentusercode" id="documentusercode" class="form-control"/>
+												    </div>
+												</div>
+												<div class="form-group mno">
+												    <label for="inputEmail3" class="col-sm-2 control-label" style="text-align:left;"></label>
+												    <div class="col-sm-8">
+												      <input type="text" value="$!{zyEmrBasy.qualitydoctorcode}" name="qualitydoctorcode" id="qualitydoctorcode" class="form-control"/>
+												    </div>
+												</div>
+												<div class="form-group mno">
+												    <label for="inputEmail3" class="col-sm-2 control-label" style="text-align:left;"></label>
+												    <div class="col-sm-8">
+												      <input type="text" value="$!{zyEmrBasy.qualitynursecode}" name="qualitynursecode" id="qualitynursecode" class="form-control"/>
+												    </div>
+												</div>
+												<div class="form-group mno">
+												    <label for="inputEmail3" class="col-sm-2 control-label" style="text-align:left;"></label>
+												    <div class="col-sm-8">
+												      <input type="text" value="$!{zyEmrBasy.diagnosecode1}" name="diagnosecode1" id="diagnosecode1" class="form-control"/>
+												    </div>
+												</div>
+												<div class="form-group mno">
+												    <label for="inputEmail3" class="col-sm-2 control-label" style="text-align:left;">入院诊断</label>
+												    <div class="col-sm-8">
+												      <input type="text" value="$!{zyEmrBasy.diagnosedesc1}" name="diagnosedesc1" id="diagnosedesc1" class="form-control"/>
+												    </div>
+												</div>
+												<div class="form-group mno">
+												    <label for="inputEmail3" class="col-sm-2 control-label" style="text-align:left;"></label>
+												    <div class="col-sm-8">
+												      <input type="text" value="$!{zyEmrBasy.diagnosecode2}" name="diagnosecode2" id="diagnosecode2" class="form-control"/>
+												    </div>
+												</div>
+												<div class="form-group mno">
+												    <label for="inputEmail3" class="col-sm-2 control-label" style="text-align:left;"></label>
+												    <div class="col-sm-8">
+												      <input type="text" value="$!{zyEmrBasy.diagnosedesc2}" name="diagnosedesc2" id="diagnosedesc2" class="form-control"/>
+												    </div>
+												</div>
+												<div class="form-group mno">
+												    <label for="inputEmail3" class="col-sm-2 control-label" style="text-align:left;"></label>
+												    <div class="col-sm-8">
+												      <input type="text" value="$!{zyEmrBasy.diagnosecode3}" name="diagnosecode3" id="diagnosecode3" class="form-control"/>
+												    </div>
+												</div>
+												<div class="form-group mno">
+												    <label for="inputEmail3" class="col-sm-2 control-label" style="text-align:left;"></label>
+												    <div class="col-sm-8">
+												      <input type="text" value="$!{zyEmrBasy.diagnosedesc3}" name="diagnosedesc3" id="diagnosedesc3" class="form-control"/>
+												    </div>
+												</div>
+												<div class="form-group mno">
+												    <label for="inputEmail3" class="col-sm-2 control-label" style="text-align:left;"></label>
+												    <div class="col-sm-8">
+												      <input type="text" value="$!{zyEmrBasy.diagnosecode4}" name="diagnosecode4" id="diagnosecode4" class="form-control"/>
+												    </div>
+												</div>
+												<div class="form-group mno">
+												    <label for="inputEmail3" class="col-sm-2 control-label" style="text-align:left;"></label>
+												    <div class="col-sm-8">
+												      <input type="text" value="$!{zyEmrBasy.diagnosedesc4}" name="diagnosedesc4" id="diagnosedesc4" class="form-control"/>
+												    </div>
+												</div>
+												<div class="form-group mno">
+												    <label for="inputEmail3" class="col-sm-2 control-label" style="text-align:left;"></label>
+												    <div class="col-sm-8">
+												      <input type="text" value="$!{zyEmrBasy.diagnosecode5}" name="diagnosecode5" id="diagnosecode5" class="form-control"/>
+												    </div>
+												</div>
+												<div class="form-group mno">
+												    <label for="inputEmail3" class="col-sm-2 control-label" style="text-align:left;"></label>
+												    <div class="col-sm-8">
+												      <input type="text" value="$!{zyEmrBasy.diagnosedesc5}" name="diagnosedesc5" id="diagnosedesc5" class="form-control"/>
+												    </div>
+												</div>
+												<div class="form-group mno">
+												    <label for="inputEmail3" class="col-sm-2 control-label" style="text-align:left;"></label>
+												    <div class="col-sm-8">
+												      <input type="text" value="$!{zyEmrBasy.diagnosecode6}" name="diagnosecode6" id="diagnosecode6" class="form-control"/>
+												    </div>
+												</div>
+												<div class="form-group mno">
+												    <label for="inputEmail3" class="col-sm-2 control-label" style="text-align:left;"></label>
+												    <div class="col-sm-8">
+												      <input type="text" value="$!{zyEmrBasy.diagnosedesc6}" name="diagnosedesc6" id="diagnosedesc6" class="form-control"/>
+												    </div>
+												</div>
+												<div class="form-group mno">
+												    <label for="inputEmail3" class="col-sm-2 control-label" style="text-align:left;"></label>
+												    <div class="col-sm-8">
+												      <input type="text" value="$!{zyEmrBasy.opercode1}" name="opercode1" id="opercode1" class="form-control"/>
+												    </div>
+												</div>
+												<div class="form-group mno">
+												    <label for="inputEmail3" class="col-sm-2 control-label" style="text-align:left;">手术名称</label>
+												    <div class="col-sm-8">
+												      <input type="text" value="$!{zyEmrBasy.operdesc1}" name="operdesc1" id="operdesc1" class="form-control"/>
+												    </div>
+												</div>
+												<div class="form-group mno">
+												    <label for="inputEmail3" class="col-sm-2 control-label" style="text-align:left;"></label>
+												    <div class="col-sm-8">
+												      <input type="text" value="$!{zyEmrBasy.opercode2}" name="opercode2" id="opercode2" class="form-control"/>
+												    </div>
+												</div>
+												<div class="form-group mno">
+												    <label for="inputEmail3" class="col-sm-2 control-label" style="text-align:left;"></label>
+												    <div class="col-sm-8">
+												      <input type="text" value="$!{zyEmrBasy.operdesc2}" name="operdesc2" id="operdesc2" class="form-control"/>
+												    </div>
+												</div>
+												<div class="form-group mno">
+												    <label for="inputEmail3" class="col-sm-2 control-label" style="text-align:left;"></label>
+												    <div class="col-sm-8">
+												      <input type="text" value="$!{zyEmrBasy.opercode3}" name="opercode3" id="opercode3" class="form-control"/>
+												    </div>
+												</div>
+												<div class="form-group mno">
+												    <label for="inputEmail3" class="col-sm-2 control-label" style="text-align:left;"></label>
+												    <div class="col-sm-8">
+												      <input type="text" value="$!{zyEmrBasy.operdesc3}" name="operdesc3" id="operdesc3" class="form-control"/>
+												    </div>
+												</div>
+												<div class="form-group mno">
+												    <label for="inputEmail3" class="col-sm-2 control-label" style="text-align:left;"></label>
+												    <div class="col-sm-8">
+												      <input type="text" value="$!{zyEmrBasy.opercode4}" name="opercode4" id="opercode4" class="form-control"/>
+												    </div>
+												</div>
+												<div class="form-group mno">
+												    <label for="inputEmail3" class="col-sm-2 control-label" style="text-align:left;"></label>
+												    <div class="col-sm-8">
+												      <input type="text" value="$!{zyEmrBasy.operdesc4}" name="operdesc4" id="operdesc4" class="form-control"/>
+												    </div>
+												</div>
+												<div class="form-group mno">
+												    <label for="inputEmail3" class="col-sm-2 control-label" style="text-align:left;"></label>
+												    <div class="col-sm-8">
+												      <input type="text" value="$!{zyEmrBasy.opercode5}" name="opercode5" id="opercode5" class="form-control"/>
+												    </div>
+												</div>
+												<div class="form-group mno">
+												    <label for="inputEmail3" class="col-sm-2 control-label" style="text-align:left;"></label>
+												    <div class="col-sm-8">
+												      <input type="text" value="$!{zyEmrBasy.operdesc5}" name="operdesc5" id="operdesc5" class="form-control"/>
+												    </div>
+												</div>
+												<div class="form-group mno">
+												    <label for="inputEmail3" class="col-sm-2 control-label" style="text-align:left;"></label>
+												    <div class="col-sm-8">
+												      <input type="text" value="$!{zyEmrBasy.opercode6}" name="opercode6" id="opercode6" class="form-control"/>
+												    </div>
+												</div>
+												<div class="form-group mno">
+												    <label for="inputEmail3" class="col-sm-2 control-label" style="text-align:left;"></label>
+												    <div class="col-sm-8">
+												      <input type="text" value="$!{zyEmrBasy.operdesc6}" name="operdesc6" id="operdesc6" class="form-control"/>
+												    </div>
+												</div>
+												<div class="form-group mno">
+												    <label for="inputEmail3" class="col-sm-2 control-label" style="text-align:left;"></label>
+												    <div class="col-sm-8">
+												      <input type="text" value="$!{zyEmrBasy.operdate1}" name="operdate1" id="operdate1" class="form-control"/>
+												    </div>
+												</div>
+												<div class="form-group mno">
+												    <label for="inputEmail3" class="col-sm-2 control-label" style="text-align:left;"></label>
+												    <div class="col-sm-8">
+												      <input type="text" value="$!{zyEmrBasy.operdate2}" name="operdate2" id="operdate2" class="form-control"/>
+												    </div>
+												</div>
+												<div class="form-group mno">
+												    <label for="inputEmail3" class="col-sm-2 control-label" style="text-align:left;"></label>
+												    <div class="col-sm-8">
+												      <input type="text" value="$!{zyEmrBasy.operdate3}" name="operdate3" id="operdate3" class="form-control"/>
+												    </div>
+												</div>
+												<div class="form-group mno">
+												    <label for="inputEmail3" class="col-sm-2 control-label" style="text-align:left;"></label>
+												    <div class="col-sm-8">
+												      <input type="text" value="$!{zyEmrBasy.operdate4}" name="operdate4" id="operdate4" class="form-control"/>
+												    </div>
+												</div>
+												<div class="form-group mno">
+												    <label for="inputEmail3" class="col-sm-2 control-label" style="text-align:left;"></label>
+												    <div class="col-sm-8">
+												      <input type="text" value="$!{zyEmrBasy.operdate5}" name="operdate5" id="operdate5" class="form-control"/>
+												    </div>
+												</div>
+												<div class="form-group mno">
+												    <label for="inputEmail3" class="col-sm-2 control-label" style="text-align:left;"></label>
+												    <div class="col-sm-8">
+												      <input type="text" value="$!{zyEmrBasy.operdate6}" name="operdate6" id="operdate6" class="form-control"/>
+												    </div>
+												</div>
+												<div class="form-group mno">
+												    <label for="inputEmail3" class="col-sm-2 control-label" style="text-align:left;"></label>
+												    <div class="col-sm-8">
+												      <input type="text" value="$!{zyEmrBasy.operlevel1}" name="operlevel1" id="operlevel1" class="form-control"/>
+												    </div>
+												</div>
+												<div class="form-group mno">
+												    <label for="inputEmail3" class="col-sm-2 control-label" style="text-align:left;"></label>
+												    <div class="col-sm-8">
+												      <input type="text" value="$!{zyEmrBasy.operlevel2}" name="operlevel2" id="operlevel2" class="form-control"/>
+												    </div>
+												</div>
+												<div class="form-group mno">
+												    <label for="inputEmail3" class="col-sm-2 control-label" style="text-align:left;"></label>
+												    <div class="col-sm-8">
+												      <input type="text" value="$!{zyEmrBasy.operlevel3}" name="operlevel3" id="operlevel3" class="form-control"/>
+												    </div>
+												</div>
+												<div class="form-group mno">
+												    <label for="inputEmail3" class="col-sm-2 control-label" style="text-align:left;"></label>
+												    <div class="col-sm-8">
+												      <input type="text" value="$!{zyEmrBasy.operlevel4}" name="operlevel4" id="operlevel4" class="form-control"/>
+												    </div>
+												</div>
+												<div class="form-group mno">
+												    <label for="inputEmail3" class="col-sm-2 control-label" style="text-align:left;"></label>
+												    <div class="col-sm-8">
+												      <input type="text" value="$!{zyEmrBasy.operlevel5}" name="operlevel5" id="operlevel5" class="form-control"/>
+												    </div>
+												</div>
+												<div class="form-group mno">
+												    <label for="inputEmail3" class="col-sm-2 control-label" style="text-align:left;"></label>
+												    <div class="col-sm-8">
+												      <input type="text" value="$!{zyEmrBasy.operlevel6}" name="operlevel6" id="operlevel6" class="form-control"/>
+												    </div>
+												</div>
+												<div class="form-group mno">
+												    <label for="inputEmail3" class="col-sm-2 control-label" style="text-align:left;"></label>
+												    <div class="col-sm-8">
+												      <input type="text" value="$!{zyEmrBasy.operator1}" name="operator1" id="operator1" class="form-control"/>
+												    </div>
+												</div>
+												<div class="form-group mno">
+												    <label for="inputEmail3" class="col-sm-2 control-label" style="text-align:left;"></label>
+												    <div class="col-sm-8">
+												      <input type="text" value="$!{zyEmrBasy.operator2}" name="operator2" id="operator2" class="form-control"/>
+												    </div>
+												</div>
+												<div class="form-group mno">
+												    <label for="inputEmail3" class="col-sm-2 control-label" style="text-align:left;"></label>
+												    <div class="col-sm-8">
+												      <input type="text" value="$!{zyEmrBasy.operator3}" name="operator3" id="operator3" class="form-control"/>
+												    </div>
+												</div>
+												<div class="form-group mno">
+												    <label for="inputEmail3" class="col-sm-2 control-label" style="text-align:left;"></label>
+												    <div class="col-sm-8">
+												      <input type="text" value="$!{zyEmrBasy.operator4}" name="operator4" id="operator4" class="form-control"/>
+												    </div>
+												</div>
+												<div class="form-group mno">
+												    <label for="inputEmail3" class="col-sm-2 control-label" style="text-align:left;"></label>
+												    <div class="col-sm-8">
+												      <input type="text" value="$!{zyEmrBasy.operator5}" name="operator5" id="operator5" class="form-control"/>
+												    </div>
+												</div>
+												<div class="form-group mno">
+												    <label for="inputEmail3" class="col-sm-2 control-label" style="text-align:left;"></label>
+												    <div class="col-sm-8">
+												      <input type="text" value="$!{zyEmrBasy.operator6}" name="operator6" id="operator6" class="form-control"/>
+												    </div>
+												</div>
+												<div class="form-group mno">
+												    <label for="inputEmail3" class="col-sm-2 control-label" style="text-align:left;"></label>
+												    <div class="col-sm-8">
+												      <input type="text" value="$!{zyEmrBasy.operationfname1}" name="operationfname1" id="operationfname1" class="form-control"/>
+												    </div>
+												</div>
+												<div class="form-group mno">
+												    <label for="inputEmail3" class="col-sm-2 control-label" style="text-align:left;"></label>
+												    <div class="col-sm-8">
+												      <input type="text" value="$!{zyEmrBasy.operationfname2}" name="operationfname2" id="operationfname2" class="form-control"/>
+												    </div>
+												</div>
+												<div class="form-group mno">
+												    <label for="inputEmail3" class="col-sm-2 control-label" style="text-align:left;"></label>
+												    <div class="col-sm-8">
+												      <input type="text" value="$!{zyEmrBasy.operationfname3}" name="operationfname3" id="operationfname3" class="form-control"/>
+												    </div>
+												</div>
+												<div class="form-group mno">
+												    <label for="inputEmail3" class="col-sm-2 control-label" style="text-align:left;"></label>
+												    <div class="col-sm-8">
+												      <input type="text" value="$!{zyEmrBasy.operationfname4}" name="operationfname4" id="operationfname4" class="form-control"/>
+												    </div>
+												</div>
+												<div class="form-group mno">
+												    <label for="inputEmail3" class="col-sm-2 control-label" style="text-align:left;"></label>
+												    <div class="col-sm-8">
+												      <input type="text" value="$!{zyEmrBasy.operationfname5}" name="operationfname5" id="operationfname5" class="form-control"/>
+												    </div>
+												</div>
+												<div class="form-group mno">
+												    <label for="inputEmail3" class="col-sm-2 control-label" style="text-align:left;"></label>
+												    <div class="col-sm-8">
+												      <input type="text" value="$!{zyEmrBasy.operationfname6}" name="operationfname6" id="operationfname6" class="form-control"/>
+												    </div>
+												</div>
+												<div class="form-group mno">
+												    <label for="inputEmail3" class="col-sm-2 control-label" style="text-align:left;"></label>
+												    <div class="col-sm-8">
+												      <input type="text" value="$!{zyEmrBasy.operationtname1}" name="operationtname1" id="operationtname1" class="form-control"/>
+												    </div>
+												</div>
+												<div class="form-group mno">
+												    <label for="inputEmail3" class="col-sm-2 control-label" style="text-align:left;"></label>
+												    <div class="col-sm-8">
+												      <input type="text" value="$!{zyEmrBasy.operationtname2}" name="operationtname2" id="operationtname2" class="form-control"/>
+												    </div>
+												</div>
+												<div class="form-group mno">
+												    <label for="inputEmail3" class="col-sm-2 control-label" style="text-align:left;"></label>
+												    <div class="col-sm-8">
+												      <input type="text" value="$!{zyEmrBasy.operationtname3}" name="operationtname3" id="operationtname3" class="form-control"/>
+												    </div>
+												</div>
+												<div class="form-group mno">
+												    <label for="inputEmail3" class="col-sm-2 control-label" style="text-align:left;"></label>
+												    <div class="col-sm-8">
+												      <input type="text" value="$!{zyEmrBasy.operationtname4}" name="operationtname4" id="operationtname4" class="form-control"/>
+												    </div>
+												</div>
+												<div class="form-group mno">
+												    <label for="inputEmail3" class="col-sm-2 control-label" style="text-align:left;"></label>
+												    <div class="col-sm-8">
+												      <input type="text" value="$!{zyEmrBasy.operationtname5}" name="operationtname5" id="operationtname5" class="form-control"/>
+												    </div>
+												</div>
+												<div class="form-group mno">
+												    <label for="inputEmail3" class="col-sm-2 control-label" style="text-align:left;"></label>
+												    <div class="col-sm-8">
+												      <input type="text" value="$!{zyEmrBasy.operationtname6}" name="operationtname6" id="operationtname6" class="form-control"/>
+												    </div>
+												</div>
+												<div class="form-group mno">
+												    <label for="inputEmail3" class="col-sm-2 control-label" style="text-align:left;"></label>
+												    <div class="col-sm-8">
+												      <input type="text" value="$!{zyEmrBasy.narcosismode1}" name="narcosismode1" id="narcosismode1" class="form-control"/>
+												    </div>
+												</div>
+												<div class="form-group mno">
+												    <label for="inputEmail3" class="col-sm-2 control-label" style="text-align:left;"></label>
+												    <div class="col-sm-8">
+												      <input type="text" value="$!{zyEmrBasy.narcosismode2}" name="narcosismode2" id="narcosismode2" class="form-control"/>
+												    </div>
+												</div>
+												<div class="form-group mno">
+												    <label for="inputEmail3" class="col-sm-2 control-label" style="text-align:left;"></label>
+												    <div class="col-sm-8">
+												      <input type="text" value="$!{zyEmrBasy.narcosismode3}" name="narcosismode3" id="narcosismode3" class="form-control"/>
+												    </div>
+												</div>
+												<div class="form-group mno">
+												    <label for="inputEmail3" class="col-sm-2 control-label" style="text-align:left;"></label>
+												    <div class="col-sm-8">
+												      <input type="text" value="$!{zyEmrBasy.narcosismode4}" name="narcosismode4" id="narcosismode4" class="form-control"/>
+												    </div>
+												</div>
+												<div class="form-group mno">
+												    <label for="inputEmail3" class="col-sm-2 control-label" style="text-align:left;"></label>
+												    <div class="col-sm-8">
+												      <input type="text" value="$!{zyEmrBasy.narcosismode5}" name="narcosismode5" id="narcosismode5" class="form-control"/>
+												    </div>
+												</div>
+												<div class="form-group mno">
+												    <label for="inputEmail3" class="col-sm-2 control-label" style="text-align:left;"></label>
+												    <div class="col-sm-8">
+												      <input type="text" value="$!{zyEmrBasy.narcosismode6}" name="narcosismode6" id="narcosismode6" class="form-control"/>
+												    </div>
+												</div>
+												<div class="form-group mno">
+												    <label for="inputEmail3" class="col-sm-2 control-label" style="text-align:left;"></label>
+												    <div class="col-sm-8">
+												      <input type="text" value="$!{zyEmrBasy.cutgrade1}" name="cutgrade1" id="cutgrade1" class="form-control"/>
+												    </div>
+												</div>
+												<div class="form-group mno">
+												    <label for="inputEmail3" class="col-sm-2 control-label" style="text-align:left;"></label>
+												    <div class="col-sm-8">
+												      <input type="text" value="$!{zyEmrBasy.cutgrade2}" name="cutgrade2" id="cutgrade2" class="form-control"/>
+												    </div>
+												</div>
+												<div class="form-group mno">
+												    <label for="inputEmail3" class="col-sm-2 control-label" style="text-align:left;"></label>
+												    <div class="col-sm-8">
+												      <input type="text" value="$!{zyEmrBasy.cutgrade3}" name="cutgrade3" id="cutgrade3" class="form-control"/>
+												    </div>
+												</div>
+												<div class="form-group mno">
+												    <label for="inputEmail3" class="col-sm-2 control-label" style="text-align:left;"></label>
+												    <div class="col-sm-8">
+												      <input type="text" value="$!{zyEmrBasy.cutgrade4}" name="cutgrade4" id="cutgrade4" class="form-control"/>
+												    </div>
+												</div>
+												<div class="form-group mno">
+												    <label for="inputEmail3" class="col-sm-2 control-label" style="text-align:left;"></label>
+												    <div class="col-sm-8">
+												      <input type="text" value="$!{zyEmrBasy.cutgrade5}" name="cutgrade5" id="cutgrade5" class="form-control"/>
+												    </div>
+												</div>
+												<div class="form-group mno">
+												    <label for="inputEmail3" class="col-sm-2 control-label" style="text-align:left;"></label>
+												    <div class="col-sm-8">
+												      <input type="text" value="$!{zyEmrBasy.cutgrade6}" name="cutgrade6" id="cutgrade6" class="form-control"/>
+												    </div>
+												</div>
+												<div class="form-group mno">
+												    <label for="inputEmail3" class="col-sm-2 control-label" style="text-align:left;"></label>
+												    <div class="col-sm-8">
+												      <input type="text" value="$!{zyEmrBasy.cicatrizegrade1}" name="cicatrizegrade1" id="cicatrizegrade1" class="form-control"/>
+												    </div>
+												</div>
+												<div class="form-group mno">
+												    <label for="inputEmail3" class="col-sm-2 control-label" style="text-align:left;"></label>
+												    <div class="col-sm-8">
+												      <input type="text" value="$!{zyEmrBasy.cicatrizegrade2}" name="cicatrizegrade2" id="cicatrizegrade2" class="form-control"/>
+												    </div>
+												</div>
+												<div class="form-group mno">
+												    <label for="inputEmail3" class="col-sm-2 control-label" style="text-align:left;"></label>
+												    <div class="col-sm-8">
+												      <input type="text" value="$!{zyEmrBasy.cicatrizegrade3}" name="cicatrizegrade3" id="cicatrizegrade3" class="form-control"/>
+												    </div>
+												</div>
+												<div class="form-group mno">
+												    <label for="inputEmail3" class="col-sm-2 control-label" style="text-align:left;"></label>
+												    <div class="col-sm-8">
+												      <input type="text" value="$!{zyEmrBasy.cicatrizegrade4}" name="cicatrizegrade4" id="cicatrizegrade4" class="form-control"/>
+												    </div>
+												</div>
+												<div class="form-group mno">
+												    <label for="inputEmail3" class="col-sm-2 control-label" style="text-align:left;"></label>
+												    <div class="col-sm-8">
+												      <input type="text" value="$!{zyEmrBasy.cicatrizegrade5}" name="cicatrizegrade5" id="cicatrizegrade5" class="form-control"/>
+												    </div>
+												</div>
+												<div class="form-group mno">
+												    <label for="inputEmail3" class="col-sm-2 control-label" style="text-align:left;"></label>
+												    <div class="col-sm-8">
+												      <input type="text" value="$!{zyEmrBasy.cicatrizegrade6}" name="cicatrizegrade6" id="cicatrizegrade6" class="form-control"/>
+												    </div>
+												</div>
+												<div class="form-group mno">
+												    <label for="inputEmail3" class="col-sm-2 control-label" style="text-align:left;"></label>
+												    <div class="col-sm-8">
+												      <input type="text" value="$!{zyEmrBasy.narcosisdocname1}" name="narcosisdocname1" id="narcosisdocname1" class="form-control"/>
+												    </div>
+												</div>
+												<div class="form-group mno">
+												    <label for="inputEmail3" class="col-sm-2 control-label" style="text-align:left;"></label>
+												    <div class="col-sm-8">
+												      <input type="text" value="$!{zyEmrBasy.narcosisdocname2}" name="narcosisdocname2" id="narcosisdocname2" class="form-control"/>
+												    </div>
+												</div>
+												<div class="form-group mno">
+												    <label for="inputEmail3" class="col-sm-2 control-label" style="text-align:left;"></label>
+												    <div class="col-sm-8">
+												      <input type="text" value="$!{zyEmrBasy.narcosisdocname3}" name="narcosisdocname3" id="narcosisdocname3" class="form-control"/>
+												    </div>
+												</div>
+												<div class="form-group mno">
+												    <label for="inputEmail3" class="col-sm-2 control-label" style="text-align:left;"></label>
+												    <div class="col-sm-8">
+												      <input type="text" value="$!{zyEmrBasy.narcosisdocname4}" name="narcosisdocname4" id="narcosisdocname4" class="form-control"/>
+												    </div>
+												</div>
+												<div class="form-group mno">
+												    <label for="inputEmail3" class="col-sm-2 control-label" style="text-align:left;"></label>
+												    <div class="col-sm-8">
+												      <input type="text" value="$!{zyEmrBasy.narcosisdocname5}" name="narcosisdocname5" id="narcosisdocname5" class="form-control"/>
+												    </div>
+												</div>
+												<div class="form-group mno">
+												    <label for="inputEmail3" class="col-sm-2 control-label" style="text-align:left;"></label>
+												    <div class="col-sm-8">
+												      <input type="text" value="$!{zyEmrBasy.narcosisdocname6}" name="narcosisdocname6" id="narcosisdocname6" class="form-control"/>
+												    </div>
+												</div>
+												<div class="form-group mno">
+												    <label for="inputEmail3" class="col-sm-2 control-label" style="text-align:left;"></label>
+												    <div class="col-sm-8">
+												      <input type="text" value="$!{zyEmrBasy.operaDesc1}" name="operaDesc1" id="operaDesc1" class="form-control"/>
+												    </div>
+												</div>
+												<div class="form-group mno">
+												    <label for="inputEmail3" class="col-sm-2 control-label" style="text-align:left;"></label>
+												    <div class="col-sm-8">
+												      <input type="text" value="$!{zyEmrBasy.operaIcd1}" name="operaIcd1" id="operaIcd1" class="form-control"/>
+												    </div>
+												</div>
+												<div class="form-group mno">
+												    <label for="inputEmail3" class="col-sm-2 control-label" style="text-align:left;"></label>
+												    <div class="col-sm-8">
+												      <input type="text" value="$!{zyEmrBasy.operaDesc2}" name="operaDesc2" id="operaDesc2" class="form-control"/>
+												    </div>
+												</div>
+												<div class="form-group mno">
+												    <label for="inputEmail3" class="col-sm-2 control-label" style="text-align:left;"></label>
+												    <div class="col-sm-8">
+												      <input type="text" value="$!{zyEmrBasy.operaIcd2}" name="operaIcd2" id="operaIcd2" class="form-control"/>
+												    </div>
+												</div>
+												<div class="form-group mno">
+												    <label for="inputEmail3" class="col-sm-2 control-label" style="text-align:left;"></label>
+												    <div class="col-sm-8">
+												      <input type="text" value="$!{zyEmrBasy.operaDesc3}" name="operaDesc3" id="operaDesc3" class="form-control"/>
+												    </div>
+												</div>
+												<div class="form-group mno">
+												    <label for="inputEmail3" class="col-sm-2 control-label" style="text-align:left;"></label>
+												    <div class="col-sm-8">
+												      <input type="text" value="$!{zyEmrBasy.operaIcd3}" name="operaIcd3" id="operaIcd3" class="form-control"/>
+												    </div>
+												</div>
+												<div class="form-group mno">
+												    <label for="inputEmail3" class="col-sm-2 control-label" style="text-align:left;"></label>
+												    <div class="col-sm-8">
+												      <input type="text" value="$!{zyEmrBasy.operaDesc4}" name="operaDesc4" id="operaDesc4" class="form-control"/>
+												    </div>
+												</div>
+												<div class="form-group mno">
+												    <label for="inputEmail3" class="col-sm-2 control-label" style="text-align:left;"></label>
+												    <div class="col-sm-8">
+												      <input type="text" value="$!{zyEmrBasy.operaIcd4}" name="operaIcd4" id="operaIcd4" class="form-control"/>
+												    </div>
+												</div>
+												<div class="form-group mno">
+												    <label for="inputEmail3" class="col-sm-2 control-label" style="text-align:left;"></label>
+												    <div class="col-sm-8">
+												      <input type="text" value="$!{zyEmrBasy.operaDesc5}" name="operaDesc5" id="operaDesc5" class="form-control"/>
+												    </div>
+												</div>
+												<div class="form-group mno">
+												    <label for="inputEmail3" class="col-sm-2 control-label" style="text-align:left;"></label>
+												    <div class="col-sm-8">
+												      <input type="text" value="$!{zyEmrBasy.operaIcd5}" name="operaIcd5" id="operaIcd5" class="form-control"/>
+												    </div>
+												</div>
+												<div class="form-group mno">
+												    <label for="inputEmail3" class="col-sm-2 control-label" style="text-align:left;"></label>
+												    <div class="col-sm-8">
+												      <input type="text" value="$!{zyEmrBasy.operaDesc6}" name="operaDesc6" id="operaDesc6" class="form-control"/>
+												    </div>
+												</div>
+												<div class="form-group mno">
+												    <label for="inputEmail3" class="col-sm-2 control-label" style="text-align:left;"></label>
+												    <div class="col-sm-8">
+												      <input type="text" value="$!{zyEmrBasy.operaIcd6}" name="operaIcd6" id="operaIcd6" class="form-control"/>
+												    </div>
+												</div>
+												<div class="form-group mno">
+												    <label for="inputEmail3" class="col-sm-2 control-label" style="text-align:left;"></label>
+												    <div class="col-sm-8">
+												      <input type="text" value="$!{zyEmrBasy.diaPathdesc}" name="diaPathdesc" id="diaPathdesc" class="form-control"/>
+												    </div>
+												</div>
+												<div class="form-group mno">
+												    <label for="inputEmail3" class="col-sm-2 control-label" style="text-align:left;"></label>
+												    <div class="col-sm-8">
+												      <input type="text" value="$!{zyEmrBasy.diaPathicd}" name="diaPathicd" id="diaPathicd" class="form-control"/>
+												    </div>
+												</div>
+												<div class="form-group mno">
+												    <label for="inputEmail3" class="col-sm-2 control-label" style="text-align:left;"></label>
+												    <div class="col-sm-8">
+												      <input type="text" value="$!{zyEmrBasy.diaPoisdesc}" name="diaPoisdesc" id="diaPoisdesc" class="form-control"/>
+												    </div>
+												</div>
+												<div class="form-group mno">
+												    <label for="inputEmail3" class="col-sm-2 control-label" style="text-align:left;"></label>
+												    <div class="col-sm-8">
+												      <input type="text" value="$!{zyEmrBasy.diaPoiscode}" name="diaPoiscode" id="diaPoiscode" class="form-control"/>
+												    </div>
+												</div>
+												<div class="form-group mno">
+												    <label for="inputEmail3" class="col-sm-2 control-label" style="text-align:left;">临床诊断</label>
+												    <div class="col-sm-8">
+												      <input type="text" value="$!{zyEmrBasy.diaClinicdesc}" name="diaClinicdesc" id="diaClinicdesc" class="form-control"/>
+												    </div>
+												</div>
+												<div class="form-group mno">
+												    <label for="inputEmail3" class="col-sm-2 control-label" style="text-align:left;"></label>
+												    <div class="col-sm-8">
+												      <input type="text" value="$!{zyEmrBasy.diaClinicicd}" name="diaClinicicd" id="diaClinicicd" class="form-control"/>
+												    </div>
+												</div>
+												<div class="form-group mno">
+												    <label for="inputEmail3" class="col-sm-2 control-label" style="text-align:left;">治疗措施</label>
+												    <div class="col-sm-8">
+												      <input type="text" value="$!{zyEmrBasy.diaDisdesc1}" name="diaDisdesc1" id="diaDisdesc1" class="form-control"/>
+												    </div>
+												</div>
+												<div class="form-group mno">
+												    <label for="inputEmail3" class="col-sm-2 control-label" style="text-align:left;"></label>
+												    <div class="col-sm-8">
+												      <input type="text" value="$!{zyEmrBasy.diaDisicd1}" name="diaDisicd1" id="diaDisicd1" class="form-control"/>
+												    </div>
+												</div>
+												<div class="form-group mno">
+												    <label for="inputEmail3" class="col-sm-2 control-label" style="text-align:left;"></label>
+												    <div class="col-sm-8">
+												      <input type="text" value="$!{zyEmrBasy.diaDisdesc2}" name="diaDisdesc2" id="diaDisdesc2" class="form-control"/>
+												    </div>
+												</div>
+												<div class="form-group mno">
+												    <label for="inputEmail3" class="col-sm-2 control-label" style="text-align:left;"></label>
+												    <div class="col-sm-8">
+												      <input type="text" value="$!{zyEmrBasy.diaDisicd2}" name="diaDisicd2" id="diaDisicd2" class="form-control"/>
+												    </div>
+												</div>
+												<div class="form-group mno">
+												    <label for="inputEmail3" class="col-sm-2 control-label" style="text-align:left;"></label>
+												    <div class="col-sm-8">
+												      <input type="text" value="$!{zyEmrBasy.diaDisdesc3}" name="diaDisdesc3" id="diaDisdesc3" class="form-control"/>
+												    </div>
+												</div>
+												<div class="form-group mno">
+												    <label for="inputEmail3" class="col-sm-2 control-label" style="text-align:left;"></label>
+												    <div class="col-sm-8">
+												      <input type="text" value="$!{zyEmrBasy.diaDisicd3}" name="diaDisicd3" id="diaDisicd3" class="form-control"/>
+												    </div>
+												</div>
+												<div class="form-group mno">
+												    <label for="inputEmail3" class="col-sm-2 control-label" style="text-align:left;"></label>
+												    <div class="col-sm-8">
+												      <input type="text" value="$!{zyEmrBasy.diaDisdesc4}" name="diaDisdesc4" id="diaDisdesc4" class="form-control"/>
+												    </div>
+												</div>
+												<div class="form-group mno">
+												    <label for="inputEmail3" class="col-sm-2 control-label" style="text-align:left;"></label>
+												    <div class="col-sm-8">
+												      <input type="text" value="$!{zyEmrBasy.diaDisicd4}" name="diaDisicd4" id="diaDisicd4" class="form-control"/>
+												    </div>
+												</div>
+												<div class="form-group mno">
+												    <label for="inputEmail3" class="col-sm-2 control-label" style="text-align:left;"></label>
+												    <div class="col-sm-8">
+												      <input type="text" value="$!{zyEmrBasy.diaDisdesc5}" name="diaDisdesc5" id="diaDisdesc5" class="form-control"/>
+												    </div>
+												</div>
+									<div class="form-group mno">
+											<div class="col-sm-offset-1 col-sm-6">
+												<button type="button" class="btn btn-default" id="formReturn" data-dismiss="modal" onclick="doUrl('$!{basePath}/patient/back/zyEmrBasy/list.html')">返回</button>
+	        									<button type="button" class="btn btn-primary" id="formSubmit">提交</button>
+        									 </div>
+        							</div>
+					</form>
+				</div>
+			</div>
+		</div>
+	</div>
+</body>
+</html>
+<script type="text/javascript" src="$!{basePath}/plug-in/js/Validform_v5.3.2.js"></script> 
+<script type="text/javascript" src="$!{basePath}/plug-in/js/forminit.p3.js"></script>  

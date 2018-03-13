@@ -1,0 +1,104 @@
+#parse("content/base/back/common/macro.vm")
+<!DOCTYPE html>
+<html lang="en">
+#parse("content/base/back/common/head.vm")
+<body style='overflow:scroll;overflow-x:hidden'>
+	<div class="container bs-docs-container" style="width:100%;">
+		<div class="row">
+			<form role="form" class="form-inline" action="$!{basePath}/visitManager/back/pvPlan/list.html" method="post"  id="formSubmit">
+				<div  class="col-md-10" style="width:100%">
+								<div class="panel panel-default">
+								  <div class="panel-heading">随访管理列表</div>
+								  <div class="panel-body">
+								  		<div class="search">
+												 <div class="form-group col-sm-3">
+													<label for="patientOffice" class="control-label col-sm-3 line34">出院科室</label>
+													<div class="col-sm-8">
+														<input type="text" name="patientOffice" id="patientOffice" value="$!{pvPlan.patientOffice}" class="form-control">
+													</div>
+												  </div>
+												 <div class="form-group col-sm-3">
+												    <label for="mustVisitDate" class="control-label col-sm-3 line34">应访日期</label>
+												     <div class="col-sm-8">
+												    <input type="text" name="mustVisitDate" id="mustVisitDate" value="$!{pvPlan.mustVisitDate}" class="form-control">
+												  	</div>
+												 </div>
+												 <div class="form-group col-sm-3">
+												    <label for="patientInpatientId" class="control-label col-sm-3 line34">住院号</label>
+												     <div class="col-sm-8">
+												    <input type="text" name="patientInpatientId" id="patientInpatientId" value="$!{pvPlan.patientInpatientId}" class="form-control">
+												  	</div>
+												 </div>
+												 <div class="form-group col-sm-3">
+												    <label for="patientName" class="control-label col-sm-3 line34">姓名</label>
+												     <div class="col-sm-8">
+												    <input type="text" name="patientName" id="patientName" value="$!{pvPlan.patientName}" class="form-control">
+												  	</div>
+												 </div>
+												 <div class="form-group col-sm-3">
+												    <label for="visitStatus" class="control-label col-sm-3 line34">随访状态</label>
+												     <div class="col-sm-8">
+												    <input type="text" name="visitStatus" id="visitStatus" value="$!{pvPlan.visitStatus}" class="form-control">
+												  	</div>
+												 </div>
+												 
+											  <button type="submit" class="btn btn-primary">搜  索</button>
+											  <div class="clearfix"></div>
+								  		</div>
+								  		<div id="legend">
+								          <legend  class="le"><button type="button" class="btn btn-primary" onclick="doUrl('$!{basePath}/visitManager/back/pvPlan/toAdd.html')" >新增</button></legend> 
+								        </div>
+								        <table class="table table-striped">
+									        <thead>
+												<th>姓名</th>
+												<th>住院号</th>
+												<th>出院诊断</th>
+												<th>出院日期</th>
+												<th>联系方式</th>
+												<th>表单名称</th>
+												<th>随访序数</th>
+												<th>随访状态</th>
+												<th>应访日期</th>
+												<th>实访日期</th>
+												<th>随访人</th>
+					                			<th>操作</th>
+									        </thead>
+									        <tobody>
+									    	  #if($!{pageInfos})
+								                #foreach($!{info} in $!{pageInfos})
+									            	<tr>			
+														<td>$!{info.patientName}</td>
+														<td>$!{info.patientInpatientId}</td>
+														<td>$!{info.patientOutDiagnose}</td>
+														<td>$!{info.patientOutdate}</td>
+														<td>$!{info.patientLinktel}</td>
+														<td>$!{info.subTemplateName}</td>
+														<td>$!{info.visitOrder}</td>
+														<td>$!{info.visitStatus}</td>
+														<td>$!{info.mustVisitDate}</td>
+														<td>$!{info.actualVisitDate}</td>
+														<td>$!{info.updateUserName}</td>
+										                <td class="last">
+							                			<a href="javascript:doUrl('$!{basePath}/visitManager/back/pvPlan/toEdit.html?id=$!{info.id}')" >编辑</a>
+							                			<a href="javascript:delData('$!{basePath}/visitManager/back/pvPlan/doDelete.html?id=$!{info.id}')">删除</a>
+							                			<a href="javascript:doUrl('$!{basePath}/visitManager/back/pvPlan/toDetail.html?id=$!{info.id}')">详情</a>
+						                				</td>
+									           		</tr>
+									             #end
+									    	 #end
+									         </tobody>
+									    </table>
+										<div class="text-right">
+											<!--公用翻页代码-->
+							                #set($attr='formSubmit')
+							            	#showPageList($pageInfos $attr)
+							                <!--END公用翻页代码-->
+										</div>
+								  </div>	
+								</div>
+				</div>  
+				</form>
+		</div>
+	</div>
+</body>
+</html>

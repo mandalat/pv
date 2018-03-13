@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html lang="en">
+#parse("content/base/back/common/head.vm")
+<body style='overflow:scroll;overflow-x:hidden'>
+	<div class="container bs-docs-container" style="width:100%;">
+		<div class="row">
+			<div class="panel panel-default">
+				<div class="panel-heading">详情</div>
+				  	<div class="panel-body">
+				   		<form class="form-horizontal" role="form">
+							  <fieldset disabled>
+							  																 <div class="form-group mno">
+													    <label for="inputEmail3" class="col-sm-1 control-label" style="text-align:left;">科研随访课题名称</label>
+													    <div class="col-sm-2">
+													      <input type="text" value="$!{pvPlan.subjectName}" name="subjectName" id="subjectName" class="form-control" />
+													    </div>
+													  </div>
+													 <div class="form-group mno">
+													    <label for="inputEmail3" class="col-sm-1 control-label" style="text-align:left;">终止随访理由</label>
+													    <div class="col-sm-2">
+													      <input type="text" value="$!{pvPlan.stopReason}" name="stopReason" id="stopReason" class="form-control" />
+													    </div>
+													  </div>
+													 <div class="form-group mno">
+													    <label for="inputEmail3" class="col-sm-1 control-label" style="text-align:left;">暂未启用</label>
+													    <div class="col-sm-2">
+													      <input type="text" value="$!{pvPlan.remark}" name="remark" id="remark" class="form-control" />
+													    </div>
+													  </div>
+													 <div class="form-group mno">
+													    <label for="inputEmail3" class="col-sm-1 control-label" style="text-align:left;">暂未启用</label>
+													    <div class="col-sm-2">
+													      <input type="text" value="$!{pvPlan.appointTime}" name="appointTime" id="appointTime" class="form-control" />
+													    </div>
+													  </div>
+													 <div class="form-group mno">
+													    <label for="inputEmail3" class="col-sm-1 control-label" style="text-align:left;">随访表单内容</label>
+													    <div class="col-sm-2">
+													      <input type="text" value="$!{pvPlan.docXml}" name="docXml" id="docXml" class="form-control" />
+													    </div>
+													  </div>
+													 <div class="form-group mno">
+													    <label for="inputEmail3" class="col-sm-1 control-label" style="text-align:left;">随访模板序数</label>
+													    <div class="col-sm-2">
+													      <input type="text" value="$!{pvPlan.subTemplateOrder}" name="subTemplateOrder" id="subTemplateOrder" class="form-control" />
+													    </div>
+													  </div>
+													 <div class="form-group mno">
+													    <label for="inputEmail3" class="col-sm-1 control-label" style="text-align:left;">随访模板别名</label>
+													    <div class="col-sm-2">
+													      <input type="text" value="$!{pvPlan.subTemplateView}" name="subTemplateView" id="subTemplateView" class="form-control" />
+													    </div>
+													  </div>
+													 <div class="form-group mno">
+													    <label for="inputEmail3" class="col-sm-1 control-label" style="text-align:left;">随访模板起始点</label>
+													    <div class="col-sm-2">
+													      <input type="text" value="$!{pvPlan.subTemplateCycle}" name="subTemplateCycle" id="subTemplateCycle" class="form-control" />
+													    </div>
+													  </div>
+													 <div class="form-group mno">
+													    <label for="inputEmail3" class="col-sm-1 control-label" style="text-align:left;">随访模板规则</label>
+													    <div class="col-sm-2">
+													      <input type="text" value="$!{pvPlan.subTemplateRule}" name="subTemplateRule" id="subTemplateRule" class="form-control" />
+													    </div>
+													  </div>
+													 <div class="form-group mno">
+													    <label for="inputEmail3" class="col-sm-1 control-label" style="text-align:left;">随访模板名称</label>
+													    <div class="col-sm-2">
+													      <input type="text" value="$!{pvPlan.subTemplateName}" name="subTemplateName" id="subTemplateName" class="form-control" />
+													    </div>
+													  </div>
+													 <div class="form-group mno">
+													    <label for="inputEmail3" class="col-sm-1 control-label" style="text-align:left;">取消随访提醒</label>
+													    <div class="col-sm-2">
+													      <input type="text" value="$!{pvPlan.cancelReminder}" name="cancelReminder" id="cancelReminder" class="form-control" />
+													    </div>
+													  </div>
+													 <div class="form-group mno">
+													    <label for="inputEmail3" class="col-sm-1 control-label" style="text-align:left;">随访起始点</label>
+													    <div class="col-sm-2">
+													      <input type="text" value="$!{pvPlan.visitDateCycle}" name="visitDateCycle" id="visitDateCycle" class="form-control" />
+													    </div>
+													  </div>
+													 <div class="form-group mno">
+													    <label for="inputEmail3" class="col-sm-1 control-label" style="text-align:left;">提醒规则</label>
+													    <div class="col-sm-2">
+													      <input type="text" value="$!{pvPlan.reminderRule}" name="reminderRule" id="reminderRule" class="form-control" />
+													    </div>
+													  </div>
+													 <div class="form-group mno">
+													    <label for="inputEmail3" class="col-sm-1 control-label" style="text-align:left;">实际随访日期</label>
+													    <div class="col-sm-2">
+													      <input type="text" value="$!{pvPlan.actualVisitDate}" name="actualVisitDate" id="actualVisitDate" class="form-control" />
+													    </div>
+													  </div>
+													 <div class="form-group mno">
+													    <label for="inputEmail3" class="col-sm-1 control-label" style="text-align:left;">随访结束日期</label>
+													    <div class="col-sm-2">
+													      <input type="text" value="$!{pvPlan.endVisitDate}" name="endVisitDate" id="endVisitDate" class="form-control" />
+													    </div>
+													  </div>
+													 <div class="form-group mno">
+													    <label for="inputEmail3" class="col-sm-1 control-label" style="text-align:left;">随访开始日期</label>
+													    <div class="col-sm-2">
+													      <input type="text" value="$!{pvPlan.beginVisitDate}" name="beginVisitDate" id="beginVisitDate" class="form-control" />
+													    </div>
+													  </div>
+													 <div class="form-group mno">
+													    <label for="inputEmail3" class="col-sm-1 control-label" style="text-align:left;">随访日期</label>
+													    <div class="col-sm-2">
+													      <input type="text" value="$!{pvPlan.mustVisitDate}" name="mustVisitDate" id="mustVisitDate" class="form-control" />
+													    </div>
+													  </div>
+													 <div class="form-group mno">
+													    <label for="inputEmail3" class="col-sm-1 control-label" style="text-align:left;">随访序数</label>
+													    <div class="col-sm-2">
+													      <input type="text" value="$!{pvPlan.visitOrder}" name="visitOrder" id="visitOrder" class="form-control" />
+													    </div>
+													  </div>
+													 <div class="form-group mno">
+													    <label for="inputEmail3" class="col-sm-1 control-label" style="text-align:left;">随访状态</label>
+													    <div class="col-sm-2">
+													      <input type="text" value="$!{pvPlan.visitStatus}" name="visitStatus" id="visitStatus" class="form-control" />
+													    </div>
+													  </div>
+													 <div class="form-group mno">
+													    <label for="inputEmail3" class="col-sm-1 control-label" style="text-align:left;">随访方式</label>
+													    <div class="col-sm-2">
+													      <input type="text" value="$!{pvPlan.visitMode}" name="visitMode" id="visitMode" class="form-control" />
+													    </div>
+													  </div>
+													 <div class="form-group mno">
+													    <label for="inputEmail3" class="col-sm-1 control-label" style="text-align:left;">随访类型</label>
+													    <div class="col-sm-2">
+													      <input type="text" value="$!{pvPlan.visitType}" name="visitType" id="visitType" class="form-control" />
+													    </div>
+													  </div>
+													 <div class="form-group mno">
+													    <label for="inputEmail3" class="col-sm-1 control-label" style="text-align:left;">病人联系电话</label>
+													    <div class="col-sm-2">
+													      <input type="text" value="$!{pvPlan.patientLinktel}" name="patientLinktel" id="patientLinktel" class="form-control" />
+													    </div>
+													  </div>
+													 <div class="form-group mno">
+													    <label for="inputEmail3" class="col-sm-1 control-label" style="text-align:left;">病人联系人</label>
+													    <div class="col-sm-2">
+													      <input type="text" value="$!{pvPlan.patientLinkman}" name="patientLinkman" id="patientLinkman" class="form-control" />
+													    </div>
+													  </div>
+													 <div class="form-group mno">
+													    <label for="inputEmail3" class="col-sm-1 control-label" style="text-align:left;">主治医师</label>
+													    <div class="col-sm-2">
+													      <input type="text" value="$!{pvPlan.patientMainDoctor}" name="patientMainDoctor" id="patientMainDoctor" class="form-control" />
+													    </div>
+													  </div>
+													 <div class="form-group mno">
+													    <label for="inputEmail3" class="col-sm-1 control-label" style="text-align:left;">病人身份证</label>
+													    <div class="col-sm-2">
+													      <input type="text" value="$!{pvPlan.patientCardid}" name="patientCardid" id="patientCardid" class="form-control" />
+													    </div>
+													  </div>
+													 <div class="form-group mno">
+													    <label for="inputEmail3" class="col-sm-1 control-label" style="text-align:left;">病人出院日</label>
+													    <div class="col-sm-2">
+													      <input type="text" value="$!{pvPlan.patientOutdate}" name="patientOutdate" id="patientOutdate" class="form-control" />
+													    </div>
+													  </div>
+													 <div class="form-group mno">
+													    <label for="inputEmail3" class="col-sm-1 control-label" style="text-align:left;">病人入院日</label>
+													    <div class="col-sm-2">
+													      <input type="text" value="$!{pvPlan.patientIndate}" name="patientIndate" id="patientIndate" class="form-control" />
+													    </div>
+													  </div>
+													 <div class="form-group mno">
+													    <label for="inputEmail3" class="col-sm-1 control-label" style="text-align:left;">病人出院诊断</label>
+													    <div class="col-sm-2">
+													      <input type="text" value="$!{pvPlan.patientOutDiagnose}" name="patientOutDiagnose" id="patientOutDiagnose" class="form-control" />
+													    </div>
+													  </div>
+													 <div class="form-group mno">
+													    <label for="inputEmail3" class="col-sm-1 control-label" style="text-align:left;">病人入院诊断</label>
+													    <div class="col-sm-2">
+													      <input type="text" value="$!{pvPlan.patientInDiagnose}" name="patientInDiagnose" id="patientInDiagnose" class="form-control" />
+													    </div>
+													  </div>
+													 <div class="form-group mno">
+													    <label for="inputEmail3" class="col-sm-1 control-label" style="text-align:left;">病人科室</label>
+													    <div class="col-sm-2">
+													      <input type="text" value="$!{pvPlan.patientOffice}" name="patientOffice" id="patientOffice" class="form-control" />
+													    </div>
+													  </div>
+													 <div class="form-group mno">
+													    <label for="inputEmail3" class="col-sm-1 control-label" style="text-align:left;">病人住址</label>
+													    <div class="col-sm-2">
+													      <input type="text" value="$!{pvPlan.patientAddress}" name="patientAddress" id="patientAddress" class="form-control" />
+													    </div>
+													  </div>
+													 <div class="form-group mno">
+													    <label for="inputEmail3" class="col-sm-1 control-label" style="text-align:left;">病人生日</label>
+													    <div class="col-sm-2">
+													      <input type="text" value="$!{pvPlan.patientBirthday}" name="patientBirthday" id="patientBirthday" class="form-control" />
+													    </div>
+													  </div>
+													 <div class="form-group mno">
+													    <label for="inputEmail3" class="col-sm-1 control-label" style="text-align:left;">病人婚姻</label>
+													    <div class="col-sm-2">
+													      <input type="text" value="$!{pvPlan.patientMarriage}" name="patientMarriage" id="patientMarriage" class="form-control" />
+													    </div>
+													  </div>
+													 <div class="form-group mno">
+													    <label for="inputEmail3" class="col-sm-1 control-label" style="text-align:left;">病人性别</label>
+													    <div class="col-sm-2">
+													      <input type="text" value="$!{pvPlan.patientSex}" name="patientSex" id="patientSex" class="form-control" />
+													    </div>
+													  </div>
+													 <div class="form-group mno">
+													    <label for="inputEmail3" class="col-sm-1 control-label" style="text-align:left;">病人姓名</label>
+													    <div class="col-sm-2">
+													      <input type="text" value="$!{pvPlan.patientName}" name="patientName" id="patientName" class="form-control" />
+													    </div>
+													  </div>
+													 <div class="form-group mno">
+													    <label for="inputEmail3" class="col-sm-1 control-label" style="text-align:left;">病人外部HIS号</label>
+													    <div class="col-sm-2">
+													      <input type="text" value="$!{pvPlan.patientHisOutsideId}" name="patientHisOutsideId" id="patientHisOutsideId" class="form-control" />
+													    </div>
+													  </div>
+													 <div class="form-group mno">
+													    <label for="inputEmail3" class="col-sm-1 control-label" style="text-align:left;">病人内部HIS号</label>
+													    <div class="col-sm-2">
+													      <input type="text" value="$!{pvPlan.patientHisInsideId}" name="patientHisInsideId" id="patientHisInsideId" class="form-control" />
+													    </div>
+													  </div>
+													 <div class="form-group mno">
+													    <label for="inputEmail3" class="col-sm-1 control-label" style="text-align:left;">病人病历号</label>
+													    <div class="col-sm-2">
+													      <input type="text" value="$!{pvPlan.patientMedicalRecordId}" name="patientMedicalRecordId" id="patientMedicalRecordId" class="form-control" />
+													    </div>
+													  </div>
+													 <div class="form-group mno">
+													    <label for="inputEmail3" class="col-sm-1 control-label" style="text-align:left;">病人门诊号</label>
+													    <div class="col-sm-2">
+													      <input type="text" value="$!{pvPlan.patientOutpatientId}" name="patientOutpatientId" id="patientOutpatientId" class="form-control" />
+													    </div>
+													  </div>
+													 <div class="form-group mno">
+													    <label for="inputEmail3" class="col-sm-1 control-label" style="text-align:left;">病人住院序数</label>
+													    <div class="col-sm-2">
+													      <input type="text" value="$!{pvPlan.patientInpatientCount}" name="patientInpatientCount" id="patientInpatientCount" class="form-control" />
+													    </div>
+													  </div>
+													 <div class="form-group mno">
+													    <label for="inputEmail3" class="col-sm-1 control-label" style="text-align:left;">病人住院号</label>
+													    <div class="col-sm-2">
+													      <input type="text" value="$!{pvPlan.patientInpatientId}" name="patientInpatientId" id="patientInpatientId" class="form-control" />
+													    </div>
+													  </div>
+													 <div class="form-group mno">
+													    <label for="inputEmail3" class="col-sm-1 control-label" style="text-align:left;">病人DATEVALIDATE</label>
+													    <div class="col-sm-2">
+													      <input type="text" value="$!{pvPlan.patientDatevalidate}" name="patientDatevalidate" id="patientDatevalidate" class="form-control" />
+													    </div>
+													  </div>
+													 <div class="form-group mno">
+													    <label for="inputEmail3" class="col-sm-1 control-label" style="text-align:left;">病人UHID</label>
+													    <div class="col-sm-2">
+													      <input type="text" value="$!{pvPlan.patientUhid}" name="patientUhid" id="patientUhid" class="form-control" />
+													    </div>
+													  </div>
+													 <div class="form-group mno">
+													    <label for="inputEmail3" class="col-sm-1 control-label" style="text-align:left;">主键</label>
+													    <div class="col-sm-2">
+													      <input type="text" value="$!{pvPlan.nid}" name="nid" id="nid" class="form-control" />
+													    </div>
+													  </div>
+													 <div class="form-group mno">
+													    <label for="inputEmail3" class="col-sm-1 control-label" style="text-align:left;">医生ID</label>
+													    <div class="col-sm-2">
+													      <input type="text" value="$!{pvPlan.medicId}" name="medicId" id="medicId" class="form-control" />
+													    </div>
+													  </div>
+													 <div class="form-group mno">
+													    <label for="inputEmail3" class="col-sm-1 control-label" style="text-align:left;">医生姓名</label>
+													    <div class="col-sm-2">
+													      <input type="text" value="$!{pvPlan.medicName}" name="medicName" id="medicName" class="form-control" />
+													    </div>
+													  </div>
+													 <div class="form-group mno">
+													    <label for="inputEmail3" class="col-sm-1 control-label" style="text-align:left;">医生电话</label>
+													    <div class="col-sm-2">
+													      <input type="text" value="$!{pvPlan.medicPhone}" name="medicPhone" id="medicPhone" class="form-control" />
+													    </div>
+													  </div>
+													 <div class="form-group mno">
+													    <label for="inputEmail3" class="col-sm-1 control-label" style="text-align:left;">更新者姓名</label>
+													    <div class="col-sm-2">
+													      <input type="text" value="$!{pvPlan.updateUserName}" name="updateUserName" id="updateUserName" class="form-control" />
+													    </div>
+													  </div>
+													 <div class="form-group mno">
+													    <label for="inputEmail3" class="col-sm-1 control-label" style="text-align:left;">更新者ID</label>
+													    <div class="col-sm-2">
+													      <input type="text" value="$!{pvPlan.updateUserId}" name="updateUserId" id="updateUserId" class="form-control" />
+													    </div>
+													  </div>
+													 <div class="form-group mno">
+													    <label for="inputEmail3" class="col-sm-1 control-label" style="text-align:left;">更新时间</label>
+													    <div class="col-sm-2">
+													      <input type="text" value="$!{pvPlan.updateTime}" name="updateTime" id="updateTime" class="form-control" />
+													    </div>
+													  </div>
+													 <div class="form-group mno">
+													    <label for="inputEmail3" class="col-sm-1 control-label" style="text-align:left;">创建者姓名</label>
+													    <div class="col-sm-2">
+													      <input type="text" value="$!{pvPlan.createUserName}" name="createUserName" id="createUserName" class="form-control" />
+													    </div>
+													  </div>
+													 <div class="form-group mno">
+													    <label for="inputEmail3" class="col-sm-1 control-label" style="text-align:left;">创建者ID</label>
+													    <div class="col-sm-2">
+													      <input type="text" value="$!{pvPlan.createUserId}" name="createUserId" id="createUserId" class="form-control" />
+													    </div>
+													  </div>
+													 <div class="form-group mno">
+													    <label for="inputEmail3" class="col-sm-1 control-label" style="text-align:left;">创建时间</label>
+													    <div class="col-sm-2">
+													      <input type="text" value="$!{pvPlan.createTime}" name="createTime" id="createTime" class="form-control" />
+													    </div>
+													  </div>
+							  </fieldset>
+							  			<div class="form-group mno">
+											<div class="col-sm-offset-1 col-sm-6">
+												<button type="button" class="btn btn-default" id="formReturn" data-dismiss="modal" onclick="doUrl('$!{basePath}/visitManager/back/pvPlan/list.html')">返回</button>
+        									 </div>
+        							    </div>
+						</form>
+					</div>
+			</div>
+		</div>
+	</div>
+</body>
+</html>

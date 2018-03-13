@@ -1,0 +1,83 @@
+#parse("content/base/back/common/macro.vm")
+<!DOCTYPE html>
+<html lang="en">
+#parse("content/base/back/common/head.vm")
+<body style='overflow:scroll;overflow-x:hidden'>
+	<div class="container bs-docs-container" style="width:100%;">
+		<div class="row">
+			<form role="form" class="form-inline" action="$!{basePath}/patient/back/zyEmrBasy/list.html" method="post"  id="formSubmit">
+				<div  class="col-md-10" style="width:100%">
+								<div class="panel panel-default">
+								  <div class="panel-heading">病人列表</div>
+								  <div class="panel-body">
+								  		<div class="search">
+												 <div class="form-group col-sm-3">
+												    <label for="diaDisicd3" class="control-label col-sm-3 line34">科室</label>
+												    <input type="text" name="admdward" id="admdward" value="" class="form-control">
+												 </div>
+												 <div class="form-group col-sm-3">
+												    <label for="diaDisdesc4" class="control-label col-sm-3 line34">入院时间</label>
+												    <input type="text" name="admsdate" id="admsdate" value="" class="form-control">
+												 	<input type="text" name="admsdate2" id="admsdat2" value="" class="form-control">
+												 </div>
+												 <div class="form-group col-sm-3">
+												    <label for="diaDisicd4" class="control-label col-sm-3 line34">住院号</label>
+												    <input type="text" name="visitno" id="visitno" value="$!{info.visitno}" class="form-control">
+												 </div>
+											  <button type="submit" class="btn btn-primary">搜  索</button>
+											  <div class="clearfix"></div>
+								  		</div>
+								  		<div id="legend">
+								          <legend  class="le"><button type="button" class="btn btn-primary" onclick="doUrl('$!{basePath}/patient/back/zyEmrBasy/toAdd.html')" >新增</button></legend> 
+								        </div>
+								        <table class="table table-striped">
+									        <thead>
+													<th>随访状态</th>
+													<th>科室</th>
+													<th>姓名</th>
+													<th>入院诊断</th>
+													<th>出院诊断</th>
+													<th>手术名称</th>
+													<th>住院日期</th>
+													<th>出院日期</th>
+													<th>住院天数</th>
+						                			<th>操作</th>
+									        </thead>
+									        <tobody>
+									    	  #if($!{pageInfos})
+								                #foreach($!{info} in $!{pageInfos})
+									            	<tr>			
+																	
+														<td></td>
+														<td>$!{info.admdward}</td>
+														<td>$!{info.patname}</td>
+														<td>$!{info.diagnosedesc1}</td>
+														<td></td>
+														<td>$!{info.operdesc1}</td>
+														<td>$!{info.admsdate}</td>
+														<td>$!{info.admddate}</td>
+														<td>$!{info.admdays}</td>
+										                <td class="last">
+							                			<a href="javascript:doUrl('$!{basePath}/patient/back/zyEmrBasy/toEdit.html?id=$!{info.id}')" >编辑</a>
+							                			<a href="javascript:delData('$!{basePath}/patient/back/zyEmrBasy/doDelete.html?id=$!{info.id}')">删除</a>
+							                			<a href="javascript:doUrl('$!{basePath}/patient/back/zyEmrBasy/toDetail.html?id=$!{info.id}')">详情</a>
+						                				</td>
+									           		</tr>
+									             #end
+									    	 #end
+									         </tobody>
+									    </table>
+										<div class="text-right">
+											<!--公用翻页代码-->
+							                #set($attr='formSubmit')
+							            	#showPageList($pageInfos $attr)
+							                <!--END公用翻页代码-->
+										</div>
+								  </div>	
+								</div>
+				</div>  
+				</form>
+		</div>
+	</div>
+</body>
+</html>

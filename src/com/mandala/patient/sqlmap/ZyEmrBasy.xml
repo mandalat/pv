@@ -1,0 +1,3780 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//ibatis.apache.org//DTD iBatis Mapper 3.0 //EN" 
+	"http://ibatis.apache.org/dtd/ibatis-3-mapper.dtd">
+
+<mapper namespace="com.mandala.patient.entity.ZyEmrBasy">
+
+	<!-- Result Map-->
+	<resultMap id="ZyEmrBasy" type="com.mandala.patient.entity.ZyEmrBasy" >
+		<result column="HOSPITALDESC" property="hospitaldesc" jdbcType="VARCHAR"/>
+		<result column="HOSPITALCODE" property="hospitalcode" jdbcType="VARCHAR"/>
+		<result column="ADMNO" property="admno" jdbcType="VARCHAR"/>
+		<result column="VISITNO" property="visitno" jdbcType="VARCHAR"/>
+		<result column="PAYCODE" property="paycode" jdbcType="VARCHAR"/>
+		<result column="HEALTHCARDID" property="healthcardid" jdbcType="VARCHAR"/>
+		<result column="VISITNUM" property="visitnum" jdbcType="VARCHAR"/>
+		<result column="DOCUMENTID" property="documentid" jdbcType="VARCHAR"/>
+		<result column="INPATIENT" property="inpatient" jdbcType="VARCHAR"/>
+		<result column="PATNAME" property="patname" jdbcType="VARCHAR"/>
+		<result column="SEX" property="sex" jdbcType="VARCHAR"/>
+		<result column="BIRTHDAY" property="birthday" jdbcType="VARCHAR"/>
+		<result column="AGEYEAR" property="ageyear" jdbcType="VARCHAR"/>
+		<result column="NATIONALITY" property="nationality" jdbcType="VARCHAR"/>
+		<result column="AGEMONTH" property="agemonth" jdbcType="VARCHAR"/>
+		<result column="BABYBORNWEIGHT" property="babybornweight" jdbcType="VARCHAR"/>
+		<result column="BABYADMWEIGHT" property="babyadmweight" jdbcType="VARCHAR"/>
+		<result column="BORNPROVINCE" property="bornprovince" jdbcType="VARCHAR"/>
+		<result column="BORNCITY" property="borncity" jdbcType="VARCHAR"/>
+		<result column="BORNCOUNTY" property="borncounty" jdbcType="VARCHAR"/>
+		<result column="NATIVEPROVINCE" property="nativeprovince" jdbcType="VARCHAR"/>
+		<result column="NATIVECITY" property="nativecity" jdbcType="VARCHAR"/>
+		<result column="NATION" property="nation" jdbcType="VARCHAR"/>
+		<result column="CREDENTIALTYPE" property="credentialtype" jdbcType="VARCHAR"/>
+		<result column="CREDENTIALNO" property="credentialno" jdbcType="VARCHAR"/>
+		<result column="OCCUPATIONCODE" property="occupationcode" jdbcType="VARCHAR"/>
+		<result column="MARRYCODE" property="marrycode" jdbcType="VARCHAR"/>
+		<result column="ADDRESSPROVINCE" property="addressprovince" jdbcType="VARCHAR"/>
+		<result column="DIA_DISICD5" property="diaDisicd5" jdbcType="VARCHAR"/>
+		<result column="DIA_DISDESC6" property="diaDisdesc6" jdbcType="VARCHAR"/>
+		<result column="DIA_DISICD6" property="diaDisicd6" jdbcType="VARCHAR"/>
+		<result column="ADMWARDCODE" property="admwardcode" jdbcType="VARCHAR"/>
+		<result column="DISWARDCODE" property="diswardcode" jdbcType="VARCHAR"/>
+		<result column="IS2ZZHI30" property="is2zzhi30" jdbcType="VARCHAR"/>
+		<result column="IS2ZZHI14" property="is2zzhi14" jdbcType="VARCHAR"/>
+		<result column="IS2_31" property="is231" jdbcType="VARCHAR"/>
+		<result column="IS0_0" property="is00" jdbcType="VARCHAR"/>
+		<result column="IS2_31_VISITNO" property="is231Visitno" jdbcType="VARCHAR"/>
+		<result column="IS2ZZHI30_VISITNO" property="is2zzhi30Visitno" jdbcType="VARCHAR"/>
+		<result column="IS0_0_VISITNO" property="is00Visitno" jdbcType="VARCHAR"/>
+		<result column="IS2ZZHI14_VISITNO" property="is2zzhi14Visitno" jdbcType="VARCHAR"/>
+		<result column="ZFY" property="zfy" jdbcType="INTEGER"/>
+		<result column="YF" property="yf" jdbcType="INTEGER"/>
+		<result column="ADDRESSCITY" property="addresscity" jdbcType="VARCHAR"/>
+		<result column="ADDRESSCOUNTRY" property="addresscountry" jdbcType="VARCHAR"/>
+		<result column="ADDRESSXIANG" property="addressxiang" jdbcType="VARCHAR"/>
+		<result column="ADDRESSVILLAGE" property="addressvillage" jdbcType="VARCHAR"/>
+		<result column="ADDRESSNUMBER" property="addressnumber" jdbcType="VARCHAR"/>
+		<result column="TELEPHONE" property="telephone" jdbcType="VARCHAR"/>
+		<result column="ADDRESSPOSTCODE" property="addresspostcode" jdbcType="VARCHAR"/>
+		<result column="RESIDENTPROVINCE" property="residentprovince" jdbcType="VARCHAR"/>
+		<result column="RESIDENTCITY" property="residentcity" jdbcType="VARCHAR"/>
+		<result column="RESIDENTCOUNTRY" property="residentcountry" jdbcType="VARCHAR"/>
+		<result column="RESIDENTXIANG" property="residentxiang" jdbcType="VARCHAR"/>
+		<result column="RESIDENTVILLAGE" property="residentvillage" jdbcType="VARCHAR"/>
+		<result column="RESIDENTNUMBER" property="residentnumber" jdbcType="VARCHAR"/>
+		<result column="RESIDENTPOSTCODE" property="residentpostcode" jdbcType="VARCHAR"/>
+		<result column="WORKDESC" property="workdesc" jdbcType="VARCHAR"/>
+		<result column="WORKPROVINCE" property="workprovince" jdbcType="VARCHAR"/>
+		<result column="WORKCITY" property="workcity" jdbcType="VARCHAR"/>
+		<result column="WORKCOUNTRY" property="workcountry" jdbcType="VARCHAR"/>
+		<result column="WORKXIANG" property="workxiang" jdbcType="VARCHAR"/>
+		<result column="WORKVILLAGE" property="workvillage" jdbcType="VARCHAR"/>
+		<result column="WORKNUMBER" property="worknumber" jdbcType="VARCHAR"/>
+		<result column="WORKTELEPHONE" property="worktelephone" jdbcType="VARCHAR"/>
+		<result column="WORKPOSTCODE" property="workpostcode" jdbcType="VARCHAR"/>
+		<result column="LINKNAME" property="linkname" jdbcType="VARCHAR"/>
+		<result column="RELATIONCODE" property="relationcode" jdbcType="VARCHAR"/>
+		<result column="LINKPROVINCE" property="linkprovince" jdbcType="VARCHAR"/>
+		<result column="LINKCITY" property="linkcity" jdbcType="VARCHAR"/>
+		<result column="LINKCOUNTRY" property="linkcountry" jdbcType="VARCHAR"/>
+		<result column="LINKXIANG" property="linkxiang" jdbcType="VARCHAR"/>
+		<result column="LINKVILLAGE" property="linkvillage" jdbcType="VARCHAR"/>
+		<result column="LINKNUMBER" property="linknumber" jdbcType="VARCHAR"/>
+		<result column="LINKTELEPHONE" property="linktelephone" jdbcType="VARCHAR"/>
+		<result column="ADMTRACE" property="admtrace" jdbcType="VARCHAR"/>
+		<result column="ADMSDATE" property="admsdate" jdbcType="VARCHAR"/>
+		<result column="ADMSDEPT" property="admsdept" jdbcType="VARCHAR"/>
+		<result column="ADMSWARD" property="admsward" jdbcType="VARCHAR"/>
+		<result column="TRANDEPT" property="trandept" jdbcType="VARCHAR"/>
+		<result column="ADMDDATE" property="admddate" jdbcType="VARCHAR"/>
+		<result column="ADMDDEPT" property="admddept" jdbcType="VARCHAR"/>
+		<result column="ADMDWARD" property="admdward" jdbcType="VARCHAR"/>
+		<result column="ADMDAYS" property="admdays" jdbcType="VARCHAR"/>
+		<result column="FEATHFLAG" property="feathflag" jdbcType="VARCHAR"/>
+		<result column="ADMBLOOD" property="admblood" jdbcType="VARCHAR"/>
+		<result column="ADMRHCODE" property="admrhcode" jdbcType="VARCHAR"/>
+		<result column="DEPTDIRECTORDESC" property="deptdirectordesc" jdbcType="VARCHAR"/>
+		<result column="DIRECTORDESC" property="directordesc" jdbcType="VARCHAR"/>
+		<result column="ATTENDINGDESC" property="attendingdesc" jdbcType="VARCHAR"/>
+		<result column="AESCULAPIUSDESC" property="aesculapiusdesc" jdbcType="VARCHAR"/>
+		<result column="DUTYNURSEDESC" property="dutynursedesc" jdbcType="VARCHAR"/>
+		<result column="STUDYDOCTORDESC" property="studydoctordesc" jdbcType="VARCHAR"/>
+		<result column="PRACTICEDOCTORDESC" property="practicedoctordesc" jdbcType="VARCHAR"/>
+		<result column="DOCUMENTUSERNAME" property="documentusername" jdbcType="VARCHAR"/>
+		<result column="QUALITY" property="quality" jdbcType="VARCHAR"/>
+		<result column="QUALITYDOCTOR" property="qualitydoctor" jdbcType="VARCHAR"/>
+		<result column="QUALITYNURSE" property="qualitynurse" jdbcType="VARCHAR"/>
+		<result column="QUALITYDAYS" property="qualitydays" jdbcType="VARCHAR"/>
+		<result column="ADMOUTMODE" property="admoutmode" jdbcType="VARCHAR"/>
+		<result column="DUMMYHOSPITAL" property="dummyhospital" jdbcType="VARCHAR"/>
+		<result column="ADMAGAINFLAG" property="admagainflag" jdbcType="VARCHAR"/>
+		<result column="ADMAGAINAIM" property="admagainaim" jdbcType="VARCHAR"/>
+		<result column="ADMSLEEPSDAY" property="admsleepsday" jdbcType="VARCHAR"/>
+		<result column="ADMSLEEPSHOUR" property="admsleepshour" jdbcType="VARCHAR"/>
+		<result column="ADMSLEEPSMINU" property="admsleepsminu" jdbcType="VARCHAR"/>
+		<result column="ADMSLEEPEDAY" property="admsleepeday" jdbcType="VARCHAR"/>
+		<result column="ADMSLEEPEHOUR" property="admsleepehour" jdbcType="VARCHAR"/>
+		<result column="ADMSLEEPEMINU" property="admsleepeminu" jdbcType="VARCHAR"/>
+		<result column="BREATHMACHINE" property="breathmachine" jdbcType="VARCHAR"/>
+		<result column="KNUBT" property="knubt" jdbcType="VARCHAR"/>
+		<result column="KNUBN" property="knubn" jdbcType="VARCHAR"/>
+		<result column="KNUBM" property="knubm" jdbcType="VARCHAR"/>
+		<result column="KNUBROBSON" property="knubrobson" jdbcType="VARCHAR"/>
+		<result column="ADMSLIVE" property="admslive" jdbcType="VARCHAR"/>
+		<result column="ADMDLIVE" property="admdlive" jdbcType="VARCHAR"/>
+		<result column="RELATIONDESC" property="relationdesc" jdbcType="VARCHAR"/>
+		<result column="NATIONALITYDESC" property="nationalitydesc" jdbcType="VARCHAR"/>
+		<result column="OCCUPATIONDESC" property="occupationdesc" jdbcType="VARCHAR"/>
+		<result column="LINKADDRESS" property="linkaddress" jdbcType="VARCHAR"/>
+		<result column="CRITICAL" property="critical" jdbcType="VARCHAR"/>
+		<result column="DIFFICULTY" property="difficulty" jdbcType="VARCHAR"/>
+		<result column="SALVAGENUMBER" property="salvagenumber" jdbcType="VARCHAR"/>
+		<result column="SUCCEEDNUMBER" property="succeednumber" jdbcType="VARCHAR"/>
+		<result column="FOLLOWUP" property="followup" jdbcType="VARCHAR"/>
+		<result column="FOLLOWUPDAY" property="followupday" jdbcType="VARCHAR"/>
+		<result column="DOCTORDESC" property="doctordesc" jdbcType="VARCHAR"/>
+		<result column="DOCTORCODE" property="doctorcode" jdbcType="VARCHAR"/>
+		<result column="DEPTDIRECTORCODE" property="deptdirectorcode" jdbcType="VARCHAR"/>
+		<result column="DIRECTORCODE" property="directorcode" jdbcType="VARCHAR"/>
+		<result column="ATTENDINGCODE" property="attendingcode" jdbcType="VARCHAR"/>
+		<result column="AESCULAPIUSCODE" property="aesculapiuscode" jdbcType="VARCHAR"/>
+		<result column="DUTYNURSECODE" property="dutynursecode" jdbcType="VARCHAR"/>
+		<result column="STUDYDOCTORCODE" property="studydoctorcode" jdbcType="VARCHAR"/>
+		<result column="PRACTICEDOCTORCODE" property="practicedoctorcode" jdbcType="VARCHAR"/>
+		<result column="DOCUMENTUSERCODE" property="documentusercode" jdbcType="VARCHAR"/>
+		<result column="QUALITYDOCTORCODE" property="qualitydoctorcode" jdbcType="VARCHAR"/>
+		<result column="QUALITYNURSECODE" property="qualitynursecode" jdbcType="VARCHAR"/>
+		<result column="DIAGNOSECODE1" property="diagnosecode1" jdbcType="VARCHAR"/>
+		<result column="DIAGNOSEDESC1" property="diagnosedesc1" jdbcType="VARCHAR"/>
+		<result column="DIAGNOSECODE2" property="diagnosecode2" jdbcType="VARCHAR"/>
+		<result column="DIAGNOSEDESC2" property="diagnosedesc2" jdbcType="VARCHAR"/>
+		<result column="DIAGNOSECODE3" property="diagnosecode3" jdbcType="VARCHAR"/>
+		<result column="DIAGNOSEDESC3" property="diagnosedesc3" jdbcType="VARCHAR"/>
+		<result column="DIAGNOSECODE4" property="diagnosecode4" jdbcType="VARCHAR"/>
+		<result column="DIAGNOSEDESC4" property="diagnosedesc4" jdbcType="VARCHAR"/>
+		<result column="DIAGNOSECODE5" property="diagnosecode5" jdbcType="VARCHAR"/>
+		<result column="DIAGNOSEDESC5" property="diagnosedesc5" jdbcType="VARCHAR"/>
+		<result column="DIAGNOSECODE6" property="diagnosecode6" jdbcType="VARCHAR"/>
+		<result column="DIAGNOSEDESC6" property="diagnosedesc6" jdbcType="VARCHAR"/>
+		<result column="OPERCODE1" property="opercode1" jdbcType="VARCHAR"/>
+		<result column="OPERDESC1" property="operdesc1" jdbcType="VARCHAR"/>
+		<result column="OPERCODE2" property="opercode2" jdbcType="VARCHAR"/>
+		<result column="OPERDESC2" property="operdesc2" jdbcType="VARCHAR"/>
+		<result column="OPERCODE3" property="opercode3" jdbcType="VARCHAR"/>
+		<result column="OPERDESC3" property="operdesc3" jdbcType="VARCHAR"/>
+		<result column="OPERCODE4" property="opercode4" jdbcType="VARCHAR"/>
+		<result column="OPERDESC4" property="operdesc4" jdbcType="VARCHAR"/>
+		<result column="OPERCODE5" property="opercode5" jdbcType="VARCHAR"/>
+		<result column="OPERDESC5" property="operdesc5" jdbcType="VARCHAR"/>
+		<result column="OPERCODE6" property="opercode6" jdbcType="VARCHAR"/>
+		<result column="OPERDESC6" property="operdesc6" jdbcType="VARCHAR"/>
+		<result column="OPERDATE1" property="operdate1" jdbcType="VARCHAR"/>
+		<result column="OPERDATE2" property="operdate2" jdbcType="VARCHAR"/>
+		<result column="OPERDATE3" property="operdate3" jdbcType="VARCHAR"/>
+		<result column="OPERDATE4" property="operdate4" jdbcType="VARCHAR"/>
+		<result column="OPERDATE5" property="operdate5" jdbcType="VARCHAR"/>
+		<result column="OPERDATE6" property="operdate6" jdbcType="VARCHAR"/>
+		<result column="OPERLEVEL1" property="operlevel1" jdbcType="VARCHAR"/>
+		<result column="OPERLEVEL2" property="operlevel2" jdbcType="VARCHAR"/>
+		<result column="OPERLEVEL3" property="operlevel3" jdbcType="VARCHAR"/>
+		<result column="OPERLEVEL4" property="operlevel4" jdbcType="VARCHAR"/>
+		<result column="OPERLEVEL5" property="operlevel5" jdbcType="VARCHAR"/>
+		<result column="OPERLEVEL6" property="operlevel6" jdbcType="VARCHAR"/>
+		<result column="OPERATOR1" property="operator1" jdbcType="VARCHAR"/>
+		<result column="OPERATOR2" property="operator2" jdbcType="VARCHAR"/>
+		<result column="OPERATOR3" property="operator3" jdbcType="VARCHAR"/>
+		<result column="OPERATOR4" property="operator4" jdbcType="VARCHAR"/>
+		<result column="OPERATOR5" property="operator5" jdbcType="VARCHAR"/>
+		<result column="OPERATOR6" property="operator6" jdbcType="VARCHAR"/>
+		<result column="OPERATIONFNAME1" property="operationfname1" jdbcType="VARCHAR"/>
+		<result column="OPERATIONFNAME2" property="operationfname2" jdbcType="VARCHAR"/>
+		<result column="OPERATIONFNAME3" property="operationfname3" jdbcType="VARCHAR"/>
+		<result column="OPERATIONFNAME4" property="operationfname4" jdbcType="VARCHAR"/>
+		<result column="OPERATIONFNAME5" property="operationfname5" jdbcType="VARCHAR"/>
+		<result column="OPERATIONFNAME6" property="operationfname6" jdbcType="VARCHAR"/>
+		<result column="OPERATIONTNAME1" property="operationtname1" jdbcType="VARCHAR"/>
+		<result column="OPERATIONTNAME2" property="operationtname2" jdbcType="VARCHAR"/>
+		<result column="OPERATIONTNAME3" property="operationtname3" jdbcType="VARCHAR"/>
+		<result column="OPERATIONTNAME4" property="operationtname4" jdbcType="VARCHAR"/>
+		<result column="OPERATIONTNAME5" property="operationtname5" jdbcType="VARCHAR"/>
+		<result column="OPERATIONTNAME6" property="operationtname6" jdbcType="VARCHAR"/>
+		<result column="NARCOSISMODE1" property="narcosismode1" jdbcType="VARCHAR"/>
+		<result column="NARCOSISMODE2" property="narcosismode2" jdbcType="VARCHAR"/>
+		<result column="NARCOSISMODE3" property="narcosismode3" jdbcType="VARCHAR"/>
+		<result column="NARCOSISMODE4" property="narcosismode4" jdbcType="VARCHAR"/>
+		<result column="NARCOSISMODE5" property="narcosismode5" jdbcType="VARCHAR"/>
+		<result column="NARCOSISMODE6" property="narcosismode6" jdbcType="VARCHAR"/>
+		<result column="CUTGRADE1" property="cutgrade1" jdbcType="VARCHAR"/>
+		<result column="CUTGRADE2" property="cutgrade2" jdbcType="VARCHAR"/>
+		<result column="CUTGRADE3" property="cutgrade3" jdbcType="VARCHAR"/>
+		<result column="CUTGRADE4" property="cutgrade4" jdbcType="VARCHAR"/>
+		<result column="CUTGRADE5" property="cutgrade5" jdbcType="VARCHAR"/>
+		<result column="CUTGRADE6" property="cutgrade6" jdbcType="VARCHAR"/>
+		<result column="CICATRIZEGRADE1" property="cicatrizegrade1" jdbcType="VARCHAR"/>
+		<result column="CICATRIZEGRADE2" property="cicatrizegrade2" jdbcType="VARCHAR"/>
+		<result column="CICATRIZEGRADE3" property="cicatrizegrade3" jdbcType="VARCHAR"/>
+		<result column="CICATRIZEGRADE4" property="cicatrizegrade4" jdbcType="VARCHAR"/>
+		<result column="CICATRIZEGRADE5" property="cicatrizegrade5" jdbcType="VARCHAR"/>
+		<result column="CICATRIZEGRADE6" property="cicatrizegrade6" jdbcType="VARCHAR"/>
+		<result column="NARCOSISDOCNAME1" property="narcosisdocname1" jdbcType="VARCHAR"/>
+		<result column="NARCOSISDOCNAME2" property="narcosisdocname2" jdbcType="VARCHAR"/>
+		<result column="NARCOSISDOCNAME3" property="narcosisdocname3" jdbcType="VARCHAR"/>
+		<result column="NARCOSISDOCNAME4" property="narcosisdocname4" jdbcType="VARCHAR"/>
+		<result column="NARCOSISDOCNAME5" property="narcosisdocname5" jdbcType="VARCHAR"/>
+		<result column="NARCOSISDOCNAME6" property="narcosisdocname6" jdbcType="VARCHAR"/>
+		<result column="OPERA_DESC1" property="operaDesc1" jdbcType="VARCHAR"/>
+		<result column="OPERA_ICD1" property="operaIcd1" jdbcType="VARCHAR"/>
+		<result column="OPERA_DESC2" property="operaDesc2" jdbcType="VARCHAR"/>
+		<result column="OPERA_ICD2" property="operaIcd2" jdbcType="VARCHAR"/>
+		<result column="OPERA_DESC3" property="operaDesc3" jdbcType="VARCHAR"/>
+		<result column="OPERA_ICD3" property="operaIcd3" jdbcType="VARCHAR"/>
+		<result column="OPERA_DESC4" property="operaDesc4" jdbcType="VARCHAR"/>
+		<result column="OPERA_ICD4" property="operaIcd4" jdbcType="VARCHAR"/>
+		<result column="OPERA_DESC5" property="operaDesc5" jdbcType="VARCHAR"/>
+		<result column="OPERA_ICD5" property="operaIcd5" jdbcType="VARCHAR"/>
+		<result column="OPERA_DESC6" property="operaDesc6" jdbcType="VARCHAR"/>
+		<result column="OPERA_ICD6" property="operaIcd6" jdbcType="VARCHAR"/>
+		<result column="DIA_PATHDESC" property="diaPathdesc" jdbcType="VARCHAR"/>
+		<result column="DIA_PATHICD" property="diaPathicd" jdbcType="VARCHAR"/>
+		<result column="DIA_POISDESC" property="diaPoisdesc" jdbcType="VARCHAR"/>
+		<result column="DIA_POISCODE" property="diaPoiscode" jdbcType="VARCHAR"/>
+		<result column="DIA_CLINICDESC" property="diaClinicdesc" jdbcType="VARCHAR"/>
+		<result column="DIA_CLINICICD" property="diaClinicicd" jdbcType="VARCHAR"/>
+		<result column="DIA_DISDESC1" property="diaDisdesc1" jdbcType="VARCHAR"/>
+		<result column="DIA_DISICD1" property="diaDisicd1" jdbcType="VARCHAR"/>
+		<result column="DIA_DISDESC2" property="diaDisdesc2" jdbcType="VARCHAR"/>
+		<result column="DIA_DISICD2" property="diaDisicd2" jdbcType="VARCHAR"/>
+		<result column="DIA_DISDESC3" property="diaDisdesc3" jdbcType="VARCHAR"/>
+		<result column="DIA_DISICD3" property="diaDisicd3" jdbcType="VARCHAR"/>
+		<result column="DIA_DISDESC4" property="diaDisdesc4" jdbcType="VARCHAR"/>
+		<result column="DIA_DISICD4" property="diaDisicd4" jdbcType="VARCHAR"/>
+		<result column="DIA_DISDESC5" property="diaDisdesc5" jdbcType="VARCHAR"/>
+	</resultMap>
+	
+	<!-- 查询条件 -->
+	<sql id="wherecontation">
+		<trim  suffixOverrides="," >
+				 <if test="query.hospitaldesc != null and query.hospitaldesc != ''" >
+	  		 		/* 医院名称 */
+			    	AND HOSPITALDESC =  #{query.hospitaldesc,jdbcType=VARCHAR}
+				 </if>
+				 <if test="query.hospitalcode != null and query.hospitalcode != ''" >
+	  		 		/* 治疗情况 */
+			    	AND HOSPITALCODE =  #{query.hospitalcode,jdbcType=VARCHAR}
+				 </if>
+				 <if test="query.admno != null and query.admno != ''" >
+	  		 		/*  */
+			    	AND ADMNO =  #{query.admno,jdbcType=VARCHAR}
+				 </if>
+				 <if test="query.visitno != null and query.visitno != ''" >
+	  		 		/*  */
+			    	AND VISITNO =  #{query.visitno,jdbcType=VARCHAR}
+				 </if>
+				 <if test="query.paycode != null and query.paycode != ''" >
+	  		 		/*  */
+			    	AND PAYCODE =  #{query.paycode,jdbcType=VARCHAR}
+				 </if>
+				 <if test="query.healthcardid != null and query.healthcardid != ''" >
+	  		 		/*  */
+			    	AND HEALTHCARDID =  #{query.healthcardid,jdbcType=VARCHAR}
+				 </if>
+				 <if test="query.visitnum != null and query.visitnum != ''" >
+	  		 		/*  */
+			    	AND VISITNUM =  #{query.visitnum,jdbcType=VARCHAR}
+				 </if>
+				 <if test="query.documentid != null and query.documentid != ''" >
+	  		 		/*  */
+			    	AND DOCUMENTID =  #{query.documentid,jdbcType=VARCHAR}
+				 </if>
+				 <if test="query.inpatient != null and query.inpatient != ''" >
+	  		 		/* 病人唯一ID */
+			    	AND INPATIENT =  #{query.inpatient,jdbcType=VARCHAR}
+				 </if>
+				 <if test="query.patname != null and query.patname != ''" >
+	  		 		/*  */
+			    	AND PATNAME =  #{query.patname,jdbcType=VARCHAR}
+				 </if>
+				 <if test="query.sex != null and query.sex != ''" >
+	  		 		/*  */
+			    	AND SEX =  #{query.sex,jdbcType=VARCHAR}
+				 </if>
+				 <if test="query.birthday != null and query.birthday != ''" >
+	  		 		/*  */
+			    	AND BIRTHDAY =  #{query.birthday,jdbcType=VARCHAR}
+				 </if>
+				 <if test="query.ageyear != null and query.ageyear != ''" >
+	  		 		/*  */
+			    	AND AGEYEAR =  #{query.ageyear,jdbcType=VARCHAR}
+				 </if>
+				 <if test="query.nationality != null and query.nationality != ''" >
+	  		 		/*  */
+			    	AND NATIONALITY =  #{query.nationality,jdbcType=VARCHAR}
+				 </if>
+				 <if test="query.agemonth != null and query.agemonth != ''" >
+	  		 		/*  */
+			    	AND AGEMONTH =  #{query.agemonth,jdbcType=VARCHAR}
+				 </if>
+				 <if test="query.babybornweight != null and query.babybornweight != ''" >
+	  		 		/*  */
+			    	AND BABYBORNWEIGHT =  #{query.babybornweight,jdbcType=VARCHAR}
+				 </if>
+				 <if test="query.babyadmweight != null and query.babyadmweight != ''" >
+	  		 		/*  */
+			    	AND BABYADMWEIGHT =  #{query.babyadmweight,jdbcType=VARCHAR}
+				 </if>
+				 <if test="query.bornprovince != null and query.bornprovince != ''" >
+	  		 		/*  */
+			    	AND BORNPROVINCE =  #{query.bornprovince,jdbcType=VARCHAR}
+				 </if>
+				 <if test="query.borncity != null and query.borncity != ''" >
+	  		 		/*  */
+			    	AND BORNCITY =  #{query.borncity,jdbcType=VARCHAR}
+				 </if>
+				 <if test="query.borncounty != null and query.borncounty != ''" >
+	  		 		/*  */
+			    	AND BORNCOUNTY =  #{query.borncounty,jdbcType=VARCHAR}
+				 </if>
+				 <if test="query.nativeprovince != null and query.nativeprovince != ''" >
+	  		 		/*  */
+			    	AND NATIVEPROVINCE =  #{query.nativeprovince,jdbcType=VARCHAR}
+				 </if>
+				 <if test="query.nativecity != null and query.nativecity != ''" >
+	  		 		/*  */
+			    	AND NATIVECITY =  #{query.nativecity,jdbcType=VARCHAR}
+				 </if>
+				 <if test="query.nation != null and query.nation != ''" >
+	  		 		/*  */
+			    	AND NATION =  #{query.nation,jdbcType=VARCHAR}
+				 </if>
+				 <if test="query.credentialtype != null and query.credentialtype != ''" >
+	  		 		/*  */
+			    	AND CREDENTIALTYPE =  #{query.credentialtype,jdbcType=VARCHAR}
+				 </if>
+				 <if test="query.credentialno != null and query.credentialno != ''" >
+	  		 		/*  */
+			    	AND CREDENTIALNO =  #{query.credentialno,jdbcType=VARCHAR}
+				 </if>
+				 <if test="query.occupationcode != null and query.occupationcode != ''" >
+	  		 		/*  */
+			    	AND OCCUPATIONCODE =  #{query.occupationcode,jdbcType=VARCHAR}
+				 </if>
+				 <if test="query.marrycode != null and query.marrycode != ''" >
+	  		 		/*  */
+			    	AND MARRYCODE =  #{query.marrycode,jdbcType=VARCHAR}
+				 </if>
+				 <if test="query.addressprovince != null and query.addressprovince != ''" >
+	  		 		/*  */
+			    	AND ADDRESSPROVINCE =  #{query.addressprovince,jdbcType=VARCHAR}
+				 </if>
+				 <if test="query.diaDisicd5 != null and query.diaDisicd5 != ''" >
+	  		 		/*  */
+			    	AND DIA_DISICD5 =  #{query.diaDisicd5,jdbcType=VARCHAR}
+				 </if>
+				 <if test="query.diaDisdesc6 != null and query.diaDisdesc6 != ''" >
+	  		 		/*  */
+			    	AND DIA_DISDESC6 =  #{query.diaDisdesc6,jdbcType=VARCHAR}
+				 </if>
+				 <if test="query.diaDisicd6 != null and query.diaDisicd6 != ''" >
+	  		 		/*  */
+			    	AND DIA_DISICD6 =  #{query.diaDisicd6,jdbcType=VARCHAR}
+				 </if>
+				 <if test="query.admwardcode != null and query.admwardcode != ''" >
+	  		 		/*  */
+			    	AND ADMWARDCODE =  #{query.admwardcode,jdbcType=VARCHAR}
+				 </if>
+				 <if test="query.diswardcode != null and query.diswardcode != ''" >
+	  		 		/*  */
+			    	AND DISWARDCODE =  #{query.diswardcode,jdbcType=VARCHAR}
+				 </if>
+				 <if test="query.is2zzhi30 != null and query.is2zzhi30 != ''" >
+	  		 		/*  */
+			    	AND IS2ZZHI30 =  #{query.is2zzhi30,jdbcType=VARCHAR}
+				 </if>
+				 <if test="query.is2zzhi14 != null and query.is2zzhi14 != ''" >
+	  		 		/*  */
+			    	AND IS2ZZHI14 =  #{query.is2zzhi14,jdbcType=VARCHAR}
+				 </if>
+				 <if test="query.is231 != null and query.is231 != ''" >
+	  		 		/*  */
+			    	AND IS2_31 =  #{query.is231,jdbcType=VARCHAR}
+				 </if>
+				 <if test="query.is00 != null and query.is00 != ''" >
+	  		 		/*  */
+			    	AND IS0_0 =  #{query.is00,jdbcType=VARCHAR}
+				 </if>
+				 <if test="query.is231Visitno != null and query.is231Visitno != ''" >
+	  		 		/*  */
+			    	AND IS2_31_VISITNO =  #{query.is231Visitno,jdbcType=VARCHAR}
+				 </if>
+				 <if test="query.is2zzhi30Visitno != null and query.is2zzhi30Visitno != ''" >
+	  		 		/*  */
+			    	AND IS2ZZHI30_VISITNO =  #{query.is2zzhi30Visitno,jdbcType=VARCHAR}
+				 </if>
+				 <if test="query.is00Visitno != null and query.is00Visitno != ''" >
+	  		 		/*  */
+			    	AND IS0_0_VISITNO =  #{query.is00Visitno,jdbcType=VARCHAR}
+				 </if>
+				 <if test="query.is2zzhi14Visitno != null and query.is2zzhi14Visitno != ''" >
+	  		 		/*  */
+			    	AND IS2ZZHI14_VISITNO =  #{query.is2zzhi14Visitno,jdbcType=VARCHAR}
+				 </if>
+				 <if test="query.zfy != null and query.zfy != ''" >
+	  		 		/*  */
+			    	AND ZFY =  #{query.zfy,jdbcType=INTEGER}
+				 </if>
+				 <if test="query.yf != null and query.yf != ''" >
+	  		 		/*  */
+			    	AND YF =  #{query.yf,jdbcType=INTEGER}
+				 </if>
+				 <if test="query.addresscity != null and query.addresscity != ''" >
+	  		 		/*  */
+			    	AND ADDRESSCITY =  #{query.addresscity,jdbcType=VARCHAR}
+				 </if>
+				 <if test="query.addresscountry != null and query.addresscountry != ''" >
+	  		 		/*  */
+			    	AND ADDRESSCOUNTRY =  #{query.addresscountry,jdbcType=VARCHAR}
+				 </if>
+				 <if test="query.addressxiang != null and query.addressxiang != ''" >
+	  		 		/*  */
+			    	AND ADDRESSXIANG =  #{query.addressxiang,jdbcType=VARCHAR}
+				 </if>
+				 <if test="query.addressvillage != null and query.addressvillage != ''" >
+	  		 		/*  */
+			    	AND ADDRESSVILLAGE =  #{query.addressvillage,jdbcType=VARCHAR}
+				 </if>
+				 <if test="query.addressnumber != null and query.addressnumber != ''" >
+	  		 		/*  */
+			    	AND ADDRESSNUMBER =  #{query.addressnumber,jdbcType=VARCHAR}
+				 </if>
+				 <if test="query.telephone != null and query.telephone != ''" >
+	  		 		/*  */
+			    	AND TELEPHONE =  #{query.telephone,jdbcType=VARCHAR}
+				 </if>
+				 <if test="query.addresspostcode != null and query.addresspostcode != ''" >
+	  		 		/*  */
+			    	AND ADDRESSPOSTCODE =  #{query.addresspostcode,jdbcType=VARCHAR}
+				 </if>
+				 <if test="query.residentprovince != null and query.residentprovince != ''" >
+	  		 		/*  */
+			    	AND RESIDENTPROVINCE =  #{query.residentprovince,jdbcType=VARCHAR}
+				 </if>
+				 <if test="query.residentcity != null and query.residentcity != ''" >
+	  		 		/*  */
+			    	AND RESIDENTCITY =  #{query.residentcity,jdbcType=VARCHAR}
+				 </if>
+				 <if test="query.residentcountry != null and query.residentcountry != ''" >
+	  		 		/*  */
+			    	AND RESIDENTCOUNTRY =  #{query.residentcountry,jdbcType=VARCHAR}
+				 </if>
+				 <if test="query.residentxiang != null and query.residentxiang != ''" >
+	  		 		/*  */
+			    	AND RESIDENTXIANG =  #{query.residentxiang,jdbcType=VARCHAR}
+				 </if>
+				 <if test="query.residentvillage != null and query.residentvillage != ''" >
+	  		 		/*  */
+			    	AND RESIDENTVILLAGE =  #{query.residentvillage,jdbcType=VARCHAR}
+				 </if>
+				 <if test="query.residentnumber != null and query.residentnumber != ''" >
+	  		 		/*  */
+			    	AND RESIDENTNUMBER =  #{query.residentnumber,jdbcType=VARCHAR}
+				 </if>
+				 <if test="query.residentpostcode != null and query.residentpostcode != ''" >
+	  		 		/*  */
+			    	AND RESIDENTPOSTCODE =  #{query.residentpostcode,jdbcType=VARCHAR}
+				 </if>
+				 <if test="query.workdesc != null and query.workdesc != ''" >
+	  		 		/*  */
+			    	AND WORKDESC =  #{query.workdesc,jdbcType=VARCHAR}
+				 </if>
+				 <if test="query.workprovince != null and query.workprovince != ''" >
+	  		 		/*  */
+			    	AND WORKPROVINCE =  #{query.workprovince,jdbcType=VARCHAR}
+				 </if>
+				 <if test="query.workcity != null and query.workcity != ''" >
+	  		 		/*  */
+			    	AND WORKCITY =  #{query.workcity,jdbcType=VARCHAR}
+				 </if>
+				 <if test="query.workcountry != null and query.workcountry != ''" >
+	  		 		/*  */
+			    	AND WORKCOUNTRY =  #{query.workcountry,jdbcType=VARCHAR}
+				 </if>
+				 <if test="query.workxiang != null and query.workxiang != ''" >
+	  		 		/*  */
+			    	AND WORKXIANG =  #{query.workxiang,jdbcType=VARCHAR}
+				 </if>
+				 <if test="query.workvillage != null and query.workvillage != ''" >
+	  		 		/*  */
+			    	AND WORKVILLAGE =  #{query.workvillage,jdbcType=VARCHAR}
+				 </if>
+				 <if test="query.worknumber != null and query.worknumber != ''" >
+	  		 		/*  */
+			    	AND WORKNUMBER =  #{query.worknumber,jdbcType=VARCHAR}
+				 </if>
+				 <if test="query.worktelephone != null and query.worktelephone != ''" >
+	  		 		/*  */
+			    	AND WORKTELEPHONE =  #{query.worktelephone,jdbcType=VARCHAR}
+				 </if>
+				 <if test="query.workpostcode != null and query.workpostcode != ''" >
+	  		 		/*  */
+			    	AND WORKPOSTCODE =  #{query.workpostcode,jdbcType=VARCHAR}
+				 </if>
+				 <if test="query.linkname != null and query.linkname != ''" >
+	  		 		/*  */
+			    	AND LINKNAME =  #{query.linkname,jdbcType=VARCHAR}
+				 </if>
+				 <if test="query.relationcode != null and query.relationcode != ''" >
+	  		 		/*  */
+			    	AND RELATIONCODE =  #{query.relationcode,jdbcType=VARCHAR}
+				 </if>
+				 <if test="query.linkprovince != null and query.linkprovince != ''" >
+	  		 		/*  */
+			    	AND LINKPROVINCE =  #{query.linkprovince,jdbcType=VARCHAR}
+				 </if>
+				 <if test="query.linkcity != null and query.linkcity != ''" >
+	  		 		/*  */
+			    	AND LINKCITY =  #{query.linkcity,jdbcType=VARCHAR}
+				 </if>
+				 <if test="query.linkcountry != null and query.linkcountry != ''" >
+	  		 		/*  */
+			    	AND LINKCOUNTRY =  #{query.linkcountry,jdbcType=VARCHAR}
+				 </if>
+				 <if test="query.linkxiang != null and query.linkxiang != ''" >
+	  		 		/*  */
+			    	AND LINKXIANG =  #{query.linkxiang,jdbcType=VARCHAR}
+				 </if>
+				 <if test="query.linkvillage != null and query.linkvillage != ''" >
+	  		 		/*  */
+			    	AND LINKVILLAGE =  #{query.linkvillage,jdbcType=VARCHAR}
+				 </if>
+				 <if test="query.linknumber != null and query.linknumber != ''" >
+	  		 		/*  */
+			    	AND LINKNUMBER =  #{query.linknumber,jdbcType=VARCHAR}
+				 </if>
+				 <if test="query.linktelephone != null and query.linktelephone != ''" >
+	  		 		/*  */
+			    	AND LINKTELEPHONE =  #{query.linktelephone,jdbcType=VARCHAR}
+				 </if>
+				 <if test="query.admtrace != null and query.admtrace != ''" >
+	  		 		/*  */
+			    	AND ADMTRACE =  #{query.admtrace,jdbcType=VARCHAR}
+				 </if>
+				 <if test="query.admsdate != null and query.admsdate != ''" >
+	  		 		/*  */
+			    	<!-- AND ADMSDATE =  #{query.admsdate,jdbcType=VARCHAR} -->
+			    	and ADMSDATE between #{query.admsdate,jdbcType=VARCHAR}
+    				and #{query.admsdate2,jdbcType=VARCHAR}
+				 </if>
+				 <if test="query.admsdept != null and query.admsdept != ''" >
+	  		 		/*  */
+			    	AND ADMSDEPT =  #{query.admsdept,jdbcType=VARCHAR}
+				 </if>
+				 <if test="query.admsward != null and query.admsward != ''" >
+	  		 		/*  */
+			    	AND ADMSWARD =  #{query.admsward,jdbcType=VARCHAR}
+				 </if>
+				 <if test="query.trandept != null and query.trandept != ''" >
+	  		 		/*  */
+			    	AND TRANDEPT =  #{query.trandept,jdbcType=VARCHAR}
+				 </if>
+				 <if test="query.admddate != null and query.admddate != ''" >
+	  		 		/*  */
+			    	AND ADMDDATE =  #{query.admddate,jdbcType=VARCHAR}
+				 </if>
+				 <if test="query.admddept != null and query.admddept != ''" >
+	  		 		/*  */
+			    	AND ADMDDEPT =  #{query.admddept,jdbcType=VARCHAR}
+				 </if>
+				 <if test="query.admdward != null and query.admdward != ''" >
+	  		 		/*  */
+			    	AND ADMDWARD like  '%'||#{query.admdward,jdbcType=VARCHAR}||'%'
+				 </if>
+				 <if test="query.admdays != null and query.admdays != ''" >
+	  		 		/* 住院天数 */
+			    	AND ADMDAYS =  #{query.admdays,jdbcType=VARCHAR}
+				 </if>
+				 <if test="query.feathflag != null and query.feathflag != ''" >
+	  		 		/*  */
+			    	AND FEATHFLAG =  #{query.feathflag,jdbcType=VARCHAR}
+				 </if>
+				 <if test="query.admblood != null and query.admblood != ''" >
+	  		 		/*  */
+			    	AND ADMBLOOD =  #{query.admblood,jdbcType=VARCHAR}
+				 </if>
+				 <if test="query.admrhcode != null and query.admrhcode != ''" >
+	  		 		/*  */
+			    	AND ADMRHCODE =  #{query.admrhcode,jdbcType=VARCHAR}
+				 </if>
+				 <if test="query.deptdirectordesc != null and query.deptdirectordesc != ''" >
+	  		 		/*  */
+			    	AND DEPTDIRECTORDESC =  #{query.deptdirectordesc,jdbcType=VARCHAR}
+				 </if>
+				 <if test="query.directordesc != null and query.directordesc != ''" >
+	  		 		/*  */
+			    	AND DIRECTORDESC =  #{query.directordesc,jdbcType=VARCHAR}
+				 </if>
+				 <if test="query.attendingdesc != null and query.attendingdesc != ''" >
+	  		 		/*  */
+			    	AND ATTENDINGDESC =  #{query.attendingdesc,jdbcType=VARCHAR}
+				 </if>
+				 <if test="query.aesculapiusdesc != null and query.aesculapiusdesc != ''" >
+	  		 		/*  */
+			    	AND AESCULAPIUSDESC =  #{query.aesculapiusdesc,jdbcType=VARCHAR}
+				 </if>
+				 <if test="query.dutynursedesc != null and query.dutynursedesc != ''" >
+	  		 		/*  */
+			    	AND DUTYNURSEDESC =  #{query.dutynursedesc,jdbcType=VARCHAR}
+				 </if>
+				 <if test="query.studydoctordesc != null and query.studydoctordesc != ''" >
+	  		 		/*  */
+			    	AND STUDYDOCTORDESC =  #{query.studydoctordesc,jdbcType=VARCHAR}
+				 </if>
+				 <if test="query.practicedoctordesc != null and query.practicedoctordesc != ''" >
+	  		 		/*  */
+			    	AND PRACTICEDOCTORDESC =  #{query.practicedoctordesc,jdbcType=VARCHAR}
+				 </if>
+				 <if test="query.documentusername != null and query.documentusername != ''" >
+	  		 		/*  */
+			    	AND DOCUMENTUSERNAME =  #{query.documentusername,jdbcType=VARCHAR}
+				 </if>
+				 <if test="query.quality != null and query.quality != ''" >
+	  		 		/*  */
+			    	AND QUALITY =  #{query.quality,jdbcType=VARCHAR}
+				 </if>
+				 <if test="query.qualitydoctor != null and query.qualitydoctor != ''" >
+	  		 		/*  */
+			    	AND QUALITYDOCTOR =  #{query.qualitydoctor,jdbcType=VARCHAR}
+				 </if>
+				 <if test="query.qualitynurse != null and query.qualitynurse != ''" >
+	  		 		/*  */
+			    	AND QUALITYNURSE =  #{query.qualitynurse,jdbcType=VARCHAR}
+				 </if>
+				 <if test="query.qualitydays != null and query.qualitydays != ''" >
+	  		 		/*  */
+			    	AND QUALITYDAYS =  #{query.qualitydays,jdbcType=VARCHAR}
+				 </if>
+				 <if test="query.admoutmode != null and query.admoutmode != ''" >
+	  		 		/*  */
+			    	AND ADMOUTMODE =  #{query.admoutmode,jdbcType=VARCHAR}
+				 </if>
+				 <if test="query.dummyhospital != null and query.dummyhospital != ''" >
+	  		 		/*  */
+			    	AND DUMMYHOSPITAL =  #{query.dummyhospital,jdbcType=VARCHAR}
+				 </if>
+				 <if test="query.admagainflag != null and query.admagainflag != ''" >
+	  		 		/*  */
+			    	AND ADMAGAINFLAG =  #{query.admagainflag,jdbcType=VARCHAR}
+				 </if>
+				 <if test="query.admagainaim != null and query.admagainaim != ''" >
+	  		 		/*  */
+			    	AND ADMAGAINAIM =  #{query.admagainaim,jdbcType=VARCHAR}
+				 </if>
+				 <if test="query.admsleepsday != null and query.admsleepsday != ''" >
+	  		 		/*  */
+			    	AND ADMSLEEPSDAY =  #{query.admsleepsday,jdbcType=VARCHAR}
+				 </if>
+				 <if test="query.admsleepshour != null and query.admsleepshour != ''" >
+	  		 		/*  */
+			    	AND ADMSLEEPSHOUR =  #{query.admsleepshour,jdbcType=VARCHAR}
+				 </if>
+				 <if test="query.admsleepsminu != null and query.admsleepsminu != ''" >
+	  		 		/*  */
+			    	AND ADMSLEEPSMINU =  #{query.admsleepsminu,jdbcType=VARCHAR}
+				 </if>
+				 <if test="query.admsleepeday != null and query.admsleepeday != ''" >
+	  		 		/*  */
+			    	AND ADMSLEEPEDAY =  #{query.admsleepeday,jdbcType=VARCHAR}
+				 </if>
+				 <if test="query.admsleepehour != null and query.admsleepehour != ''" >
+	  		 		/*  */
+			    	AND ADMSLEEPEHOUR =  #{query.admsleepehour,jdbcType=VARCHAR}
+				 </if>
+				 <if test="query.admsleepeminu != null and query.admsleepeminu != ''" >
+	  		 		/*  */
+			    	AND ADMSLEEPEMINU =  #{query.admsleepeminu,jdbcType=VARCHAR}
+				 </if>
+				 <if test="query.breathmachine != null and query.breathmachine != ''" >
+	  		 		/*  */
+			    	AND BREATHMACHINE =  #{query.breathmachine,jdbcType=VARCHAR}
+				 </if>
+				 <if test="query.knubt != null and query.knubt != ''" >
+	  		 		/*  */
+			    	AND KNUBT =  #{query.knubt,jdbcType=VARCHAR}
+				 </if>
+				 <if test="query.knubn != null and query.knubn != ''" >
+	  		 		/*  */
+			    	AND KNUBN =  #{query.knubn,jdbcType=VARCHAR}
+				 </if>
+				 <if test="query.knubm != null and query.knubm != ''" >
+	  		 		/*  */
+			    	AND KNUBM =  #{query.knubm,jdbcType=VARCHAR}
+				 </if>
+				 <if test="query.knubrobson != null and query.knubrobson != ''" >
+	  		 		/*  */
+			    	AND KNUBROBSON =  #{query.knubrobson,jdbcType=VARCHAR}
+				 </if>
+				 <if test="query.admslive != null and query.admslive != ''" >
+	  		 		/*  */
+			    	AND ADMSLIVE =  #{query.admslive,jdbcType=VARCHAR}
+				 </if>
+				 <if test="query.admdlive != null and query.admdlive != ''" >
+	  		 		/*  */
+			    	AND ADMDLIVE =  #{query.admdlive,jdbcType=VARCHAR}
+				 </if>
+				 <if test="query.relationdesc != null and query.relationdesc != ''" >
+	  		 		/*  */
+			    	AND RELATIONDESC =  #{query.relationdesc,jdbcType=VARCHAR}
+				 </if>
+				 <if test="query.nationalitydesc != null and query.nationalitydesc != ''" >
+	  		 		/*  */
+			    	AND NATIONALITYDESC =  #{query.nationalitydesc,jdbcType=VARCHAR}
+				 </if>
+				 <if test="query.occupationdesc != null and query.occupationdesc != ''" >
+	  		 		/*  */
+			    	AND OCCUPATIONDESC =  #{query.occupationdesc,jdbcType=VARCHAR}
+				 </if>
+				 <if test="query.linkaddress != null and query.linkaddress != ''" >
+	  		 		/*  */
+			    	AND LINKADDRESS =  #{query.linkaddress,jdbcType=VARCHAR}
+				 </if>
+				 <if test="query.critical != null and query.critical != ''" >
+	  		 		/*  */
+			    	AND CRITICAL =  #{query.critical,jdbcType=VARCHAR}
+				 </if>
+				 <if test="query.difficulty != null and query.difficulty != ''" >
+	  		 		/*  */
+			    	AND DIFFICULTY =  #{query.difficulty,jdbcType=VARCHAR}
+				 </if>
+				 <if test="query.salvagenumber != null and query.salvagenumber != ''" >
+	  		 		/*  */
+			    	AND SALVAGENUMBER =  #{query.salvagenumber,jdbcType=VARCHAR}
+				 </if>
+				 <if test="query.succeednumber != null and query.succeednumber != ''" >
+	  		 		/*  */
+			    	AND SUCCEEDNUMBER =  #{query.succeednumber,jdbcType=VARCHAR}
+				 </if>
+				 <if test="query.followup != null and query.followup != ''" >
+	  		 		/*  */
+			    	AND FOLLOWUP =  #{query.followup,jdbcType=VARCHAR}
+				 </if>
+				 <if test="query.followupday != null and query.followupday != ''" >
+	  		 		/*  */
+			    	AND FOLLOWUPDAY =  #{query.followupday,jdbcType=VARCHAR}
+				 </if>
+				 <if test="query.doctordesc != null and query.doctordesc != ''" >
+	  		 		/*  */
+			    	AND DOCTORDESC =  #{query.doctordesc,jdbcType=VARCHAR}
+				 </if>
+				 <if test="query.doctorcode != null and query.doctorcode != ''" >
+	  		 		/*  */
+			    	AND DOCTORCODE =  #{query.doctorcode,jdbcType=VARCHAR}
+				 </if>
+				 <if test="query.deptdirectorcode != null and query.deptdirectorcode != ''" >
+	  		 		/*  */
+			    	AND DEPTDIRECTORCODE =  #{query.deptdirectorcode,jdbcType=VARCHAR}
+				 </if>
+				 <if test="query.directorcode != null and query.directorcode != ''" >
+	  		 		/*  */
+			    	AND DIRECTORCODE =  #{query.directorcode,jdbcType=VARCHAR}
+				 </if>
+				 <if test="query.attendingcode != null and query.attendingcode != ''" >
+	  		 		/* 主治医生 */
+			    	AND ATTENDINGCODE =  #{query.attendingcode,jdbcType=VARCHAR}
+				 </if>
+				 <if test="query.aesculapiuscode != null and query.aesculapiuscode != ''" >
+	  		 		/*  */
+			    	AND AESCULAPIUSCODE =  #{query.aesculapiuscode,jdbcType=VARCHAR}
+				 </if>
+				 <if test="query.dutynursecode != null and query.dutynursecode != ''" >
+	  		 		/*  */
+			    	AND DUTYNURSECODE =  #{query.dutynursecode,jdbcType=VARCHAR}
+				 </if>
+				 <if test="query.studydoctorcode != null and query.studydoctorcode != ''" >
+	  		 		/*  */
+			    	AND STUDYDOCTORCODE =  #{query.studydoctorcode,jdbcType=VARCHAR}
+				 </if>
+				 <if test="query.practicedoctorcode != null and query.practicedoctorcode != ''" >
+	  		 		/*  */
+			    	AND PRACTICEDOCTORCODE =  #{query.practicedoctorcode,jdbcType=VARCHAR}
+				 </if>
+				 <if test="query.documentusercode != null and query.documentusercode != ''" >
+	  		 		/*  */
+			    	AND DOCUMENTUSERCODE =  #{query.documentusercode,jdbcType=VARCHAR}
+				 </if>
+				 <if test="query.qualitydoctorcode != null and query.qualitydoctorcode != ''" >
+	  		 		/*  */
+			    	AND QUALITYDOCTORCODE =  #{query.qualitydoctorcode,jdbcType=VARCHAR}
+				 </if>
+				 <if test="query.qualitynursecode != null and query.qualitynursecode != ''" >
+	  		 		/*  */
+			    	AND QUALITYNURSECODE =  #{query.qualitynursecode,jdbcType=VARCHAR}
+				 </if>
+				 <if test="query.diagnosecode1 != null and query.diagnosecode1 != ''" >
+	  		 		/*  */
+			    	AND DIAGNOSECODE1 =  #{query.diagnosecode1,jdbcType=VARCHAR}
+				 </if>
+				 <if test="query.diagnosedesc1 != null and query.diagnosedesc1 != ''" >
+	  		 		/* 入院诊断 */
+			    	AND DIAGNOSEDESC1 =  #{query.diagnosedesc1,jdbcType=VARCHAR}
+				 </if>
+				 <if test="query.diagnosecode2 != null and query.diagnosecode2 != ''" >
+	  		 		/*  */
+			    	AND DIAGNOSECODE2 =  #{query.diagnosecode2,jdbcType=VARCHAR}
+				 </if>
+				 <if test="query.diagnosedesc2 != null and query.diagnosedesc2 != ''" >
+	  		 		/*  */
+			    	AND DIAGNOSEDESC2 =  #{query.diagnosedesc2,jdbcType=VARCHAR}
+				 </if>
+				 <if test="query.diagnosecode3 != null and query.diagnosecode3 != ''" >
+	  		 		/*  */
+			    	AND DIAGNOSECODE3 =  #{query.diagnosecode3,jdbcType=VARCHAR}
+				 </if>
+				 <if test="query.diagnosedesc3 != null and query.diagnosedesc3 != ''" >
+	  		 		/*  */
+			    	AND DIAGNOSEDESC3 =  #{query.diagnosedesc3,jdbcType=VARCHAR}
+				 </if>
+				 <if test="query.diagnosecode4 != null and query.diagnosecode4 != ''" >
+	  		 		/*  */
+			    	AND DIAGNOSECODE4 =  #{query.diagnosecode4,jdbcType=VARCHAR}
+				 </if>
+				 <if test="query.diagnosedesc4 != null and query.diagnosedesc4 != ''" >
+	  		 		/*  */
+			    	AND DIAGNOSEDESC4 =  #{query.diagnosedesc4,jdbcType=VARCHAR}
+				 </if>
+				 <if test="query.diagnosecode5 != null and query.diagnosecode5 != ''" >
+	  		 		/*  */
+			    	AND DIAGNOSECODE5 =  #{query.diagnosecode5,jdbcType=VARCHAR}
+				 </if>
+				 <if test="query.diagnosedesc5 != null and query.diagnosedesc5 != ''" >
+	  		 		/*  */
+			    	AND DIAGNOSEDESC5 =  #{query.diagnosedesc5,jdbcType=VARCHAR}
+				 </if>
+				 <if test="query.diagnosecode6 != null and query.diagnosecode6 != ''" >
+	  		 		/*  */
+			    	AND DIAGNOSECODE6 =  #{query.diagnosecode6,jdbcType=VARCHAR}
+				 </if>
+				 <if test="query.diagnosedesc6 != null and query.diagnosedesc6 != ''" >
+	  		 		/*  */
+			    	AND DIAGNOSEDESC6 =  #{query.diagnosedesc6,jdbcType=VARCHAR}
+				 </if>
+				 <if test="query.opercode1 != null and query.opercode1 != ''" >
+	  		 		/*  */
+			    	AND OPERCODE1 =  #{query.opercode1,jdbcType=VARCHAR}
+				 </if>
+				 <if test="query.operdesc1 != null and query.operdesc1 != ''" >
+	  		 		/* 手术名称 */
+			    	AND OPERDESC1 =  #{query.operdesc1,jdbcType=VARCHAR}
+				 </if>
+				 <if test="query.opercode2 != null and query.opercode2 != ''" >
+	  		 		/*  */
+			    	AND OPERCODE2 =  #{query.opercode2,jdbcType=VARCHAR}
+				 </if>
+				 <if test="query.operdesc2 != null and query.operdesc2 != ''" >
+	  		 		/*  */
+			    	AND OPERDESC2 =  #{query.operdesc2,jdbcType=VARCHAR}
+				 </if>
+				 <if test="query.opercode3 != null and query.opercode3 != ''" >
+	  		 		/*  */
+			    	AND OPERCODE3 =  #{query.opercode3,jdbcType=VARCHAR}
+				 </if>
+				 <if test="query.operdesc3 != null and query.operdesc3 != ''" >
+	  		 		/*  */
+			    	AND OPERDESC3 =  #{query.operdesc3,jdbcType=VARCHAR}
+				 </if>
+				 <if test="query.opercode4 != null and query.opercode4 != ''" >
+	  		 		/*  */
+			    	AND OPERCODE4 =  #{query.opercode4,jdbcType=VARCHAR}
+				 </if>
+				 <if test="query.operdesc4 != null and query.operdesc4 != ''" >
+	  		 		/*  */
+			    	AND OPERDESC4 =  #{query.operdesc4,jdbcType=VARCHAR}
+				 </if>
+				 <if test="query.opercode5 != null and query.opercode5 != ''" >
+	  		 		/*  */
+			    	AND OPERCODE5 =  #{query.opercode5,jdbcType=VARCHAR}
+				 </if>
+				 <if test="query.operdesc5 != null and query.operdesc5 != ''" >
+	  		 		/*  */
+			    	AND OPERDESC5 =  #{query.operdesc5,jdbcType=VARCHAR}
+				 </if>
+				 <if test="query.opercode6 != null and query.opercode6 != ''" >
+	  		 		/*  */
+			    	AND OPERCODE6 =  #{query.opercode6,jdbcType=VARCHAR}
+				 </if>
+				 <if test="query.operdesc6 != null and query.operdesc6 != ''" >
+	  		 		/*  */
+			    	AND OPERDESC6 =  #{query.operdesc6,jdbcType=VARCHAR}
+				 </if>
+				 <if test="query.operdate1 != null and query.operdate1 != ''" >
+	  		 		/*  */
+			    	AND OPERDATE1 =  #{query.operdate1,jdbcType=VARCHAR}
+				 </if>
+				 <if test="query.operdate2 != null and query.operdate2 != ''" >
+	  		 		/*  */
+			    	AND OPERDATE2 =  #{query.operdate2,jdbcType=VARCHAR}
+				 </if>
+				 <if test="query.operdate3 != null and query.operdate3 != ''" >
+	  		 		/*  */
+			    	AND OPERDATE3 =  #{query.operdate3,jdbcType=VARCHAR}
+				 </if>
+				 <if test="query.operdate4 != null and query.operdate4 != ''" >
+	  		 		/*  */
+			    	AND OPERDATE4 =  #{query.operdate4,jdbcType=VARCHAR}
+				 </if>
+				 <if test="query.operdate5 != null and query.operdate5 != ''" >
+	  		 		/*  */
+			    	AND OPERDATE5 =  #{query.operdate5,jdbcType=VARCHAR}
+				 </if>
+				 <if test="query.operdate6 != null and query.operdate6 != ''" >
+	  		 		/*  */
+			    	AND OPERDATE6 =  #{query.operdate6,jdbcType=VARCHAR}
+				 </if>
+				 <if test="query.operlevel1 != null and query.operlevel1 != ''" >
+	  		 		/*  */
+			    	AND OPERLEVEL1 =  #{query.operlevel1,jdbcType=VARCHAR}
+				 </if>
+				 <if test="query.operlevel2 != null and query.operlevel2 != ''" >
+	  		 		/*  */
+			    	AND OPERLEVEL2 =  #{query.operlevel2,jdbcType=VARCHAR}
+				 </if>
+				 <if test="query.operlevel3 != null and query.operlevel3 != ''" >
+	  		 		/*  */
+			    	AND OPERLEVEL3 =  #{query.operlevel3,jdbcType=VARCHAR}
+				 </if>
+				 <if test="query.operlevel4 != null and query.operlevel4 != ''" >
+	  		 		/*  */
+			    	AND OPERLEVEL4 =  #{query.operlevel4,jdbcType=VARCHAR}
+				 </if>
+				 <if test="query.operlevel5 != null and query.operlevel5 != ''" >
+	  		 		/*  */
+			    	AND OPERLEVEL5 =  #{query.operlevel5,jdbcType=VARCHAR}
+				 </if>
+				 <if test="query.operlevel6 != null and query.operlevel6 != ''" >
+	  		 		/*  */
+			    	AND OPERLEVEL6 =  #{query.operlevel6,jdbcType=VARCHAR}
+				 </if>
+				 <if test="query.operator1 != null and query.operator1 != ''" >
+	  		 		/*  */
+			    	AND OPERATOR1 =  #{query.operator1,jdbcType=VARCHAR}
+				 </if>
+				 <if test="query.operator2 != null and query.operator2 != ''" >
+	  		 		/*  */
+			    	AND OPERATOR2 =  #{query.operator2,jdbcType=VARCHAR}
+				 </if>
+				 <if test="query.operator3 != null and query.operator3 != ''" >
+	  		 		/*  */
+			    	AND OPERATOR3 =  #{query.operator3,jdbcType=VARCHAR}
+				 </if>
+				 <if test="query.operator4 != null and query.operator4 != ''" >
+	  		 		/*  */
+			    	AND OPERATOR4 =  #{query.operator4,jdbcType=VARCHAR}
+				 </if>
+				 <if test="query.operator5 != null and query.operator5 != ''" >
+	  		 		/*  */
+			    	AND OPERATOR5 =  #{query.operator5,jdbcType=VARCHAR}
+				 </if>
+				 <if test="query.operator6 != null and query.operator6 != ''" >
+	  		 		/*  */
+			    	AND OPERATOR6 =  #{query.operator6,jdbcType=VARCHAR}
+				 </if>
+				 <if test="query.operationfname1 != null and query.operationfname1 != ''" >
+	  		 		/*  */
+			    	AND OPERATIONFNAME1 =  #{query.operationfname1,jdbcType=VARCHAR}
+				 </if>
+				 <if test="query.operationfname2 != null and query.operationfname2 != ''" >
+	  		 		/*  */
+			    	AND OPERATIONFNAME2 =  #{query.operationfname2,jdbcType=VARCHAR}
+				 </if>
+				 <if test="query.operationfname3 != null and query.operationfname3 != ''" >
+	  		 		/*  */
+			    	AND OPERATIONFNAME3 =  #{query.operationfname3,jdbcType=VARCHAR}
+				 </if>
+				 <if test="query.operationfname4 != null and query.operationfname4 != ''" >
+	  		 		/*  */
+			    	AND OPERATIONFNAME4 =  #{query.operationfname4,jdbcType=VARCHAR}
+				 </if>
+				 <if test="query.operationfname5 != null and query.operationfname5 != ''" >
+	  		 		/*  */
+			    	AND OPERATIONFNAME5 =  #{query.operationfname5,jdbcType=VARCHAR}
+				 </if>
+				 <if test="query.operationfname6 != null and query.operationfname6 != ''" >
+	  		 		/*  */
+			    	AND OPERATIONFNAME6 =  #{query.operationfname6,jdbcType=VARCHAR}
+				 </if>
+				 <if test="query.operationtname1 != null and query.operationtname1 != ''" >
+	  		 		/*  */
+			    	AND OPERATIONTNAME1 =  #{query.operationtname1,jdbcType=VARCHAR}
+				 </if>
+				 <if test="query.operationtname2 != null and query.operationtname2 != ''" >
+	  		 		/*  */
+			    	AND OPERATIONTNAME2 =  #{query.operationtname2,jdbcType=VARCHAR}
+				 </if>
+				 <if test="query.operationtname3 != null and query.operationtname3 != ''" >
+	  		 		/*  */
+			    	AND OPERATIONTNAME3 =  #{query.operationtname3,jdbcType=VARCHAR}
+				 </if>
+				 <if test="query.operationtname4 != null and query.operationtname4 != ''" >
+	  		 		/*  */
+			    	AND OPERATIONTNAME4 =  #{query.operationtname4,jdbcType=VARCHAR}
+				 </if>
+				 <if test="query.operationtname5 != null and query.operationtname5 != ''" >
+	  		 		/*  */
+			    	AND OPERATIONTNAME5 =  #{query.operationtname5,jdbcType=VARCHAR}
+				 </if>
+				 <if test="query.operationtname6 != null and query.operationtname6 != ''" >
+	  		 		/*  */
+			    	AND OPERATIONTNAME6 =  #{query.operationtname6,jdbcType=VARCHAR}
+				 </if>
+				 <if test="query.narcosismode1 != null and query.narcosismode1 != ''" >
+	  		 		/*  */
+			    	AND NARCOSISMODE1 =  #{query.narcosismode1,jdbcType=VARCHAR}
+				 </if>
+				 <if test="query.narcosismode2 != null and query.narcosismode2 != ''" >
+	  		 		/*  */
+			    	AND NARCOSISMODE2 =  #{query.narcosismode2,jdbcType=VARCHAR}
+				 </if>
+				 <if test="query.narcosismode3 != null and query.narcosismode3 != ''" >
+	  		 		/*  */
+			    	AND NARCOSISMODE3 =  #{query.narcosismode3,jdbcType=VARCHAR}
+				 </if>
+				 <if test="query.narcosismode4 != null and query.narcosismode4 != ''" >
+	  		 		/*  */
+			    	AND NARCOSISMODE4 =  #{query.narcosismode4,jdbcType=VARCHAR}
+				 </if>
+				 <if test="query.narcosismode5 != null and query.narcosismode5 != ''" >
+	  		 		/*  */
+			    	AND NARCOSISMODE5 =  #{query.narcosismode5,jdbcType=VARCHAR}
+				 </if>
+				 <if test="query.narcosismode6 != null and query.narcosismode6 != ''" >
+	  		 		/*  */
+			    	AND NARCOSISMODE6 =  #{query.narcosismode6,jdbcType=VARCHAR}
+				 </if>
+				 <if test="query.cutgrade1 != null and query.cutgrade1 != ''" >
+	  		 		/*  */
+			    	AND CUTGRADE1 =  #{query.cutgrade1,jdbcType=VARCHAR}
+				 </if>
+				 <if test="query.cutgrade2 != null and query.cutgrade2 != ''" >
+	  		 		/*  */
+			    	AND CUTGRADE2 =  #{query.cutgrade2,jdbcType=VARCHAR}
+				 </if>
+				 <if test="query.cutgrade3 != null and query.cutgrade3 != ''" >
+	  		 		/*  */
+			    	AND CUTGRADE3 =  #{query.cutgrade3,jdbcType=VARCHAR}
+				 </if>
+				 <if test="query.cutgrade4 != null and query.cutgrade4 != ''" >
+	  		 		/*  */
+			    	AND CUTGRADE4 =  #{query.cutgrade4,jdbcType=VARCHAR}
+				 </if>
+				 <if test="query.cutgrade5 != null and query.cutgrade5 != ''" >
+	  		 		/*  */
+			    	AND CUTGRADE5 =  #{query.cutgrade5,jdbcType=VARCHAR}
+				 </if>
+				 <if test="query.cutgrade6 != null and query.cutgrade6 != ''" >
+	  		 		/*  */
+			    	AND CUTGRADE6 =  #{query.cutgrade6,jdbcType=VARCHAR}
+				 </if>
+				 <if test="query.cicatrizegrade1 != null and query.cicatrizegrade1 != ''" >
+	  		 		/*  */
+			    	AND CICATRIZEGRADE1 =  #{query.cicatrizegrade1,jdbcType=VARCHAR}
+				 </if>
+				 <if test="query.cicatrizegrade2 != null and query.cicatrizegrade2 != ''" >
+	  		 		/*  */
+			    	AND CICATRIZEGRADE2 =  #{query.cicatrizegrade2,jdbcType=VARCHAR}
+				 </if>
+				 <if test="query.cicatrizegrade3 != null and query.cicatrizegrade3 != ''" >
+	  		 		/*  */
+			    	AND CICATRIZEGRADE3 =  #{query.cicatrizegrade3,jdbcType=VARCHAR}
+				 </if>
+				 <if test="query.cicatrizegrade4 != null and query.cicatrizegrade4 != ''" >
+	  		 		/*  */
+			    	AND CICATRIZEGRADE4 =  #{query.cicatrizegrade4,jdbcType=VARCHAR}
+				 </if>
+				 <if test="query.cicatrizegrade5 != null and query.cicatrizegrade5 != ''" >
+	  		 		/*  */
+			    	AND CICATRIZEGRADE5 =  #{query.cicatrizegrade5,jdbcType=VARCHAR}
+				 </if>
+				 <if test="query.cicatrizegrade6 != null and query.cicatrizegrade6 != ''" >
+	  		 		/*  */
+			    	AND CICATRIZEGRADE6 =  #{query.cicatrizegrade6,jdbcType=VARCHAR}
+				 </if>
+				 <if test="query.narcosisdocname1 != null and query.narcosisdocname1 != ''" >
+	  		 		/*  */
+			    	AND NARCOSISDOCNAME1 =  #{query.narcosisdocname1,jdbcType=VARCHAR}
+				 </if>
+				 <if test="query.narcosisdocname2 != null and query.narcosisdocname2 != ''" >
+	  		 		/*  */
+			    	AND NARCOSISDOCNAME2 =  #{query.narcosisdocname2,jdbcType=VARCHAR}
+				 </if>
+				 <if test="query.narcosisdocname3 != null and query.narcosisdocname3 != ''" >
+	  		 		/*  */
+			    	AND NARCOSISDOCNAME3 =  #{query.narcosisdocname3,jdbcType=VARCHAR}
+				 </if>
+				 <if test="query.narcosisdocname4 != null and query.narcosisdocname4 != ''" >
+	  		 		/*  */
+			    	AND NARCOSISDOCNAME4 =  #{query.narcosisdocname4,jdbcType=VARCHAR}
+				 </if>
+				 <if test="query.narcosisdocname5 != null and query.narcosisdocname5 != ''" >
+	  		 		/*  */
+			    	AND NARCOSISDOCNAME5 =  #{query.narcosisdocname5,jdbcType=VARCHAR}
+				 </if>
+				 <if test="query.narcosisdocname6 != null and query.narcosisdocname6 != ''" >
+	  		 		/*  */
+			    	AND NARCOSISDOCNAME6 =  #{query.narcosisdocname6,jdbcType=VARCHAR}
+				 </if>
+				 <if test="query.operaDesc1 != null and query.operaDesc1 != ''" >
+	  		 		/*  */
+			    	AND OPERA_DESC1 =  #{query.operaDesc1,jdbcType=VARCHAR}
+				 </if>
+				 <if test="query.operaIcd1 != null and query.operaIcd1 != ''" >
+	  		 		/*  */
+			    	AND OPERA_ICD1 =  #{query.operaIcd1,jdbcType=VARCHAR}
+				 </if>
+				 <if test="query.operaDesc2 != null and query.operaDesc2 != ''" >
+	  		 		/*  */
+			    	AND OPERA_DESC2 =  #{query.operaDesc2,jdbcType=VARCHAR}
+				 </if>
+				 <if test="query.operaIcd2 != null and query.operaIcd2 != ''" >
+	  		 		/*  */
+			    	AND OPERA_ICD2 =  #{query.operaIcd2,jdbcType=VARCHAR}
+				 </if>
+				 <if test="query.operaDesc3 != null and query.operaDesc3 != ''" >
+	  		 		/*  */
+			    	AND OPERA_DESC3 =  #{query.operaDesc3,jdbcType=VARCHAR}
+				 </if>
+				 <if test="query.operaIcd3 != null and query.operaIcd3 != ''" >
+	  		 		/*  */
+			    	AND OPERA_ICD3 =  #{query.operaIcd3,jdbcType=VARCHAR}
+				 </if>
+				 <if test="query.operaDesc4 != null and query.operaDesc4 != ''" >
+	  		 		/*  */
+			    	AND OPERA_DESC4 =  #{query.operaDesc4,jdbcType=VARCHAR}
+				 </if>
+				 <if test="query.operaIcd4 != null and query.operaIcd4 != ''" >
+	  		 		/*  */
+			    	AND OPERA_ICD4 =  #{query.operaIcd4,jdbcType=VARCHAR}
+				 </if>
+				 <if test="query.operaDesc5 != null and query.operaDesc5 != ''" >
+	  		 		/*  */
+			    	AND OPERA_DESC5 =  #{query.operaDesc5,jdbcType=VARCHAR}
+				 </if>
+				 <if test="query.operaIcd5 != null and query.operaIcd5 != ''" >
+	  		 		/*  */
+			    	AND OPERA_ICD5 =  #{query.operaIcd5,jdbcType=VARCHAR}
+				 </if>
+				 <if test="query.operaDesc6 != null and query.operaDesc6 != ''" >
+	  		 		/*  */
+			    	AND OPERA_DESC6 =  #{query.operaDesc6,jdbcType=VARCHAR}
+				 </if>
+				 <if test="query.operaIcd6 != null and query.operaIcd6 != ''" >
+	  		 		/*  */
+			    	AND OPERA_ICD6 =  #{query.operaIcd6,jdbcType=VARCHAR}
+				 </if>
+				 <if test="query.diaPathdesc != null and query.diaPathdesc != ''" >
+	  		 		/*  */
+			    	AND DIA_PATHDESC =  #{query.diaPathdesc,jdbcType=VARCHAR}
+				 </if>
+				 <if test="query.diaPathicd != null and query.diaPathicd != ''" >
+	  		 		/*  */
+			    	AND DIA_PATHICD =  #{query.diaPathicd,jdbcType=VARCHAR}
+				 </if>
+				 <if test="query.diaPoisdesc != null and query.diaPoisdesc != ''" >
+	  		 		/*  */
+			    	AND DIA_POISDESC =  #{query.diaPoisdesc,jdbcType=VARCHAR}
+				 </if>
+				 <if test="query.diaPoiscode != null and query.diaPoiscode != ''" >
+	  		 		/*  */
+			    	AND DIA_POISCODE =  #{query.diaPoiscode,jdbcType=VARCHAR}
+				 </if>
+				 <if test="query.diaClinicdesc != null and query.diaClinicdesc != ''" >
+	  		 		/* 临床诊断 */
+			    	AND DIA_CLINICDESC =  #{query.diaClinicdesc,jdbcType=VARCHAR}
+				 </if>
+				 <if test="query.diaClinicicd != null and query.diaClinicicd != ''" >
+	  		 		/*  */
+			    	AND DIA_CLINICICD =  #{query.diaClinicicd,jdbcType=VARCHAR}
+				 </if>
+				 <if test="query.diaDisdesc1 != null and query.diaDisdesc1 != ''" >
+	  		 		/* 治疗措施 */
+			    	AND DIA_DISDESC1 =  #{query.diaDisdesc1,jdbcType=VARCHAR}
+				 </if>
+				 <if test="query.diaDisicd1 != null and query.diaDisicd1 != ''" >
+	  		 		/*  */
+			    	AND DIA_DISICD1 =  #{query.diaDisicd1,jdbcType=VARCHAR}
+				 </if>
+				 <if test="query.diaDisdesc2 != null and query.diaDisdesc2 != ''" >
+	  		 		/*  */
+			    	AND DIA_DISDESC2 =  #{query.diaDisdesc2,jdbcType=VARCHAR}
+				 </if>
+				 <if test="query.diaDisicd2 != null and query.diaDisicd2 != ''" >
+	  		 		/*  */
+			    	AND DIA_DISICD2 =  #{query.diaDisicd2,jdbcType=VARCHAR}
+				 </if>
+				 <if test="query.diaDisdesc3 != null and query.diaDisdesc3 != ''" >
+	  		 		/*  */
+			    	AND DIA_DISDESC3 =  #{query.diaDisdesc3,jdbcType=VARCHAR}
+				 </if>
+				 <if test="query.diaDisicd3 != null and query.diaDisicd3 != ''" >
+	  		 		/*  */
+			    	AND DIA_DISICD3 =  #{query.diaDisicd3,jdbcType=VARCHAR}
+				 </if>
+				 <if test="query.diaDisdesc4 != null and query.diaDisdesc4 != ''" >
+	  		 		/*  */
+			    	AND DIA_DISDESC4 =  #{query.diaDisdesc4,jdbcType=VARCHAR}
+				 </if>
+				 <if test="query.diaDisicd4 != null and query.diaDisicd4 != ''" >
+	  		 		/*  */
+			    	AND DIA_DISICD4 =  #{query.diaDisicd4,jdbcType=VARCHAR}
+				 </if>
+				 <if test="query.diaDisdesc5 != null and query.diaDisdesc5 != ''" >
+	  		 		/*  */
+			    	AND DIA_DISDESC5 =  #{query.diaDisdesc5,jdbcType=VARCHAR}
+				 </if>
+		</trim>
+	</sql>
+
+	<!--
+	方法名称: insert
+	调用路径: com.mandala.patient.entity.ZyEmrBasy.insert
+	开发信息: 
+	处理信息: 保存信息
+	-->
+	<insert id="insert" parameterType="Object" >
+	  INSERT  INTO  zy_emr_basy   /*  */  
+					(	
+                      HOSPITALDESC                  /* 医院名称 */ 
+                     ,HOSPITALCODE                  /* 治疗情况 */ 
+                     ,ADMNO                         /*  */ 
+                     ,VISITNO                       /*  */ 
+                     ,PAYCODE                       /*  */ 
+                     ,HEALTHCARDID                  /*  */ 
+                     ,VISITNUM                      /*  */ 
+                     ,DOCUMENTID                    /*  */ 
+                     ,INPATIENT                     /* 病人唯一ID */ 
+                     ,PATNAME                       /*  */ 
+                     ,SEX                           /*  */ 
+                     ,BIRTHDAY                      /*  */ 
+                     ,AGEYEAR                       /*  */ 
+                     ,NATIONALITY                   /*  */ 
+                     ,AGEMONTH                      /*  */ 
+                     ,BABYBORNWEIGHT                /*  */ 
+                     ,BABYADMWEIGHT                 /*  */ 
+                     ,BORNPROVINCE                  /*  */ 
+                     ,BORNCITY                      /*  */ 
+                     ,BORNCOUNTY                    /*  */ 
+                     ,NATIVEPROVINCE                /*  */ 
+                     ,NATIVECITY                    /*  */ 
+                     ,NATION                        /*  */ 
+                     ,CREDENTIALTYPE                /*  */ 
+                     ,CREDENTIALNO                  /*  */ 
+                     ,OCCUPATIONCODE                /*  */ 
+                     ,MARRYCODE                     /*  */ 
+                     ,ADDRESSPROVINCE               /*  */ 
+                     ,DIA_DISICD5                   /*  */ 
+                     ,DIA_DISDESC6                  /*  */ 
+                     ,DIA_DISICD6                   /*  */ 
+                     ,ADMWARDCODE                   /*  */ 
+                     ,DISWARDCODE                   /*  */ 
+                     ,IS2ZZHI30                     /*  */ 
+                     ,IS2ZZHI14                     /*  */ 
+                     ,IS2_31                        /*  */ 
+                     ,IS0_0                         /*  */ 
+                     ,IS2_31_VISITNO                /*  */ 
+                     ,IS2ZZHI30_VISITNO             /*  */ 
+                     ,IS0_0_VISITNO                 /*  */ 
+                     ,IS2ZZHI14_VISITNO             /*  */ 
+                     ,ZFY                           /*  */ 
+                     ,YF                            /*  */ 
+                     ,ADDRESSCITY                   /*  */ 
+                     ,ADDRESSCOUNTRY                /*  */ 
+                     ,ADDRESSXIANG                  /*  */ 
+                     ,ADDRESSVILLAGE                /*  */ 
+                     ,ADDRESSNUMBER                 /*  */ 
+                     ,TELEPHONE                     /*  */ 
+                     ,ADDRESSPOSTCODE               /*  */ 
+                     ,RESIDENTPROVINCE              /*  */ 
+                     ,RESIDENTCITY                  /*  */ 
+                     ,RESIDENTCOUNTRY               /*  */ 
+                     ,RESIDENTXIANG                 /*  */ 
+                     ,RESIDENTVILLAGE               /*  */ 
+                     ,RESIDENTNUMBER                /*  */ 
+                     ,RESIDENTPOSTCODE              /*  */ 
+                     ,WORKDESC                      /*  */ 
+                     ,WORKPROVINCE                  /*  */ 
+                     ,WORKCITY                      /*  */ 
+                     ,WORKCOUNTRY                   /*  */ 
+                     ,WORKXIANG                     /*  */ 
+                     ,WORKVILLAGE                   /*  */ 
+                     ,WORKNUMBER                    /*  */ 
+                     ,WORKTELEPHONE                 /*  */ 
+                     ,WORKPOSTCODE                  /*  */ 
+                     ,LINKNAME                      /*  */ 
+                     ,RELATIONCODE                  /*  */ 
+                     ,LINKPROVINCE                  /*  */ 
+                     ,LINKCITY                      /*  */ 
+                     ,LINKCOUNTRY                   /*  */ 
+                     ,LINKXIANG                     /*  */ 
+                     ,LINKVILLAGE                   /*  */ 
+                     ,LINKNUMBER                    /*  */ 
+                     ,LINKTELEPHONE                 /*  */ 
+                     ,ADMTRACE                      /*  */ 
+                     ,ADMSDATE                      /*  */ 
+                     ,ADMSDEPT                      /*  */ 
+                     ,ADMSWARD                      /*  */ 
+                     ,TRANDEPT                      /*  */ 
+                     ,ADMDDATE                      /*  */ 
+                     ,ADMDDEPT                      /*  */ 
+                     ,ADMDWARD                      /*  */ 
+                     ,ADMDAYS                       /* 住院天数 */ 
+                     ,FEATHFLAG                     /*  */ 
+                     ,ADMBLOOD                      /*  */ 
+                     ,ADMRHCODE                     /*  */ 
+                     ,DEPTDIRECTORDESC              /*  */ 
+                     ,DIRECTORDESC                  /*  */ 
+                     ,ATTENDINGDESC                 /*  */ 
+                     ,AESCULAPIUSDESC               /*  */ 
+                     ,DUTYNURSEDESC                 /*  */ 
+                     ,STUDYDOCTORDESC               /*  */ 
+                     ,PRACTICEDOCTORDESC            /*  */ 
+                     ,DOCUMENTUSERNAME              /*  */ 
+                     ,QUALITY                       /*  */ 
+                     ,QUALITYDOCTOR                 /*  */ 
+                     ,QUALITYNURSE                  /*  */ 
+                     ,QUALITYDAYS                   /*  */ 
+                     ,ADMOUTMODE                    /*  */ 
+                     ,DUMMYHOSPITAL                 /*  */ 
+                     ,ADMAGAINFLAG                  /*  */ 
+                     ,ADMAGAINAIM                   /*  */ 
+                     ,ADMSLEEPSDAY                  /*  */ 
+                     ,ADMSLEEPSHOUR                 /*  */ 
+                     ,ADMSLEEPSMINU                 /*  */ 
+                     ,ADMSLEEPEDAY                  /*  */ 
+                     ,ADMSLEEPEHOUR                 /*  */ 
+                     ,ADMSLEEPEMINU                 /*  */ 
+                     ,BREATHMACHINE                 /*  */ 
+                     ,KNUBT                         /*  */ 
+                     ,KNUBN                         /*  */ 
+                     ,KNUBM                         /*  */ 
+                     ,KNUBROBSON                    /*  */ 
+                     ,ADMSLIVE                      /*  */ 
+                     ,ADMDLIVE                      /*  */ 
+                     ,RELATIONDESC                  /*  */ 
+                     ,NATIONALITYDESC               /*  */ 
+                     ,OCCUPATIONDESC                /*  */ 
+                     ,LINKADDRESS                   /*  */ 
+                     ,CRITICAL                      /*  */ 
+                     ,DIFFICULTY                    /*  */ 
+                     ,SALVAGENUMBER                 /*  */ 
+                     ,SUCCEEDNUMBER                 /*  */ 
+                     ,FOLLOWUP                      /*  */ 
+                     ,FOLLOWUPDAY                   /*  */ 
+                     ,DOCTORDESC                    /*  */ 
+                     ,DOCTORCODE                    /*  */ 
+                     ,DEPTDIRECTORCODE              /*  */ 
+                     ,DIRECTORCODE                  /*  */ 
+                     ,ATTENDINGCODE                 /* 主治医生 */ 
+                     ,AESCULAPIUSCODE               /*  */ 
+                     ,DUTYNURSECODE                 /*  */ 
+                     ,STUDYDOCTORCODE               /*  */ 
+                     ,PRACTICEDOCTORCODE            /*  */ 
+                     ,DOCUMENTUSERCODE              /*  */ 
+                     ,QUALITYDOCTORCODE             /*  */ 
+                     ,QUALITYNURSECODE              /*  */ 
+                     ,DIAGNOSECODE1                 /*  */ 
+                     ,DIAGNOSEDESC1                 /* 入院诊断 */ 
+                     ,DIAGNOSECODE2                 /*  */ 
+                     ,DIAGNOSEDESC2                 /*  */ 
+                     ,DIAGNOSECODE3                 /*  */ 
+                     ,DIAGNOSEDESC3                 /*  */ 
+                     ,DIAGNOSECODE4                 /*  */ 
+                     ,DIAGNOSEDESC4                 /*  */ 
+                     ,DIAGNOSECODE5                 /*  */ 
+                     ,DIAGNOSEDESC5                 /*  */ 
+                     ,DIAGNOSECODE6                 /*  */ 
+                     ,DIAGNOSEDESC6                 /*  */ 
+                     ,OPERCODE1                     /*  */ 
+                     ,OPERDESC1                     /* 手术名称 */ 
+                     ,OPERCODE2                     /*  */ 
+                     ,OPERDESC2                     /*  */ 
+                     ,OPERCODE3                     /*  */ 
+                     ,OPERDESC3                     /*  */ 
+                     ,OPERCODE4                     /*  */ 
+                     ,OPERDESC4                     /*  */ 
+                     ,OPERCODE5                     /*  */ 
+                     ,OPERDESC5                     /*  */ 
+                     ,OPERCODE6                     /*  */ 
+                     ,OPERDESC6                     /*  */ 
+                     ,OPERDATE1                     /*  */ 
+                     ,OPERDATE2                     /*  */ 
+                     ,OPERDATE3                     /*  */ 
+                     ,OPERDATE4                     /*  */ 
+                     ,OPERDATE5                     /*  */ 
+                     ,OPERDATE6                     /*  */ 
+                     ,OPERLEVEL1                    /*  */ 
+                     ,OPERLEVEL2                    /*  */ 
+                     ,OPERLEVEL3                    /*  */ 
+                     ,OPERLEVEL4                    /*  */ 
+                     ,OPERLEVEL5                    /*  */ 
+                     ,OPERLEVEL6                    /*  */ 
+                     ,OPERATOR1                     /*  */ 
+                     ,OPERATOR2                     /*  */ 
+                     ,OPERATOR3                     /*  */ 
+                     ,OPERATOR4                     /*  */ 
+                     ,OPERATOR5                     /*  */ 
+                     ,OPERATOR6                     /*  */ 
+                     ,OPERATIONFNAME1               /*  */ 
+                     ,OPERATIONFNAME2               /*  */ 
+                     ,OPERATIONFNAME3               /*  */ 
+                     ,OPERATIONFNAME4               /*  */ 
+                     ,OPERATIONFNAME5               /*  */ 
+                     ,OPERATIONFNAME6               /*  */ 
+                     ,OPERATIONTNAME1               /*  */ 
+                     ,OPERATIONTNAME2               /*  */ 
+                     ,OPERATIONTNAME3               /*  */ 
+                     ,OPERATIONTNAME4               /*  */ 
+                     ,OPERATIONTNAME5               /*  */ 
+                     ,OPERATIONTNAME6               /*  */ 
+                     ,NARCOSISMODE1                 /*  */ 
+                     ,NARCOSISMODE2                 /*  */ 
+                     ,NARCOSISMODE3                 /*  */ 
+                     ,NARCOSISMODE4                 /*  */ 
+                     ,NARCOSISMODE5                 /*  */ 
+                     ,NARCOSISMODE6                 /*  */ 
+                     ,CUTGRADE1                     /*  */ 
+                     ,CUTGRADE2                     /*  */ 
+                     ,CUTGRADE3                     /*  */ 
+                     ,CUTGRADE4                     /*  */ 
+                     ,CUTGRADE5                     /*  */ 
+                     ,CUTGRADE6                     /*  */ 
+                     ,CICATRIZEGRADE1               /*  */ 
+                     ,CICATRIZEGRADE2               /*  */ 
+                     ,CICATRIZEGRADE3               /*  */ 
+                     ,CICATRIZEGRADE4               /*  */ 
+                     ,CICATRIZEGRADE5               /*  */ 
+                     ,CICATRIZEGRADE6               /*  */ 
+                     ,NARCOSISDOCNAME1              /*  */ 
+                     ,NARCOSISDOCNAME2              /*  */ 
+                     ,NARCOSISDOCNAME3              /*  */ 
+                     ,NARCOSISDOCNAME4              /*  */ 
+                     ,NARCOSISDOCNAME5              /*  */ 
+                     ,NARCOSISDOCNAME6              /*  */ 
+                     ,OPERA_DESC1                   /*  */ 
+                     ,OPERA_ICD1                    /*  */ 
+                     ,OPERA_DESC2                   /*  */ 
+                     ,OPERA_ICD2                    /*  */ 
+                     ,OPERA_DESC3                   /*  */ 
+                     ,OPERA_ICD3                    /*  */ 
+                     ,OPERA_DESC4                   /*  */ 
+                     ,OPERA_ICD4                    /*  */ 
+                     ,OPERA_DESC5                   /*  */ 
+                     ,OPERA_ICD5                    /*  */ 
+                     ,OPERA_DESC6                   /*  */ 
+                     ,OPERA_ICD6                    /*  */ 
+                     ,DIA_PATHDESC                  /*  */ 
+                     ,DIA_PATHICD                   /*  */ 
+                     ,DIA_POISDESC                  /*  */ 
+                     ,DIA_POISCODE                  /*  */ 
+                     ,DIA_CLINICDESC                /* 临床诊断 */ 
+                     ,DIA_CLINICICD                 /*  */ 
+                     ,DIA_DISDESC1                  /* 治疗措施 */ 
+                     ,DIA_DISICD1                   /*  */ 
+                     ,DIA_DISDESC2                  /*  */ 
+                     ,DIA_DISICD2                   /*  */ 
+                     ,DIA_DISDESC3                  /*  */ 
+                     ,DIA_DISICD3                   /*  */ 
+                     ,DIA_DISDESC4                  /*  */ 
+                     ,DIA_DISICD4                   /*  */ 
+                     ,DIA_DISDESC5                  /*  */ 
+					)
+			values (
+                      #{hospitaldesc,jdbcType=VARCHAR}                  /* 医院名称 */ 
+                     ,#{hospitalcode,jdbcType=VARCHAR}                  /* 治疗情况 */ 
+                     ,#{admno,jdbcType=VARCHAR}                         /*  */ 
+                     ,#{visitno,jdbcType=VARCHAR}                       /*  */ 
+                     ,#{paycode,jdbcType=VARCHAR}                       /*  */ 
+                     ,#{healthcardid,jdbcType=VARCHAR}                  /*  */ 
+                     ,#{visitnum,jdbcType=VARCHAR}                      /*  */ 
+                     ,#{documentid,jdbcType=VARCHAR}                    /*  */ 
+                     ,#{inpatient,jdbcType=VARCHAR}                     /* 病人唯一ID */ 
+                     ,#{patname,jdbcType=VARCHAR}                       /*  */ 
+                     ,#{sex,jdbcType=VARCHAR}                           /*  */ 
+                     ,#{birthday,jdbcType=VARCHAR}                      /*  */ 
+                     ,#{ageyear,jdbcType=VARCHAR}                       /*  */ 
+                     ,#{nationality,jdbcType=VARCHAR}                   /*  */ 
+                     ,#{agemonth,jdbcType=VARCHAR}                      /*  */ 
+                     ,#{babybornweight,jdbcType=VARCHAR}                /*  */ 
+                     ,#{babyadmweight,jdbcType=VARCHAR}                 /*  */ 
+                     ,#{bornprovince,jdbcType=VARCHAR}                  /*  */ 
+                     ,#{borncity,jdbcType=VARCHAR}                      /*  */ 
+                     ,#{borncounty,jdbcType=VARCHAR}                    /*  */ 
+                     ,#{nativeprovince,jdbcType=VARCHAR}                /*  */ 
+                     ,#{nativecity,jdbcType=VARCHAR}                    /*  */ 
+                     ,#{nation,jdbcType=VARCHAR}                        /*  */ 
+                     ,#{credentialtype,jdbcType=VARCHAR}                /*  */ 
+                     ,#{credentialno,jdbcType=VARCHAR}                  /*  */ 
+                     ,#{occupationcode,jdbcType=VARCHAR}                /*  */ 
+                     ,#{marrycode,jdbcType=VARCHAR}                     /*  */ 
+                     ,#{addressprovince,jdbcType=VARCHAR}               /*  */ 
+                     ,#{diaDisicd5,jdbcType=VARCHAR}                    /*  */ 
+                     ,#{diaDisdesc6,jdbcType=VARCHAR}                   /*  */ 
+                     ,#{diaDisicd6,jdbcType=VARCHAR}                    /*  */ 
+                     ,#{admwardcode,jdbcType=VARCHAR}                   /*  */ 
+                     ,#{diswardcode,jdbcType=VARCHAR}                   /*  */ 
+                     ,#{is2zzhi30,jdbcType=VARCHAR}                     /*  */ 
+                     ,#{is2zzhi14,jdbcType=VARCHAR}                     /*  */ 
+                     ,#{is231,jdbcType=VARCHAR}                         /*  */ 
+                     ,#{is00,jdbcType=VARCHAR}                          /*  */ 
+                     ,#{is231Visitno,jdbcType=VARCHAR}                  /*  */ 
+                     ,#{is2zzhi30Visitno,jdbcType=VARCHAR}              /*  */ 
+                     ,#{is00Visitno,jdbcType=VARCHAR}                   /*  */ 
+                     ,#{is2zzhi14Visitno,jdbcType=VARCHAR}              /*  */ 
+                     ,#{zfy,jdbcType=INTEGER}                           /*  */ 
+                     ,#{yf,jdbcType=INTEGER}                            /*  */ 
+                     ,#{addresscity,jdbcType=VARCHAR}                   /*  */ 
+                     ,#{addresscountry,jdbcType=VARCHAR}                /*  */ 
+                     ,#{addressxiang,jdbcType=VARCHAR}                  /*  */ 
+                     ,#{addressvillage,jdbcType=VARCHAR}                /*  */ 
+                     ,#{addressnumber,jdbcType=VARCHAR}                 /*  */ 
+                     ,#{telephone,jdbcType=VARCHAR}                     /*  */ 
+                     ,#{addresspostcode,jdbcType=VARCHAR}               /*  */ 
+                     ,#{residentprovince,jdbcType=VARCHAR}              /*  */ 
+                     ,#{residentcity,jdbcType=VARCHAR}                  /*  */ 
+                     ,#{residentcountry,jdbcType=VARCHAR}               /*  */ 
+                     ,#{residentxiang,jdbcType=VARCHAR}                 /*  */ 
+                     ,#{residentvillage,jdbcType=VARCHAR}               /*  */ 
+                     ,#{residentnumber,jdbcType=VARCHAR}                /*  */ 
+                     ,#{residentpostcode,jdbcType=VARCHAR}              /*  */ 
+                     ,#{workdesc,jdbcType=VARCHAR}                      /*  */ 
+                     ,#{workprovince,jdbcType=VARCHAR}                  /*  */ 
+                     ,#{workcity,jdbcType=VARCHAR}                      /*  */ 
+                     ,#{workcountry,jdbcType=VARCHAR}                   /*  */ 
+                     ,#{workxiang,jdbcType=VARCHAR}                     /*  */ 
+                     ,#{workvillage,jdbcType=VARCHAR}                   /*  */ 
+                     ,#{worknumber,jdbcType=VARCHAR}                    /*  */ 
+                     ,#{worktelephone,jdbcType=VARCHAR}                 /*  */ 
+                     ,#{workpostcode,jdbcType=VARCHAR}                  /*  */ 
+                     ,#{linkname,jdbcType=VARCHAR}                      /*  */ 
+                     ,#{relationcode,jdbcType=VARCHAR}                  /*  */ 
+                     ,#{linkprovince,jdbcType=VARCHAR}                  /*  */ 
+                     ,#{linkcity,jdbcType=VARCHAR}                      /*  */ 
+                     ,#{linkcountry,jdbcType=VARCHAR}                   /*  */ 
+                     ,#{linkxiang,jdbcType=VARCHAR}                     /*  */ 
+                     ,#{linkvillage,jdbcType=VARCHAR}                   /*  */ 
+                     ,#{linknumber,jdbcType=VARCHAR}                    /*  */ 
+                     ,#{linktelephone,jdbcType=VARCHAR}                 /*  */ 
+                     ,#{admtrace,jdbcType=VARCHAR}                      /*  */ 
+                     ,#{admsdate,jdbcType=VARCHAR}                      /*  */ 
+                     ,#{admsdept,jdbcType=VARCHAR}                      /*  */ 
+                     ,#{admsward,jdbcType=VARCHAR}                      /*  */ 
+                     ,#{trandept,jdbcType=VARCHAR}                      /*  */ 
+                     ,#{admddate,jdbcType=VARCHAR}                      /*  */ 
+                     ,#{admddept,jdbcType=VARCHAR}                      /*  */ 
+                     ,#{admdward,jdbcType=VARCHAR}                      /*  */ 
+                     ,#{admdays,jdbcType=VARCHAR}                       /* 住院天数 */ 
+                     ,#{feathflag,jdbcType=VARCHAR}                     /*  */ 
+                     ,#{admblood,jdbcType=VARCHAR}                      /*  */ 
+                     ,#{admrhcode,jdbcType=VARCHAR}                     /*  */ 
+                     ,#{deptdirectordesc,jdbcType=VARCHAR}              /*  */ 
+                     ,#{directordesc,jdbcType=VARCHAR}                  /*  */ 
+                     ,#{attendingdesc,jdbcType=VARCHAR}                 /*  */ 
+                     ,#{aesculapiusdesc,jdbcType=VARCHAR}               /*  */ 
+                     ,#{dutynursedesc,jdbcType=VARCHAR}                 /*  */ 
+                     ,#{studydoctordesc,jdbcType=VARCHAR}               /*  */ 
+                     ,#{practicedoctordesc,jdbcType=VARCHAR}            /*  */ 
+                     ,#{documentusername,jdbcType=VARCHAR}              /*  */ 
+                     ,#{quality,jdbcType=VARCHAR}                       /*  */ 
+                     ,#{qualitydoctor,jdbcType=VARCHAR}                 /*  */ 
+                     ,#{qualitynurse,jdbcType=VARCHAR}                  /*  */ 
+                     ,#{qualitydays,jdbcType=VARCHAR}                   /*  */ 
+                     ,#{admoutmode,jdbcType=VARCHAR}                    /*  */ 
+                     ,#{dummyhospital,jdbcType=VARCHAR}                 /*  */ 
+                     ,#{admagainflag,jdbcType=VARCHAR}                  /*  */ 
+                     ,#{admagainaim,jdbcType=VARCHAR}                   /*  */ 
+                     ,#{admsleepsday,jdbcType=VARCHAR}                  /*  */ 
+                     ,#{admsleepshour,jdbcType=VARCHAR}                 /*  */ 
+                     ,#{admsleepsminu,jdbcType=VARCHAR}                 /*  */ 
+                     ,#{admsleepeday,jdbcType=VARCHAR}                  /*  */ 
+                     ,#{admsleepehour,jdbcType=VARCHAR}                 /*  */ 
+                     ,#{admsleepeminu,jdbcType=VARCHAR}                 /*  */ 
+                     ,#{breathmachine,jdbcType=VARCHAR}                 /*  */ 
+                     ,#{knubt,jdbcType=VARCHAR}                         /*  */ 
+                     ,#{knubn,jdbcType=VARCHAR}                         /*  */ 
+                     ,#{knubm,jdbcType=VARCHAR}                         /*  */ 
+                     ,#{knubrobson,jdbcType=VARCHAR}                    /*  */ 
+                     ,#{admslive,jdbcType=VARCHAR}                      /*  */ 
+                     ,#{admdlive,jdbcType=VARCHAR}                      /*  */ 
+                     ,#{relationdesc,jdbcType=VARCHAR}                  /*  */ 
+                     ,#{nationalitydesc,jdbcType=VARCHAR}               /*  */ 
+                     ,#{occupationdesc,jdbcType=VARCHAR}                /*  */ 
+                     ,#{linkaddress,jdbcType=VARCHAR}                   /*  */ 
+                     ,#{critical,jdbcType=VARCHAR}                      /*  */ 
+                     ,#{difficulty,jdbcType=VARCHAR}                    /*  */ 
+                     ,#{salvagenumber,jdbcType=VARCHAR}                 /*  */ 
+                     ,#{succeednumber,jdbcType=VARCHAR}                 /*  */ 
+                     ,#{followup,jdbcType=VARCHAR}                      /*  */ 
+                     ,#{followupday,jdbcType=VARCHAR}                   /*  */ 
+                     ,#{doctordesc,jdbcType=VARCHAR}                    /*  */ 
+                     ,#{doctorcode,jdbcType=VARCHAR}                    /*  */ 
+                     ,#{deptdirectorcode,jdbcType=VARCHAR}              /*  */ 
+                     ,#{directorcode,jdbcType=VARCHAR}                  /*  */ 
+                     ,#{attendingcode,jdbcType=VARCHAR}                 /* 主治医生 */ 
+                     ,#{aesculapiuscode,jdbcType=VARCHAR}               /*  */ 
+                     ,#{dutynursecode,jdbcType=VARCHAR}                 /*  */ 
+                     ,#{studydoctorcode,jdbcType=VARCHAR}               /*  */ 
+                     ,#{practicedoctorcode,jdbcType=VARCHAR}            /*  */ 
+                     ,#{documentusercode,jdbcType=VARCHAR}              /*  */ 
+                     ,#{qualitydoctorcode,jdbcType=VARCHAR}             /*  */ 
+                     ,#{qualitynursecode,jdbcType=VARCHAR}              /*  */ 
+                     ,#{diagnosecode1,jdbcType=VARCHAR}                 /*  */ 
+                     ,#{diagnosedesc1,jdbcType=VARCHAR}                 /* 入院诊断 */ 
+                     ,#{diagnosecode2,jdbcType=VARCHAR}                 /*  */ 
+                     ,#{diagnosedesc2,jdbcType=VARCHAR}                 /*  */ 
+                     ,#{diagnosecode3,jdbcType=VARCHAR}                 /*  */ 
+                     ,#{diagnosedesc3,jdbcType=VARCHAR}                 /*  */ 
+                     ,#{diagnosecode4,jdbcType=VARCHAR}                 /*  */ 
+                     ,#{diagnosedesc4,jdbcType=VARCHAR}                 /*  */ 
+                     ,#{diagnosecode5,jdbcType=VARCHAR}                 /*  */ 
+                     ,#{diagnosedesc5,jdbcType=VARCHAR}                 /*  */ 
+                     ,#{diagnosecode6,jdbcType=VARCHAR}                 /*  */ 
+                     ,#{diagnosedesc6,jdbcType=VARCHAR}                 /*  */ 
+                     ,#{opercode1,jdbcType=VARCHAR}                     /*  */ 
+                     ,#{operdesc1,jdbcType=VARCHAR}                     /* 手术名称 */ 
+                     ,#{opercode2,jdbcType=VARCHAR}                     /*  */ 
+                     ,#{operdesc2,jdbcType=VARCHAR}                     /*  */ 
+                     ,#{opercode3,jdbcType=VARCHAR}                     /*  */ 
+                     ,#{operdesc3,jdbcType=VARCHAR}                     /*  */ 
+                     ,#{opercode4,jdbcType=VARCHAR}                     /*  */ 
+                     ,#{operdesc4,jdbcType=VARCHAR}                     /*  */ 
+                     ,#{opercode5,jdbcType=VARCHAR}                     /*  */ 
+                     ,#{operdesc5,jdbcType=VARCHAR}                     /*  */ 
+                     ,#{opercode6,jdbcType=VARCHAR}                     /*  */ 
+                     ,#{operdesc6,jdbcType=VARCHAR}                     /*  */ 
+                     ,#{operdate1,jdbcType=VARCHAR}                     /*  */ 
+                     ,#{operdate2,jdbcType=VARCHAR}                     /*  */ 
+                     ,#{operdate3,jdbcType=VARCHAR}                     /*  */ 
+                     ,#{operdate4,jdbcType=VARCHAR}                     /*  */ 
+                     ,#{operdate5,jdbcType=VARCHAR}                     /*  */ 
+                     ,#{operdate6,jdbcType=VARCHAR}                     /*  */ 
+                     ,#{operlevel1,jdbcType=VARCHAR}                    /*  */ 
+                     ,#{operlevel2,jdbcType=VARCHAR}                    /*  */ 
+                     ,#{operlevel3,jdbcType=VARCHAR}                    /*  */ 
+                     ,#{operlevel4,jdbcType=VARCHAR}                    /*  */ 
+                     ,#{operlevel5,jdbcType=VARCHAR}                    /*  */ 
+                     ,#{operlevel6,jdbcType=VARCHAR}                    /*  */ 
+                     ,#{operator1,jdbcType=VARCHAR}                     /*  */ 
+                     ,#{operator2,jdbcType=VARCHAR}                     /*  */ 
+                     ,#{operator3,jdbcType=VARCHAR}                     /*  */ 
+                     ,#{operator4,jdbcType=VARCHAR}                     /*  */ 
+                     ,#{operator5,jdbcType=VARCHAR}                     /*  */ 
+                     ,#{operator6,jdbcType=VARCHAR}                     /*  */ 
+                     ,#{operationfname1,jdbcType=VARCHAR}               /*  */ 
+                     ,#{operationfname2,jdbcType=VARCHAR}               /*  */ 
+                     ,#{operationfname3,jdbcType=VARCHAR}               /*  */ 
+                     ,#{operationfname4,jdbcType=VARCHAR}               /*  */ 
+                     ,#{operationfname5,jdbcType=VARCHAR}               /*  */ 
+                     ,#{operationfname6,jdbcType=VARCHAR}               /*  */ 
+                     ,#{operationtname1,jdbcType=VARCHAR}               /*  */ 
+                     ,#{operationtname2,jdbcType=VARCHAR}               /*  */ 
+                     ,#{operationtname3,jdbcType=VARCHAR}               /*  */ 
+                     ,#{operationtname4,jdbcType=VARCHAR}               /*  */ 
+                     ,#{operationtname5,jdbcType=VARCHAR}               /*  */ 
+                     ,#{operationtname6,jdbcType=VARCHAR}               /*  */ 
+                     ,#{narcosismode1,jdbcType=VARCHAR}                 /*  */ 
+                     ,#{narcosismode2,jdbcType=VARCHAR}                 /*  */ 
+                     ,#{narcosismode3,jdbcType=VARCHAR}                 /*  */ 
+                     ,#{narcosismode4,jdbcType=VARCHAR}                 /*  */ 
+                     ,#{narcosismode5,jdbcType=VARCHAR}                 /*  */ 
+                     ,#{narcosismode6,jdbcType=VARCHAR}                 /*  */ 
+                     ,#{cutgrade1,jdbcType=VARCHAR}                     /*  */ 
+                     ,#{cutgrade2,jdbcType=VARCHAR}                     /*  */ 
+                     ,#{cutgrade3,jdbcType=VARCHAR}                     /*  */ 
+                     ,#{cutgrade4,jdbcType=VARCHAR}                     /*  */ 
+                     ,#{cutgrade5,jdbcType=VARCHAR}                     /*  */ 
+                     ,#{cutgrade6,jdbcType=VARCHAR}                     /*  */ 
+                     ,#{cicatrizegrade1,jdbcType=VARCHAR}               /*  */ 
+                     ,#{cicatrizegrade2,jdbcType=VARCHAR}               /*  */ 
+                     ,#{cicatrizegrade3,jdbcType=VARCHAR}               /*  */ 
+                     ,#{cicatrizegrade4,jdbcType=VARCHAR}               /*  */ 
+                     ,#{cicatrizegrade5,jdbcType=VARCHAR}               /*  */ 
+                     ,#{cicatrizegrade6,jdbcType=VARCHAR}               /*  */ 
+                     ,#{narcosisdocname1,jdbcType=VARCHAR}              /*  */ 
+                     ,#{narcosisdocname2,jdbcType=VARCHAR}              /*  */ 
+                     ,#{narcosisdocname3,jdbcType=VARCHAR}              /*  */ 
+                     ,#{narcosisdocname4,jdbcType=VARCHAR}              /*  */ 
+                     ,#{narcosisdocname5,jdbcType=VARCHAR}              /*  */ 
+                     ,#{narcosisdocname6,jdbcType=VARCHAR}              /*  */ 
+                     ,#{operaDesc1,jdbcType=VARCHAR}                    /*  */ 
+                     ,#{operaIcd1,jdbcType=VARCHAR}                     /*  */ 
+                     ,#{operaDesc2,jdbcType=VARCHAR}                    /*  */ 
+                     ,#{operaIcd2,jdbcType=VARCHAR}                     /*  */ 
+                     ,#{operaDesc3,jdbcType=VARCHAR}                    /*  */ 
+                     ,#{operaIcd3,jdbcType=VARCHAR}                     /*  */ 
+                     ,#{operaDesc4,jdbcType=VARCHAR}                    /*  */ 
+                     ,#{operaIcd4,jdbcType=VARCHAR}                     /*  */ 
+                     ,#{operaDesc5,jdbcType=VARCHAR}                    /*  */ 
+                     ,#{operaIcd5,jdbcType=VARCHAR}                     /*  */ 
+                     ,#{operaDesc6,jdbcType=VARCHAR}                    /*  */ 
+                     ,#{operaIcd6,jdbcType=VARCHAR}                     /*  */ 
+                     ,#{diaPathdesc,jdbcType=VARCHAR}                   /*  */ 
+                     ,#{diaPathicd,jdbcType=VARCHAR}                    /*  */ 
+                     ,#{diaPoisdesc,jdbcType=VARCHAR}                   /*  */ 
+                     ,#{diaPoiscode,jdbcType=VARCHAR}                   /*  */ 
+                     ,#{diaClinicdesc,jdbcType=VARCHAR}                 /* 临床诊断 */ 
+                     ,#{diaClinicicd,jdbcType=VARCHAR}                  /*  */ 
+                     ,#{diaDisdesc1,jdbcType=VARCHAR}                   /* 治疗措施 */ 
+                     ,#{diaDisicd1,jdbcType=VARCHAR}                    /*  */ 
+                     ,#{diaDisdesc2,jdbcType=VARCHAR}                   /*  */ 
+                     ,#{diaDisicd2,jdbcType=VARCHAR}                    /*  */ 
+                     ,#{diaDisdesc3,jdbcType=VARCHAR}                   /*  */ 
+                     ,#{diaDisicd3,jdbcType=VARCHAR}                    /*  */ 
+                     ,#{diaDisdesc4,jdbcType=VARCHAR}                   /*  */ 
+                     ,#{diaDisicd4,jdbcType=VARCHAR}                    /*  */ 
+                     ,#{diaDisdesc5,jdbcType=VARCHAR}                   /*  */ 
+					)
+	</insert>
+
+	
+	<!--
+	方法名称: update
+	调用路径: com.mandala.patient.entity.ZyEmrBasy.update
+	开发信息: 
+	处理信息: 修改信息
+	-->  
+	 <update id="update" parameterType="Object" >
+	  UPDATE   zy_emr_basy  	/*  */
+	  			<trim   prefix="SET" suffixOverrides="," >
+						 <if test="hospitaldesc != null">
+		    		 		/* 医院名称 */ 
+	    		 			HOSPITALDESC = #{hospitaldesc,jdbcType=VARCHAR},
+						 </if>
+						 <if test="hospitalcode != null">
+		    		 		/* 治疗情况 */ 
+	    		 			HOSPITALCODE = #{hospitalcode,jdbcType=VARCHAR},
+						 </if>
+						 <if test="admno != null">
+		    		 		/*  */ 
+	    		 			ADMNO = #{admno,jdbcType=VARCHAR},
+						 </if>
+						 <if test="visitno != null">
+		    		 		/*  */ 
+	    		 			VISITNO = #{visitno,jdbcType=VARCHAR},
+						 </if>
+						 <if test="paycode != null">
+		    		 		/*  */ 
+	    		 			PAYCODE = #{paycode,jdbcType=VARCHAR},
+						 </if>
+						 <if test="healthcardid != null">
+		    		 		/*  */ 
+	    		 			HEALTHCARDID = #{healthcardid,jdbcType=VARCHAR},
+						 </if>
+						 <if test="visitnum != null">
+		    		 		/*  */ 
+	    		 			VISITNUM = #{visitnum,jdbcType=VARCHAR},
+						 </if>
+						 <if test="documentid != null">
+		    		 		/*  */ 
+	    		 			DOCUMENTID = #{documentid,jdbcType=VARCHAR},
+						 </if>
+						 <if test="inpatient != null">
+		    		 		/* 病人唯一ID */ 
+	    		 			INPATIENT = #{inpatient,jdbcType=VARCHAR},
+						 </if>
+						 <if test="patname != null">
+		    		 		/*  */ 
+	    		 			PATNAME = #{patname,jdbcType=VARCHAR},
+						 </if>
+						 <if test="sex != null">
+		    		 		/*  */ 
+	    		 			SEX = #{sex,jdbcType=VARCHAR},
+						 </if>
+						 <if test="birthday != null">
+		    		 		/*  */ 
+	    		 			BIRTHDAY = #{birthday,jdbcType=VARCHAR},
+						 </if>
+						 <if test="ageyear != null">
+		    		 		/*  */ 
+	    		 			AGEYEAR = #{ageyear,jdbcType=VARCHAR},
+						 </if>
+						 <if test="nationality != null">
+		    		 		/*  */ 
+	    		 			NATIONALITY = #{nationality,jdbcType=VARCHAR},
+						 </if>
+						 <if test="agemonth != null">
+		    		 		/*  */ 
+	    		 			AGEMONTH = #{agemonth,jdbcType=VARCHAR},
+						 </if>
+						 <if test="babybornweight != null">
+		    		 		/*  */ 
+	    		 			BABYBORNWEIGHT = #{babybornweight,jdbcType=VARCHAR},
+						 </if>
+						 <if test="babyadmweight != null">
+		    		 		/*  */ 
+	    		 			BABYADMWEIGHT = #{babyadmweight,jdbcType=VARCHAR},
+						 </if>
+						 <if test="bornprovince != null">
+		    		 		/*  */ 
+	    		 			BORNPROVINCE = #{bornprovince,jdbcType=VARCHAR},
+						 </if>
+						 <if test="borncity != null">
+		    		 		/*  */ 
+	    		 			BORNCITY = #{borncity,jdbcType=VARCHAR},
+						 </if>
+						 <if test="borncounty != null">
+		    		 		/*  */ 
+	    		 			BORNCOUNTY = #{borncounty,jdbcType=VARCHAR},
+						 </if>
+						 <if test="nativeprovince != null">
+		    		 		/*  */ 
+	    		 			NATIVEPROVINCE = #{nativeprovince,jdbcType=VARCHAR},
+						 </if>
+						 <if test="nativecity != null">
+		    		 		/*  */ 
+	    		 			NATIVECITY = #{nativecity,jdbcType=VARCHAR},
+						 </if>
+						 <if test="nation != null">
+		    		 		/*  */ 
+	    		 			NATION = #{nation,jdbcType=VARCHAR},
+						 </if>
+						 <if test="credentialtype != null">
+		    		 		/*  */ 
+	    		 			CREDENTIALTYPE = #{credentialtype,jdbcType=VARCHAR},
+						 </if>
+						 <if test="credentialno != null">
+		    		 		/*  */ 
+	    		 			CREDENTIALNO = #{credentialno,jdbcType=VARCHAR},
+						 </if>
+						 <if test="occupationcode != null">
+		    		 		/*  */ 
+	    		 			OCCUPATIONCODE = #{occupationcode,jdbcType=VARCHAR},
+						 </if>
+						 <if test="marrycode != null">
+		    		 		/*  */ 
+	    		 			MARRYCODE = #{marrycode,jdbcType=VARCHAR},
+						 </if>
+						 <if test="addressprovince != null">
+		    		 		/*  */ 
+	    		 			ADDRESSPROVINCE = #{addressprovince,jdbcType=VARCHAR},
+						 </if>
+						 <if test="diaDisicd5 != null">
+		    		 		/*  */ 
+	    		 			DIA_DISICD5 = #{diaDisicd5,jdbcType=VARCHAR},
+						 </if>
+						 <if test="diaDisdesc6 != null">
+		    		 		/*  */ 
+	    		 			DIA_DISDESC6 = #{diaDisdesc6,jdbcType=VARCHAR},
+						 </if>
+						 <if test="diaDisicd6 != null">
+		    		 		/*  */ 
+	    		 			DIA_DISICD6 = #{diaDisicd6,jdbcType=VARCHAR},
+						 </if>
+						 <if test="admwardcode != null">
+		    		 		/*  */ 
+	    		 			ADMWARDCODE = #{admwardcode,jdbcType=VARCHAR},
+						 </if>
+						 <if test="diswardcode != null">
+		    		 		/*  */ 
+	    		 			DISWARDCODE = #{diswardcode,jdbcType=VARCHAR},
+						 </if>
+						 <if test="is2zzhi30 != null">
+		    		 		/*  */ 
+	    		 			IS2ZZHI30 = #{is2zzhi30,jdbcType=VARCHAR},
+						 </if>
+						 <if test="is2zzhi14 != null">
+		    		 		/*  */ 
+	    		 			IS2ZZHI14 = #{is2zzhi14,jdbcType=VARCHAR},
+						 </if>
+						 <if test="is231 != null">
+		    		 		/*  */ 
+	    		 			IS2_31 = #{is231,jdbcType=VARCHAR},
+						 </if>
+						 <if test="is00 != null">
+		    		 		/*  */ 
+	    		 			IS0_0 = #{is00,jdbcType=VARCHAR},
+						 </if>
+						 <if test="is231Visitno != null">
+		    		 		/*  */ 
+	    		 			IS2_31_VISITNO = #{is231Visitno,jdbcType=VARCHAR},
+						 </if>
+						 <if test="is2zzhi30Visitno != null">
+		    		 		/*  */ 
+	    		 			IS2ZZHI30_VISITNO = #{is2zzhi30Visitno,jdbcType=VARCHAR},
+						 </if>
+						 <if test="is00Visitno != null">
+		    		 		/*  */ 
+	    		 			IS0_0_VISITNO = #{is00Visitno,jdbcType=VARCHAR},
+						 </if>
+						 <if test="is2zzhi14Visitno != null">
+		    		 		/*  */ 
+	    		 			IS2ZZHI14_VISITNO = #{is2zzhi14Visitno,jdbcType=VARCHAR},
+						 </if>
+						 <if test="zfy != null">
+		    		 		/*  */ 
+	    		 			ZFY = #{zfy,jdbcType=INTEGER},
+						 </if>
+						 <if test="yf != null">
+		    		 		/*  */ 
+	    		 			YF = #{yf,jdbcType=INTEGER},
+						 </if>
+						 <if test="addresscity != null">
+		    		 		/*  */ 
+	    		 			ADDRESSCITY = #{addresscity,jdbcType=VARCHAR},
+						 </if>
+						 <if test="addresscountry != null">
+		    		 		/*  */ 
+	    		 			ADDRESSCOUNTRY = #{addresscountry,jdbcType=VARCHAR},
+						 </if>
+						 <if test="addressxiang != null">
+		    		 		/*  */ 
+	    		 			ADDRESSXIANG = #{addressxiang,jdbcType=VARCHAR},
+						 </if>
+						 <if test="addressvillage != null">
+		    		 		/*  */ 
+	    		 			ADDRESSVILLAGE = #{addressvillage,jdbcType=VARCHAR},
+						 </if>
+						 <if test="addressnumber != null">
+		    		 		/*  */ 
+	    		 			ADDRESSNUMBER = #{addressnumber,jdbcType=VARCHAR},
+						 </if>
+						 <if test="telephone != null">
+		    		 		/*  */ 
+	    		 			TELEPHONE = #{telephone,jdbcType=VARCHAR},
+						 </if>
+						 <if test="addresspostcode != null">
+		    		 		/*  */ 
+	    		 			ADDRESSPOSTCODE = #{addresspostcode,jdbcType=VARCHAR},
+						 </if>
+						 <if test="residentprovince != null">
+		    		 		/*  */ 
+	    		 			RESIDENTPROVINCE = #{residentprovince,jdbcType=VARCHAR},
+						 </if>
+						 <if test="residentcity != null">
+		    		 		/*  */ 
+	    		 			RESIDENTCITY = #{residentcity,jdbcType=VARCHAR},
+						 </if>
+						 <if test="residentcountry != null">
+		    		 		/*  */ 
+	    		 			RESIDENTCOUNTRY = #{residentcountry,jdbcType=VARCHAR},
+						 </if>
+						 <if test="residentxiang != null">
+		    		 		/*  */ 
+	    		 			RESIDENTXIANG = #{residentxiang,jdbcType=VARCHAR},
+						 </if>
+						 <if test="residentvillage != null">
+		    		 		/*  */ 
+	    		 			RESIDENTVILLAGE = #{residentvillage,jdbcType=VARCHAR},
+						 </if>
+						 <if test="residentnumber != null">
+		    		 		/*  */ 
+	    		 			RESIDENTNUMBER = #{residentnumber,jdbcType=VARCHAR},
+						 </if>
+						 <if test="residentpostcode != null">
+		    		 		/*  */ 
+	    		 			RESIDENTPOSTCODE = #{residentpostcode,jdbcType=VARCHAR},
+						 </if>
+						 <if test="workdesc != null">
+		    		 		/*  */ 
+	    		 			WORKDESC = #{workdesc,jdbcType=VARCHAR},
+						 </if>
+						 <if test="workprovince != null">
+		    		 		/*  */ 
+	    		 			WORKPROVINCE = #{workprovince,jdbcType=VARCHAR},
+						 </if>
+						 <if test="workcity != null">
+		    		 		/*  */ 
+	    		 			WORKCITY = #{workcity,jdbcType=VARCHAR},
+						 </if>
+						 <if test="workcountry != null">
+		    		 		/*  */ 
+	    		 			WORKCOUNTRY = #{workcountry,jdbcType=VARCHAR},
+						 </if>
+						 <if test="workxiang != null">
+		    		 		/*  */ 
+	    		 			WORKXIANG = #{workxiang,jdbcType=VARCHAR},
+						 </if>
+						 <if test="workvillage != null">
+		    		 		/*  */ 
+	    		 			WORKVILLAGE = #{workvillage,jdbcType=VARCHAR},
+						 </if>
+						 <if test="worknumber != null">
+		    		 		/*  */ 
+	    		 			WORKNUMBER = #{worknumber,jdbcType=VARCHAR},
+						 </if>
+						 <if test="worktelephone != null">
+		    		 		/*  */ 
+	    		 			WORKTELEPHONE = #{worktelephone,jdbcType=VARCHAR},
+						 </if>
+						 <if test="workpostcode != null">
+		    		 		/*  */ 
+	    		 			WORKPOSTCODE = #{workpostcode,jdbcType=VARCHAR},
+						 </if>
+						 <if test="linkname != null">
+		    		 		/*  */ 
+	    		 			LINKNAME = #{linkname,jdbcType=VARCHAR},
+						 </if>
+						 <if test="relationcode != null">
+		    		 		/*  */ 
+	    		 			RELATIONCODE = #{relationcode,jdbcType=VARCHAR},
+						 </if>
+						 <if test="linkprovince != null">
+		    		 		/*  */ 
+	    		 			LINKPROVINCE = #{linkprovince,jdbcType=VARCHAR},
+						 </if>
+						 <if test="linkcity != null">
+		    		 		/*  */ 
+	    		 			LINKCITY = #{linkcity,jdbcType=VARCHAR},
+						 </if>
+						 <if test="linkcountry != null">
+		    		 		/*  */ 
+	    		 			LINKCOUNTRY = #{linkcountry,jdbcType=VARCHAR},
+						 </if>
+						 <if test="linkxiang != null">
+		    		 		/*  */ 
+	    		 			LINKXIANG = #{linkxiang,jdbcType=VARCHAR},
+						 </if>
+						 <if test="linkvillage != null">
+		    		 		/*  */ 
+	    		 			LINKVILLAGE = #{linkvillage,jdbcType=VARCHAR},
+						 </if>
+						 <if test="linknumber != null">
+		    		 		/*  */ 
+	    		 			LINKNUMBER = #{linknumber,jdbcType=VARCHAR},
+						 </if>
+						 <if test="linktelephone != null">
+		    		 		/*  */ 
+	    		 			LINKTELEPHONE = #{linktelephone,jdbcType=VARCHAR},
+						 </if>
+						 <if test="admtrace != null">
+		    		 		/*  */ 
+	    		 			ADMTRACE = #{admtrace,jdbcType=VARCHAR},
+						 </if>
+						 <if test="admsdate != null">
+		    		 		/*  */ 
+	    		 			ADMSDATE = #{admsdate,jdbcType=VARCHAR},
+						 </if>
+						 <if test="admsdept != null">
+		    		 		/*  */ 
+	    		 			ADMSDEPT = #{admsdept,jdbcType=VARCHAR},
+						 </if>
+						 <if test="admsward != null">
+		    		 		/*  */ 
+	    		 			ADMSWARD = #{admsward,jdbcType=VARCHAR},
+						 </if>
+						 <if test="trandept != null">
+		    		 		/*  */ 
+	    		 			TRANDEPT = #{trandept,jdbcType=VARCHAR},
+						 </if>
+						 <if test="admddate != null">
+		    		 		/*  */ 
+	    		 			ADMDDATE = #{admddate,jdbcType=VARCHAR},
+						 </if>
+						 <if test="admddept != null">
+		    		 		/*  */ 
+	    		 			ADMDDEPT = #{admddept,jdbcType=VARCHAR},
+						 </if>
+						 <if test="admdward != null">
+		    		 		/*  */ 
+	    		 			ADMDWARD = #{admdward,jdbcType=VARCHAR},
+						 </if>
+						 <if test="admdays != null">
+		    		 		/* 住院天数 */ 
+	    		 			ADMDAYS = #{admdays,jdbcType=VARCHAR},
+						 </if>
+						 <if test="feathflag != null">
+		    		 		/*  */ 
+	    		 			FEATHFLAG = #{feathflag,jdbcType=VARCHAR},
+						 </if>
+						 <if test="admblood != null">
+		    		 		/*  */ 
+	    		 			ADMBLOOD = #{admblood,jdbcType=VARCHAR},
+						 </if>
+						 <if test="admrhcode != null">
+		    		 		/*  */ 
+	    		 			ADMRHCODE = #{admrhcode,jdbcType=VARCHAR},
+						 </if>
+						 <if test="deptdirectordesc != null">
+		    		 		/*  */ 
+	    		 			DEPTDIRECTORDESC = #{deptdirectordesc,jdbcType=VARCHAR},
+						 </if>
+						 <if test="directordesc != null">
+		    		 		/*  */ 
+	    		 			DIRECTORDESC = #{directordesc,jdbcType=VARCHAR},
+						 </if>
+						 <if test="attendingdesc != null">
+		    		 		/*  */ 
+	    		 			ATTENDINGDESC = #{attendingdesc,jdbcType=VARCHAR},
+						 </if>
+						 <if test="aesculapiusdesc != null">
+		    		 		/*  */ 
+	    		 			AESCULAPIUSDESC = #{aesculapiusdesc,jdbcType=VARCHAR},
+						 </if>
+						 <if test="dutynursedesc != null">
+		    		 		/*  */ 
+	    		 			DUTYNURSEDESC = #{dutynursedesc,jdbcType=VARCHAR},
+						 </if>
+						 <if test="studydoctordesc != null">
+		    		 		/*  */ 
+	    		 			STUDYDOCTORDESC = #{studydoctordesc,jdbcType=VARCHAR},
+						 </if>
+						 <if test="practicedoctordesc != null">
+		    		 		/*  */ 
+	    		 			PRACTICEDOCTORDESC = #{practicedoctordesc,jdbcType=VARCHAR},
+						 </if>
+						 <if test="documentusername != null">
+		    		 		/*  */ 
+	    		 			DOCUMENTUSERNAME = #{documentusername,jdbcType=VARCHAR},
+						 </if>
+						 <if test="quality != null">
+		    		 		/*  */ 
+	    		 			QUALITY = #{quality,jdbcType=VARCHAR},
+						 </if>
+						 <if test="qualitydoctor != null">
+		    		 		/*  */ 
+	    		 			QUALITYDOCTOR = #{qualitydoctor,jdbcType=VARCHAR},
+						 </if>
+						 <if test="qualitynurse != null">
+		    		 		/*  */ 
+	    		 			QUALITYNURSE = #{qualitynurse,jdbcType=VARCHAR},
+						 </if>
+						 <if test="qualitydays != null">
+		    		 		/*  */ 
+	    		 			QUALITYDAYS = #{qualitydays,jdbcType=VARCHAR},
+						 </if>
+						 <if test="admoutmode != null">
+		    		 		/*  */ 
+	    		 			ADMOUTMODE = #{admoutmode,jdbcType=VARCHAR},
+						 </if>
+						 <if test="dummyhospital != null">
+		    		 		/*  */ 
+	    		 			DUMMYHOSPITAL = #{dummyhospital,jdbcType=VARCHAR},
+						 </if>
+						 <if test="admagainflag != null">
+		    		 		/*  */ 
+	    		 			ADMAGAINFLAG = #{admagainflag,jdbcType=VARCHAR},
+						 </if>
+						 <if test="admagainaim != null">
+		    		 		/*  */ 
+	    		 			ADMAGAINAIM = #{admagainaim,jdbcType=VARCHAR},
+						 </if>
+						 <if test="admsleepsday != null">
+		    		 		/*  */ 
+	    		 			ADMSLEEPSDAY = #{admsleepsday,jdbcType=VARCHAR},
+						 </if>
+						 <if test="admsleepshour != null">
+		    		 		/*  */ 
+	    		 			ADMSLEEPSHOUR = #{admsleepshour,jdbcType=VARCHAR},
+						 </if>
+						 <if test="admsleepsminu != null">
+		    		 		/*  */ 
+	    		 			ADMSLEEPSMINU = #{admsleepsminu,jdbcType=VARCHAR},
+						 </if>
+						 <if test="admsleepeday != null">
+		    		 		/*  */ 
+	    		 			ADMSLEEPEDAY = #{admsleepeday,jdbcType=VARCHAR},
+						 </if>
+						 <if test="admsleepehour != null">
+		    		 		/*  */ 
+	    		 			ADMSLEEPEHOUR = #{admsleepehour,jdbcType=VARCHAR},
+						 </if>
+						 <if test="admsleepeminu != null">
+		    		 		/*  */ 
+	    		 			ADMSLEEPEMINU = #{admsleepeminu,jdbcType=VARCHAR},
+						 </if>
+						 <if test="breathmachine != null">
+		    		 		/*  */ 
+	    		 			BREATHMACHINE = #{breathmachine,jdbcType=VARCHAR},
+						 </if>
+						 <if test="knubt != null">
+		    		 		/*  */ 
+	    		 			KNUBT = #{knubt,jdbcType=VARCHAR},
+						 </if>
+						 <if test="knubn != null">
+		    		 		/*  */ 
+	    		 			KNUBN = #{knubn,jdbcType=VARCHAR},
+						 </if>
+						 <if test="knubm != null">
+		    		 		/*  */ 
+	    		 			KNUBM = #{knubm,jdbcType=VARCHAR},
+						 </if>
+						 <if test="knubrobson != null">
+		    		 		/*  */ 
+	    		 			KNUBROBSON = #{knubrobson,jdbcType=VARCHAR},
+						 </if>
+						 <if test="admslive != null">
+		    		 		/*  */ 
+	    		 			ADMSLIVE = #{admslive,jdbcType=VARCHAR},
+						 </if>
+						 <if test="admdlive != null">
+		    		 		/*  */ 
+	    		 			ADMDLIVE = #{admdlive,jdbcType=VARCHAR},
+						 </if>
+						 <if test="relationdesc != null">
+		    		 		/*  */ 
+	    		 			RELATIONDESC = #{relationdesc,jdbcType=VARCHAR},
+						 </if>
+						 <if test="nationalitydesc != null">
+		    		 		/*  */ 
+	    		 			NATIONALITYDESC = #{nationalitydesc,jdbcType=VARCHAR},
+						 </if>
+						 <if test="occupationdesc != null">
+		    		 		/*  */ 
+	    		 			OCCUPATIONDESC = #{occupationdesc,jdbcType=VARCHAR},
+						 </if>
+						 <if test="linkaddress != null">
+		    		 		/*  */ 
+	    		 			LINKADDRESS = #{linkaddress,jdbcType=VARCHAR},
+						 </if>
+						 <if test="critical != null">
+		    		 		/*  */ 
+	    		 			CRITICAL = #{critical,jdbcType=VARCHAR},
+						 </if>
+						 <if test="difficulty != null">
+		    		 		/*  */ 
+	    		 			DIFFICULTY = #{difficulty,jdbcType=VARCHAR},
+						 </if>
+						 <if test="salvagenumber != null">
+		    		 		/*  */ 
+	    		 			SALVAGENUMBER = #{salvagenumber,jdbcType=VARCHAR},
+						 </if>
+						 <if test="succeednumber != null">
+		    		 		/*  */ 
+	    		 			SUCCEEDNUMBER = #{succeednumber,jdbcType=VARCHAR},
+						 </if>
+						 <if test="followup != null">
+		    		 		/*  */ 
+	    		 			FOLLOWUP = #{followup,jdbcType=VARCHAR},
+						 </if>
+						 <if test="followupday != null">
+		    		 		/*  */ 
+	    		 			FOLLOWUPDAY = #{followupday,jdbcType=VARCHAR},
+						 </if>
+						 <if test="doctordesc != null">
+		    		 		/*  */ 
+	    		 			DOCTORDESC = #{doctordesc,jdbcType=VARCHAR},
+						 </if>
+						 <if test="doctorcode != null">
+		    		 		/*  */ 
+	    		 			DOCTORCODE = #{doctorcode,jdbcType=VARCHAR},
+						 </if>
+						 <if test="deptdirectorcode != null">
+		    		 		/*  */ 
+	    		 			DEPTDIRECTORCODE = #{deptdirectorcode,jdbcType=VARCHAR},
+						 </if>
+						 <if test="directorcode != null">
+		    		 		/*  */ 
+	    		 			DIRECTORCODE = #{directorcode,jdbcType=VARCHAR},
+						 </if>
+						 <if test="attendingcode != null">
+		    		 		/* 主治医生 */ 
+	    		 			ATTENDINGCODE = #{attendingcode,jdbcType=VARCHAR},
+						 </if>
+						 <if test="aesculapiuscode != null">
+		    		 		/*  */ 
+	    		 			AESCULAPIUSCODE = #{aesculapiuscode,jdbcType=VARCHAR},
+						 </if>
+						 <if test="dutynursecode != null">
+		    		 		/*  */ 
+	    		 			DUTYNURSECODE = #{dutynursecode,jdbcType=VARCHAR},
+						 </if>
+						 <if test="studydoctorcode != null">
+		    		 		/*  */ 
+	    		 			STUDYDOCTORCODE = #{studydoctorcode,jdbcType=VARCHAR},
+						 </if>
+						 <if test="practicedoctorcode != null">
+		    		 		/*  */ 
+	    		 			PRACTICEDOCTORCODE = #{practicedoctorcode,jdbcType=VARCHAR},
+						 </if>
+						 <if test="documentusercode != null">
+		    		 		/*  */ 
+	    		 			DOCUMENTUSERCODE = #{documentusercode,jdbcType=VARCHAR},
+						 </if>
+						 <if test="qualitydoctorcode != null">
+		    		 		/*  */ 
+	    		 			QUALITYDOCTORCODE = #{qualitydoctorcode,jdbcType=VARCHAR},
+						 </if>
+						 <if test="qualitynursecode != null">
+		    		 		/*  */ 
+	    		 			QUALITYNURSECODE = #{qualitynursecode,jdbcType=VARCHAR},
+						 </if>
+						 <if test="diagnosecode1 != null">
+		    		 		/*  */ 
+	    		 			DIAGNOSECODE1 = #{diagnosecode1,jdbcType=VARCHAR},
+						 </if>
+						 <if test="diagnosedesc1 != null">
+		    		 		/* 入院诊断 */ 
+	    		 			DIAGNOSEDESC1 = #{diagnosedesc1,jdbcType=VARCHAR},
+						 </if>
+						 <if test="diagnosecode2 != null">
+		    		 		/*  */ 
+	    		 			DIAGNOSECODE2 = #{diagnosecode2,jdbcType=VARCHAR},
+						 </if>
+						 <if test="diagnosedesc2 != null">
+		    		 		/*  */ 
+	    		 			DIAGNOSEDESC2 = #{diagnosedesc2,jdbcType=VARCHAR},
+						 </if>
+						 <if test="diagnosecode3 != null">
+		    		 		/*  */ 
+	    		 			DIAGNOSECODE3 = #{diagnosecode3,jdbcType=VARCHAR},
+						 </if>
+						 <if test="diagnosedesc3 != null">
+		    		 		/*  */ 
+	    		 			DIAGNOSEDESC3 = #{diagnosedesc3,jdbcType=VARCHAR},
+						 </if>
+						 <if test="diagnosecode4 != null">
+		    		 		/*  */ 
+	    		 			DIAGNOSECODE4 = #{diagnosecode4,jdbcType=VARCHAR},
+						 </if>
+						 <if test="diagnosedesc4 != null">
+		    		 		/*  */ 
+	    		 			DIAGNOSEDESC4 = #{diagnosedesc4,jdbcType=VARCHAR},
+						 </if>
+						 <if test="diagnosecode5 != null">
+		    		 		/*  */ 
+	    		 			DIAGNOSECODE5 = #{diagnosecode5,jdbcType=VARCHAR},
+						 </if>
+						 <if test="diagnosedesc5 != null">
+		    		 		/*  */ 
+	    		 			DIAGNOSEDESC5 = #{diagnosedesc5,jdbcType=VARCHAR},
+						 </if>
+						 <if test="diagnosecode6 != null">
+		    		 		/*  */ 
+	    		 			DIAGNOSECODE6 = #{diagnosecode6,jdbcType=VARCHAR},
+						 </if>
+						 <if test="diagnosedesc6 != null">
+		    		 		/*  */ 
+	    		 			DIAGNOSEDESC6 = #{diagnosedesc6,jdbcType=VARCHAR},
+						 </if>
+						 <if test="opercode1 != null">
+		    		 		/*  */ 
+	    		 			OPERCODE1 = #{opercode1,jdbcType=VARCHAR},
+						 </if>
+						 <if test="operdesc1 != null">
+		    		 		/* 手术名称 */ 
+	    		 			OPERDESC1 = #{operdesc1,jdbcType=VARCHAR},
+						 </if>
+						 <if test="opercode2 != null">
+		    		 		/*  */ 
+	    		 			OPERCODE2 = #{opercode2,jdbcType=VARCHAR},
+						 </if>
+						 <if test="operdesc2 != null">
+		    		 		/*  */ 
+	    		 			OPERDESC2 = #{operdesc2,jdbcType=VARCHAR},
+						 </if>
+						 <if test="opercode3 != null">
+		    		 		/*  */ 
+	    		 			OPERCODE3 = #{opercode3,jdbcType=VARCHAR},
+						 </if>
+						 <if test="operdesc3 != null">
+		    		 		/*  */ 
+	    		 			OPERDESC3 = #{operdesc3,jdbcType=VARCHAR},
+						 </if>
+						 <if test="opercode4 != null">
+		    		 		/*  */ 
+	    		 			OPERCODE4 = #{opercode4,jdbcType=VARCHAR},
+						 </if>
+						 <if test="operdesc4 != null">
+		    		 		/*  */ 
+	    		 			OPERDESC4 = #{operdesc4,jdbcType=VARCHAR},
+						 </if>
+						 <if test="opercode5 != null">
+		    		 		/*  */ 
+	    		 			OPERCODE5 = #{opercode5,jdbcType=VARCHAR},
+						 </if>
+						 <if test="operdesc5 != null">
+		    		 		/*  */ 
+	    		 			OPERDESC5 = #{operdesc5,jdbcType=VARCHAR},
+						 </if>
+						 <if test="opercode6 != null">
+		    		 		/*  */ 
+	    		 			OPERCODE6 = #{opercode6,jdbcType=VARCHAR},
+						 </if>
+						 <if test="operdesc6 != null">
+		    		 		/*  */ 
+	    		 			OPERDESC6 = #{operdesc6,jdbcType=VARCHAR},
+						 </if>
+						 <if test="operdate1 != null">
+		    		 		/*  */ 
+	    		 			OPERDATE1 = #{operdate1,jdbcType=VARCHAR},
+						 </if>
+						 <if test="operdate2 != null">
+		    		 		/*  */ 
+	    		 			OPERDATE2 = #{operdate2,jdbcType=VARCHAR},
+						 </if>
+						 <if test="operdate3 != null">
+		    		 		/*  */ 
+	    		 			OPERDATE3 = #{operdate3,jdbcType=VARCHAR},
+						 </if>
+						 <if test="operdate4 != null">
+		    		 		/*  */ 
+	    		 			OPERDATE4 = #{operdate4,jdbcType=VARCHAR},
+						 </if>
+						 <if test="operdate5 != null">
+		    		 		/*  */ 
+	    		 			OPERDATE5 = #{operdate5,jdbcType=VARCHAR},
+						 </if>
+						 <if test="operdate6 != null">
+		    		 		/*  */ 
+	    		 			OPERDATE6 = #{operdate6,jdbcType=VARCHAR},
+						 </if>
+						 <if test="operlevel1 != null">
+		    		 		/*  */ 
+	    		 			OPERLEVEL1 = #{operlevel1,jdbcType=VARCHAR},
+						 </if>
+						 <if test="operlevel2 != null">
+		    		 		/*  */ 
+	    		 			OPERLEVEL2 = #{operlevel2,jdbcType=VARCHAR},
+						 </if>
+						 <if test="operlevel3 != null">
+		    		 		/*  */ 
+	    		 			OPERLEVEL3 = #{operlevel3,jdbcType=VARCHAR},
+						 </if>
+						 <if test="operlevel4 != null">
+		    		 		/*  */ 
+	    		 			OPERLEVEL4 = #{operlevel4,jdbcType=VARCHAR},
+						 </if>
+						 <if test="operlevel5 != null">
+		    		 		/*  */ 
+	    		 			OPERLEVEL5 = #{operlevel5,jdbcType=VARCHAR},
+						 </if>
+						 <if test="operlevel6 != null">
+		    		 		/*  */ 
+	    		 			OPERLEVEL6 = #{operlevel6,jdbcType=VARCHAR},
+						 </if>
+						 <if test="operator1 != null">
+		    		 		/*  */ 
+	    		 			OPERATOR1 = #{operator1,jdbcType=VARCHAR},
+						 </if>
+						 <if test="operator2 != null">
+		    		 		/*  */ 
+	    		 			OPERATOR2 = #{operator2,jdbcType=VARCHAR},
+						 </if>
+						 <if test="operator3 != null">
+		    		 		/*  */ 
+	    		 			OPERATOR3 = #{operator3,jdbcType=VARCHAR},
+						 </if>
+						 <if test="operator4 != null">
+		    		 		/*  */ 
+	    		 			OPERATOR4 = #{operator4,jdbcType=VARCHAR},
+						 </if>
+						 <if test="operator5 != null">
+		    		 		/*  */ 
+	    		 			OPERATOR5 = #{operator5,jdbcType=VARCHAR},
+						 </if>
+						 <if test="operator6 != null">
+		    		 		/*  */ 
+	    		 			OPERATOR6 = #{operator6,jdbcType=VARCHAR},
+						 </if>
+						 <if test="operationfname1 != null">
+		    		 		/*  */ 
+	    		 			OPERATIONFNAME1 = #{operationfname1,jdbcType=VARCHAR},
+						 </if>
+						 <if test="operationfname2 != null">
+		    		 		/*  */ 
+	    		 			OPERATIONFNAME2 = #{operationfname2,jdbcType=VARCHAR},
+						 </if>
+						 <if test="operationfname3 != null">
+		    		 		/*  */ 
+	    		 			OPERATIONFNAME3 = #{operationfname3,jdbcType=VARCHAR},
+						 </if>
+						 <if test="operationfname4 != null">
+		    		 		/*  */ 
+	    		 			OPERATIONFNAME4 = #{operationfname4,jdbcType=VARCHAR},
+						 </if>
+						 <if test="operationfname5 != null">
+		    		 		/*  */ 
+	    		 			OPERATIONFNAME5 = #{operationfname5,jdbcType=VARCHAR},
+						 </if>
+						 <if test="operationfname6 != null">
+		    		 		/*  */ 
+	    		 			OPERATIONFNAME6 = #{operationfname6,jdbcType=VARCHAR},
+						 </if>
+						 <if test="operationtname1 != null">
+		    		 		/*  */ 
+	    		 			OPERATIONTNAME1 = #{operationtname1,jdbcType=VARCHAR},
+						 </if>
+						 <if test="operationtname2 != null">
+		    		 		/*  */ 
+	    		 			OPERATIONTNAME2 = #{operationtname2,jdbcType=VARCHAR},
+						 </if>
+						 <if test="operationtname3 != null">
+		    		 		/*  */ 
+	    		 			OPERATIONTNAME3 = #{operationtname3,jdbcType=VARCHAR},
+						 </if>
+						 <if test="operationtname4 != null">
+		    		 		/*  */ 
+	    		 			OPERATIONTNAME4 = #{operationtname4,jdbcType=VARCHAR},
+						 </if>
+						 <if test="operationtname5 != null">
+		    		 		/*  */ 
+	    		 			OPERATIONTNAME5 = #{operationtname5,jdbcType=VARCHAR},
+						 </if>
+						 <if test="operationtname6 != null">
+		    		 		/*  */ 
+	    		 			OPERATIONTNAME6 = #{operationtname6,jdbcType=VARCHAR},
+						 </if>
+						 <if test="narcosismode1 != null">
+		    		 		/*  */ 
+	    		 			NARCOSISMODE1 = #{narcosismode1,jdbcType=VARCHAR},
+						 </if>
+						 <if test="narcosismode2 != null">
+		    		 		/*  */ 
+	    		 			NARCOSISMODE2 = #{narcosismode2,jdbcType=VARCHAR},
+						 </if>
+						 <if test="narcosismode3 != null">
+		    		 		/*  */ 
+	    		 			NARCOSISMODE3 = #{narcosismode3,jdbcType=VARCHAR},
+						 </if>
+						 <if test="narcosismode4 != null">
+		    		 		/*  */ 
+	    		 			NARCOSISMODE4 = #{narcosismode4,jdbcType=VARCHAR},
+						 </if>
+						 <if test="narcosismode5 != null">
+		    		 		/*  */ 
+	    		 			NARCOSISMODE5 = #{narcosismode5,jdbcType=VARCHAR},
+						 </if>
+						 <if test="narcosismode6 != null">
+		    		 		/*  */ 
+	    		 			NARCOSISMODE6 = #{narcosismode6,jdbcType=VARCHAR},
+						 </if>
+						 <if test="cutgrade1 != null">
+		    		 		/*  */ 
+	    		 			CUTGRADE1 = #{cutgrade1,jdbcType=VARCHAR},
+						 </if>
+						 <if test="cutgrade2 != null">
+		    		 		/*  */ 
+	    		 			CUTGRADE2 = #{cutgrade2,jdbcType=VARCHAR},
+						 </if>
+						 <if test="cutgrade3 != null">
+		    		 		/*  */ 
+	    		 			CUTGRADE3 = #{cutgrade3,jdbcType=VARCHAR},
+						 </if>
+						 <if test="cutgrade4 != null">
+		    		 		/*  */ 
+	    		 			CUTGRADE4 = #{cutgrade4,jdbcType=VARCHAR},
+						 </if>
+						 <if test="cutgrade5 != null">
+		    		 		/*  */ 
+	    		 			CUTGRADE5 = #{cutgrade5,jdbcType=VARCHAR},
+						 </if>
+						 <if test="cutgrade6 != null">
+		    		 		/*  */ 
+	    		 			CUTGRADE6 = #{cutgrade6,jdbcType=VARCHAR},
+						 </if>
+						 <if test="cicatrizegrade1 != null">
+		    		 		/*  */ 
+	    		 			CICATRIZEGRADE1 = #{cicatrizegrade1,jdbcType=VARCHAR},
+						 </if>
+						 <if test="cicatrizegrade2 != null">
+		    		 		/*  */ 
+	    		 			CICATRIZEGRADE2 = #{cicatrizegrade2,jdbcType=VARCHAR},
+						 </if>
+						 <if test="cicatrizegrade3 != null">
+		    		 		/*  */ 
+	    		 			CICATRIZEGRADE3 = #{cicatrizegrade3,jdbcType=VARCHAR},
+						 </if>
+						 <if test="cicatrizegrade4 != null">
+		    		 		/*  */ 
+	    		 			CICATRIZEGRADE4 = #{cicatrizegrade4,jdbcType=VARCHAR},
+						 </if>
+						 <if test="cicatrizegrade5 != null">
+		    		 		/*  */ 
+	    		 			CICATRIZEGRADE5 = #{cicatrizegrade5,jdbcType=VARCHAR},
+						 </if>
+						 <if test="cicatrizegrade6 != null">
+		    		 		/*  */ 
+	    		 			CICATRIZEGRADE6 = #{cicatrizegrade6,jdbcType=VARCHAR},
+						 </if>
+						 <if test="narcosisdocname1 != null">
+		    		 		/*  */ 
+	    		 			NARCOSISDOCNAME1 = #{narcosisdocname1,jdbcType=VARCHAR},
+						 </if>
+						 <if test="narcosisdocname2 != null">
+		    		 		/*  */ 
+	    		 			NARCOSISDOCNAME2 = #{narcosisdocname2,jdbcType=VARCHAR},
+						 </if>
+						 <if test="narcosisdocname3 != null">
+		    		 		/*  */ 
+	    		 			NARCOSISDOCNAME3 = #{narcosisdocname3,jdbcType=VARCHAR},
+						 </if>
+						 <if test="narcosisdocname4 != null">
+		    		 		/*  */ 
+	    		 			NARCOSISDOCNAME4 = #{narcosisdocname4,jdbcType=VARCHAR},
+						 </if>
+						 <if test="narcosisdocname5 != null">
+		    		 		/*  */ 
+	    		 			NARCOSISDOCNAME5 = #{narcosisdocname5,jdbcType=VARCHAR},
+						 </if>
+						 <if test="narcosisdocname6 != null">
+		    		 		/*  */ 
+	    		 			NARCOSISDOCNAME6 = #{narcosisdocname6,jdbcType=VARCHAR},
+						 </if>
+						 <if test="operaDesc1 != null">
+		    		 		/*  */ 
+	    		 			OPERA_DESC1 = #{operaDesc1,jdbcType=VARCHAR},
+						 </if>
+						 <if test="operaIcd1 != null">
+		    		 		/*  */ 
+	    		 			OPERA_ICD1 = #{operaIcd1,jdbcType=VARCHAR},
+						 </if>
+						 <if test="operaDesc2 != null">
+		    		 		/*  */ 
+	    		 			OPERA_DESC2 = #{operaDesc2,jdbcType=VARCHAR},
+						 </if>
+						 <if test="operaIcd2 != null">
+		    		 		/*  */ 
+	    		 			OPERA_ICD2 = #{operaIcd2,jdbcType=VARCHAR},
+						 </if>
+						 <if test="operaDesc3 != null">
+		    		 		/*  */ 
+	    		 			OPERA_DESC3 = #{operaDesc3,jdbcType=VARCHAR},
+						 </if>
+						 <if test="operaIcd3 != null">
+		    		 		/*  */ 
+	    		 			OPERA_ICD3 = #{operaIcd3,jdbcType=VARCHAR},
+						 </if>
+						 <if test="operaDesc4 != null">
+		    		 		/*  */ 
+	    		 			OPERA_DESC4 = #{operaDesc4,jdbcType=VARCHAR},
+						 </if>
+						 <if test="operaIcd4 != null">
+		    		 		/*  */ 
+	    		 			OPERA_ICD4 = #{operaIcd4,jdbcType=VARCHAR},
+						 </if>
+						 <if test="operaDesc5 != null">
+		    		 		/*  */ 
+	    		 			OPERA_DESC5 = #{operaDesc5,jdbcType=VARCHAR},
+						 </if>
+						 <if test="operaIcd5 != null">
+		    		 		/*  */ 
+	    		 			OPERA_ICD5 = #{operaIcd5,jdbcType=VARCHAR},
+						 </if>
+						 <if test="operaDesc6 != null">
+		    		 		/*  */ 
+	    		 			OPERA_DESC6 = #{operaDesc6,jdbcType=VARCHAR},
+						 </if>
+						 <if test="operaIcd6 != null">
+		    		 		/*  */ 
+	    		 			OPERA_ICD6 = #{operaIcd6,jdbcType=VARCHAR},
+						 </if>
+						 <if test="diaPathdesc != null">
+		    		 		/*  */ 
+	    		 			DIA_PATHDESC = #{diaPathdesc,jdbcType=VARCHAR},
+						 </if>
+						 <if test="diaPathicd != null">
+		    		 		/*  */ 
+	    		 			DIA_PATHICD = #{diaPathicd,jdbcType=VARCHAR},
+						 </if>
+						 <if test="diaPoisdesc != null">
+		    		 		/*  */ 
+	    		 			DIA_POISDESC = #{diaPoisdesc,jdbcType=VARCHAR},
+						 </if>
+						 <if test="diaPoiscode != null">
+		    		 		/*  */ 
+	    		 			DIA_POISCODE = #{diaPoiscode,jdbcType=VARCHAR},
+						 </if>
+						 <if test="diaClinicdesc != null">
+		    		 		/* 临床诊断 */ 
+	    		 			DIA_CLINICDESC = #{diaClinicdesc,jdbcType=VARCHAR},
+						 </if>
+						 <if test="diaClinicicd != null">
+		    		 		/*  */ 
+	    		 			DIA_CLINICICD = #{diaClinicicd,jdbcType=VARCHAR},
+						 </if>
+						 <if test="diaDisdesc1 != null">
+		    		 		/* 治疗措施 */ 
+	    		 			DIA_DISDESC1 = #{diaDisdesc1,jdbcType=VARCHAR},
+						 </if>
+						 <if test="diaDisicd1 != null">
+		    		 		/*  */ 
+	    		 			DIA_DISICD1 = #{diaDisicd1,jdbcType=VARCHAR},
+						 </if>
+						 <if test="diaDisdesc2 != null">
+		    		 		/*  */ 
+	    		 			DIA_DISDESC2 = #{diaDisdesc2,jdbcType=VARCHAR},
+						 </if>
+						 <if test="diaDisicd2 != null">
+		    		 		/*  */ 
+	    		 			DIA_DISICD2 = #{diaDisicd2,jdbcType=VARCHAR},
+						 </if>
+						 <if test="diaDisdesc3 != null">
+		    		 		/*  */ 
+	    		 			DIA_DISDESC3 = #{diaDisdesc3,jdbcType=VARCHAR},
+						 </if>
+						 <if test="diaDisicd3 != null">
+		    		 		/*  */ 
+	    		 			DIA_DISICD3 = #{diaDisicd3,jdbcType=VARCHAR},
+						 </if>
+						 <if test="diaDisdesc4 != null">
+		    		 		/*  */ 
+	    		 			DIA_DISDESC4 = #{diaDisdesc4,jdbcType=VARCHAR},
+						 </if>
+						 <if test="diaDisicd4 != null">
+		    		 		/*  */ 
+	    		 			DIA_DISICD4 = #{diaDisicd4,jdbcType=VARCHAR},
+						 </if>
+						 <if test="diaDisdesc5 != null">
+		    		 		/*  */ 
+	    		 			DIA_DISDESC5 = #{diaDisdesc5,jdbcType=VARCHAR},
+						 </if>
+	  	  		</trim>
+				WHERE
+	  	 		 		id = #{id}		/* 序号 */ 
+	 </update>
+	
+	<!--
+	方法名称: get
+	调用路径: com.mandala.patient.entity.ZyEmrBasy.get
+	开发信息: 
+	处理信息: 根据主键查询记录
+	-->
+	<select id="get" parameterType="Object"  resultMap="ZyEmrBasy">
+		   SELECT   
+                   zeb.HOSPITALDESC                  /* 医院名称 */ 
+                  ,zeb.HOSPITALCODE                  /* 治疗情况 */ 
+                  ,zeb.ADMNO                         /*  */ 
+                  ,zeb.VISITNO                       /*  */ 
+                  ,zeb.PAYCODE                       /*  */ 
+                  ,zeb.HEALTHCARDID                  /*  */ 
+                  ,zeb.VISITNUM                      /*  */ 
+                  ,zeb.DOCUMENTID                    /*  */ 
+                  ,zeb.INPATIENT                     /* 病人唯一ID */ 
+                  ,zeb.PATNAME                       /*  */ 
+                  ,zeb.SEX                           /*  */ 
+                  ,zeb.BIRTHDAY                      /*  */ 
+                  ,zeb.AGEYEAR                       /*  */ 
+                  ,zeb.NATIONALITY                   /*  */ 
+                  ,zeb.AGEMONTH                      /*  */ 
+                  ,zeb.BABYBORNWEIGHT                /*  */ 
+                  ,zeb.BABYADMWEIGHT                 /*  */ 
+                  ,zeb.BORNPROVINCE                  /*  */ 
+                  ,zeb.BORNCITY                      /*  */ 
+                  ,zeb.BORNCOUNTY                    /*  */ 
+                  ,zeb.NATIVEPROVINCE                /*  */ 
+                  ,zeb.NATIVECITY                    /*  */ 
+                  ,zeb.NATION                        /*  */ 
+                  ,zeb.CREDENTIALTYPE                /*  */ 
+                  ,zeb.CREDENTIALNO                  /*  */ 
+                  ,zeb.OCCUPATIONCODE                /*  */ 
+                  ,zeb.MARRYCODE                     /*  */ 
+                  ,zeb.ADDRESSPROVINCE               /*  */ 
+                  ,zeb.DIA_DISICD5                   /*  */ 
+                  ,zeb.DIA_DISDESC6                  /*  */ 
+                  ,zeb.DIA_DISICD6                   /*  */ 
+                  ,zeb.ADMWARDCODE                   /*  */ 
+                  ,zeb.DISWARDCODE                   /*  */ 
+                  ,zeb.IS2ZZHI30                     /*  */ 
+                  ,zeb.IS2ZZHI14                     /*  */ 
+                  ,zeb.IS2_31                        /*  */ 
+                  ,zeb.IS0_0                         /*  */ 
+                  ,zeb.IS2_31_VISITNO                /*  */ 
+                  ,zeb.IS2ZZHI30_VISITNO             /*  */ 
+                  ,zeb.IS0_0_VISITNO                 /*  */ 
+                  ,zeb.IS2ZZHI14_VISITNO             /*  */ 
+                  ,zeb.ZFY                           /*  */ 
+                  ,zeb.YF                            /*  */ 
+                  ,zeb.ADDRESSCITY                   /*  */ 
+                  ,zeb.ADDRESSCOUNTRY                /*  */ 
+                  ,zeb.ADDRESSXIANG                  /*  */ 
+                  ,zeb.ADDRESSVILLAGE                /*  */ 
+                  ,zeb.ADDRESSNUMBER                 /*  */ 
+                  ,zeb.TELEPHONE                     /*  */ 
+                  ,zeb.ADDRESSPOSTCODE               /*  */ 
+                  ,zeb.RESIDENTPROVINCE              /*  */ 
+                  ,zeb.RESIDENTCITY                  /*  */ 
+                  ,zeb.RESIDENTCOUNTRY               /*  */ 
+                  ,zeb.RESIDENTXIANG                 /*  */ 
+                  ,zeb.RESIDENTVILLAGE               /*  */ 
+                  ,zeb.RESIDENTNUMBER                /*  */ 
+                  ,zeb.RESIDENTPOSTCODE              /*  */ 
+                  ,zeb.WORKDESC                      /*  */ 
+                  ,zeb.WORKPROVINCE                  /*  */ 
+                  ,zeb.WORKCITY                      /*  */ 
+                  ,zeb.WORKCOUNTRY                   /*  */ 
+                  ,zeb.WORKXIANG                     /*  */ 
+                  ,zeb.WORKVILLAGE                   /*  */ 
+                  ,zeb.WORKNUMBER                    /*  */ 
+                  ,zeb.WORKTELEPHONE                 /*  */ 
+                  ,zeb.WORKPOSTCODE                  /*  */ 
+                  ,zeb.LINKNAME                      /*  */ 
+                  ,zeb.RELATIONCODE                  /*  */ 
+                  ,zeb.LINKPROVINCE                  /*  */ 
+                  ,zeb.LINKCITY                      /*  */ 
+                  ,zeb.LINKCOUNTRY                   /*  */ 
+                  ,zeb.LINKXIANG                     /*  */ 
+                  ,zeb.LINKVILLAGE                   /*  */ 
+                  ,zeb.LINKNUMBER                    /*  */ 
+                  ,zeb.LINKTELEPHONE                 /*  */ 
+                  ,zeb.ADMTRACE                      /*  */ 
+                  ,zeb.ADMSDATE                      /*  */ 
+                  ,zeb.ADMSDEPT                      /*  */ 
+                  ,zeb.ADMSWARD                      /*  */ 
+                  ,zeb.TRANDEPT                      /*  */ 
+                  ,zeb.ADMDDATE                      /*  */ 
+                  ,zeb.ADMDDEPT                      /*  */ 
+                  ,zeb.ADMDWARD                      /*  */ 
+                  ,zeb.ADMDAYS                       /* 住院天数 */ 
+                  ,zeb.FEATHFLAG                     /*  */ 
+                  ,zeb.ADMBLOOD                      /*  */ 
+                  ,zeb.ADMRHCODE                     /*  */ 
+                  ,zeb.DEPTDIRECTORDESC              /*  */ 
+                  ,zeb.DIRECTORDESC                  /*  */ 
+                  ,zeb.ATTENDINGDESC                 /*  */ 
+                  ,zeb.AESCULAPIUSDESC               /*  */ 
+                  ,zeb.DUTYNURSEDESC                 /*  */ 
+                  ,zeb.STUDYDOCTORDESC               /*  */ 
+                  ,zeb.PRACTICEDOCTORDESC            /*  */ 
+                  ,zeb.DOCUMENTUSERNAME              /*  */ 
+                  ,zeb.QUALITY                       /*  */ 
+                  ,zeb.QUALITYDOCTOR                 /*  */ 
+                  ,zeb.QUALITYNURSE                  /*  */ 
+                  ,zeb.QUALITYDAYS                   /*  */ 
+                  ,zeb.ADMOUTMODE                    /*  */ 
+                  ,zeb.DUMMYHOSPITAL                 /*  */ 
+                  ,zeb.ADMAGAINFLAG                  /*  */ 
+                  ,zeb.ADMAGAINAIM                   /*  */ 
+                  ,zeb.ADMSLEEPSDAY                  /*  */ 
+                  ,zeb.ADMSLEEPSHOUR                 /*  */ 
+                  ,zeb.ADMSLEEPSMINU                 /*  */ 
+                  ,zeb.ADMSLEEPEDAY                  /*  */ 
+                  ,zeb.ADMSLEEPEHOUR                 /*  */ 
+                  ,zeb.ADMSLEEPEMINU                 /*  */ 
+                  ,zeb.BREATHMACHINE                 /*  */ 
+                  ,zeb.KNUBT                         /*  */ 
+                  ,zeb.KNUBN                         /*  */ 
+                  ,zeb.KNUBM                         /*  */ 
+                  ,zeb.KNUBROBSON                    /*  */ 
+                  ,zeb.ADMSLIVE                      /*  */ 
+                  ,zeb.ADMDLIVE                      /*  */ 
+                  ,zeb.RELATIONDESC                  /*  */ 
+                  ,zeb.NATIONALITYDESC               /*  */ 
+                  ,zeb.OCCUPATIONDESC                /*  */ 
+                  ,zeb.LINKADDRESS                   /*  */ 
+                  ,zeb.CRITICAL                      /*  */ 
+                  ,zeb.DIFFICULTY                    /*  */ 
+                  ,zeb.SALVAGENUMBER                 /*  */ 
+                  ,zeb.SUCCEEDNUMBER                 /*  */ 
+                  ,zeb.FOLLOWUP                      /*  */ 
+                  ,zeb.FOLLOWUPDAY                   /*  */ 
+                  ,zeb.DOCTORDESC                    /*  */ 
+                  ,zeb.DOCTORCODE                    /*  */ 
+                  ,zeb.DEPTDIRECTORCODE              /*  */ 
+                  ,zeb.DIRECTORCODE                  /*  */ 
+                  ,zeb.ATTENDINGCODE                 /* 主治医生 */ 
+                  ,zeb.AESCULAPIUSCODE               /*  */ 
+                  ,zeb.DUTYNURSECODE                 /*  */ 
+                  ,zeb.STUDYDOCTORCODE               /*  */ 
+                  ,zeb.PRACTICEDOCTORCODE            /*  */ 
+                  ,zeb.DOCUMENTUSERCODE              /*  */ 
+                  ,zeb.QUALITYDOCTORCODE             /*  */ 
+                  ,zeb.QUALITYNURSECODE              /*  */ 
+                  ,zeb.DIAGNOSECODE1                 /*  */ 
+                  ,zeb.DIAGNOSEDESC1                 /* 入院诊断 */ 
+                  ,zeb.DIAGNOSECODE2                 /*  */ 
+                  ,zeb.DIAGNOSEDESC2                 /*  */ 
+                  ,zeb.DIAGNOSECODE3                 /*  */ 
+                  ,zeb.DIAGNOSEDESC3                 /*  */ 
+                  ,zeb.DIAGNOSECODE4                 /*  */ 
+                  ,zeb.DIAGNOSEDESC4                 /*  */ 
+                  ,zeb.DIAGNOSECODE5                 /*  */ 
+                  ,zeb.DIAGNOSEDESC5                 /*  */ 
+                  ,zeb.DIAGNOSECODE6                 /*  */ 
+                  ,zeb.DIAGNOSEDESC6                 /*  */ 
+                  ,zeb.OPERCODE1                     /*  */ 
+                  ,zeb.OPERDESC1                     /* 手术名称 */ 
+                  ,zeb.OPERCODE2                     /*  */ 
+                  ,zeb.OPERDESC2                     /*  */ 
+                  ,zeb.OPERCODE3                     /*  */ 
+                  ,zeb.OPERDESC3                     /*  */ 
+                  ,zeb.OPERCODE4                     /*  */ 
+                  ,zeb.OPERDESC4                     /*  */ 
+                  ,zeb.OPERCODE5                     /*  */ 
+                  ,zeb.OPERDESC5                     /*  */ 
+                  ,zeb.OPERCODE6                     /*  */ 
+                  ,zeb.OPERDESC6                     /*  */ 
+                  ,zeb.OPERDATE1                     /*  */ 
+                  ,zeb.OPERDATE2                     /*  */ 
+                  ,zeb.OPERDATE3                     /*  */ 
+                  ,zeb.OPERDATE4                     /*  */ 
+                  ,zeb.OPERDATE5                     /*  */ 
+                  ,zeb.OPERDATE6                     /*  */ 
+                  ,zeb.OPERLEVEL1                    /*  */ 
+                  ,zeb.OPERLEVEL2                    /*  */ 
+                  ,zeb.OPERLEVEL3                    /*  */ 
+                  ,zeb.OPERLEVEL4                    /*  */ 
+                  ,zeb.OPERLEVEL5                    /*  */ 
+                  ,zeb.OPERLEVEL6                    /*  */ 
+                  ,zeb.OPERATOR1                     /*  */ 
+                  ,zeb.OPERATOR2                     /*  */ 
+                  ,zeb.OPERATOR3                     /*  */ 
+                  ,zeb.OPERATOR4                     /*  */ 
+                  ,zeb.OPERATOR5                     /*  */ 
+                  ,zeb.OPERATOR6                     /*  */ 
+                  ,zeb.OPERATIONFNAME1               /*  */ 
+                  ,zeb.OPERATIONFNAME2               /*  */ 
+                  ,zeb.OPERATIONFNAME3               /*  */ 
+                  ,zeb.OPERATIONFNAME4               /*  */ 
+                  ,zeb.OPERATIONFNAME5               /*  */ 
+                  ,zeb.OPERATIONFNAME6               /*  */ 
+                  ,zeb.OPERATIONTNAME1               /*  */ 
+                  ,zeb.OPERATIONTNAME2               /*  */ 
+                  ,zeb.OPERATIONTNAME3               /*  */ 
+                  ,zeb.OPERATIONTNAME4               /*  */ 
+                  ,zeb.OPERATIONTNAME5               /*  */ 
+                  ,zeb.OPERATIONTNAME6               /*  */ 
+                  ,zeb.NARCOSISMODE1                 /*  */ 
+                  ,zeb.NARCOSISMODE2                 /*  */ 
+                  ,zeb.NARCOSISMODE3                 /*  */ 
+                  ,zeb.NARCOSISMODE4                 /*  */ 
+                  ,zeb.NARCOSISMODE5                 /*  */ 
+                  ,zeb.NARCOSISMODE6                 /*  */ 
+                  ,zeb.CUTGRADE1                     /*  */ 
+                  ,zeb.CUTGRADE2                     /*  */ 
+                  ,zeb.CUTGRADE3                     /*  */ 
+                  ,zeb.CUTGRADE4                     /*  */ 
+                  ,zeb.CUTGRADE5                     /*  */ 
+                  ,zeb.CUTGRADE6                     /*  */ 
+                  ,zeb.CICATRIZEGRADE1               /*  */ 
+                  ,zeb.CICATRIZEGRADE2               /*  */ 
+                  ,zeb.CICATRIZEGRADE3               /*  */ 
+                  ,zeb.CICATRIZEGRADE4               /*  */ 
+                  ,zeb.CICATRIZEGRADE5               /*  */ 
+                  ,zeb.CICATRIZEGRADE6               /*  */ 
+                  ,zeb.NARCOSISDOCNAME1              /*  */ 
+                  ,zeb.NARCOSISDOCNAME2              /*  */ 
+                  ,zeb.NARCOSISDOCNAME3              /*  */ 
+                  ,zeb.NARCOSISDOCNAME4              /*  */ 
+                  ,zeb.NARCOSISDOCNAME5              /*  */ 
+                  ,zeb.NARCOSISDOCNAME6              /*  */ 
+                  ,zeb.OPERA_DESC1                   /*  */ 
+                  ,zeb.OPERA_ICD1                    /*  */ 
+                  ,zeb.OPERA_DESC2                   /*  */ 
+                  ,zeb.OPERA_ICD2                    /*  */ 
+                  ,zeb.OPERA_DESC3                   /*  */ 
+                  ,zeb.OPERA_ICD3                    /*  */ 
+                  ,zeb.OPERA_DESC4                   /*  */ 
+                  ,zeb.OPERA_ICD4                    /*  */ 
+                  ,zeb.OPERA_DESC5                   /*  */ 
+                  ,zeb.OPERA_ICD5                    /*  */ 
+                  ,zeb.OPERA_DESC6                   /*  */ 
+                  ,zeb.OPERA_ICD6                    /*  */ 
+                  ,zeb.DIA_PATHDESC                  /*  */ 
+                  ,zeb.DIA_PATHICD                   /*  */ 
+                  ,zeb.DIA_POISDESC                  /*  */ 
+                  ,zeb.DIA_POISCODE                  /*  */ 
+                  ,zeb.DIA_CLINICDESC                /* 临床诊断 */ 
+                  ,zeb.DIA_CLINICICD                 /*  */ 
+                  ,zeb.DIA_DISDESC1                  /* 治疗措施 */ 
+                  ,zeb.DIA_DISICD1                   /*  */ 
+                  ,zeb.DIA_DISDESC2                  /*  */ 
+                  ,zeb.DIA_DISICD2                   /*  */ 
+                  ,zeb.DIA_DISDESC3                  /*  */ 
+                  ,zeb.DIA_DISICD3                   /*  */ 
+                  ,zeb.DIA_DISDESC4                  /*  */ 
+                  ,zeb.DIA_DISICD4                   /*  */ 
+                  ,zeb.DIA_DISDESC5                  /*  */ 
+		   FROM   zy_emr_basy       zeb      /*  */ 
+		   WHERE
+				id = #{id}				/* 序号 */ 
+	</select>
+	
+	<!--
+	方法名称: delete
+	调用路径: com.mandala.patient.entity.ZyEmrBasy.delete
+	开发信息: 
+	处理信息: 删除记录
+	-->
+	<delete id="delete" parameterType="Object">
+		DELETE 	FROM zy_emr_basy 	/*  */  
+		WHERE 
+			id = #{id}					/* 序号 */ 
+	</delete>
+	
+	<!--
+	方法名称: count
+	调用路径: com.mandala.patient.entity.ZyEmrBasy.count
+	开发信息: 
+	处理信息: 列表总数
+	-->
+	<select id="count" resultType="java.lang.Integer"  parameterType="Object">
+		SELECT count(*)  FROM  zy_emr_basy    zeb      /*  */ 
+		 WHERE 1=1
+		    <include refid="wherecontation"/>
+	</select>
+  	
+  	<!--
+	方法名称: queryPageList
+	调用路径: com.mandala.patient.entity.ZyEmrBasy.queryPageList
+	开发信息: 
+	处理信息: 列表
+	-->
+	<select id="queryPageList" parameterType="Object"  resultMap="ZyEmrBasy">
+	    SELECT 
+                   zeb.HOSPITALDESC                  /* 医院名称 */ 
+                  ,zeb.HOSPITALCODE                  /* 治疗情况 */ 
+                  ,zeb.ADMNO                         /*  */ 
+                  ,zeb.VISITNO                       /*  */ 
+                  ,zeb.PAYCODE                       /*  */ 
+                  ,zeb.HEALTHCARDID                  /*  */ 
+                  ,zeb.VISITNUM                      /*  */ 
+                  ,zeb.DOCUMENTID                    /*  */ 
+                  ,zeb.INPATIENT                     /* 病人唯一ID */ 
+                  ,zeb.PATNAME                       /*  */ 
+                  ,zeb.SEX                           /*  */ 
+                  ,zeb.BIRTHDAY                      /*  */ 
+                  ,zeb.AGEYEAR                       /*  */ 
+                  ,zeb.NATIONALITY                   /*  */ 
+                  ,zeb.AGEMONTH                      /*  */ 
+                  ,zeb.BABYBORNWEIGHT                /*  */ 
+                  ,zeb.BABYADMWEIGHT                 /*  */ 
+                  ,zeb.BORNPROVINCE                  /*  */ 
+                  ,zeb.BORNCITY                      /*  */ 
+                  ,zeb.BORNCOUNTY                    /*  */ 
+                  ,zeb.NATIVEPROVINCE                /*  */ 
+                  ,zeb.NATIVECITY                    /*  */ 
+                  ,zeb.NATION                        /*  */ 
+                  ,zeb.CREDENTIALTYPE                /*  */ 
+                  ,zeb.CREDENTIALNO                  /*  */ 
+                  ,zeb.OCCUPATIONCODE                /*  */ 
+                  ,zeb.MARRYCODE                     /*  */ 
+                  ,zeb.ADDRESSPROVINCE               /*  */ 
+                  ,zeb.DIA_DISICD5                   /*  */ 
+                  ,zeb.DIA_DISDESC6                  /*  */ 
+                  ,zeb.DIA_DISICD6                   /*  */ 
+                  ,zeb.ADMWARDCODE                   /*  */ 
+                  ,zeb.DISWARDCODE                   /*  */ 
+                  ,zeb.IS2ZZHI30                     /*  */ 
+                  ,zeb.IS2ZZHI14                     /*  */ 
+                  ,zeb.IS2_31                        /*  */ 
+                  ,zeb.IS0_0                         /*  */ 
+                  ,zeb.IS2_31_VISITNO                /*  */ 
+                  ,zeb.IS2ZZHI30_VISITNO             /*  */ 
+                  ,zeb.IS0_0_VISITNO                 /*  */ 
+                  ,zeb.IS2ZZHI14_VISITNO             /*  */ 
+                  ,zeb.ZFY                           /*  */ 
+                  ,zeb.YF                            /*  */ 
+                  ,zeb.ADDRESSCITY                   /*  */ 
+                  ,zeb.ADDRESSCOUNTRY                /*  */ 
+                  ,zeb.ADDRESSXIANG                  /*  */ 
+                  ,zeb.ADDRESSVILLAGE                /*  */ 
+                  ,zeb.ADDRESSNUMBER                 /*  */ 
+                  ,zeb.TELEPHONE                     /*  */ 
+                  ,zeb.ADDRESSPOSTCODE               /*  */ 
+                  ,zeb.RESIDENTPROVINCE              /*  */ 
+                  ,zeb.RESIDENTCITY                  /*  */ 
+                  ,zeb.RESIDENTCOUNTRY               /*  */ 
+                  ,zeb.RESIDENTXIANG                 /*  */ 
+                  ,zeb.RESIDENTVILLAGE               /*  */ 
+                  ,zeb.RESIDENTNUMBER                /*  */ 
+                  ,zeb.RESIDENTPOSTCODE              /*  */ 
+                  ,zeb.WORKDESC                      /*  */ 
+                  ,zeb.WORKPROVINCE                  /*  */ 
+                  ,zeb.WORKCITY                      /*  */ 
+                  ,zeb.WORKCOUNTRY                   /*  */ 
+                  ,zeb.WORKXIANG                     /*  */ 
+                  ,zeb.WORKVILLAGE                   /*  */ 
+                  ,zeb.WORKNUMBER                    /*  */ 
+                  ,zeb.WORKTELEPHONE                 /*  */ 
+                  ,zeb.WORKPOSTCODE                  /*  */ 
+                  ,zeb.LINKNAME                      /*  */ 
+                  ,zeb.RELATIONCODE                  /*  */ 
+                  ,zeb.LINKPROVINCE                  /*  */ 
+                  ,zeb.LINKCITY                      /*  */ 
+                  ,zeb.LINKCOUNTRY                   /*  */ 
+                  ,zeb.LINKXIANG                     /*  */ 
+                  ,zeb.LINKVILLAGE                   /*  */ 
+                  ,zeb.LINKNUMBER                    /*  */ 
+                  ,zeb.LINKTELEPHONE                 /*  */ 
+                  ,zeb.ADMTRACE                      /*  */ 
+                  ,zeb.ADMSDATE                      /*  */ 
+                  ,zeb.ADMSDEPT                      /*  */ 
+                  ,zeb.ADMSWARD                      /*  */ 
+                  ,zeb.TRANDEPT                      /*  */ 
+                  ,zeb.ADMDDATE                      /*  */ 
+                  ,zeb.ADMDDEPT                      /*  */ 
+                  ,zeb.ADMDWARD                      /*  */ 
+                  ,zeb.ADMDAYS                       /* 住院天数 */ 
+                  ,zeb.FEATHFLAG                     /*  */ 
+                  ,zeb.ADMBLOOD                      /*  */ 
+                  ,zeb.ADMRHCODE                     /*  */ 
+                  ,zeb.DEPTDIRECTORDESC              /*  */ 
+                  ,zeb.DIRECTORDESC                  /*  */ 
+                  ,zeb.ATTENDINGDESC                 /*  */ 
+                  ,zeb.AESCULAPIUSDESC               /*  */ 
+                  ,zeb.DUTYNURSEDESC                 /*  */ 
+                  ,zeb.STUDYDOCTORDESC               /*  */ 
+                  ,zeb.PRACTICEDOCTORDESC            /*  */ 
+                  ,zeb.DOCUMENTUSERNAME              /*  */ 
+                  ,zeb.QUALITY                       /*  */ 
+                  ,zeb.QUALITYDOCTOR                 /*  */ 
+                  ,zeb.QUALITYNURSE                  /*  */ 
+                  ,zeb.QUALITYDAYS                   /*  */ 
+                  ,zeb.ADMOUTMODE                    /*  */ 
+                  ,zeb.DUMMYHOSPITAL                 /*  */ 
+                  ,zeb.ADMAGAINFLAG                  /*  */ 
+                  ,zeb.ADMAGAINAIM                   /*  */ 
+                  ,zeb.ADMSLEEPSDAY                  /*  */ 
+                  ,zeb.ADMSLEEPSHOUR                 /*  */ 
+                  ,zeb.ADMSLEEPSMINU                 /*  */ 
+                  ,zeb.ADMSLEEPEDAY                  /*  */ 
+                  ,zeb.ADMSLEEPEHOUR                 /*  */ 
+                  ,zeb.ADMSLEEPEMINU                 /*  */ 
+                  ,zeb.BREATHMACHINE                 /*  */ 
+                  ,zeb.KNUBT                         /*  */ 
+                  ,zeb.KNUBN                         /*  */ 
+                  ,zeb.KNUBM                         /*  */ 
+                  ,zeb.KNUBROBSON                    /*  */ 
+                  ,zeb.ADMSLIVE                      /*  */ 
+                  ,zeb.ADMDLIVE                      /*  */ 
+                  ,zeb.RELATIONDESC                  /*  */ 
+                  ,zeb.NATIONALITYDESC               /*  */ 
+                  ,zeb.OCCUPATIONDESC                /*  */ 
+                  ,zeb.LINKADDRESS                   /*  */ 
+                  ,zeb.CRITICAL                      /*  */ 
+                  ,zeb.DIFFICULTY                    /*  */ 
+                  ,zeb.SALVAGENUMBER                 /*  */ 
+                  ,zeb.SUCCEEDNUMBER                 /*  */ 
+                  ,zeb.FOLLOWUP                      /*  */ 
+                  ,zeb.FOLLOWUPDAY                   /*  */ 
+                  ,zeb.DOCTORDESC                    /*  */ 
+                  ,zeb.DOCTORCODE                    /*  */ 
+                  ,zeb.DEPTDIRECTORCODE              /*  */ 
+                  ,zeb.DIRECTORCODE                  /*  */ 
+                  ,zeb.ATTENDINGCODE                 /* 主治医生 */ 
+                  ,zeb.AESCULAPIUSCODE               /*  */ 
+                  ,zeb.DUTYNURSECODE                 /*  */ 
+                  ,zeb.STUDYDOCTORCODE               /*  */ 
+                  ,zeb.PRACTICEDOCTORCODE            /*  */ 
+                  ,zeb.DOCUMENTUSERCODE              /*  */ 
+                  ,zeb.QUALITYDOCTORCODE             /*  */ 
+                  ,zeb.QUALITYNURSECODE              /*  */ 
+                  ,zeb.DIAGNOSECODE1                 /*  */ 
+                  ,zeb.DIAGNOSEDESC1                 /* 入院诊断 */ 
+                  ,zeb.DIAGNOSECODE2                 /*  */ 
+                  ,zeb.DIAGNOSEDESC2                 /*  */ 
+                  ,zeb.DIAGNOSECODE3                 /*  */ 
+                  ,zeb.DIAGNOSEDESC3                 /*  */ 
+                  ,zeb.DIAGNOSECODE4                 /*  */ 
+                  ,zeb.DIAGNOSEDESC4                 /*  */ 
+                  ,zeb.DIAGNOSECODE5                 /*  */ 
+                  ,zeb.DIAGNOSEDESC5                 /*  */ 
+                  ,zeb.DIAGNOSECODE6                 /*  */ 
+                  ,zeb.DIAGNOSEDESC6                 /*  */ 
+                  ,zeb.OPERCODE1                     /*  */ 
+                  ,zeb.OPERDESC1                     /* 手术名称 */ 
+                  ,zeb.OPERCODE2                     /*  */ 
+                  ,zeb.OPERDESC2                     /*  */ 
+                  ,zeb.OPERCODE3                     /*  */ 
+                  ,zeb.OPERDESC3                     /*  */ 
+                  ,zeb.OPERCODE4                     /*  */ 
+                  ,zeb.OPERDESC4                     /*  */ 
+                  ,zeb.OPERCODE5                     /*  */ 
+                  ,zeb.OPERDESC5                     /*  */ 
+                  ,zeb.OPERCODE6                     /*  */ 
+                  ,zeb.OPERDESC6                     /*  */ 
+                  ,zeb.OPERDATE1                     /*  */ 
+                  ,zeb.OPERDATE2                     /*  */ 
+                  ,zeb.OPERDATE3                     /*  */ 
+                  ,zeb.OPERDATE4                     /*  */ 
+                  ,zeb.OPERDATE5                     /*  */ 
+                  ,zeb.OPERDATE6                     /*  */ 
+                  ,zeb.OPERLEVEL1                    /*  */ 
+                  ,zeb.OPERLEVEL2                    /*  */ 
+                  ,zeb.OPERLEVEL3                    /*  */ 
+                  ,zeb.OPERLEVEL4                    /*  */ 
+                  ,zeb.OPERLEVEL5                    /*  */ 
+                  ,zeb.OPERLEVEL6                    /*  */ 
+                  ,zeb.OPERATOR1                     /*  */ 
+                  ,zeb.OPERATOR2                     /*  */ 
+                  ,zeb.OPERATOR3                     /*  */ 
+                  ,zeb.OPERATOR4                     /*  */ 
+                  ,zeb.OPERATOR5                     /*  */ 
+                  ,zeb.OPERATOR6                     /*  */ 
+                  ,zeb.OPERATIONFNAME1               /*  */ 
+                  ,zeb.OPERATIONFNAME2               /*  */ 
+                  ,zeb.OPERATIONFNAME3               /*  */ 
+                  ,zeb.OPERATIONFNAME4               /*  */ 
+                  ,zeb.OPERATIONFNAME5               /*  */ 
+                  ,zeb.OPERATIONFNAME6               /*  */ 
+                  ,zeb.OPERATIONTNAME1               /*  */ 
+                  ,zeb.OPERATIONTNAME2               /*  */ 
+                  ,zeb.OPERATIONTNAME3               /*  */ 
+                  ,zeb.OPERATIONTNAME4               /*  */ 
+                  ,zeb.OPERATIONTNAME5               /*  */ 
+                  ,zeb.OPERATIONTNAME6               /*  */ 
+                  ,zeb.NARCOSISMODE1                 /*  */ 
+                  ,zeb.NARCOSISMODE2                 /*  */ 
+                  ,zeb.NARCOSISMODE3                 /*  */ 
+                  ,zeb.NARCOSISMODE4                 /*  */ 
+                  ,zeb.NARCOSISMODE5                 /*  */ 
+                  ,zeb.NARCOSISMODE6                 /*  */ 
+                  ,zeb.CUTGRADE1                     /*  */ 
+                  ,zeb.CUTGRADE2                     /*  */ 
+                  ,zeb.CUTGRADE3                     /*  */ 
+                  ,zeb.CUTGRADE4                     /*  */ 
+                  ,zeb.CUTGRADE5                     /*  */ 
+                  ,zeb.CUTGRADE6                     /*  */ 
+                  ,zeb.CICATRIZEGRADE1               /*  */ 
+                  ,zeb.CICATRIZEGRADE2               /*  */ 
+                  ,zeb.CICATRIZEGRADE3               /*  */ 
+                  ,zeb.CICATRIZEGRADE4               /*  */ 
+                  ,zeb.CICATRIZEGRADE5               /*  */ 
+                  ,zeb.CICATRIZEGRADE6               /*  */ 
+                  ,zeb.NARCOSISDOCNAME1              /*  */ 
+                  ,zeb.NARCOSISDOCNAME2              /*  */ 
+                  ,zeb.NARCOSISDOCNAME3              /*  */ 
+                  ,zeb.NARCOSISDOCNAME4              /*  */ 
+                  ,zeb.NARCOSISDOCNAME5              /*  */ 
+                  ,zeb.NARCOSISDOCNAME6              /*  */ 
+                  ,zeb.OPERA_DESC1                   /*  */ 
+                  ,zeb.OPERA_ICD1                    /*  */ 
+                  ,zeb.OPERA_DESC2                   /*  */ 
+                  ,zeb.OPERA_ICD2                    /*  */ 
+                  ,zeb.OPERA_DESC3                   /*  */ 
+                  ,zeb.OPERA_ICD3                    /*  */ 
+                  ,zeb.OPERA_DESC4                   /*  */ 
+                  ,zeb.OPERA_ICD4                    /*  */ 
+                  ,zeb.OPERA_DESC5                   /*  */ 
+                  ,zeb.OPERA_ICD5                    /*  */ 
+                  ,zeb.OPERA_DESC6                   /*  */ 
+                  ,zeb.OPERA_ICD6                    /*  */ 
+                  ,zeb.DIA_PATHDESC                  /*  */ 
+                  ,zeb.DIA_PATHICD                   /*  */ 
+                  ,zeb.DIA_POISDESC                  /*  */ 
+                  ,zeb.DIA_POISCODE                  /*  */ 
+                  ,zeb.DIA_CLINICDESC                /* 临床诊断 */ 
+                  ,zeb.DIA_CLINICICD                 /*  */ 
+                  ,zeb.DIA_DISDESC1                  /* 治疗措施 */ 
+                  ,zeb.DIA_DISICD1                   /*  */ 
+                  ,zeb.DIA_DISDESC2                  /*  */ 
+                  ,zeb.DIA_DISICD2                   /*  */ 
+                  ,zeb.DIA_DISDESC3                  /*  */ 
+                  ,zeb.DIA_DISICD3                   /*  */ 
+                  ,zeb.DIA_DISDESC4                  /*  */ 
+                  ,zeb.DIA_DISICD4                   /*  */ 
+                  ,zeb.DIA_DISDESC5                  /*  */ 
+		FROM  (
+SELECT A.*, ROWNUM RN 
+FROM (SELECT * FROM zy_emr_basy where  1=1  <include refid="wherecontation"/>) A WHERE 
+#{startRow}  + #{pageSize}
+>= ROWNUM) zeb  
+WHERE zeb.RN >= #{startRow} 
+		
+			  
+	</select>
+	
+	
+		<!--
+	方法名称: queryByNameAndZyh
+	调用路径: com.mandala.patient.entity.ZyEmrBasy.queryByNameAndZyh
+	开发信息: 
+	处理信息: 根据主键查询记录
+	-->
+	<select id="queryByNameAndZyh"  resultMap="ZyEmrBasy">
+		   SELECT   
+                   zeb.HOSPITALDESC                  /* 医院名称 */ 
+                  ,zeb.HOSPITALCODE                  /* 治疗情况 */ 
+                  ,zeb.ADMNO                         /*  */ 
+                  ,zeb.VISITNO                       /*  */ 
+                  ,zeb.PAYCODE                       /*  */ 
+                  ,zeb.HEALTHCARDID                  /*  */ 
+                  ,zeb.VISITNUM                      /*  */ 
+                  ,zeb.DOCUMENTID                    /*  */ 
+                  ,zeb.INPATIENT                     /* 病人唯一ID */ 
+                  ,zeb.PATNAME                       /*  */ 
+                  ,zeb.SEX                           /*  */ 
+                  ,zeb.BIRTHDAY                      /*  */ 
+                  ,zeb.AGEYEAR                       /*  */ 
+                  ,zeb.NATIONALITY                   /*  */ 
+                  ,zeb.AGEMONTH                      /*  */ 
+                  ,zeb.BABYBORNWEIGHT                /*  */ 
+                  ,zeb.BABYADMWEIGHT                 /*  */ 
+                  ,zeb.BORNPROVINCE                  /*  */ 
+                  ,zeb.BORNCITY                      /*  */ 
+                  ,zeb.BORNCOUNTY                    /*  */ 
+                  ,zeb.NATIVEPROVINCE                /*  */ 
+                  ,zeb.NATIVECITY                    /*  */ 
+                  ,zeb.NATION                        /*  */ 
+                  ,zeb.CREDENTIALTYPE                /*  */ 
+                  ,zeb.CREDENTIALNO                  /*  */ 
+                  ,zeb.OCCUPATIONCODE                /*  */ 
+                  ,zeb.MARRYCODE                     /*  */ 
+                  ,zeb.ADDRESSPROVINCE               /*  */ 
+                  ,zeb.DIA_DISICD5                   /*  */ 
+                  ,zeb.DIA_DISDESC6                  /*  */ 
+                  ,zeb.DIA_DISICD6                   /*  */ 
+                  ,zeb.ADMWARDCODE                   /*  */ 
+                  ,zeb.DISWARDCODE                   /*  */ 
+                  ,zeb.IS2ZZHI30                     /*  */ 
+                  ,zeb.IS2ZZHI14                     /*  */ 
+                  ,zeb.IS2_31                        /*  */ 
+                  ,zeb.IS0_0                         /*  */ 
+                  ,zeb.IS2_31_VISITNO                /*  */ 
+                  ,zeb.IS2ZZHI30_VISITNO             /*  */ 
+                  ,zeb.IS0_0_VISITNO                 /*  */ 
+                  ,zeb.IS2ZZHI14_VISITNO             /*  */ 
+                  ,zeb.ZFY                           /*  */ 
+                  ,zeb.YF                            /*  */ 
+                  ,zeb.ADDRESSCITY                   /*  */ 
+                  ,zeb.ADDRESSCOUNTRY                /*  */ 
+                  ,zeb.ADDRESSXIANG                  /*  */ 
+                  ,zeb.ADDRESSVILLAGE                /*  */ 
+                  ,zeb.ADDRESSNUMBER                 /*  */ 
+                  ,zeb.TELEPHONE                     /*  */ 
+                  ,zeb.ADDRESSPOSTCODE               /*  */ 
+                  ,zeb.RESIDENTPROVINCE              /*  */ 
+                  ,zeb.RESIDENTCITY                  /*  */ 
+                  ,zeb.RESIDENTCOUNTRY               /*  */ 
+                  ,zeb.RESIDENTXIANG                 /*  */ 
+                  ,zeb.RESIDENTVILLAGE               /*  */ 
+                  ,zeb.RESIDENTNUMBER                /*  */ 
+                  ,zeb.RESIDENTPOSTCODE              /*  */ 
+                  ,zeb.WORKDESC                      /*  */ 
+                  ,zeb.WORKPROVINCE                  /*  */ 
+                  ,zeb.WORKCITY                      /*  */ 
+                  ,zeb.WORKCOUNTRY                   /*  */ 
+                  ,zeb.WORKXIANG                     /*  */ 
+                  ,zeb.WORKVILLAGE                   /*  */ 
+                  ,zeb.WORKNUMBER                    /*  */ 
+                  ,zeb.WORKTELEPHONE                 /*  */ 
+                  ,zeb.WORKPOSTCODE                  /*  */ 
+                  ,zeb.LINKNAME                      /*  */ 
+                  ,zeb.RELATIONCODE                  /*  */ 
+                  ,zeb.LINKPROVINCE                  /*  */ 
+                  ,zeb.LINKCITY                      /*  */ 
+                  ,zeb.LINKCOUNTRY                   /*  */ 
+                  ,zeb.LINKXIANG                     /*  */ 
+                  ,zeb.LINKVILLAGE                   /*  */ 
+                  ,zeb.LINKNUMBER                    /*  */ 
+                  ,zeb.LINKTELEPHONE                 /*  */ 
+                  ,zeb.ADMTRACE                      /*  */ 
+                  ,zeb.ADMSDATE                      /*  */ 
+                  ,zeb.ADMSDEPT                      /*  */ 
+                  ,zeb.ADMSWARD                      /*  */ 
+                  ,zeb.TRANDEPT                      /*  */ 
+                  ,zeb.ADMDDATE                      /*  */ 
+                  ,zeb.ADMDDEPT                      /*  */ 
+                  ,zeb.ADMDWARD                      /*  */ 
+                  ,zeb.ADMDAYS                       /* 住院天数 */ 
+                  ,zeb.FEATHFLAG                     /*  */ 
+                  ,zeb.ADMBLOOD                      /*  */ 
+                  ,zeb.ADMRHCODE                     /*  */ 
+                  ,zeb.DEPTDIRECTORDESC              /*  */ 
+                  ,zeb.DIRECTORDESC                  /*  */ 
+                  ,zeb.ATTENDINGDESC                 /*  */ 
+                  ,zeb.AESCULAPIUSDESC               /*  */ 
+                  ,zeb.DUTYNURSEDESC                 /*  */ 
+                  ,zeb.STUDYDOCTORDESC               /*  */ 
+                  ,zeb.PRACTICEDOCTORDESC            /*  */ 
+                  ,zeb.DOCUMENTUSERNAME              /*  */ 
+                  ,zeb.QUALITY                       /*  */ 
+                  ,zeb.QUALITYDOCTOR                 /*  */ 
+                  ,zeb.QUALITYNURSE                  /*  */ 
+                  ,zeb.QUALITYDAYS                   /*  */ 
+                  ,zeb.ADMOUTMODE                    /*  */ 
+                  ,zeb.DUMMYHOSPITAL                 /*  */ 
+                  ,zeb.ADMAGAINFLAG                  /*  */ 
+                  ,zeb.ADMAGAINAIM                   /*  */ 
+                  ,zeb.ADMSLEEPSDAY                  /*  */ 
+                  ,zeb.ADMSLEEPSHOUR                 /*  */ 
+                  ,zeb.ADMSLEEPSMINU                 /*  */ 
+                  ,zeb.ADMSLEEPEDAY                  /*  */ 
+                  ,zeb.ADMSLEEPEHOUR                 /*  */ 
+                  ,zeb.ADMSLEEPEMINU                 /*  */ 
+                  ,zeb.BREATHMACHINE                 /*  */ 
+                  ,zeb.KNUBT                         /*  */ 
+                  ,zeb.KNUBN                         /*  */ 
+                  ,zeb.KNUBM                         /*  */ 
+                  ,zeb.KNUBROBSON                    /*  */ 
+                  ,zeb.ADMSLIVE                      /*  */ 
+                  ,zeb.ADMDLIVE                      /*  */ 
+                  ,zeb.RELATIONDESC                  /*  */ 
+                  ,zeb.NATIONALITYDESC               /*  */ 
+                  ,zeb.OCCUPATIONDESC                /*  */ 
+                  ,zeb.LINKADDRESS                   /*  */ 
+                  ,zeb.CRITICAL                      /*  */ 
+                  ,zeb.DIFFICULTY                    /*  */ 
+                  ,zeb.SALVAGENUMBER                 /*  */ 
+                  ,zeb.SUCCEEDNUMBER                 /*  */ 
+                  ,zeb.FOLLOWUP                      /*  */ 
+                  ,zeb.FOLLOWUPDAY                   /*  */ 
+                  ,zeb.DOCTORDESC                    /*  */ 
+                  ,zeb.DOCTORCODE                    /*  */ 
+                  ,zeb.DEPTDIRECTORCODE              /*  */ 
+                  ,zeb.DIRECTORCODE                  /*  */ 
+                  ,zeb.ATTENDINGCODE                 /* 主治医生 */ 
+                  ,zeb.AESCULAPIUSCODE               /*  */ 
+                  ,zeb.DUTYNURSECODE                 /*  */ 
+                  ,zeb.STUDYDOCTORCODE               /*  */ 
+                  ,zeb.PRACTICEDOCTORCODE            /*  */ 
+                  ,zeb.DOCUMENTUSERCODE              /*  */ 
+                  ,zeb.QUALITYDOCTORCODE             /*  */ 
+                  ,zeb.QUALITYNURSECODE              /*  */ 
+                  ,zeb.DIAGNOSECODE1                 /*  */ 
+                  ,zeb.DIAGNOSEDESC1                 /* 入院诊断 */ 
+                  ,zeb.DIAGNOSECODE2                 /*  */ 
+                  ,zeb.DIAGNOSEDESC2                 /*  */ 
+                  ,zeb.DIAGNOSECODE3                 /*  */ 
+                  ,zeb.DIAGNOSEDESC3                 /*  */ 
+                  ,zeb.DIAGNOSECODE4                 /*  */ 
+                  ,zeb.DIAGNOSEDESC4                 /*  */ 
+                  ,zeb.DIAGNOSECODE5                 /*  */ 
+                  ,zeb.DIAGNOSEDESC5                 /*  */ 
+                  ,zeb.DIAGNOSECODE6                 /*  */ 
+                  ,zeb.DIAGNOSEDESC6                 /*  */ 
+                  ,zeb.OPERCODE1                     /*  */ 
+                  ,zeb.OPERDESC1                     /* 手术名称 */ 
+                  ,zeb.OPERCODE2                     /*  */ 
+                  ,zeb.OPERDESC2                     /*  */ 
+                  ,zeb.OPERCODE3                     /*  */ 
+                  ,zeb.OPERDESC3                     /*  */ 
+                  ,zeb.OPERCODE4                     /*  */ 
+                  ,zeb.OPERDESC4                     /*  */ 
+                  ,zeb.OPERCODE5                     /*  */ 
+                  ,zeb.OPERDESC5                     /*  */ 
+                  ,zeb.OPERCODE6                     /*  */ 
+                  ,zeb.OPERDESC6                     /*  */ 
+                  ,zeb.OPERDATE1                     /*  */ 
+                  ,zeb.OPERDATE2                     /*  */ 
+                  ,zeb.OPERDATE3                     /*  */ 
+                  ,zeb.OPERDATE4                     /*  */ 
+                  ,zeb.OPERDATE5                     /*  */ 
+                  ,zeb.OPERDATE6                     /*  */ 
+                  ,zeb.OPERLEVEL1                    /*  */ 
+                  ,zeb.OPERLEVEL2                    /*  */ 
+                  ,zeb.OPERLEVEL3                    /*  */ 
+                  ,zeb.OPERLEVEL4                    /*  */ 
+                  ,zeb.OPERLEVEL5                    /*  */ 
+                  ,zeb.OPERLEVEL6                    /*  */ 
+                  ,zeb.OPERATOR1                     /*  */ 
+                  ,zeb.OPERATOR2                     /*  */ 
+                  ,zeb.OPERATOR3                     /*  */ 
+                  ,zeb.OPERATOR4                     /*  */ 
+                  ,zeb.OPERATOR5                     /*  */ 
+                  ,zeb.OPERATOR6                     /*  */ 
+                  ,zeb.OPERATIONFNAME1               /*  */ 
+                  ,zeb.OPERATIONFNAME2               /*  */ 
+                  ,zeb.OPERATIONFNAME3               /*  */ 
+                  ,zeb.OPERATIONFNAME4               /*  */ 
+                  ,zeb.OPERATIONFNAME5               /*  */ 
+                  ,zeb.OPERATIONFNAME6               /*  */ 
+                  ,zeb.OPERATIONTNAME1               /*  */ 
+                  ,zeb.OPERATIONTNAME2               /*  */ 
+                  ,zeb.OPERATIONTNAME3               /*  */ 
+                  ,zeb.OPERATIONTNAME4               /*  */ 
+                  ,zeb.OPERATIONTNAME5               /*  */ 
+                  ,zeb.OPERATIONTNAME6               /*  */ 
+                  ,zeb.NARCOSISMODE1                 /*  */ 
+                  ,zeb.NARCOSISMODE2                 /*  */ 
+                  ,zeb.NARCOSISMODE3                 /*  */ 
+                  ,zeb.NARCOSISMODE4                 /*  */ 
+                  ,zeb.NARCOSISMODE5                 /*  */ 
+                  ,zeb.NARCOSISMODE6                 /*  */ 
+                  ,zeb.CUTGRADE1                     /*  */ 
+                  ,zeb.CUTGRADE2                     /*  */ 
+                  ,zeb.CUTGRADE3                     /*  */ 
+                  ,zeb.CUTGRADE4                     /*  */ 
+                  ,zeb.CUTGRADE5                     /*  */ 
+                  ,zeb.CUTGRADE6                     /*  */ 
+                  ,zeb.CICATRIZEGRADE1               /*  */ 
+                  ,zeb.CICATRIZEGRADE2               /*  */ 
+                  ,zeb.CICATRIZEGRADE3               /*  */ 
+                  ,zeb.CICATRIZEGRADE4               /*  */ 
+                  ,zeb.CICATRIZEGRADE5               /*  */ 
+                  ,zeb.CICATRIZEGRADE6               /*  */ 
+                  ,zeb.NARCOSISDOCNAME1              /*  */ 
+                  ,zeb.NARCOSISDOCNAME2              /*  */ 
+                  ,zeb.NARCOSISDOCNAME3              /*  */ 
+                  ,zeb.NARCOSISDOCNAME4              /*  */ 
+                  ,zeb.NARCOSISDOCNAME5              /*  */ 
+                  ,zeb.NARCOSISDOCNAME6              /*  */ 
+                  ,zeb.OPERA_DESC1                   /*  */ 
+                  ,zeb.OPERA_ICD1                    /*  */ 
+                  ,zeb.OPERA_DESC2                   /*  */ 
+                  ,zeb.OPERA_ICD2                    /*  */ 
+                  ,zeb.OPERA_DESC3                   /*  */ 
+                  ,zeb.OPERA_ICD3                    /*  */ 
+                  ,zeb.OPERA_DESC4                   /*  */ 
+                  ,zeb.OPERA_ICD4                    /*  */ 
+                  ,zeb.OPERA_DESC5                   /*  */ 
+                  ,zeb.OPERA_ICD5                    /*  */ 
+                  ,zeb.OPERA_DESC6                   /*  */ 
+                  ,zeb.OPERA_ICD6                    /*  */ 
+                  ,zeb.DIA_PATHDESC                  /*  */ 
+                  ,zeb.DIA_PATHICD                   /*  */ 
+                  ,zeb.DIA_POISDESC                  /*  */ 
+                  ,zeb.DIA_POISCODE                  /*  */ 
+                  ,zeb.DIA_CLINICDESC                /* 临床诊断 */ 
+                  ,zeb.DIA_CLINICICD                 /*  */ 
+                  ,zeb.DIA_DISDESC1                  /* 治疗措施 */ 
+                  ,zeb.DIA_DISICD1                   /*  */ 
+                  ,zeb.DIA_DISDESC2                  /*  */ 
+                  ,zeb.DIA_DISICD2                   /*  */ 
+                  ,zeb.DIA_DISDESC3                  /*  */ 
+                  ,zeb.DIA_DISICD3                   /*  */ 
+                  ,zeb.DIA_DISDESC4                  /*  */ 
+                  ,zeb.DIA_DISICD4                   /*  */ 
+                  ,zeb.DIA_DISDESC5                  /*  */ 
+		   FROM   zy_emr_basy       zeb      /*  */ 
+		   WHERE 
+				PATNAME = #{patname,jdbcType=VARCHAR}	
+				
+				and INPATIENT = #{visitno,jdbcType=VARCHAR}			/* 序号 */ 
+	</select>
+	
+	
+	<!--
+	方法名称: queryPageList
+	调用路径: com.mandala.patient.entity.ZyEmrBasy.queryPatient
+	开发信息: 
+	处理信息: 根据主键查询记录
+	-->
+	<select id="queryPatient" parameterType="Object"  resultMap="ZyEmrBasy">
+		   SELECT   
+                   zeb.HOSPITALDESC                  /* 医院名称 */ 
+                  ,zeb.HOSPITALCODE                  /* 治疗情况 */ 
+                  ,zeb.ADMNO                         /*  */ 
+                  ,zeb.VISITNO                       /*  */ 
+                  ,zeb.PAYCODE                       /*  */ 
+                  ,zeb.HEALTHCARDID                  /*  */ 
+                  ,zeb.VISITNUM                      /*  */ 
+                  ,zeb.DOCUMENTID                    /*  */ 
+                  ,zeb.INPATIENT                     /* 病人唯一ID */ 
+                  ,zeb.PATNAME                       /*  */ 
+                  ,zeb.SEX                           /*  */ 
+                  ,zeb.BIRTHDAY                      /*  */ 
+                  ,zeb.AGEYEAR                       /*  */ 
+                  ,zeb.NATIONALITY                   /*  */ 
+                  ,zeb.AGEMONTH                      /*  */ 
+                  ,zeb.BABYBORNWEIGHT                /*  */ 
+                  ,zeb.BABYADMWEIGHT                 /*  */ 
+                  ,zeb.BORNPROVINCE                  /*  */ 
+                  ,zeb.BORNCITY                      /*  */ 
+                  ,zeb.BORNCOUNTY                    /*  */ 
+                  ,zeb.NATIVEPROVINCE                /*  */ 
+                  ,zeb.NATIVECITY                    /*  */ 
+                  ,zeb.NATION                        /*  */ 
+                  ,zeb.CREDENTIALTYPE                /*  */ 
+                  ,zeb.CREDENTIALNO                  /*  */ 
+                  ,zeb.OCCUPATIONCODE                /*  */ 
+                  ,zeb.MARRYCODE                     /*  */ 
+                  ,zeb.ADDRESSPROVINCE               /*  */ 
+                  ,zeb.DIA_DISICD5                   /*  */ 
+                  ,zeb.DIA_DISDESC6                  /*  */ 
+                  ,zeb.DIA_DISICD6                   /*  */ 
+                  ,zeb.ADMWARDCODE                   /*  */ 
+                  ,zeb.DISWARDCODE                   /*  */ 
+                  ,zeb.IS2ZZHI30                     /*  */ 
+                  ,zeb.IS2ZZHI14                     /*  */ 
+                  ,zeb.IS2_31                        /*  */ 
+                  ,zeb.IS0_0                         /*  */ 
+                  ,zeb.IS2_31_VISITNO                /*  */ 
+                  ,zeb.IS2ZZHI30_VISITNO             /*  */ 
+                  ,zeb.IS0_0_VISITNO                 /*  */ 
+                  ,zeb.IS2ZZHI14_VISITNO             /*  */ 
+                  ,zeb.ZFY                           /*  */ 
+                  ,zeb.YF                            /*  */ 
+                  ,zeb.ADDRESSCITY                   /*  */ 
+                  ,zeb.ADDRESSCOUNTRY                /*  */ 
+                  ,zeb.ADDRESSXIANG                  /*  */ 
+                  ,zeb.ADDRESSVILLAGE                /*  */ 
+                  ,zeb.ADDRESSNUMBER                 /*  */ 
+                  ,zeb.TELEPHONE                     /*  */ 
+                  ,zeb.ADDRESSPOSTCODE               /*  */ 
+                  ,zeb.RESIDENTPROVINCE              /*  */ 
+                  ,zeb.RESIDENTCITY                  /*  */ 
+                  ,zeb.RESIDENTCOUNTRY               /*  */ 
+                  ,zeb.RESIDENTXIANG                 /*  */ 
+                  ,zeb.RESIDENTVILLAGE               /*  */ 
+                  ,zeb.RESIDENTNUMBER                /*  */ 
+                  ,zeb.RESIDENTPOSTCODE              /*  */ 
+                  ,zeb.WORKDESC                      /*  */ 
+                  ,zeb.WORKPROVINCE                  /*  */ 
+                  ,zeb.WORKCITY                      /*  */ 
+                  ,zeb.WORKCOUNTRY                   /*  */ 
+                  ,zeb.WORKXIANG                     /*  */ 
+                  ,zeb.WORKVILLAGE                   /*  */ 
+                  ,zeb.WORKNUMBER                    /*  */ 
+                  ,zeb.WORKTELEPHONE                 /*  */ 
+                  ,zeb.WORKPOSTCODE                  /*  */ 
+                  ,zeb.LINKNAME                      /*  */ 
+                  ,zeb.RELATIONCODE                  /*  */ 
+                  ,zeb.LINKPROVINCE                  /*  */ 
+                  ,zeb.LINKCITY                      /*  */ 
+                  ,zeb.LINKCOUNTRY                   /*  */ 
+                  ,zeb.LINKXIANG                     /*  */ 
+                  ,zeb.LINKVILLAGE                   /*  */ 
+                  ,zeb.LINKNUMBER                    /*  */ 
+                  ,zeb.LINKTELEPHONE                 /*  */ 
+                  ,zeb.ADMTRACE                      /*  */ 
+                  ,zeb.ADMSDATE                      /*  */ 
+                  ,zeb.ADMSDEPT                      /*  */ 
+                  ,zeb.ADMSWARD                      /*  */ 
+                  ,zeb.TRANDEPT                      /*  */ 
+                  ,zeb.ADMDDATE                      /*  */ 
+                  ,zeb.ADMDDEPT                      /*  */ 
+                  ,zeb.ADMDWARD                      /*  */ 
+                  ,zeb.ADMDAYS                       /* 住院天数 */ 
+                  ,zeb.FEATHFLAG                     /*  */ 
+                  ,zeb.ADMBLOOD                      /*  */ 
+                  ,zeb.ADMRHCODE                     /*  */ 
+                  ,zeb.DEPTDIRECTORDESC              /*  */ 
+                  ,zeb.DIRECTORDESC                  /*  */ 
+                  ,zeb.ATTENDINGDESC                 /*  */ 
+                  ,zeb.AESCULAPIUSDESC               /*  */ 
+                  ,zeb.DUTYNURSEDESC                 /*  */ 
+                  ,zeb.STUDYDOCTORDESC               /*  */ 
+                  ,zeb.PRACTICEDOCTORDESC            /*  */ 
+                  ,zeb.DOCUMENTUSERNAME              /*  */ 
+                  ,zeb.QUALITY                       /*  */ 
+                  ,zeb.QUALITYDOCTOR                 /*  */ 
+                  ,zeb.QUALITYNURSE                  /*  */ 
+                  ,zeb.QUALITYDAYS                   /*  */ 
+                  ,zeb.ADMOUTMODE                    /*  */ 
+                  ,zeb.DUMMYHOSPITAL                 /*  */ 
+                  ,zeb.ADMAGAINFLAG                  /*  */ 
+                  ,zeb.ADMAGAINAIM                   /*  */ 
+                  ,zeb.ADMSLEEPSDAY                  /*  */ 
+                  ,zeb.ADMSLEEPSHOUR                 /*  */ 
+                  ,zeb.ADMSLEEPSMINU                 /*  */ 
+                  ,zeb.ADMSLEEPEDAY                  /*  */ 
+                  ,zeb.ADMSLEEPEHOUR                 /*  */ 
+                  ,zeb.ADMSLEEPEMINU                 /*  */ 
+                  ,zeb.BREATHMACHINE                 /*  */ 
+                  ,zeb.KNUBT                         /*  */ 
+                  ,zeb.KNUBN                         /*  */ 
+                  ,zeb.KNUBM                         /*  */ 
+                  ,zeb.KNUBROBSON                    /*  */ 
+                  ,zeb.ADMSLIVE                      /*  */ 
+                  ,zeb.ADMDLIVE                      /*  */ 
+                  ,zeb.RELATIONDESC                  /*  */ 
+                  ,zeb.NATIONALITYDESC               /*  */ 
+                  ,zeb.OCCUPATIONDESC                /*  */ 
+                  ,zeb.LINKADDRESS                   /*  */ 
+                  ,zeb.CRITICAL                      /*  */ 
+                  ,zeb.DIFFICULTY                    /*  */ 
+                  ,zeb.SALVAGENUMBER                 /*  */ 
+                  ,zeb.SUCCEEDNUMBER                 /*  */ 
+                  ,zeb.FOLLOWUP                      /*  */ 
+                  ,zeb.FOLLOWUPDAY                   /*  */ 
+                  ,zeb.DOCTORDESC                    /*  */ 
+                  ,zeb.DOCTORCODE                    /*  */ 
+                  ,zeb.DEPTDIRECTORCODE              /*  */ 
+                  ,zeb.DIRECTORCODE                  /*  */ 
+                  ,zeb.ATTENDINGCODE                 /* 主治医生 */ 
+                  ,zeb.AESCULAPIUSCODE               /*  */ 
+                  ,zeb.DUTYNURSECODE                 /*  */ 
+                  ,zeb.STUDYDOCTORCODE               /*  */ 
+                  ,zeb.PRACTICEDOCTORCODE            /*  */ 
+                  ,zeb.DOCUMENTUSERCODE              /*  */ 
+                  ,zeb.QUALITYDOCTORCODE             /*  */ 
+                  ,zeb.QUALITYNURSECODE              /*  */ 
+                  ,zeb.DIAGNOSECODE1                 /*  */ 
+                  ,zeb.DIAGNOSEDESC1                 /* 入院诊断 */ 
+                  ,zeb.DIAGNOSECODE2                 /*  */ 
+                  ,zeb.DIAGNOSEDESC2                 /*  */ 
+                  ,zeb.DIAGNOSECODE3                 /*  */ 
+                  ,zeb.DIAGNOSEDESC3                 /*  */ 
+                  ,zeb.DIAGNOSECODE4                 /*  */ 
+                  ,zeb.DIAGNOSEDESC4                 /*  */ 
+                  ,zeb.DIAGNOSECODE5                 /*  */ 
+                  ,zeb.DIAGNOSEDESC5                 /*  */ 
+                  ,zeb.DIAGNOSECODE6                 /*  */ 
+                  ,zeb.DIAGNOSEDESC6                 /*  */ 
+                  ,zeb.OPERCODE1                     /*  */ 
+                  ,zeb.OPERDESC1                     /* 手术名称 */ 
+                  ,zeb.OPERCODE2                     /*  */ 
+                  ,zeb.OPERDESC2                     /*  */ 
+                  ,zeb.OPERCODE3                     /*  */ 
+                  ,zeb.OPERDESC3                     /*  */ 
+                  ,zeb.OPERCODE4                     /*  */ 
+                  ,zeb.OPERDESC4                     /*  */ 
+                  ,zeb.OPERCODE5                     /*  */ 
+                  ,zeb.OPERDESC5                     /*  */ 
+                  ,zeb.OPERCODE6                     /*  */ 
+                  ,zeb.OPERDESC6                     /*  */ 
+                  ,zeb.OPERDATE1                     /*  */ 
+                  ,zeb.OPERDATE2                     /*  */ 
+                  ,zeb.OPERDATE3                     /*  */ 
+                  ,zeb.OPERDATE4                     /*  */ 
+                  ,zeb.OPERDATE5                     /*  */ 
+                  ,zeb.OPERDATE6                     /*  */ 
+                  ,zeb.OPERLEVEL1                    /*  */ 
+                  ,zeb.OPERLEVEL2                    /*  */ 
+                  ,zeb.OPERLEVEL3                    /*  */ 
+                  ,zeb.OPERLEVEL4                    /*  */ 
+                  ,zeb.OPERLEVEL5                    /*  */ 
+                  ,zeb.OPERLEVEL6                    /*  */ 
+                  ,zeb.OPERATOR1                     /*  */ 
+                  ,zeb.OPERATOR2                     /*  */ 
+                  ,zeb.OPERATOR3                     /*  */ 
+                  ,zeb.OPERATOR4                     /*  */ 
+                  ,zeb.OPERATOR5                     /*  */ 
+                  ,zeb.OPERATOR6                     /*  */ 
+                  ,zeb.OPERATIONFNAME1               /*  */ 
+                  ,zeb.OPERATIONFNAME2               /*  */ 
+                  ,zeb.OPERATIONFNAME3               /*  */ 
+                  ,zeb.OPERATIONFNAME4               /*  */ 
+                  ,zeb.OPERATIONFNAME5               /*  */ 
+                  ,zeb.OPERATIONFNAME6               /*  */ 
+                  ,zeb.OPERATIONTNAME1               /*  */ 
+                  ,zeb.OPERATIONTNAME2               /*  */ 
+                  ,zeb.OPERATIONTNAME3               /*  */ 
+                  ,zeb.OPERATIONTNAME4               /*  */ 
+                  ,zeb.OPERATIONTNAME5               /*  */ 
+                  ,zeb.OPERATIONTNAME6               /*  */ 
+                  ,zeb.NARCOSISMODE1                 /*  */ 
+                  ,zeb.NARCOSISMODE2                 /*  */ 
+                  ,zeb.NARCOSISMODE3                 /*  */ 
+                  ,zeb.NARCOSISMODE4                 /*  */ 
+                  ,zeb.NARCOSISMODE5                 /*  */ 
+                  ,zeb.NARCOSISMODE6                 /*  */ 
+                  ,zeb.CUTGRADE1                     /*  */ 
+                  ,zeb.CUTGRADE2                     /*  */ 
+                  ,zeb.CUTGRADE3                     /*  */ 
+                  ,zeb.CUTGRADE4                     /*  */ 
+                  ,zeb.CUTGRADE5                     /*  */ 
+                  ,zeb.CUTGRADE6                     /*  */ 
+                  ,zeb.CICATRIZEGRADE1               /*  */ 
+                  ,zeb.CICATRIZEGRADE2               /*  */ 
+                  ,zeb.CICATRIZEGRADE3               /*  */ 
+                  ,zeb.CICATRIZEGRADE4               /*  */ 
+                  ,zeb.CICATRIZEGRADE5               /*  */ 
+                  ,zeb.CICATRIZEGRADE6               /*  */ 
+                  ,zeb.NARCOSISDOCNAME1              /*  */ 
+                  ,zeb.NARCOSISDOCNAME2              /*  */ 
+                  ,zeb.NARCOSISDOCNAME3              /*  */ 
+                  ,zeb.NARCOSISDOCNAME4              /*  */ 
+                  ,zeb.NARCOSISDOCNAME5              /*  */ 
+                  ,zeb.NARCOSISDOCNAME6              /*  */ 
+                  ,zeb.OPERA_DESC1                   /*  */ 
+                  ,zeb.OPERA_ICD1                    /*  */ 
+                  ,zeb.OPERA_DESC2                   /*  */ 
+                  ,zeb.OPERA_ICD2                    /*  */ 
+                  ,zeb.OPERA_DESC3                   /*  */ 
+                  ,zeb.OPERA_ICD3                    /*  */ 
+                  ,zeb.OPERA_DESC4                   /*  */ 
+                  ,zeb.OPERA_ICD4                    /*  */ 
+                  ,zeb.OPERA_DESC5                   /*  */ 
+                  ,zeb.OPERA_ICD5                    /*  */ 
+                  ,zeb.OPERA_DESC6                   /*  */ 
+                  ,zeb.OPERA_ICD6                    /*  */ 
+                  ,zeb.DIA_PATHDESC                  /*  */ 
+                  ,zeb.DIA_PATHICD                   /*  */ 
+                  ,zeb.DIA_POISDESC                  /*  */ 
+                  ,zeb.DIA_POISCODE                  /*  */ 
+                  ,zeb.DIA_CLINICDESC                /* 临床诊断 */ 
+                  ,zeb.DIA_CLINICICD                 /*  */ 
+                  ,zeb.DIA_DISDESC1                  /* 治疗措施 */ 
+                  ,zeb.DIA_DISICD1                   /*  */ 
+                  ,zeb.DIA_DISDESC2                  /*  */ 
+                  ,zeb.DIA_DISICD2                   /*  */ 
+                  ,zeb.DIA_DISDESC3                  /*  */ 
+                  ,zeb.DIA_DISICD3                   /*  */ 
+                  ,zeb.DIA_DISDESC4                  /*  */ 
+                  ,zeb.DIA_DISICD4                   /*  */ 
+                  ,zeb.DIA_DISDESC5                  /*  */ 
+		   FROM   zy_emr_basy       zeb      /*  */ 
+		   WHERE 
+				PATNAME = #{patname,jdbcType=VARCHAR}	
+				
+				and INPATIENT = #{inpatient,jdbcType=VARCHAR}			/* 序号 */ 
+	</select>
+	
+</mapper>

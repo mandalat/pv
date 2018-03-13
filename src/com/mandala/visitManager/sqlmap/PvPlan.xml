@@ -1,0 +1,790 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//ibatis.apache.org//DTD iBatis Mapper 3.0 //EN" 
+	"http://ibatis.apache.org/dtd/ibatis-3-mapper.dtd">
+
+<mapper namespace="com.mandala.visitManager.entity.PvPlan">
+
+	<!-- Result Map-->
+	<resultMap id="PvPlan" type="com.mandala.visitManager.entity.PvPlan" >
+		<result column="SUBJECT_NAME" property="subjectName" jdbcType="VARCHAR"/>
+		<result column="STOP_REASON" property="stopReason" jdbcType="VARCHAR"/>
+		<result column="REMARK" property="remark" jdbcType="VARCHAR"/>
+		<result column="APPOINT_TIME" property="appointTime" jdbcType="TIMESTAMP"/>
+		<result column="DOC_XML" property="docXml" jdbcType="VARCHAR"/>
+		<result column="SUB_TEMPLATE_ORDER" property="subTemplateOrder" jdbcType="INTEGER"/>
+		<result column="SUB_TEMPLATE_VIEW" property="subTemplateView" jdbcType="VARCHAR"/>
+		<result column="SUB_TEMPLATE_CYCLE" property="subTemplateCycle" jdbcType="VARCHAR"/>
+		<result column="SUB_TEMPLATE_RULE" property="subTemplateRule" jdbcType="VARCHAR"/>
+		<result column="SUB_TEMPLATE_NAME" property="subTemplateName" jdbcType="VARCHAR"/>
+		<result column="CANCEL_REMINDER" property="cancelReminder" jdbcType="VARCHAR"/>
+		<result column="VISIT_DATE_CYCLE" property="visitDateCycle" jdbcType="VARCHAR"/>
+		<result column="REMINDER_RULE" property="reminderRule" jdbcType="VARCHAR"/>
+		<result column="ACTUAL_VISIT_DATE" property="actualVisitDate" jdbcType="TIMESTAMP"/>
+		<result column="END_VISIT_DATE" property="endVisitDate" jdbcType="TIMESTAMP"/>
+		<result column="BEGIN_VISIT_DATE" property="beginVisitDate" jdbcType="TIMESTAMP"/>
+		<result column="MUST_VISIT_DATE" property="mustVisitDate" jdbcType="TIMESTAMP"/>
+		<result column="VISIT_ORDER" property="visitOrder" jdbcType="INTEGER"/>
+		<result column="VISIT_STATUS" property="visitStatus" jdbcType="VARCHAR"/>
+		<result column="VISIT_MODE" property="visitMode" jdbcType="VARCHAR"/>
+		<result column="VISIT_TYPE" property="visitType" jdbcType="VARCHAR"/>
+		<result column="PATIENT_LINKTEL" property="patientLinktel" jdbcType="VARCHAR"/>
+		<result column="PATIENT_LINKMAN" property="patientLinkman" jdbcType="VARCHAR"/>
+		<result column="PATIENT_MAIN_DOCTOR" property="patientMainDoctor" jdbcType="VARCHAR"/>
+		<result column="PATIENT_CARDID" property="patientCardid" jdbcType="VARCHAR"/>
+		<result column="PATIENT_OUTDATE" property="patientOutdate" jdbcType="VARCHAR"/>
+		<result column="PATIENT_INDATE" property="patientIndate" jdbcType="VARCHAR"/>
+		<result column="PATIENT_OUT_DIAGNOSE" property="patientOutDiagnose" jdbcType="VARCHAR"/>
+		<result column="PATIENT_IN_DIAGNOSE" property="patientInDiagnose" jdbcType="VARCHAR"/>
+		<result column="PATIENT_OFFICE" property="patientOffice" jdbcType="VARCHAR"/>
+		<result column="PATIENT_ADDRESS" property="patientAddress" jdbcType="VARCHAR"/>
+		<result column="PATIENT_BIRTHDAY" property="patientBirthday" jdbcType="VARCHAR"/>
+		<result column="PATIENT_MARRIAGE" property="patientMarriage" jdbcType="VARCHAR"/>
+		<result column="PATIENT_SEX" property="patientSex" jdbcType="VARCHAR"/>
+		<result column="PATIENT_NAME" property="patientName" jdbcType="VARCHAR"/>
+		<result column="PATIENT_HIS_OUTSIDE_ID" property="patientHisOutsideId" jdbcType="VARCHAR"/>
+		<result column="PATIENT_HIS_INSIDE_ID" property="patientHisInsideId" jdbcType="VARCHAR"/>
+		<result column="PATIENT_MEDICAL_RECORD_ID" property="patientMedicalRecordId" jdbcType="VARCHAR"/>
+		<result column="PATIENT_OUTPATIENT_ID" property="patientOutpatientId" jdbcType="VARCHAR"/>
+		<result column="PATIENT_INPATIENT_COUNT" property="patientInpatientCount" jdbcType="VARCHAR"/>
+		<result column="PATIENT_INPATIENT_ID" property="patientInpatientId" jdbcType="VARCHAR"/>
+		<result column="PATIENT_DATEVALIDATE" property="patientDatevalidate" jdbcType="VARCHAR"/>
+		<result column="PATIENT_UHID" property="patientUhid" jdbcType="VARCHAR"/>
+		<result column="NID" property="nid" jdbcType="VARCHAR"/>
+		<result column="MEDIC_ID" property="medicId" jdbcType="VARCHAR"/>
+		<result column="MEDIC_NAME" property="medicName" jdbcType="VARCHAR"/>
+		<result column="MEDIC_PHONE" property="medicPhone" jdbcType="VARCHAR"/>
+		<result column="UPDATE_USER_NAME" property="updateUserName" jdbcType="VARCHAR"/>
+		<result column="UPDATE_USER_ID" property="updateUserId" jdbcType="VARCHAR"/>
+		<result column="UPDATE_TIME" property="updateTime" jdbcType="TIMESTAMP"/>
+		<result column="CREATE_USER_NAME" property="createUserName" jdbcType="VARCHAR"/>
+		<result column="CREATE_USER_ID" property="createUserId" jdbcType="VARCHAR"/>
+		<result column="CREATE_TIME" property="createTime" jdbcType="TIMESTAMP"/>
+	</resultMap>
+	
+	<!-- 查询条件 -->
+	<sql id="wherecontation">
+		<trim  suffixOverrides="," >
+				 <if test="query.subjectName != null and query.subjectName != ''" >
+	  		 		/* 科研随访课题名称 */
+			    	AND SUBJECT_NAME =  #{query.subjectName,jdbcType=VARCHAR}
+				 </if>
+				 <if test="query.stopReason != null and query.stopReason != ''" >
+	  		 		/* 终止随访理由 */
+			    	AND STOP_REASON =  #{query.stopReason,jdbcType=VARCHAR}
+				 </if>
+				 <if test="query.remark != null and query.remark != ''" >
+	  		 		/* 暂未启用 */
+			    	AND REMARK =  #{query.remark,jdbcType=VARCHAR}
+				 </if>
+				 <if test="query.appointTime != null and query.appointTime != ''" >
+	  		 		/* 暂未启用 */
+			    	AND APPOINT_TIME =  #{query.appointTime,jdbcType=TIMESTAMP}
+				 </if>
+				 <if test="query.docXml != null and query.docXml != ''" >
+	  		 		/* 随访表单内容 */
+			    	AND DOC_XML =  #{query.docXml,jdbcType=VARCHAR}
+				 </if>
+				 <if test="query.subTemplateOrder != null and query.subTemplateOrder != ''" >
+	  		 		/* 随访模板序数 */
+			    	AND SUB_TEMPLATE_ORDER =  #{query.subTemplateOrder,jdbcType=INTEGER}
+				 </if>
+				 <if test="query.subTemplateView != null and query.subTemplateView != ''" >
+	  		 		/* 随访模板别名 */
+			    	AND SUB_TEMPLATE_VIEW =  #{query.subTemplateView,jdbcType=VARCHAR}
+				 </if>
+				 <if test="query.subTemplateCycle != null and query.subTemplateCycle != ''" >
+	  		 		/* 随访模板起始点 */
+			    	AND SUB_TEMPLATE_CYCLE =  #{query.subTemplateCycle,jdbcType=VARCHAR}
+				 </if>
+				 <if test="query.subTemplateRule != null and query.subTemplateRule != ''" >
+	  		 		/* 随访模板规则 */
+			    	AND SUB_TEMPLATE_RULE =  #{query.subTemplateRule,jdbcType=VARCHAR}
+				 </if>
+				 <if test="query.subTemplateName != null and query.subTemplateName != ''" >
+	  		 		/* 随访模板名称 */
+			    	AND SUB_TEMPLATE_NAME =  #{query.subTemplateName,jdbcType=VARCHAR}
+				 </if>
+				 <if test="query.cancelReminder != null and query.cancelReminder != ''" >
+	  		 		/* 取消随访提醒 */
+			    	AND CANCEL_REMINDER =  #{query.cancelReminder,jdbcType=VARCHAR}
+				 </if>
+				 <if test="query.visitDateCycle != null and query.visitDateCycle != ''" >
+	  		 		/* 随访起始点 */
+			    	AND VISIT_DATE_CYCLE =  #{query.visitDateCycle,jdbcType=VARCHAR}
+				 </if>
+				 <if test="query.reminderRule != null and query.reminderRule != ''" >
+	  		 		/* 提醒规则 */
+			    	AND REMINDER_RULE =  #{query.reminderRule,jdbcType=VARCHAR}
+				 </if>
+				 <if test="query.actualVisitDate != null and query.actualVisitDate != ''" >
+	  		 		/* 实际随访日期 */
+			    	AND ACTUAL_VISIT_DATE =  #{query.actualVisitDate,jdbcType=TIMESTAMP}
+				 </if>
+				 <if test="query.endVisitDate != null and query.endVisitDate != ''" >
+	  		 		/* 随访结束日期 */
+			    	AND END_VISIT_DATE =  #{query.endVisitDate,jdbcType=TIMESTAMP}
+				 </if>
+				 <if test="query.beginVisitDate != null and query.beginVisitDate != ''" >
+	  		 		/* 随访开始日期 */
+			    	AND BEGIN_VISIT_DATE =  #{query.beginVisitDate,jdbcType=TIMESTAMP}
+				 </if>
+				 <if test="query.mustVisitDate != null and query.mustVisitDate != ''" >
+	  		 		/* 随访日期 */
+			    	AND MUST_VISIT_DATE =  #{query.mustVisitDate,jdbcType=TIMESTAMP}
+				 </if>
+				 <if test="query.visitOrder != null and query.visitOrder != ''" >
+	  		 		/* 随访序数 */
+			    	AND VISIT_ORDER =  #{query.visitOrder,jdbcType=INTEGER}
+				 </if>
+				 <if test="query.visitStatus != null and query.visitStatus != ''" >
+	  		 		/* 随访状态 */
+			    	AND VISIT_STATUS =  #{query.visitStatus,jdbcType=VARCHAR}
+				 </if>
+				 <if test="query.visitMode != null and query.visitMode != ''" >
+	  		 		/* 随访方式 */
+			    	AND VISIT_MODE =  #{query.visitMode,jdbcType=VARCHAR}
+				 </if>
+				 <if test="query.visitType != null and query.visitType != ''" >
+	  		 		/* 随访类型 */
+			    	AND VISIT_TYPE =  #{query.visitType,jdbcType=VARCHAR}
+				 </if>
+				 <if test="query.patientLinktel != null and query.patientLinktel != ''" >
+	  		 		/* 病人联系电话 */
+			    	AND PATIENT_LINKTEL =  #{query.patientLinktel,jdbcType=VARCHAR}
+				 </if>
+				 <if test="query.patientLinkman != null and query.patientLinkman != ''" >
+	  		 		/* 病人联系人 */
+			    	AND PATIENT_LINKMAN =  #{query.patientLinkman,jdbcType=VARCHAR}
+				 </if>
+				 <if test="query.patientMainDoctor != null and query.patientMainDoctor != ''" >
+	  		 		/* 主治医师 */
+			    	AND PATIENT_MAIN_DOCTOR =  #{query.patientMainDoctor,jdbcType=VARCHAR}
+				 </if>
+				 <if test="query.patientCardid != null and query.patientCardid != ''" >
+	  		 		/* 病人身份证 */
+			    	AND PATIENT_CARDID =  #{query.patientCardid,jdbcType=VARCHAR}
+				 </if>
+				 <if test="query.patientOutdate != null and query.patientOutdate != ''" >
+	  		 		/* 病人出院日 */
+			    	AND PATIENT_OUTDATE =  #{query.patientOutdate,jdbcType=VARCHAR}
+				 </if>
+				 <if test="query.patientIndate != null and query.patientIndate != ''" >
+	  		 		/* 病人入院日 */
+			    	AND PATIENT_INDATE =  #{query.patientIndate,jdbcType=VARCHAR}
+				 </if>
+				 <if test="query.patientOutDiagnose != null and query.patientOutDiagnose != ''" >
+	  		 		/* 病人出院诊断 */
+			    	AND PATIENT_OUT_DIAGNOSE =  #{query.patientOutDiagnose,jdbcType=VARCHAR}
+				 </if>
+				 <if test="query.patientInDiagnose != null and query.patientInDiagnose != ''" >
+	  		 		/* 病人入院诊断 */
+			    	AND PATIENT_IN_DIAGNOSE =  #{query.patientInDiagnose,jdbcType=VARCHAR}
+				 </if>
+				 <if test="query.patientOffice != null and query.patientOffice != ''" >
+	  		 		/* 病人科室 */
+			    	AND PATIENT_OFFICE =  #{query.patientOffice,jdbcType=VARCHAR}
+				 </if>
+				 <if test="query.patientAddress != null and query.patientAddress != ''" >
+	  		 		/* 病人住址 */
+			    	AND PATIENT_ADDRESS =  #{query.patientAddress,jdbcType=VARCHAR}
+				 </if>
+				 <if test="query.patientBirthday != null and query.patientBirthday != ''" >
+	  		 		/* 病人生日 */
+			    	AND PATIENT_BIRTHDAY =  #{query.patientBirthday,jdbcType=VARCHAR}
+				 </if>
+				 <if test="query.patientMarriage != null and query.patientMarriage != ''" >
+	  		 		/* 病人婚姻 */
+			    	AND PATIENT_MARRIAGE =  #{query.patientMarriage,jdbcType=VARCHAR}
+				 </if>
+				 <if test="query.patientSex != null and query.patientSex != ''" >
+	  		 		/* 病人性别 */
+			    	AND PATIENT_SEX =  #{query.patientSex,jdbcType=VARCHAR}
+				 </if>
+				 <if test="query.patientName != null and query.patientName != ''" >
+	  		 		/* 病人姓名 */
+			    	AND PATIENT_NAME =  #{query.patientName,jdbcType=VARCHAR}
+				 </if>
+				 <if test="query.patientHisOutsideId != null and query.patientHisOutsideId != ''" >
+	  		 		/* 病人外部HIS号 */
+			    	AND PATIENT_HIS_OUTSIDE_ID =  #{query.patientHisOutsideId,jdbcType=VARCHAR}
+				 </if>
+				 <if test="query.patientHisInsideId != null and query.patientHisInsideId != ''" >
+	  		 		/* 病人内部HIS号 */
+			    	AND PATIENT_HIS_INSIDE_ID =  #{query.patientHisInsideId,jdbcType=VARCHAR}
+				 </if>
+				 <if test="query.patientMedicalRecordId != null and query.patientMedicalRecordId != ''" >
+	  		 		/* 病人病历号 */
+			    	AND PATIENT_MEDICAL_RECORD_ID =  #{query.patientMedicalRecordId,jdbcType=VARCHAR}
+				 </if>
+				 <if test="query.patientOutpatientId != null and query.patientOutpatientId != ''" >
+	  		 		/* 病人门诊号 */
+			    	AND PATIENT_OUTPATIENT_ID =  #{query.patientOutpatientId,jdbcType=VARCHAR}
+				 </if>
+				 <if test="query.patientInpatientCount != null and query.patientInpatientCount != ''" >
+	  		 		/* 病人住院序数 */
+			    	AND PATIENT_INPATIENT_COUNT =  #{query.patientInpatientCount,jdbcType=VARCHAR}
+				 </if>
+				 <if test="query.patientInpatientId != null and query.patientInpatientId != ''" >
+	  		 		/* 病人住院号 */
+			    	AND PATIENT_INPATIENT_ID =  #{query.patientInpatientId,jdbcType=VARCHAR}
+				 </if>
+				 <if test="query.patientDatevalidate != null and query.patientDatevalidate != ''" >
+	  		 		/* 病人DATEVALIDATE */
+			    	AND PATIENT_DATEVALIDATE =  #{query.patientDatevalidate,jdbcType=VARCHAR}
+				 </if>
+				 <if test="query.patientUhid != null and query.patientUhid != ''" >
+	  		 		/* 病人UHID */
+			    	AND PATIENT_UHID =  #{query.patientUhid,jdbcType=VARCHAR}
+				 </if>
+				 <if test="query.nid != null and query.nid != ''" >
+	  		 		/* 主键 */
+			    	AND NID =  #{query.nid,jdbcType=VARCHAR}
+				 </if>
+				 <if test="query.medicId != null and query.medicId != ''" >
+	  		 		/* 医生ID */
+			    	AND MEDIC_ID =  #{query.medicId,jdbcType=VARCHAR}
+				 </if>
+				 <if test="query.medicName != null and query.medicName != ''" >
+	  		 		/* 医生姓名 */
+			    	AND MEDIC_NAME =  #{query.medicName,jdbcType=VARCHAR}
+				 </if>
+				 <if test="query.medicPhone != null and query.medicPhone != ''" >
+	  		 		/* 医生电话 */
+			    	AND MEDIC_PHONE =  #{query.medicPhone,jdbcType=VARCHAR}
+				 </if>
+				 <if test="query.updateUserName != null and query.updateUserName != ''" >
+	  		 		/* 更新者姓名 */
+			    	AND UPDATE_USER_NAME =  #{query.updateUserName,jdbcType=VARCHAR}
+				 </if>
+				 <if test="query.updateUserId != null and query.updateUserId != ''" >
+	  		 		/* 更新者ID */
+			    	AND UPDATE_USER_ID =  #{query.updateUserId,jdbcType=VARCHAR}
+				 </if>
+				 <if test="query.updateTime != null and query.updateTime != ''" >
+	  		 		/* 更新时间 */
+			    	AND UPDATE_TIME =  #{query.updateTime,jdbcType=TIMESTAMP}
+				 </if>
+				 <if test="query.createUserName != null and query.createUserName != ''" >
+	  		 		/* 创建者姓名 */
+			    	AND CREATE_USER_NAME =  #{query.createUserName,jdbcType=VARCHAR}
+				 </if>
+				 <if test="query.createUserId != null and query.createUserId != ''" >
+	  		 		/* 创建者ID */
+			    	AND CREATE_USER_ID =  #{query.createUserId,jdbcType=VARCHAR}
+				 </if>
+				 <if test="query.createTime != null and query.createTime != ''" >
+	  		 		/* 创建时间 */
+			    	AND CREATE_TIME =  #{query.createTime,jdbcType=TIMESTAMP}
+				 </if>
+		</trim>
+	</sql>
+
+	<!--
+	方法名称: insert
+	调用路径: com.mandala.visitManager.entity.PvPlan.insert
+	开发信息: 
+	处理信息: 保存信息
+	-->
+	<insert id="insert" parameterType="Object" >
+	  INSERT  INTO  PV_PLAN   /* 随访管理 */  
+					(	
+                      SUBJECT_NAME                  /* 科研随访课题名称 */ 
+                     ,STOP_REASON                   /* 终止随访理由 */ 
+                     ,REMARK                        /* 暂未启用 */ 
+                     ,APPOINT_TIME                  /* 暂未启用 */ 
+                     ,DOC_XML                       /* 随访表单内容 */ 
+                     ,SUB_TEMPLATE_ORDER            /* 随访模板序数 */ 
+                     ,SUB_TEMPLATE_VIEW             /* 随访模板别名 */ 
+                     ,SUB_TEMPLATE_CYCLE            /* 随访模板起始点 */ 
+                     ,SUB_TEMPLATE_RULE             /* 随访模板规则 */ 
+                     ,SUB_TEMPLATE_NAME             /* 随访模板名称 */ 
+                     ,CANCEL_REMINDER               /* 取消随访提醒 */ 
+                     ,VISIT_DATE_CYCLE              /* 随访起始点 */ 
+                     ,REMINDER_RULE                 /* 提醒规则 */ 
+                     ,ACTUAL_VISIT_DATE             /* 实际随访日期 */ 
+                     ,END_VISIT_DATE                /* 随访结束日期 */ 
+                     ,BEGIN_VISIT_DATE              /* 随访开始日期 */ 
+                     ,MUST_VISIT_DATE               /* 随访日期 */ 
+                     ,VISIT_ORDER                   /* 随访序数 */ 
+                     ,VISIT_STATUS                  /* 随访状态 */ 
+                     ,VISIT_MODE                    /* 随访方式 */ 
+                     ,VISIT_TYPE                    /* 随访类型 */ 
+                     ,PATIENT_LINKTEL               /* 病人联系电话 */ 
+                     ,PATIENT_LINKMAN               /* 病人联系人 */ 
+                     ,PATIENT_MAIN_DOCTOR           /* 主治医师 */ 
+                     ,PATIENT_CARDID                /* 病人身份证 */ 
+                     ,PATIENT_OUTDATE               /* 病人出院日 */ 
+                     ,PATIENT_INDATE                /* 病人入院日 */ 
+                     ,PATIENT_OUT_DIAGNOSE          /* 病人出院诊断 */ 
+                     ,PATIENT_IN_DIAGNOSE           /* 病人入院诊断 */ 
+                     ,PATIENT_OFFICE                /* 病人科室 */ 
+                     ,PATIENT_ADDRESS               /* 病人住址 */ 
+                     ,PATIENT_BIRTHDAY              /* 病人生日 */ 
+                     ,PATIENT_MARRIAGE              /* 病人婚姻 */ 
+                     ,PATIENT_SEX                   /* 病人性别 */ 
+                     ,PATIENT_NAME                  /* 病人姓名 */ 
+                     ,PATIENT_HIS_OUTSIDE_ID        /* 病人外部HIS号 */ 
+                     ,PATIENT_HIS_INSIDE_ID         /* 病人内部HIS号 */ 
+                     ,PATIENT_MEDICAL_RECORD_ID     /* 病人病历号 */ 
+                     ,PATIENT_OUTPATIENT_ID         /* 病人门诊号 */ 
+                     ,PATIENT_INPATIENT_COUNT       /* 病人住院序数 */ 
+                     ,PATIENT_INPATIENT_ID          /* 病人住院号 */ 
+                     ,PATIENT_DATEVALIDATE          /* 病人DATEVALIDATE */ 
+                     ,PATIENT_UHID                  /* 病人UHID */ 
+                     ,NID                           /* 主键 */ 
+                     ,MEDIC_ID                      /* 医生ID */ 
+                     ,MEDIC_NAME                    /* 医生姓名 */ 
+                     ,MEDIC_PHONE                   /* 医生电话 */ 
+                     ,UPDATE_USER_NAME              /* 更新者姓名 */ 
+                     ,UPDATE_USER_ID                /* 更新者ID */ 
+                     ,UPDATE_TIME                   /* 更新时间 */ 
+                     ,CREATE_USER_NAME              /* 创建者姓名 */ 
+                     ,CREATE_USER_ID                /* 创建者ID */ 
+                     ,CREATE_TIME                   /* 创建时间 */ 
+					)
+			values (
+                      #{subjectName,jdbcType=VARCHAR}                   /* 科研随访课题名称 */ 
+                     ,#{stopReason,jdbcType=VARCHAR}                    /* 终止随访理由 */ 
+                     ,#{remark,jdbcType=VARCHAR}                        /* 暂未启用 */ 
+                     ,#{appointTime,jdbcType=TIMESTAMP}                   /* 暂未启用 */ 
+                     ,#{docXml,jdbcType=VARCHAR}                        /* 随访表单内容 */ 
+                     ,#{subTemplateOrder,jdbcType=INTEGER}              /* 随访模板序数 */ 
+                     ,#{subTemplateView,jdbcType=VARCHAR}               /* 随访模板别名 */ 
+                     ,#{subTemplateCycle,jdbcType=VARCHAR}              /* 随访模板起始点 */ 
+                     ,#{subTemplateRule,jdbcType=VARCHAR}               /* 随访模板规则 */ 
+                     ,#{subTemplateName,jdbcType=VARCHAR}               /* 随访模板名称 */ 
+                     ,#{cancelReminder,jdbcType=VARCHAR}                /* 取消随访提醒 */ 
+                     ,#{visitDateCycle,jdbcType=VARCHAR}                /* 随访起始点 */ 
+                     ,#{reminderRule,jdbcType=VARCHAR}                  /* 提醒规则 */ 
+                     ,#{actualVisitDate,jdbcType=TIMESTAMP}               /* 实际随访日期 */ 
+                     ,#{endVisitDate,jdbcType=TIMESTAMP}                  /* 随访结束日期 */ 
+                     ,#{beginVisitDate,jdbcType=TIMESTAMP}                /* 随访开始日期 */ 
+                     ,#{mustVisitDate,jdbcType=TIMESTAMP}                 /* 随访日期 */ 
+                     ,#{visitOrder,jdbcType=INTEGER}                    /* 随访序数 */ 
+                     ,#{visitStatus,jdbcType=VARCHAR}                   /* 随访状态 */ 
+                     ,#{visitMode,jdbcType=VARCHAR}                     /* 随访方式 */ 
+                     ,#{visitType,jdbcType=VARCHAR}                     /* 随访类型 */ 
+                     ,#{patientLinktel,jdbcType=VARCHAR}                /* 病人联系电话 */ 
+                     ,#{patientLinkman,jdbcType=VARCHAR}                /* 病人联系人 */ 
+                     ,#{patientMainDoctor,jdbcType=VARCHAR}             /* 主治医师 */ 
+                     ,#{patientCardid,jdbcType=VARCHAR}                 /* 病人身份证 */ 
+                     ,#{patientOutdate,jdbcType=VARCHAR}                /* 病人出院日 */ 
+                     ,#{patientIndate,jdbcType=VARCHAR}                 /* 病人入院日 */ 
+                     ,#{patientOutDiagnose,jdbcType=VARCHAR}            /* 病人出院诊断 */ 
+                     ,#{patientInDiagnose,jdbcType=VARCHAR}             /* 病人入院诊断 */ 
+                     ,#{patientOffice,jdbcType=VARCHAR}                 /* 病人科室 */ 
+                     ,#{patientAddress,jdbcType=VARCHAR}                /* 病人住址 */ 
+                     ,#{patientBirthday,jdbcType=VARCHAR}               /* 病人生日 */ 
+                     ,#{patientMarriage,jdbcType=VARCHAR}               /* 病人婚姻 */ 
+                     ,#{patientSex,jdbcType=VARCHAR}                    /* 病人性别 */ 
+                     ,#{patientName,jdbcType=VARCHAR}                   /* 病人姓名 */ 
+                     ,#{patientHisOutsideId,jdbcType=VARCHAR}           /* 病人外部HIS号 */ 
+                     ,#{patientHisInsideId,jdbcType=VARCHAR}            /* 病人内部HIS号 */ 
+                     ,#{patientMedicalRecordId,jdbcType=VARCHAR}        /* 病人病历号 */ 
+                     ,#{patientOutpatientId,jdbcType=VARCHAR}           /* 病人门诊号 */ 
+                     ,#{patientInpatientCount,jdbcType=VARCHAR}         /* 病人住院序数 */ 
+                     ,#{patientInpatientId,jdbcType=VARCHAR}            /* 病人住院号 */ 
+                     ,#{patientDatevalidate,jdbcType=VARCHAR}           /* 病人DATEVALIDATE */ 
+                     ,#{patientUhid,jdbcType=VARCHAR}                   /* 病人UHID */ 
+                     ,#{nid,jdbcType=VARCHAR}                           /* 主键 */ 
+                     ,#{medicId,jdbcType=VARCHAR}                       /* 医生ID */ 
+                     ,#{medicName,jdbcType=VARCHAR}                     /* 医生姓名 */ 
+                     ,#{medicPhone,jdbcType=VARCHAR}                    /* 医生电话 */ 
+                     ,#{updateUserName,jdbcType=VARCHAR}                /* 更新者姓名 */ 
+                     ,#{updateUserId,jdbcType=VARCHAR}                  /* 更新者ID */ 
+                     ,#{updateTime,jdbcType=TIMESTAMP}                    /* 更新时间 */ 
+                     ,#{createUserName,jdbcType=VARCHAR}                /* 创建者姓名 */ 
+                     ,#{createUserId,jdbcType=VARCHAR}                  /* 创建者ID */ 
+                     ,#{createTime,jdbcType=TIMESTAMP}                    /* 创建时间 */ 
+					)
+	</insert>
+
+	
+	<!--
+	方法名称: update
+	调用路径: com.mandala.visitManager.entity.PvPlan.update
+	开发信息: 
+	处理信息: 修改信息
+	-->  
+	 <update id="update" parameterType="Object" >
+	  UPDATE   PV_PLAN  	/* 随访管理 */
+	  			<trim   prefix="SET" suffixOverrides="," >
+						 <if test="subjectName != null">
+		    		 		/* 科研随访课题名称 */ 
+	    		 			SUBJECT_NAME = #{subjectName,jdbcType=VARCHAR},
+						 </if>
+						 <if test="stopReason != null">
+		    		 		/* 终止随访理由 */ 
+	    		 			STOP_REASON = #{stopReason,jdbcType=VARCHAR},
+						 </if>
+						 <if test="remark != null">
+		    		 		/* 暂未启用 */ 
+	    		 			REMARK = #{remark,jdbcType=VARCHAR},
+						 </if>
+						 <if test="appointTime != null">
+		    		 		/* 暂未启用 */ 
+	    		 			APPOINT_TIME = #{appointTime,jdbcType=TIMESTAMP},
+						 </if>
+						 <if test="docXml != null">
+		    		 		/* 随访表单内容 */ 
+	    		 			DOC_XML = #{docXml,jdbcType=VARCHAR},
+						 </if>
+						 <if test="subTemplateOrder != null">
+		    		 		/* 随访模板序数 */ 
+	    		 			SUB_TEMPLATE_ORDER = #{subTemplateOrder,jdbcType=INTEGER},
+						 </if>
+						 <if test="subTemplateView != null">
+		    		 		/* 随访模板别名 */ 
+	    		 			SUB_TEMPLATE_VIEW = #{subTemplateView,jdbcType=VARCHAR},
+						 </if>
+						 <if test="subTemplateCycle != null">
+		    		 		/* 随访模板起始点 */ 
+	    		 			SUB_TEMPLATE_CYCLE = #{subTemplateCycle,jdbcType=VARCHAR},
+						 </if>
+						 <if test="subTemplateRule != null">
+		    		 		/* 随访模板规则 */ 
+	    		 			SUB_TEMPLATE_RULE = #{subTemplateRule,jdbcType=VARCHAR},
+						 </if>
+						 <if test="subTemplateName != null">
+		    		 		/* 随访模板名称 */ 
+	    		 			SUB_TEMPLATE_NAME = #{subTemplateName,jdbcType=VARCHAR},
+						 </if>
+						 <if test="cancelReminder != null">
+		    		 		/* 取消随访提醒 */ 
+	    		 			CANCEL_REMINDER = #{cancelReminder,jdbcType=VARCHAR},
+						 </if>
+						 <if test="visitDateCycle != null">
+		    		 		/* 随访起始点 */ 
+	    		 			VISIT_DATE_CYCLE = #{visitDateCycle,jdbcType=VARCHAR},
+						 </if>
+						 <if test="reminderRule != null">
+		    		 		/* 提醒规则 */ 
+	    		 			REMINDER_RULE = #{reminderRule,jdbcType=VARCHAR},
+						 </if>
+						 <if test="actualVisitDate != null">
+		    		 		/* 实际随访日期 */ 
+	    		 			ACTUAL_VISIT_DATE = #{actualVisitDate,jdbcType=TIMESTAMP},
+						 </if>
+						 <if test="endVisitDate != null">
+		    		 		/* 随访结束日期 */ 
+	    		 			END_VISIT_DATE = #{endVisitDate,jdbcType=TIMESTAMP},
+						 </if>
+						 <if test="beginVisitDate != null">
+		    		 		/* 随访开始日期 */ 
+	    		 			BEGIN_VISIT_DATE = #{beginVisitDate,jdbcType=TIMESTAMP},
+						 </if>
+						 <if test="mustVisitDate != null">
+		    		 		/* 随访日期 */ 
+	    		 			MUST_VISIT_DATE = #{mustVisitDate,jdbcType=TIMESTAMP},
+						 </if>
+						 <if test="visitOrder != null">
+		    		 		/* 随访序数 */ 
+	    		 			VISIT_ORDER = #{visitOrder,jdbcType=INTEGER},
+						 </if>
+						 <if test="visitStatus != null">
+		    		 		/* 随访状态 */ 
+	    		 			VISIT_STATUS = #{visitStatus,jdbcType=VARCHAR},
+						 </if>
+						 <if test="visitMode != null">
+		    		 		/* 随访方式 */ 
+	    		 			VISIT_MODE = #{visitMode,jdbcType=VARCHAR},
+						 </if>
+						 <if test="visitType != null">
+		    		 		/* 随访类型 */ 
+	    		 			VISIT_TYPE = #{visitType,jdbcType=VARCHAR},
+						 </if>
+						 <if test="patientLinktel != null">
+		    		 		/* 病人联系电话 */ 
+	    		 			PATIENT_LINKTEL = #{patientLinktel,jdbcType=VARCHAR},
+						 </if>
+						 <if test="patientLinkman != null">
+		    		 		/* 病人联系人 */ 
+	    		 			PATIENT_LINKMAN = #{patientLinkman,jdbcType=VARCHAR},
+						 </if>
+						 <if test="patientMainDoctor != null">
+		    		 		/* 主治医师 */ 
+	    		 			PATIENT_MAIN_DOCTOR = #{patientMainDoctor,jdbcType=VARCHAR},
+						 </if>
+						 <if test="patientCardid != null">
+		    		 		/* 病人身份证 */ 
+	    		 			PATIENT_CARDID = #{patientCardid,jdbcType=VARCHAR},
+						 </if>
+						 <if test="patientOutdate != null">
+		    		 		/* 病人出院日 */ 
+	    		 			PATIENT_OUTDATE = #{patientOutdate,jdbcType=VARCHAR},
+						 </if>
+						 <if test="patientIndate != null">
+		    		 		/* 病人入院日 */ 
+	    		 			PATIENT_INDATE = #{patientIndate,jdbcType=VARCHAR},
+						 </if>
+						 <if test="patientOutDiagnose != null">
+		    		 		/* 病人出院诊断 */ 
+	    		 			PATIENT_OUT_DIAGNOSE = #{patientOutDiagnose,jdbcType=VARCHAR},
+						 </if>
+						 <if test="patientInDiagnose != null">
+		    		 		/* 病人入院诊断 */ 
+	    		 			PATIENT_IN_DIAGNOSE = #{patientInDiagnose,jdbcType=VARCHAR},
+						 </if>
+						 <if test="patientOffice != null">
+		    		 		/* 病人科室 */ 
+	    		 			PATIENT_OFFICE = #{patientOffice,jdbcType=VARCHAR},
+						 </if>
+						 <if test="patientAddress != null">
+		    		 		/* 病人住址 */ 
+	    		 			PATIENT_ADDRESS = #{patientAddress,jdbcType=VARCHAR},
+						 </if>
+						 <if test="patientBirthday != null">
+		    		 		/* 病人生日 */ 
+	    		 			PATIENT_BIRTHDAY = #{patientBirthday,jdbcType=VARCHAR},
+						 </if>
+						 <if test="patientMarriage != null">
+		    		 		/* 病人婚姻 */ 
+	    		 			PATIENT_MARRIAGE = #{patientMarriage,jdbcType=VARCHAR},
+						 </if>
+						 <if test="patientSex != null">
+		    		 		/* 病人性别 */ 
+	    		 			PATIENT_SEX = #{patientSex,jdbcType=VARCHAR},
+						 </if>
+						 <if test="patientName != null">
+		    		 		/* 病人姓名 */ 
+	    		 			PATIENT_NAME = #{patientName,jdbcType=VARCHAR},
+						 </if>
+						 <if test="patientHisOutsideId != null">
+		    		 		/* 病人外部HIS号 */ 
+	    		 			PATIENT_HIS_OUTSIDE_ID = #{patientHisOutsideId,jdbcType=VARCHAR},
+						 </if>
+						 <if test="patientHisInsideId != null">
+		    		 		/* 病人内部HIS号 */ 
+	    		 			PATIENT_HIS_INSIDE_ID = #{patientHisInsideId,jdbcType=VARCHAR},
+						 </if>
+						 <if test="patientMedicalRecordId != null">
+		    		 		/* 病人病历号 */ 
+	    		 			PATIENT_MEDICAL_RECORD_ID = #{patientMedicalRecordId,jdbcType=VARCHAR},
+						 </if>
+						 <if test="patientOutpatientId != null">
+		    		 		/* 病人门诊号 */ 
+	    		 			PATIENT_OUTPATIENT_ID = #{patientOutpatientId,jdbcType=VARCHAR},
+						 </if>
+						 <if test="patientInpatientCount != null">
+		    		 		/* 病人住院序数 */ 
+	    		 			PATIENT_INPATIENT_COUNT = #{patientInpatientCount,jdbcType=VARCHAR},
+						 </if>
+						 <if test="patientInpatientId != null">
+		    		 		/* 病人住院号 */ 
+	    		 			PATIENT_INPATIENT_ID = #{patientInpatientId,jdbcType=VARCHAR},
+						 </if>
+						 <if test="patientDatevalidate != null">
+		    		 		/* 病人DATEVALIDATE */ 
+	    		 			PATIENT_DATEVALIDATE = #{patientDatevalidate,jdbcType=VARCHAR},
+						 </if>
+						 <if test="patientUhid != null">
+		    		 		/* 病人UHID */ 
+	    		 			PATIENT_UHID = #{patientUhid,jdbcType=VARCHAR},
+						 </if>
+						 <if test="nid != null">
+		    		 		/* 主键 */ 
+	    		 			NID = #{nid,jdbcType=VARCHAR},
+						 </if>
+						 <if test="medicId != null">
+		    		 		/* 医生ID */ 
+	    		 			MEDIC_ID = #{medicId,jdbcType=VARCHAR},
+						 </if>
+						 <if test="medicName != null">
+		    		 		/* 医生姓名 */ 
+	    		 			MEDIC_NAME = #{medicName,jdbcType=VARCHAR},
+						 </if>
+						 <if test="medicPhone != null">
+		    		 		/* 医生电话 */ 
+	    		 			MEDIC_PHONE = #{medicPhone,jdbcType=VARCHAR},
+						 </if>
+						 <if test="updateUserName != null">
+		    		 		/* 更新者姓名 */ 
+	    		 			UPDATE_USER_NAME = #{updateUserName,jdbcType=VARCHAR},
+						 </if>
+						 <if test="updateUserId != null">
+		    		 		/* 更新者ID */ 
+	    		 			UPDATE_USER_ID = #{updateUserId,jdbcType=VARCHAR},
+						 </if>
+						 <if test="updateTime != null">
+		    		 		/* 更新时间 */ 
+	    		 			UPDATE_TIME = #{updateTime,jdbcType=TIMESTAMP},
+						 </if>
+						 <if test="createUserName != null">
+		    		 		/* 创建者姓名 */ 
+	    		 			CREATE_USER_NAME = #{createUserName,jdbcType=VARCHAR},
+						 </if>
+						 <if test="createUserId != null">
+		    		 		/* 创建者ID */ 
+	    		 			CREATE_USER_ID = #{createUserId,jdbcType=VARCHAR},
+						 </if>
+						 <if test="createTime != null">
+		    		 		/* 创建时间 */ 
+	    		 			CREATE_TIME = #{createTime,jdbcType=TIMESTAMP},
+						 </if>
+	  	  		</trim>
+				WHERE
+	  	 		 		id = #{id}		/* 序号 */ 
+	 </update>
+	
+	<!--
+	方法名称: get
+	调用路径: com.mandala.visitManager.entity.PvPlan.get
+	开发信息: 
+	处理信息: 根据主键查询记录
+	-->
+	<select id="get" parameterType="Object"  resultMap="PvPlan">
+		   SELECT   
+                   pp.SUBJECT_NAME                  /* 科研随访课题名称 */ 
+                  ,pp.STOP_REASON                   /* 终止随访理由 */ 
+                  ,pp.REMARK                        /* 暂未启用 */ 
+                  ,pp.APPOINT_TIME                  /* 暂未启用 */ 
+                  ,pp.DOC_XML                       /* 随访表单内容 */ 
+                  ,pp.SUB_TEMPLATE_ORDER            /* 随访模板序数 */ 
+                  ,pp.SUB_TEMPLATE_VIEW             /* 随访模板别名 */ 
+                  ,pp.SUB_TEMPLATE_CYCLE            /* 随访模板起始点 */ 
+                  ,pp.SUB_TEMPLATE_RULE             /* 随访模板规则 */ 
+                  ,pp.SUB_TEMPLATE_NAME             /* 随访模板名称 */ 
+                  ,pp.CANCEL_REMINDER               /* 取消随访提醒 */ 
+                  ,pp.VISIT_DATE_CYCLE              /* 随访起始点 */ 
+                  ,pp.REMINDER_RULE                 /* 提醒规则 */ 
+                  ,pp.ACTUAL_VISIT_DATE             /* 实际随访日期 */ 
+                  ,pp.END_VISIT_DATE                /* 随访结束日期 */ 
+                  ,pp.BEGIN_VISIT_DATE              /* 随访开始日期 */ 
+                  ,pp.MUST_VISIT_DATE               /* 随访日期 */ 
+                  ,pp.VISIT_ORDER                   /* 随访序数 */ 
+                  ,pp.VISIT_STATUS                  /* 随访状态 */ 
+                  ,pp.VISIT_MODE                    /* 随访方式 */ 
+                  ,pp.VISIT_TYPE                    /* 随访类型 */ 
+                  ,pp.PATIENT_LINKTEL               /* 病人联系电话 */ 
+                  ,pp.PATIENT_LINKMAN               /* 病人联系人 */ 
+                  ,pp.PATIENT_MAIN_DOCTOR           /* 主治医师 */ 
+                  ,pp.PATIENT_CARDID                /* 病人身份证 */ 
+                  ,pp.PATIENT_OUTDATE               /* 病人出院日 */ 
+                  ,pp.PATIENT_INDATE                /* 病人入院日 */ 
+                  ,pp.PATIENT_OUT_DIAGNOSE          /* 病人出院诊断 */ 
+                  ,pp.PATIENT_IN_DIAGNOSE           /* 病人入院诊断 */ 
+                  ,pp.PATIENT_OFFICE                /* 病人科室 */ 
+                  ,pp.PATIENT_ADDRESS               /* 病人住址 */ 
+                  ,pp.PATIENT_BIRTHDAY              /* 病人生日 */ 
+                  ,pp.PATIENT_MARRIAGE              /* 病人婚姻 */ 
+                  ,pp.PATIENT_SEX                   /* 病人性别 */ 
+                  ,pp.PATIENT_NAME                  /* 病人姓名 */ 
+                  ,pp.PATIENT_HIS_OUTSIDE_ID        /* 病人外部HIS号 */ 
+                  ,pp.PATIENT_HIS_INSIDE_ID         /* 病人内部HIS号 */ 
+                  ,pp.PATIENT_MEDICAL_RECORD_ID     /* 病人病历号 */ 
+                  ,pp.PATIENT_OUTPATIENT_ID         /* 病人门诊号 */ 
+                  ,pp.PATIENT_INPATIENT_COUNT       /* 病人住院序数 */ 
+                  ,pp.PATIENT_INPATIENT_ID          /* 病人住院号 */ 
+                  ,pp.PATIENT_DATEVALIDATE          /* 病人DATEVALIDATE */ 
+                  ,pp.PATIENT_UHID                  /* 病人UHID */ 
+                  ,pp.NID                           /* 主键 */ 
+                  ,pp.MEDIC_ID                      /* 医生ID */ 
+                  ,pp.MEDIC_NAME                    /* 医生姓名 */ 
+                  ,pp.MEDIC_PHONE                   /* 医生电话 */ 
+                  ,pp.UPDATE_USER_NAME              /* 更新者姓名 */ 
+                  ,pp.UPDATE_USER_ID                /* 更新者ID */ 
+                  ,pp.UPDATE_TIME                   /* 更新时间 */ 
+                  ,pp.CREATE_USER_NAME              /* 创建者姓名 */ 
+                  ,pp.CREATE_USER_ID                /* 创建者ID */ 
+                  ,pp.CREATE_TIME                   /* 创建时间 */ 
+		   FROM   PV_PLAN       pp      /* 随访管理 */ 
+		   WHERE
+				id = #{id}				/* 序号 */ 
+	</select>
+	
+	<!--
+	方法名称: delete
+	调用路径: com.mandala.visitManager.entity.PvPlan.delete
+	开发信息: 
+	处理信息: 删除记录
+	-->
+	<delete id="delete" parameterType="Object">
+		DELETE 	FROM PV_PLAN 	/* 随访管理 */  
+		WHERE 
+			id = #{id}					/* 序号 */ 
+	</delete>
+	
+	<!--
+	方法名称: count
+	调用路径: com.mandala.visitManager.entity.PvPlan.count
+	开发信息: 
+	处理信息: 列表总数
+	-->
+	<select id="count" resultType="java.lang.Integer"  parameterType="Object">
+		SELECT count(*)  FROM  PV_PLAN    pp      /* 随访管理 */ 
+		 WHERE 1=1
+		    <include refid="wherecontation"/>
+	</select>
+  	
+  	<!--
+	方法名称: queryPageList
+	调用路径: com.mandala.visitManager.entity.PvPlan.queryPageList
+	开发信息: 
+	处理信息: 列表
+	-->
+	<select id="queryPageList" parameterType="Object"  resultMap="PvPlan">
+	    SELECT 
+                   pp.SUBJECT_NAME                  /* 科研随访课题名称 */ 
+                  ,pp.STOP_REASON                   /* 终止随访理由 */ 
+                  ,pp.REMARK                        /* 暂未启用 */ 
+                  ,pp.APPOINT_TIME                  /* 暂未启用 */ 
+                  ,pp.DOC_XML                       /* 随访表单内容 */ 
+                  ,pp.SUB_TEMPLATE_ORDER            /* 随访模板序数 */ 
+                  ,pp.SUB_TEMPLATE_VIEW             /* 随访模板别名 */ 
+                  ,pp.SUB_TEMPLATE_CYCLE            /* 随访模板起始点 */ 
+                  ,pp.SUB_TEMPLATE_RULE             /* 随访模板规则 */ 
+                  ,pp.SUB_TEMPLATE_NAME             /* 随访模板名称 */ 
+                  ,pp.CANCEL_REMINDER               /* 取消随访提醒 */ 
+                  ,pp.VISIT_DATE_CYCLE              /* 随访起始点 */ 
+                  ,pp.REMINDER_RULE                 /* 提醒规则 */ 
+                  ,pp.ACTUAL_VISIT_DATE             /* 实际随访日期 */ 
+                  ,pp.END_VISIT_DATE                /* 随访结束日期 */ 
+                  ,pp.BEGIN_VISIT_DATE              /* 随访开始日期 */ 
+                  ,pp.MUST_VISIT_DATE               /* 随访日期 */ 
+                  ,pp.VISIT_ORDER                   /* 随访序数 */ 
+                  ,pp.VISIT_STATUS                  /* 随访状态 */ 
+                  ,pp.VISIT_MODE                    /* 随访方式 */ 
+                  ,pp.VISIT_TYPE                    /* 随访类型 */ 
+                  ,pp.PATIENT_LINKTEL               /* 病人联系电话 */ 
+                  ,pp.PATIENT_LINKMAN               /* 病人联系人 */ 
+                  ,pp.PATIENT_MAIN_DOCTOR           /* 主治医师 */ 
+                  ,pp.PATIENT_CARDID                /* 病人身份证 */ 
+                  ,pp.PATIENT_OUTDATE               /* 病人出院日 */ 
+                  ,pp.PATIENT_INDATE                /* 病人入院日 */ 
+                  ,pp.PATIENT_OUT_DIAGNOSE          /* 病人出院诊断 */ 
+                  ,pp.PATIENT_IN_DIAGNOSE           /* 病人入院诊断 */ 
+                  ,pp.PATIENT_OFFICE                /* 病人科室 */ 
+                  ,pp.PATIENT_ADDRESS               /* 病人住址 */ 
+                  ,pp.PATIENT_BIRTHDAY              /* 病人生日 */ 
+                  ,pp.PATIENT_MARRIAGE              /* 病人婚姻 */ 
+                  ,pp.PATIENT_SEX                   /* 病人性别 */ 
+                  ,pp.PATIENT_NAME                  /* 病人姓名 */ 
+                  ,pp.PATIENT_HIS_OUTSIDE_ID        /* 病人外部HIS号 */ 
+                  ,pp.PATIENT_HIS_INSIDE_ID         /* 病人内部HIS号 */ 
+                  ,pp.PATIENT_MEDICAL_RECORD_ID     /* 病人病历号 */ 
+                  ,pp.PATIENT_OUTPATIENT_ID         /* 病人门诊号 */ 
+                  ,pp.PATIENT_INPATIENT_COUNT       /* 病人住院序数 */ 
+                  ,pp.PATIENT_INPATIENT_ID          /* 病人住院号 */ 
+                  ,pp.PATIENT_DATEVALIDATE          /* 病人DATEVALIDATE */ 
+                  ,pp.PATIENT_UHID                  /* 病人UHID */ 
+                  ,pp.NID                           /* 主键 */ 
+                  ,pp.MEDIC_ID                      /* 医生ID */ 
+                  ,pp.MEDIC_NAME                    /* 医生姓名 */ 
+                  ,pp.MEDIC_PHONE                   /* 医生电话 */ 
+                  ,pp.UPDATE_USER_NAME              /* 更新者姓名 */ 
+                  ,pp.UPDATE_USER_ID                /* 更新者ID */ 
+                  ,pp.UPDATE_TIME                   /* 更新时间 */ 
+                  ,pp.CREATE_USER_NAME              /* 创建者姓名 */ 
+                  ,pp.CREATE_USER_ID                /* 创建者ID */ 
+                  ,pp.CREATE_TIME                   /* 创建时间 */ 
+		FROM  (
+SELECT A.*, ROWNUM RN 
+FROM (SELECT * FROM PV_PLAN where  1=1  <include refid="wherecontation"/>) A WHERE 
+#{startRow}  + #{pageSize}
+>= ROWNUM) pp  
+WHERE pp.RN >= #{startRow} 
+		
+			  
+	</select>
+	
+</mapper>
