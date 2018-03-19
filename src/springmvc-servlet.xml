@@ -164,7 +164,7 @@
 			<mvc:mapping path="/**/back/**/*.html" />
 			<bean class="com.mandala.system.interceptors.AuthInterceptor">
 				<!-- mode: DEV开发模式(拦截器禁用);PUB发布模式(拦截器启用) -->
-				<property name="mode"><value>PUB</value></property>
+				<property name="mode"><value>DEV</value></property>
 				<!-- excludeUrls:不进行拦截的url -->
 				<property name="excludeUrls">
 					<list>

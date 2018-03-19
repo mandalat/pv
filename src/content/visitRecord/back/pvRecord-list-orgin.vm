@@ -1,0 +1,379 @@
+#parse("content/base/back/common/macro.vm")
+<!DOCTYPE html>
+<html lang="en">
+#parse("content/base/back/common/head.vm")
+<body style='overflow:scroll;overflow-x:hidden'>
+	<div class="container bs-docs-container" style="width:100%;">
+		<div class="row">
+			<form role="form" class="form-inline" action="$!{basePath}/visitRecord/back/pvRecord/list.html" method="post"  id="formSubmit">
+				<div  class="col-md-10" style="width:100%">
+								<div class="panel panel-default">
+								  <div class="panel-heading">砍价活动配置列表</div>
+								  <div class="panel-body">
+								  		<div class="search">
+															 <div class="form-group col-sm-3">
+															    <label for="recordExtend2" class="control-label col-sm-3 line34">备用字段2</label>
+															     <div class="col-sm-8">
+															    <input type="text" name="recordExtend2" id="recordExtend2" value="$!{pvRecord.recordExtend2}" class="form-control">
+															  	</div>
+															 </div>
+															 <div class="form-group col-sm-3">
+															    <label for="recordExtend1" class="control-label col-sm-3 line34">备用字段1</label>
+															     <div class="col-sm-8">
+															    <input type="text" name="recordExtend1" id="recordExtend1" value="$!{pvRecord.recordExtend1}" class="form-control">
+															  	</div>
+															 </div>
+															 <div class="form-group col-sm-3">
+															    <label for="templateViewId" class="control-label col-sm-3 line34">模板ID</label>
+															     <div class="col-sm-8">
+															    <input type="text" name="templateViewId" id="templateViewId" value="$!{pvRecord.templateViewId}" class="form-control">
+															  	</div>
+															 </div>
+															 <div class="form-group col-sm-3">
+															    <label for="medicId" class="control-label col-sm-3 line34">医生ID</label>
+															     <div class="col-sm-8">
+															    <input type="text" name="medicId" id="medicId" value="$!{pvRecord.medicId}" class="form-control">
+															  	</div>
+															 </div>
+															 <div class="form-group col-sm-3">
+															    <label for="medicName" class="control-label col-sm-3 line34">医生姓名</label>
+															     <div class="col-sm-8">
+															    <input type="text" name="medicName" id="medicName" value="$!{pvRecord.medicName}" class="form-control">
+															  	</div>
+															 </div>
+															 <div class="form-group col-sm-3">
+															    <label for="medicPhone" class="control-label col-sm-3 line34">医生电话</label>
+															     <div class="col-sm-8">
+															    <input type="text" name="medicPhone" id="medicPhone" value="$!{pvRecord.medicPhone}" class="form-control">
+															  	</div>
+															 </div>
+															 <div class="form-group col-sm-3">
+															    <label for="updateUserName" class="control-label col-sm-3 line34">更新者姓名</label>
+															     <div class="col-sm-8">
+															    <input type="text" name="updateUserName" id="updateUserName" value="$!{pvRecord.updateUserName}" class="form-control">
+															  	</div>
+															 </div>
+															 <div class="form-group col-sm-3">
+															    <label for="updateUserId" class="control-label col-sm-3 line34">更新者ID</label>
+															     <div class="col-sm-8">
+															    <input type="text" name="updateUserId" id="updateUserId" value="$!{pvRecord.updateUserId}" class="form-control">
+															  	</div>
+															 </div>
+															 <div class="form-group col-sm-3">
+															    <label for="updateTime" class="control-label col-sm-3 line34">更新时间</label>
+															     <div class="col-sm-8">
+															    <input type="text" name="updateTime" id="updateTime" value="$!{pvRecord.updateTime}" class="form-control">
+															  	</div>
+															 </div>
+															 <div class="form-group col-sm-3">
+															    <label for="createUserName" class="control-label col-sm-3 line34">创建者姓名</label>
+															     <div class="col-sm-8">
+															    <input type="text" name="createUserName" id="createUserName" value="$!{pvRecord.createUserName}" class="form-control">
+															  	</div>
+															 </div>
+															 <div class="form-group col-sm-3">
+															    <label for="createUserId" class="control-label col-sm-3 line34">创建者ID</label>
+															     <div class="col-sm-8">
+															    <input type="text" name="createUserId" id="createUserId" value="$!{pvRecord.createUserId}" class="form-control">
+															  	</div>
+															 </div>
+															 <div class="form-group col-sm-3">
+															    <label for="createTime" class="control-label col-sm-3 line34">创建时间</label>
+															     <div class="col-sm-8">
+															    <input type="text" name="createTime" id="createTime" value="$!{pvRecord.createTime}" class="form-control">
+															  	</div>
+															 </div>
+															 <div class="form-group col-sm-3">
+															    <label for="subjectName" class="control-label col-sm-3 line34">科研随访课题名称</label>
+															     <div class="col-sm-8">
+															    <input type="text" name="subjectName" id="subjectName" value="$!{pvRecord.subjectName}" class="form-control">
+															  	</div>
+															 </div>
+															 <div class="form-group col-sm-3">
+															    <label for="stopReason" class="control-label col-sm-3 line34">终止随访理由</label>
+															     <div class="col-sm-8">
+															    <input type="text" name="stopReason" id="stopReason" value="$!{pvRecord.stopReason}" class="form-control">
+															  	</div>
+															 </div>
+															 <div class="form-group col-sm-3">
+															    <label for="recordContent" class="control-label col-sm-3 line34">随访表单内容</label>
+															     <div class="col-sm-8">
+															    <input type="text" name="recordContent" id="recordContent" value="$!{pvRecord.recordContent}" class="form-control">
+															  	</div>
+															 </div>
+															 <div class="form-group col-sm-3">
+															    <label for="subTemplateName" class="control-label col-sm-3 line34">随访模板名称</label>
+															     <div class="col-sm-8">
+															    <input type="text" name="subTemplateName" id="subTemplateName" value="$!{pvRecord.subTemplateName}" class="form-control">
+															  	</div>
+															 </div>
+															 <div class="form-group col-sm-3">
+															    <label for="cancelReminder" class="control-label col-sm-3 line34">取消随访提醒</label>
+															     <div class="col-sm-8">
+															    <input type="text" name="cancelReminder" id="cancelReminder" value="$!{pvRecord.cancelReminder}" class="form-control">
+															  	</div>
+															 </div>
+															 <div class="form-group col-sm-3">
+															    <label for="actualVisitDate" class="control-label col-sm-3 line34">实际随访日期</label>
+															     <div class="col-sm-8">
+															    <input type="text" name="actualVisitDate" id="actualVisitDate" value="$!{pvRecord.actualVisitDate}" class="form-control">
+															  	</div>
+															 </div>
+															 <div class="form-group col-sm-3">
+															    <label for="endVisitDate" class="control-label col-sm-3 line34">随访结束日期</label>
+															     <div class="col-sm-8">
+															    <input type="text" name="endVisitDate" id="endVisitDate" value="$!{pvRecord.endVisitDate}" class="form-control">
+															  	</div>
+															 </div>
+															 <div class="form-group col-sm-3">
+															    <label for="beginVisitDate" class="control-label col-sm-3 line34">随访开始日期</label>
+															     <div class="col-sm-8">
+															    <input type="text" name="beginVisitDate" id="beginVisitDate" value="$!{pvRecord.beginVisitDate}" class="form-control">
+															  	</div>
+															 </div>
+															 <div class="form-group col-sm-3">
+															    <label for="mustVisitDate" class="control-label col-sm-3 line34">随访日期</label>
+															     <div class="col-sm-8">
+															    <input type="text" name="mustVisitDate" id="mustVisitDate" value="$!{pvRecord.mustVisitDate}" class="form-control">
+															  	</div>
+															 </div>
+															 <div class="form-group col-sm-3">
+															    <label for="visitOrder" class="control-label col-sm-3 line34">随访序数</label>
+															     <div class="col-sm-8">
+															    <input type="text" name="visitOrder" id="visitOrder" value="$!{pvRecord.visitOrder}" class="form-control">
+															  	</div>
+															 </div>
+															 <div class="form-group col-sm-3">
+															    <label for="visitStatus" class="control-label col-sm-3 line34">随访状态</label>
+															     <div class="col-sm-8">
+															    <input type="text" name="visitStatus" id="visitStatus" value="$!{pvRecord.visitStatus}" class="form-control">
+															  	</div>
+															 </div>
+															 <div class="form-group col-sm-3">
+															    <label for="visitMode" class="control-label col-sm-3 line34">随访方式（暂未启用）</label>
+															     <div class="col-sm-8">
+															    <input type="text" name="visitMode" id="visitMode" value="$!{pvRecord.visitMode}" class="form-control">
+															  	</div>
+															 </div>
+															 <div class="form-group col-sm-3">
+															    <label for="visitType" class="control-label col-sm-3 line34">随访类型（暂未启用）</label>
+															     <div class="col-sm-8">
+															    <input type="text" name="visitType" id="visitType" value="$!{pvRecord.visitType}" class="form-control">
+															  	</div>
+															 </div>
+															 <div class="form-group col-sm-3">
+															    <label for="patientLinktel" class="control-label col-sm-3 line34">病人联系电话</label>
+															     <div class="col-sm-8">
+															    <input type="text" name="patientLinktel" id="patientLinktel" value="$!{pvRecord.patientLinktel}" class="form-control">
+															  	</div>
+															 </div>
+															 <div class="form-group col-sm-3">
+															    <label for="patientLinkman" class="control-label col-sm-3 line34">病人联系人</label>
+															     <div class="col-sm-8">
+															    <input type="text" name="patientLinkman" id="patientLinkman" value="$!{pvRecord.patientLinkman}" class="form-control">
+															  	</div>
+															 </div>
+															 <div class="form-group col-sm-3">
+															    <label for="patientMainDoctor" class="control-label col-sm-3 line34">主治医师</label>
+															     <div class="col-sm-8">
+															    <input type="text" name="patientMainDoctor" id="patientMainDoctor" value="$!{pvRecord.patientMainDoctor}" class="form-control">
+															  	</div>
+															 </div>
+															 <div class="form-group col-sm-3">
+															    <label for="patientCardid" class="control-label col-sm-3 line34">病人身份证</label>
+															     <div class="col-sm-8">
+															    <input type="text" name="patientCardid" id="patientCardid" value="$!{pvRecord.patientCardid}" class="form-control">
+															  	</div>
+															 </div>
+															 <div class="form-group col-sm-3">
+															    <label for="patientOutdate" class="control-label col-sm-3 line34">病人出院日</label>
+															     <div class="col-sm-8">
+															    <input type="text" name="patientOutdate" id="patientOutdate" value="$!{pvRecord.patientOutdate}" class="form-control">
+															  	</div>
+															 </div>
+															 <div class="form-group col-sm-3">
+															    <label for="patientIndate" class="control-label col-sm-3 line34">病人入院日</label>
+															     <div class="col-sm-8">
+															    <input type="text" name="patientIndate" id="patientIndate" value="$!{pvRecord.patientIndate}" class="form-control">
+															  	</div>
+															 </div>
+															 <div class="form-group col-sm-3">
+															    <label for="patientOutDiagnose" class="control-label col-sm-3 line34">病人出院诊断</label>
+															     <div class="col-sm-8">
+															    <input type="text" name="patientOutDiagnose" id="patientOutDiagnose" value="$!{pvRecord.patientOutDiagnose}" class="form-control">
+															  	</div>
+															 </div>
+															 <div class="form-group col-sm-3">
+															    <label for="patientInDiagnose" class="control-label col-sm-3 line34">病人入院诊断</label>
+															     <div class="col-sm-8">
+															    <input type="text" name="patientInDiagnose" id="patientInDiagnose" value="$!{pvRecord.patientInDiagnose}" class="form-control">
+															  	</div>
+															 </div>
+															 <div class="form-group col-sm-3">
+															    <label for="patientOffice" class="control-label col-sm-3 line34">病人科室</label>
+															     <div class="col-sm-8">
+															    <input type="text" name="patientOffice" id="patientOffice" value="$!{pvRecord.patientOffice}" class="form-control">
+															  	</div>
+															 </div>
+															 <div class="form-group col-sm-3">
+															    <label for="patientAddress" class="control-label col-sm-3 line34">病人住址</label>
+															     <div class="col-sm-8">
+															    <input type="text" name="patientAddress" id="patientAddress" value="$!{pvRecord.patientAddress}" class="form-control">
+															  	</div>
+															 </div>
+															 <div class="form-group col-sm-3">
+															    <label for="patientBirthday" class="control-label col-sm-3 line34">病人生日</label>
+															     <div class="col-sm-8">
+															    <input type="text" name="patientBirthday" id="patientBirthday" value="$!{pvRecord.patientBirthday}" class="form-control">
+															  	</div>
+															 </div>
+															 <div class="form-group col-sm-3">
+															    <label for="patientMarriage" class="control-label col-sm-3 line34">病人婚姻</label>
+															     <div class="col-sm-8">
+															    <input type="text" name="patientMarriage" id="patientMarriage" value="$!{pvRecord.patientMarriage}" class="form-control">
+															  	</div>
+															 </div>
+															 <div class="form-group col-sm-3">
+															    <label for="patientSex" class="control-label col-sm-3 line34">病人性别</label>
+															     <div class="col-sm-8">
+															    <input type="text" name="patientSex" id="patientSex" value="$!{pvRecord.patientSex}" class="form-control">
+															  	</div>
+															 </div>
+															 <div class="form-group col-sm-3">
+															    <label for="patientName" class="control-label col-sm-3 line34">病人姓名</label>
+															     <div class="col-sm-8">
+															    <input type="text" name="patientName" id="patientName" value="$!{pvRecord.patientName}" class="form-control">
+															  	</div>
+															 </div>
+															 <div class="form-group col-sm-3">
+															    <label for="patientId" class="control-label col-sm-3 line34">病人住院号</label>
+															     <div class="col-sm-8">
+															    <input type="text" name="patientId" id="patientId" value="$!{pvRecord.patientId}" class="form-control">
+															  	</div>
+															 </div>
+															 <div class="form-group col-sm-3">
+															    <label for="rid" class="control-label col-sm-3 line34">主键</label>
+															     <div class="col-sm-8">
+															    <input type="text" name="rid" id="rid" value="$!{pvRecord.rid}" class="form-control">
+															  	</div>
+															 </div>
+											  <button type="submit" class="btn btn-primary">搜  索</button>
+											  <div class="clearfix"></div>
+								  		</div>
+								  		<div id="legend">
+								          <legend  class="le"><button type="button" class="btn btn-primary" onclick="doUrl('$!{basePath}/visitRecord/back/pvRecord/toAdd.html')" >新增</button></legend> 
+								        </div>
+								        <table class="table table-striped">
+									        <thead>
+													<th>备用字段2</th>
+													<th>备用字段1</th>
+													<th>模板ID</th>
+													<th>医生ID</th>
+													<th>医生姓名</th>
+													<th>医生电话</th>
+													<th>更新者姓名</th>
+													<th>更新者ID</th>
+													<th>更新时间</th>
+													<th>创建者姓名</th>
+													<th>创建者ID</th>
+													<th>创建时间</th>
+													<th>科研随访课题名称</th>
+													<th>终止随访理由</th>
+													<th>随访表单内容</th>
+													<th>随访模板名称</th>
+													<th>取消随访提醒</th>
+													<th>实际随访日期</th>
+													<th>随访结束日期</th>
+													<th>随访开始日期</th>
+													<th>随访日期</th>
+													<th>随访序数</th>
+													<th>随访状态</th>
+													<th>随访方式（暂未启用）</th>
+													<th>随访类型（暂未启用）</th>
+													<th>病人联系电话</th>
+													<th>病人联系人</th>
+													<th>主治医师</th>
+													<th>病人身份证</th>
+													<th>病人出院日</th>
+													<th>病人入院日</th>
+													<th>病人出院诊断</th>
+													<th>病人入院诊断</th>
+													<th>病人科室</th>
+													<th>病人住址</th>
+													<th>病人生日</th>
+													<th>病人婚姻</th>
+													<th>病人性别</th>
+													<th>病人姓名</th>
+													<th>病人住院号</th>
+													<th>主键</th>
+						                			<th>操作</th>
+									        </thead>
+									        <tobody>
+									    	  #if($!{pageInfos})
+								                #foreach($!{info} in $!{pageInfos})
+									            	<tr>			
+																	<td>$!{info.recordExtend2}</td>
+																	<td>$!{info.recordExtend1}</td>
+																	<td>$!{info.templateViewId}</td>
+																	<td>$!{info.medicId}</td>
+																	<td>$!{info.medicName}</td>
+																	<td>$!{info.medicPhone}</td>
+																	<td>$!{info.updateUserName}</td>
+																	<td>$!{info.updateUserId}</td>
+																	<td>$!{info.updateTime}</td>
+																	<td>$!{info.createUserName}</td>
+																	<td>$!{info.createUserId}</td>
+																	<td>$!{info.createTime}</td>
+																	<td>$!{info.subjectName}</td>
+																	<td>$!{info.stopReason}</td>
+																	<td>$!{info.recordContent}</td>
+																	<td>$!{info.subTemplateName}</td>
+																	<td>$!{info.cancelReminder}</td>
+																	<td>$!{info.actualVisitDate}</td>
+																	<td>$!{info.endVisitDate}</td>
+																	<td>$!{info.beginVisitDate}</td>
+																	<td>$!{info.mustVisitDate}</td>
+																	<td>$!{info.visitOrder}</td>
+																	<td>$!{info.visitStatus}</td>
+																	<td>$!{info.visitMode}</td>
+																	<td>$!{info.visitType}</td>
+																	<td>$!{info.patientLinktel}</td>
+																	<td>$!{info.patientLinkman}</td>
+																	<td>$!{info.patientMainDoctor}</td>
+																	<td>$!{info.patientCardid}</td>
+																	<td>$!{info.patientOutdate}</td>
+																	<td>$!{info.patientIndate}</td>
+																	<td>$!{info.patientOutDiagnose}</td>
+																	<td>$!{info.patientInDiagnose}</td>
+																	<td>$!{info.patientOffice}</td>
+																	<td>$!{info.patientAddress}</td>
+																	<td>$!{info.patientBirthday}</td>
+																	<td>$!{info.patientMarriage}</td>
+																	<td>$!{info.patientSex}</td>
+																	<td>$!{info.patientName}</td>
+																	<td>$!{info.patientId}</td>
+																	<td>$!{info.rid}</td>
+										                <td class="last">
+							                			<a href="javascript:doUrl('$!{basePath}/visitRecord/back/pvRecord/toEdit.html?rid=$!{info.rid}')" >编辑</a>
+							                			<a href="javascript:delData('$!{basePath}/visitRecord/back/pvRecord/doDelete.html?rid=$!{info.rid}')">删除</a>
+							                			<a href="javascript:doUrl('$!{basePath}/visitRecord/back/pvRecord/toDetail.html?rid=$!{info.rid}')">详情</a>
+						                				</td>
+									           		</tr>
+									             #end
+									    	 #end
+									         </tobody>
+									    </table>
+										<div class="text-right">
+											<!--公用翻页代码-->
+							                #set($attr='formSubmit')
+							            	#showPageList($pageInfos $attr)
+							                <!--END公用翻页代码-->
+										</div>
+								  </div>	
+								</div>
+				</div>  
+				</form>
+		</div>
+	</div>
+</body>
+</html>

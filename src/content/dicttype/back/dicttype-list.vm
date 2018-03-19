@@ -24,16 +24,14 @@
 								          <legend  class="le"><button type="button" class="btn btn-primary" onclick="doUrl('$!{basePath}/dicttype/back/dicttype/toAdd.html')" >新增</button></legend> 
 								        </div>
 								        <table class="table table-striped">
-									        <thead>
-													<th>类型ID</th>
+									        <thead>  
 													<th>类型名称</th>
 						                			<th>操作</th>
 									        </thead>
 									        <tobody>
 									    	  #if($!{pageInfos})
 								                #foreach($!{info} in $!{pageInfos})
-									            	<tr>			
-																	<td>$!{info.id}</td>
+									            	<tr>			 
 																	<td>$!{info.typename}</td>
 										                <td class="last">
 							                			<a href="javascript:doUrl('$!{basePath}/dicttype/back/dicttype/toEdit.html?id=$!{info.id}')" >编辑</a>

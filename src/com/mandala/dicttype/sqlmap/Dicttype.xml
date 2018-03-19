@@ -6,7 +6,7 @@
 
 	<!-- Result Map-->
 	<resultMap id="Dicttype" type="com.mandala.dicttype.entity.Dicttype" >
-		<result column="id" property="id" jdbcType="INTEGER"/>
+		<result column="id" property="id" jdbcType="VARCHAR"/>
 		<result column="typename" property="typename" jdbcType="VARCHAR"/>
 		<result column="dicttypecol0" property="dicttypecol0" jdbcType="VARCHAR"/>
 		<result column="dicttypecol1" property="dicttypecol1" jdbcType="VARCHAR"/>
@@ -36,15 +36,17 @@
 	开发信息: 
 	处理信息: 保存信息
 	-->
-	<insert id="insert" parameterType="Object" >
+	<insert id="insert" parameterType="Object">
 	  INSERT  INTO  dicttype   /* 数据字典类型表 */  
 					(	
-                      typename                      /* 类型名称 */ 
+					  id
+                     ,typename                      /* 类型名称 */ 
                      ,dicttypecol0                  /*  */ 
                      ,dicttypecol1                  /*  */ 
 					)
 			values (
-                      #{typename,jdbcType=VARCHAR}                      /* 类型名称 */ 
+					#{id,jdbcType=VARCHAR}
+					,#{typename,jdbcType=VARCHAR}                      /* 类型名称 */ 
                      ,#{dicttypecol0,jdbcType=VARCHAR}                  /*  */ 
                      ,#{dicttypecol1,jdbcType=VARCHAR}                  /*  */ 
 					)
@@ -89,7 +91,7 @@
                   ,d.typename                      /* 类型名称 */ 
                   ,d.dicttypecol0                  /*  */ 
                   ,d.dicttypecol1                  /*  */ 
-		   FROM   dicttype      AS d      /* 数据字典类型表 */ 
+		   FROM   dicttype        d      /* 数据字典类型表 */ 
 		   WHERE
 				id = #{id}				/* 序号 */ 
 	</select>
@@ -113,7 +115,7 @@
 	处理信息: 列表总数
 	-->
 	<select id="count" resultType="java.lang.Integer"  parameterType="Object">
-		SELECT count(*)  FROM  dicttype      AS d      /* 数据字典类型表 */ 
+		SELECT count(*)  FROM  dicttype        d      /* 数据字典类型表 */ 
 		 WHERE 1=1
 		    <include refid="wherecontation"/>
 	</select>
@@ -130,11 +132,12 @@
                   ,d.typename                      /* 类型名称 */ 
                   ,d.dicttypecol0                  /*  */ 
                   ,d.dicttypecol1                  /*  */ 
-		FROM   	 dicttype      AS d      /* 数据字典类型表 */ 
-		WHERE 1=1
-		   <include refid="wherecontation"/>
-		LIMIT  #{startRow}  		/* 开始序号 */ 
-			  ,#{pageSize}		/* 每页显示条数 */ 
+		FROM   	 (
+SELECT A.*, ROWNUM RN 
+FROM (SELECT * FROM dicttype where  1=1  <include refid="wherecontation"/>) A WHERE 
+#{startRow}  + #{pageSize}
+>= ROWNUM) d  
+WHERE d.RN >= #{startRow}
 	</select>
 	
 </mapper>

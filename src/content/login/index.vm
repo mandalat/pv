@@ -1,208 +1,174 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"> 
-<html xmlns="http://www.w3.org/1999/xhtml">
-<head id="Head1" runat="server">
-    <title>随访系统登录</title>
-  <link rel="stylesheet" href="$!{basePath}/css/ele_ui.css">
-    <style type="text/css"> 
-	span{display:none;} 
-        body
+<!DOCTYPE html>
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="description" content="随访系统">  
+<meta name="keywords" content="随访系统">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>随访系统</title> 
+<link rel="icon" href=" " type="image/x-icon">
+<link rel="stylesheet" href="$!{basePath}/login_reg_files/jquery-ui-1.10.0.custom.min.css">
+<link rel="stylesheet" href="$!{basePath}/login_reg_files/newlogin.css"><style>
+ body
         {
-            background-image: url('./Content/Images/ycbldydl.png');
+            background-image: url('$!{basePath}/img/ycbldydl.png');
             background-repeat: no-repeat;
             font-family: "Trebuchet MS" , "Helvetica" , "Arial" , "Verdana" , "sans-serif";
             font-size: 70%;
         }
-        #logindiv
-        {
-            background-color: White;
-            width: 380px;
-            height: 300px; 
-            margin-top: 70px;
-            margin-left: 550px;
-        }
-        #logoimg
-        {
-            margin-top: 80px;
-            width: 400px;
-            margin-right: 400px;
-        }
-        #logbottom
-        {
-            width: 500px;
-            margin-top: 40px;
-            margin-left: 360px;
-        }
-        #rbllist
-        {
-            padding-left: 100px;
-        }
-        #btnsub
-        {
-            width:84px;
-            height:31px;
-            background-image:url(./Content/Images/submit.png);
-            background-repeat:no-repeat;
-            border:0px;
-            }
-        #erMsg
-        {
-            color:Red;
-            margin:3px;
-            font-size:12px;
-            }
-        select
-        {
-            width:202px;
-            }
-            
-            
-        .custom-combobox
-        {
-            margin-left:0px;
-            position: relative;
-            display: inline-block;
-        }
-        
-        .custom-combobox-toggle
-        {
-            position: absolute;
-            top: 0;
-            bottom: 0;
-            margin-left: -1px;
-            padding: 0;
-        }
-        
-        .custom-combobox-input
-        {
-            margin: 0;
-            padding: 3px 10px;
-        }
-        .ui-state-default
-        {
-            background: none;
-        }
-        .ui-menu-item
-        {
-            line-height: 20px;
-        }
-        #ui-id-1, #ui-id-2
-        {
-            width: 300px;
-        }
-		.el-form-item{
-		margin-top:30px;
-		}
-			.el-tabs span{display:block }
-    </style>
+.rightWrap .user_name, .rightWrap .input_code {
+	min-width: 260px;
+}
+.wrapper{
+	min-width: inherit;
+}
+.rightWrap .input_tel_code{
+ display:block;
+  height: 42px;
+  line-height: 42px;
+  border: 1px solid #ddd;;
+  border-radius: 4px;
+  font-size: 16px;
+  padding: 0 10px;
+  width:150px;
+  color: #343D47;
+  background:#fff;
+  margin-top:20px;
+}
 
-
+.rightWrap .input_tel_code:focus{
+  border-color:#5796ff!important;
+}
+</style>
+<script>
+var serverroot = "$!{basePath}";
+</script>
+<script type="text/javascript" src="$!{basePath}/login_reg_files/jquery-1.7.2.min.js "></script>
+<script type="text/javascript" src="$!{basePath}/login_reg_files/jquery.cookie.min.js "></script>
+<script type="text/javascript" src="$!{basePath}/login_reg_files/jquery.deparam.js "></script>
+<script type="text/javascript" src="$!{basePath}/login_reg_files/login.js "></script>
+<script type="text/javascript" src="$!{basePath}/login_reg_files/patientlogin.js "></script>
+ 
 </head>
 <body>
-<div  id="app">
-    <form id="formmain" method="post" action="./PatientList.html"  onsubmit="return check()" >
-    <center>
-
-        <div id="logbg">
-            <div id="logoimg"  >
-                <img alt="" src="./Content/Images/logo_login.png" />
-            </div>
-
-
-
-
-            <div id="logindiv">
-
-			<el-tabs type="border-card" style="height:300px;">
-  <el-tab-pane>
-    <span slot="label"><i class="el-icon-date"></i> 医护登录</span> 
-<el-form :label-position="labelPosition" :rules="rules"  ref="ruleForm1"  label-width="80px" :model="doctorLoginForm">
-  <el-form-item label="用户名" prop="username">
-    <el-input v-model="doctorLoginForm.username"></el-input>
-  </el-form-item> 
-  <el-form-item label="密码"  prop="password">
-    <el-input v-model="doctorLoginForm.password"></el-input>
-  </el-form-item>
-  	<div> 
-  <el-button type="primary"  @click="submitForm('ruleForm1')" >登录</el-button>
-  <el-button type="primary"  @click="resetForm('ruleForm1')" >取消</el-button> 
-</div>
-</el-form>
-
-  </el-tab-pane>
-  <el-tab-pane label="病人登录"> 
-<el-form :label-position="labelPosition" :rules="rules"  ref="ruleForm2"  label-width="80px" :model="patientLoiginForm">
-  <el-form-item label="病人姓名"  prop="patientname">
-    <el-input v-model="patientLoiginForm.patientname"></el-input>
-  </el-form-item> 
-  <el-form-item label="住院号"  prop="zyh">
-    <el-input v-model="patientLoiginForm.zyh"></el-input>
-  </el-form-item>
-  	<div> 
-  <el-button type="primary"  @click="submitForm('ruleForm2')">登录</el-button>
-  <el-button type="primary" @click="resetForm('ruleForm2')">取消</el-button> 
-</div>
-</el-form>
-</el-tab-pane> 
-</el-tabs>
+	<div class="wrapper">
+		<div class="left_img" ><img alt="" src="$!{basePath}/img/logo_login.png" /></div>
+	    
+		<div class="right_content" style="background-color: #fff;">
 			
-               
-            </div>
-            <div id="logbottom">
-                <div id="errDiv" style="float: left; color: Red;">
-                </div>
-                <div style="float: right; color: #626262; font-size: 12px;">
-                   江 苏 曼 荼 罗 软 件 有 限 公 司 
-                </div>
-            </div>
-        </div>
-    </center>
-    </form>
-</div>   
+		    <ul class="right_nav">
+		    	<li class="active"><a href="javascript:;">登录</a></li>
+		    	
+		    </ul>
+		    <div class="rightWrap">
+		    	<ul class="login_tab">
+			    	<li class="active"><a href="javascript:;">医护登录</a></li>
+			    	<li><a href="javascript:;">病人登录</a></li>
+			    </ul>
+		    
+			   <!-- 医护登录 -->
+			   
+			   <div class="code_login">
+			   <form id="loginForm" class="ui-buttonset" action="$!{basePath}/system/checklogin.html" 
 
-<script src="$!{basePath}/script/vue.js"></script>
-  <!-- 引入组件库 -->
-  <script src="$!{basePath}/script/ele_ui.js"></script>
-  <script>
-    new Vue({
-      el: '#app',
-      data: function() {
-        return {
-			labelPosition:'left',
-			doctorLoginForm:{username:'',password:''},
-			patientLoiginForm:{patientname:'',zyh:''},
-			 rules: {
-          username: [
-            { required: true, message: '请输入用户名', trigger: 'blur' }
-          ],
-          password: [
-            { required: true, message: '请输入密码', trigger: 'blur' },
-            { min: 8, max: 16, message: '长度在 8 到 16 个字符', trigger: 'blur' }
-          ],
-          patientname: [
-            { type: 'date', required: true, message: '请输入病人姓名', trigger: 'blur' }
-          ],
-          zyh: [
-            { type: 'date', required: true, message: '请输入住院号', trigger: 'blur' }
-          ]
-		  }
-		}
-	  },
-	  methods: {
-      submitForm(formName) {
-        this.$refs[formName].validate((valid) => {
-          if (valid) {
-            window.location.href='./PatientList.html';
-          } else {
-            console.log('error submit!!');
-            return false;
-          }
-        });
-      },
-      resetForm(formName) {
-        this.$refs[formName].resetFields();
-      }
-    }
-	})
+method="post">
+				      <input class="user_name" type="text" id="signin-username" placeholder="用户名" checktype="user_name" 
+
+maxlength="16" name="username">
+				      <input class="input_code" type="password" id="signin-password" placeholder="密码" 
+
+checktype="password" maxlength="16" name="password">
+				       <div class="forgetPsw">
+                         <div class="clear" style="float:left;margin-left:-8px;">
+                           				<label class="checkbox"> 
+				<input type="checkbox" id="rememberme" name="rememberme"  onchange="javascript:setCheckbox(this);" />下次自
+
+动登录 </label>
+                         </div>
+				       	<a href="javascript:;" class="loginforgetpsw" style="float:right;">忘记密码&gt;&gt;</a>
+				       	</div>
+				       	<button id="signin-btn" type="submit" title="提交" class="login">登 录</button>
+				   	</form>
+			   </div>
+			   <!-- 病人登录 -->
+			   <div class="general_login login-tel-success" style="display: none;">
+				   	<form id="loginForm2" class="ui-buttonset" action="$!{basePath}/system/checkPatientLogin.html" 
+
+method="post">
+				      <input class="user_name" type="text" id="patname" placeholder="病人姓名" checktype="patname" 
+
+maxlength="16" name="patname">
+				      <input class="input_code" type="password" id="visitno" placeholder="住院号" 
+
+checktype="visitno" maxlength="16" name="visitno">
+				       
+				      <button id="signin-btn2" type="submit" title="提交" class="login">登 录</button>
+				   	</form>
+			   </div>
+			  
+			    
+			    <div class="right_bottom">
+			    	
+			    </div>
+			</div>
+		</div>
+	</div>
+	<div id="cli_dialog_div"></div>
+	<div id="cover"></div>
+	<div class="showTips showPswTips">
+	     <div class="tipstitle"><p>找回密码</p></div>
+	     <p class="tipscontent">请联系客服热线：13545185867,重新设置密码。</p>
+	     <a href="javascript:void(0);" class="confirmtips">确定</a>
+	</div>
+	
+
+<script type="text/javascript">
+ 
+$(".tel-verification-code").on('click',function(){
+	$('.tel-verification-code').attr('disabled',true);
+	$('.tel-verification-code').css('background', 'rgb(161, 161, 161)');
+	//verificationCode();
+});
+
 </script>
-</body>
-</html>
+
+ 
+<script>
+/*第一次读取最新通知*/
+  setTimeout(function() {
+             Push();
+           },
+        200);
+      /*30轮询读取函数*/
+        setInterval(function() {
+            Push();
+    },
+        3000);
+
+/*请求函数的ajax*/
+
+function Push() {
+	 	var uuid = $("#uuid").val();
+	 	//$('#addOrUpdateModal .modal-body').html(""); 
+		jQuery.ajax({
+	      url: serverroot+"/qrLogin/getUUID.html",
+	      cache: false,
+	      data:{
+	      	 uuid:uuid
+	      },
+		  dataType: "json",
+		  type:"post",
+			success : function(data){
+				if(data.success){	
+				$("#tip").text("正在登录验证中，请稍候！");	
+					 window.location.href=serverroot+"/qrLogin/autoLogin.html?uuid="+uuid;
+				}else{
+					
+				}
+			},  
+	        error: function(data, status, e){  
+	        $("#tip").text("验证失败，请刷新网页，重新在试！");
+	       }
+	    });
+}
+if(self!=top) top.location=self.location
+</script>
+</body></html>

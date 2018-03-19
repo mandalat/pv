@@ -44,8 +44,7 @@
 								          <legend  class="le"><button type="button" class="btn btn-primary" onclick="doUrl('$!{basePath}/dictinfo/back/dictinfo/toAdd.html')" >新增</button></legend> 
 								        </div>
 								        <table class="table table-striped">
-									        <thead>
-													<th>字典类型ID</th>
+									        <thead> 
 													<th>字典代码</th>
 													<th>字典名称</th>
 													<th></th>
@@ -56,8 +55,7 @@
 									        <tobody>
 									    	  #if($!{pageInfos})
 								                #foreach($!{info} in $!{pageInfos})
-									            	<tr>			
-																	<td>$!{info.typeid}</td>
+									            	<tr>			 
 																	<td>$!{info.dictcode}</td>
 																	<td>$!{info.dictname}</td>
 																	<td>$!{info.dictinfocol0}</td>

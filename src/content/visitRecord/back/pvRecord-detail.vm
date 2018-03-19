@@ -1,0 +1,640 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>随访表单</title> 
+<meta http-equiv="X-UA-Compatible" content="IE=edge"> 
+<meta charset="UTF-8"> 
+<link rel="stylesheet" href="$!{basePath}/css/ele_ui.css">
+<link rel="stylesheet" href="$!{basePath}/css/vue_upload.css">
+<script src="$!{basePath}/script/qs.js"></script>
+<script> 
+					var info={};
+    				info.recordExtend2="$!{pvRecord.recordExtend2}";
+    				info.templateViewId="$!{pvRecord.templateViewId}";
+    				info.medicId="$!{pvRecord.medicId}";
+    				info.medicName="$!{pvRecord.medicName}";
+    				info.medicPhone="$!{pvRecord.medicPhone}";
+    				info.updateUserName="$!{pvRecord.updateUserName}";
+    				info.updateUserId="$!{pvRecord.updateUserId}";
+    				#if($!{pvRecord.updateTime})
+					info.updateTime={'time':new Date('$!dateTool.format("yyyy/MM/dd HH:mm:ss",$!{pvRecord.updateTime})').getTime()};
+					#else
+    				info.updateTime=null;
+    				#end
+    				info.createUserName="$!{pvRecord.createUserName}";
+    				info.createUserId="$!{pvRecord.createUserId}";
+    				#if($!{pvRecord.createTime})
+					info.createTime={'time':new Date('$!dateTool.format("yyyy/MM/dd HH:mm:ss",$!{pvRecord.createTime})').getTime()};
+					#else
+					info.createTime=null;
+    				#end
+    				info.subjectName="$!{pvRecord.subjectName}";
+    				info.stopReason="$!{pvRecord.stopReason}";
+    				info.subTemplateName="$!{pvRecord.subTemplateName}";
+    				info.cancelReminder="$!{pvRecord.cancelReminder}";
+    				#if($!{pvRecord.actualVisitDate})
+					info.actualVisitDate={'time':new Date('$!dateTool.format("yyyy/MM/dd HH:mm:ss",$!{pvRecord.actualVisitDate})').getTime()};
+					#else
+    				info.actualVisitDate=null;
+					#end
+    				#if($!{pvRecord.endVisitDate})
+					info.endVisitDate={'time':new Date('$!dateTool.format("yyyy/MM/dd HH:mm:ss",$!{pvRecord.endVisitDate})').getTime()};
+					#else    				
+					info.endVisitDate=null;
+					#end
+    				#if($!{pvRecord.beginVisitDate})
+					info.beginVisitDate={'time':new Date('$!dateTool.format("yyyy/MM/dd HH:mm:ss",$!{pvRecord.beginVisitDate})').getTime()};
+					#else
+    				info.beginVisitDate=null;
+    				#end
+    				#if($!{pvRecord.mustVisitDate})
+					info.mustVisitDate={'time':new Date('$!dateTool.format("yyyy/MM/dd HH:mm:ss",$!{pvRecord.mustVisitDate})').getTime()};
+					#else
+    				info.mustVisitDate=null;
+    				#end
+    				info.visitOrder="$!{pvRecord.visitOrder}";
+    				info.visitStatus="$!{pvRecord.visitStatus}";
+    				info.visitMode="$!{pvRecord.visitMode}";
+    				info.visitType="$!{pvRecord.visitType}";
+    				info.patientLinktel="$!{pvRecord.patientLinktel}";
+    				info.title="$!{pvRecord.title}";
+    				info.patientMainDoctor="$!{pvRecord.patientMainDoctor}";
+					info.patientCardid="$!{pvRecord.patientCardid}";
+					info.patientOutdate="$!{pvRecord.patientOutdate}";
+					info.patientIndate="$!{pvRecord.patientIndate}";
+					info.patientOutDiagnose="$!{pvRecord.patientOutDiagnose}";
+					info.patientInDiagnose="$!{pvRecord.patientInDiagnose}";
+					info.patientOffice="$!{pvRecord.patientOffice}";
+					info.patientAddress="$!{pvRecord.patientAddress}";
+					#if($!{pvRecord.patientBirthday})
+					info.patientBirthday={'time':new Date('$!dateTool.format("yyyy/MM/dd",$!{pvRecord.patientBirthday})').getTime()};
+					#else
+					info.patientBirthday=null;
+					#end
+					info.patientMarriage="$!{pvRecord.patientMarriage}";
+					info.patientSex="$!{pvRecord.patientSex}";
+					info.patientName="$!{pvRecord.patientName}";
+					info.patientId="$!{pvRecord.patientId}";
+					info.rid="$!{pvRecord.rid}";
+ 
+  </script>
+  <script type="text/template" id="uploader">
+    <div class="vue-uploader">
+        <div class="file-list">
+            <section v-for="(file, index) of files" class="file-item draggable-item">
+                <img :src="file.src" alt="" ondragstart="return false;">
+                <p class="file-name" alt="点击修改名称"><input v-model=files[index].name></p>
+                <span class="file-remove" @click="remove(index)">+</span>
+            </section>
+            <section v-if="status == 'ready'" class="file-item">
+                <div @click="add" class="add">
+                    <span>+</span>
+                </div>
+            </section>
+        </div>
+
+        <section v-if="files.length != 0" class="upload-func">
+            <div class="operation-box">
+                <input type="button" v-if="status == 'ready'" @click="uploadpic" value="上传"> 
+                <input type="button" v-if="status == 'finished'" @click="finished" value="完成 ">
+            </div>
+            <div class="progress-bar">
+                <section v-if="uploading" :width="(percent * 100) + '%'">{{(percent * 100) + '%'}}</section>
+            </div>
+
+        </section>
+        <input type="file" accept="image/gif,image/jpeg,image/jpg,image/png,image/svg" @change="fileChanged" ref="fileopen" multiple="multiple">
+<input type="hidden" v-model="JSON.stringify(files)"  name="xfProjectcol" id="xfProjectcol" class="form-control" />	
+    </div>
+</script>
+</head>
+<script type="text/javascript">
+        //自适应iframe长度
+        function setIframeHeight(iframe) {
+            if (iframe) {
+                var iframeWin = iframe.contentWindow || iframe.contentDocument.parentWindow;
+                if (iframeWin.document.body) {
+                    iframe.height = iframeWin.document.documentElement.scrollHeight || iframeWin.document.body.scrollHeight;
+                }
+            }
+        };
+
+        window.onload = function () {
+            setIframeValue(document.getElementById('mainFrame'));
+        }
+
+        function setIframeValue(iframe) {
+           // var json = {"吸烟史":"小于20支","常规体检":"间隔小于1年","PET":"局部","明确病理":"鳞癌","新辅助治疗":"化疗","手术类型":"肺叶","淋巴结清扫":"采样","病理分期":"M1","术后病理类型":"大细胞肺癌","辅助治疗":"单纯化疗","预后":"复发"};
+			#if($!{pvRecord.recordContent})
+			var json=$!{pvRecord.recordContent};
+			#else
+			var json={};
+			#end
+            //在页面加载时赋值
+            var doc = iframe.contentWindow.document;
+
+            var inputElementAll = doc.getElementsByTagName("input");
+            var selectElementAll = doc.getElementsByTagName("select");
+
+            var radioArray = new Array();
+
+            for (i = 0; i < inputElementAll.length; i++) {
+                var inputElement = inputElementAll[i];
+
+                if (inputElement.type.toLowerCase() == "text" && json[inputElement.name] != "undefined") {
+                    inputElement.value = json[inputElement.name];
+                }
+                else if (inputElement.type.toLowerCase() == "radio") {
+                    if(inputElement.value == json[inputElement.name])
+                        inputElement.checked = true;
+                }
+                else if (inputElement.type.toLowerCase() == "checkbox") {
+                    if(json[inputElement.name].indexOf(inputElement.value)>=0)
+                        inputElement.checked = true;
+                }
+            }
+            for (j = 0; j < selectElementAll.length; j++) {
+                var selectElement = selectElementAll[j];
+                selectElement.value = json[selectElement.name];
+            }
+        }
+
+        //获取iframe中文档内容
+        function getIframeContent() {
+            if (!Array.prototype.indexOf) {
+                Array.prototype.indexOf = function (elt /*, from*/) {
+                    var len = this.length >>> 0;
+                    var from = Number(arguments[1]) || 0;
+                    from = (from < 0)
+                         ? Math.ceil(from)
+                         : Math.floor(from);
+                    if (from < 0)
+                        from += len;
+
+                    for (; from < len; from++) {
+                        if (from in this &&
+                            this[from] === elt)
+                            return from;
+                    }
+                    return -1;
+                };
+            }
+            var doc = document.getElementById('mainFrame').contentWindow.document;
+
+            var inputElementAll = doc.getElementsByTagName("input");
+            var selectElementAll = doc.getElementsByTagName("select");
+
+            var radioArray = new Array();
+
+            var message = ""
+            for (i = 0; i < inputElementAll.length; i++) {
+                var inputElement = inputElementAll[i];
+
+                if (inputElement.type.toLowerCase() == "text") {
+                    message = message + inputElement.name + "==" + inputElement.value + "||";
+                }
+                else if (inputElement.type.toLowerCase() == "radio") {
+                    if (radioArray.indexOf(inputElement.name) < 0)
+                        radioArray.push(inputElement.name);
+                       console.log(radioArray);
+                }
+                else if (inputElement.type.toLowerCase() == "checkbox") {
+                    if (radioArray.indexOf(inputElement.name) < 0)
+                        radioArray.push(inputElement.name);
+                }
+            }
+            for (j = 0; j < selectElementAll.length; j++) {
+                var selectElement = selectElementAll[j];
+                message = message + selectElement.name + "==" + selectElement.value + "||";
+            }
+            //alert(radioArray.length);
+            for (r = 0; r < radioArray.length; r++) {
+                var singleInputValue = '';
+                var singleInput = doc.getElementsByName(radioArray[r]);
+                for (k = 0; k < singleInput.length; k++) {
+                    if (singleInput[k].checked) {
+                        if (singleInputValue == "")
+                            singleInputValue = singleInput[k].value;
+                        else
+                            singleInputValue += "," + singleInput[k].value;
+                    }
+                }
+                message = message + radioArray[r] + "==" + singleInputValue + "||";
+            }
+            console.log(message);
+            //document.getElementById('HtmlContent').value = message;
+        }
+        
+                //获取iframe中文档内容
+        function getIframeJsonContent() {
+            if (!Array.prototype.indexOf) {
+                Array.prototype.indexOf = function (elt /*, from*/) {
+                    var len = this.length >>> 0;
+                    var from = Number(arguments[1]) || 0;
+                    from = (from < 0)
+                         ? Math.ceil(from)
+                         : Math.floor(from);
+                    if (from < 0)
+                        from += len;
+
+                    for (; from < len; from++) {
+                        if (from in this &&
+                            this[from] === elt)
+                            return from;
+                    }
+                    return -1;
+                };
+            }
+            var doc = document.getElementById('mainFrame').contentWindow.document;
+
+            var inputElementAll = doc.getElementsByTagName("input");
+            var selectElementAll = doc.getElementsByTagName("select");
+
+            var radioArray = new Array();
+			var info={};
+            var message = ""
+            for (i = 0; i < inputElementAll.length; i++) {
+                var inputElement = inputElementAll[i];
+				console.log(inputElement);
+                if (inputElement.type.toLowerCase() == "text") {
+                   // message = message + inputElement.name + "==" + inputElement.value + "||";
+                    info[inputElement.name]=inputElement.value;
+                }
+                else if (inputElement.type.toLowerCase() == "radio") {
+                    if (radioArray.indexOf(inputElement.name) < 0)
+                        radioArray.push(inputElement.name);
+                }
+                else if (inputElement.type.toLowerCase() == "checkbox") {
+                    if (radioArray.indexOf(inputElement.name) < 0)
+                        radioArray.push(inputElement.name);
+                        console.log(radioArray);
+                }
+            }
+            for (j = 0; j < selectElementAll.length; j++) {
+                var selectElement = selectElementAll[j];
+               // message = message + selectElement.name + "==" + selectElement.value + "||";
+                info[selectElement.name]=selectElement.value;
+            }
+            //alert(radioArray.length);
+            for (r = 0; r < radioArray.length; r++) {
+                var singleInputValue = '';
+                var singleInput = doc.getElementsByName(radioArray[r]);
+                var valueArray = new Array();
+                for (k = 0; k < singleInput.length; k++) {
+                    if (singleInput[k].checked) {
+                        if (singleInputValue == "")
+                           // singleInputValue = singleInput[k].value;
+                            valueArray.push(singleInput[k].value);
+                        else
+                            //singleInputValue += "," + singleInput[k].value;
+                            valueArray.push(singleInput[k].value);
+                    }
+                }
+               // message = message + radioArray[r] + "==" + singleInputValue + "||";
+                info[radioArray[r]]=valueArray;
+            }
+          //  console.log(info);
+           // console.log(JSON.stringify(info));
+            return JSON.stringify(info);
+           // console.log(message);
+            //document.getElementById('HtmlContent').value = message;
+        }
+        
+    </script>
+<style> 
+  .el-main{
+  padding-top:0px;
+  }
+</style>
+<style>
+  .el-select .el-input {
+    width: 220px;
+  } 
+ .el-form-item{
+  width:250px; 
+  float: left; 
+    margin-bottom: 22px;
+	}
+
+#addvisitLeftPanel .el-form-item{
+  width:230px;  
+    margin-bottom: 5px;
+	}
+
+	#addvisitLeftPanel .el-input{
+	width:130px;  
+	}
+.el-dialog__body { 
+    padding: 0px 20px 10px;
+}
+.el-dialog__footer{
+    text-align: center;
+}
+
+</style>
+<body>
+   <div style="width: 282px; position: absolute;    right: 30px;    top: 63px;" id="picslide">
+		 <uploader :src="'$!{basePath}/system/back/SystemProject/doPlUpload.html'"></uploader>
+	</div>
+	      													    
+  <div id="app">
+<el-container style="height: 640px; border: 1px solid #eee">
+   <el-header style="text-align:  center; font-size: 12px; color:#ffffff;height:45px;">
+	<el-button round icon="el-icon-circle-check-outline" @click="submitView(0)" style="background:#008579; color:#ffffff" v-if="'sf00'==visitStatus">提交</el-button>
+	<el-button round icon="el-icon-setting"  @click="submitView(1)"  style="background:#008579; color:#ffffff"  v-if="('sf11'==visitStatus) || (loginType==0 && 'sf22'==visitStatus)">修改</el-button>
+	<el-button round icon="el-icon-setting"  @click="submitView(2)"  style="background:#008579; color:#ffffff" v-if="loginType==0 && 'sf11'==visitStatus">审核</el-button>
+	<el-button round icon="el-icon-setting"  @click="submitView(3)"  style="background:#008579; color:#ffffff" v-if="!('sf33'==visitStatus)">终止 </el-button>
+	<el-button round icon="el-icon-printer"   @click="printpage('mainFrame')" style="background:#008579; color:#ffffff">打印</el-button>
+	<!--<el-button round icon="el-icon-download"   @click="travelSave('mainFrame')"   style="background:#008579; color:#ffffff">数据导出</el-button>-->
+
+   </el-header>
+
+	<el-main style="padding:0px!important;"> 
+<iframe id="mainFrame" src="$!{basePath}$!{pvRecord.templateViewId}" frameborder="0" width="710" scrolling="no" onload="setIframeHeight(this)" height="700" style="display: flex; float: right;
+    margin-right: 285px; "></iframe>
+  
+	</el-main>
+ </el-container>
+
+  </div>
+
+ </body>
+  <script src="$!{basePath}/script/vue.js"></script>
+    <script src="$!{basePath}/script/axios.min.js"></script>
+  <!-- 引入组件库 -->
+  <script src="$!{basePath}/script/ele_ui.js"></script>
+
+  <script>
+  
+   axios.interceptors.request.use((request) => {
+  if (request.data && (request.headers['Content-Type'].indexOf('application/x-www-form-urlencoded') !== -1)) {
+    request.data = Qs.stringify(request.data);
+    console.log(request.data);
+  }
+  return request
+});
+    new Vue({
+      el: '#app',
+	      methods: { 
+      submitView(i) {
+    	this.content=getIframeJsonContent();
+    	var visitStatus='';
+    	var stopReason='';
+    	var recordContent=''; 
+    	if(i==0){
+    		visitStatus='sf11';
+    		recordContent=this.content;
+    	}
+    	if(i==1){
+    		visitStatus='';
+    		recordContent=this.content;
+    	}
+    	//审核操作
+    	if(i==2){
+    		visitStatus='sf22';
+    	}
+    	//终止操作
+    	if(i==3){
+    		visitStatus='sf33';
+    		stopReason='zz00';
+    	}
+    	
+    	console.log(this.content);
+    	var that=this;
+    				  this.$confirm('此操作将会终止该随访记录, 是否继续?', '提示', {
+	          	confirmButtonText: '确定',
+	          	cancelButtonText: '取消',
+	          	type: 'warning'}).then(() => { 
+	   			        axios({
+							method: 'post',
+							url: this.updateUrl, 
+							headers: {
+						   		 'Content-Type': 'application/x-www-form-urlencoded;charset=UTF-8'
+						  	},
+							data: {
+								rid: this.rid,
+								visitStatus: visitStatus,
+								recordContent:recordContent,
+								stopReason:stopReason
+							}
+						}).then(function (response) {
+						    	if(i==0){
+						    		that.visitStatus='sf11';
+						    	}
+						    	if(i==2){
+						    		that.visitStatus='sf22';
+						    	}
+						    	if(i==3){
+    								that.visitStatus='sf33';
+    							}
+								console.log(response);
+							 	that.$message({
+						            type: 'success',
+						            message: '操作成功!'
+					          	});
+						}).catch(function (error) {
+								console.log(error);
+							 	  that.$message({
+						            type: 'info',
+						            message: '已取消'
+						          }); 
+						});
+
+	        	}).catch(() => {
+	          		this.$message({
+	            		type: 'info',
+	            		message: '已取消'
+	          		});          
+	        	});
+    	
+      }
+      , 
+      resetForm(formName) {
+        this.$refs[formName].resetFields();
+      } 
+      ,
+      //打印IFRMAE
+      printpage(myDiv){    
+		  if (window.frames[myDiv]== null) { 
+		       document.getElementById(myDiv).focus();
+		       document.getElementById(myDiv).contentWindow.print();
+		  }else {
+		       document.getElementById(myDiv).focus();
+		       document.getElementById(myDiv).contentWindow.print();                   
+		  }
+	  },
+	  //另存IFRAME
+	  travelSave(myDiv){ 
+	    b = window.open(); 
+	    b.document.open();
+	    	  console.log(document.getElementById(myDiv));
+	    b.document.write(document.getElementById(myDiv).outerHTML);
+	    b.document.execCommand('SaveAs', '$!{pvRecord.patientName}_'+'$!{pvRecord.subTemplateName}'+'.html');
+		b.document.close();
+	  }
+    },
+      data: function() {
+        return {  
+			radio:'-1' ,
+			rid:'$!{pvRecord.rid}',
+			loginType:0,
+			visitStatus:'$!{pvRecord.visitStatus}',
+			content:'',
+			updateUrl:'$!{basePath}/visitRecord/back/pvRecord/doEdit.html',
+		}
+      }  
+
+    });
+    
+   var vm1=new Vue({
+      el:"#picslide",
+      data:{
+      },
+      created:function(){ 
+      },
+      methods:{ 
+      },
+      components: {  
+         uploader:{    //这个无返回值，不会继续派发  
+                template: "#uploader",  
+				props: {
+				src:{
+					type: String,
+					required: true
+				}
+        }, 
+		data: function () {  
+                   return {
+                status: 'ready',
+                files: #if($!{pvRecord.recordExtend1})$!{pvRecord.recordExtend1}#else[]#end,
+                point: {},
+                uploading: false,
+                percent: 0
+            } 
+         },  
+        methods:{
+            add(){
+                this.$refs.fileopen.click();
+            },
+            uploadpic(){
+                if (this.files.length === 0) {
+                    console.warn('no file!');
+                    return
+                }
+                const formData = new FormData()
+                this.files.forEach((item) => {
+                    formData.append(item.name, item.file);
+                })
+                const xhr = new XMLHttpRequest();
+                xhr.upload.addEventListener('progress', this.uploadProgress, false);
+                xhr.open('POST', this.src, true);
+                this.uploading = true;
+                xhr.send(formData);
+                xhr.onload = () => {
+                    this.uploading = false;
+                    if (xhr.status === 200 || xhr.status === 304) {
+                    	var obj = JSON.parse(xhr.responseText);
+                    	if(obj.success){
+                    		 this.status = 'finished';
+                                 console.log('upload success!');
+                                 for (let i = 0; i < this.files.length; i++) {
+					                    if (this.files[i].size) {
+					                    	this.files.splice(i, 1);
+					                    	i = i-1;
+					                    }
+					                }
+                                  for (let i = 0; i < obj.obj.length; i++) {
+					                        const item = {
+					                            name: obj.obj[i].name,
+					                            src: obj.obj[i].src,
+					                        }
+					                        this.files.push(item);
+					                }
+					            //上传成功后修改数据库字段 extend_1
+					            var that = this;
+					            axios({
+							method: 'post',
+							url: '$!{basePath}/visitRecord/back/pvRecord/doEdit.html', 
+							headers: {
+						   		 'Content-Type': 'application/x-www-form-urlencoded;charset=UTF-8'
+						  	},
+							data: {
+								rid: '$!{pvRecord.rid}',
+								recordExtend1: JSON.stringify(this.files) 
+							}
+						}).then(function (response) {
+								console.log(response);
+							 	that.$message({
+						            type: 'success',
+						            message: '上传成功!'
+					          	});
+						}).catch(function (error) {
+								console.log(error);
+							 	  that.$message({
+						            type: 'info',
+						            message: '上传失败'
+						          }); 
+						});
+					            
+                    	}else{
+                    		
+                    	}
+                       
+                    } else {
+                        console.log('error：error code ${xhr.status}');
+                    }
+                }
+            },
+            finished(){
+                
+                this.status = 'ready';
+            },
+            remove(index){
+                this.files.splice(index, 1);
+            },
+            fileChanged(){
+                const list = this.$refs.fileopen.files
+                for (let i = 0; i < list.length; i++) {
+                    if (!this.isContain(list[i])) {
+                        const item = {
+                            name: list[i].name,
+                            size: list[i].size,
+                            file: list[i]
+                        };
+                        this.html5Reader(list[i], item);
+                        this.files.push(item);
+                    }
+                }
+                this.$refs.fileopen.value = '';
+            },
+            // 将图片文件转成BASE64格式
+            html5Reader(file, item){
+                const reader = new FileReader();
+                reader.onload = (e) => {
+                    this.$set(item, 'src', e.target.result);
+                }
+                reader.readAsDataURL(file);
+            },
+            isContain(file){
+                this.files.forEach((item) => {
+                    if(item.name === file.name && item.size === file.size) {
+                        return true;
+                    }
+                })
+                return false;
+            },
+            uploadProgress(evt){
+                const component = this
+                if (evt.lengthComputable) {
+                    const percentComplete = Math.round((evt.loaded * 100) / evt.total);
+                    component.percent = percentComplete / 100;
+                } else {
+                    console.warn('upload progress unable to compute');
+                }
+            }
+        } 
+        }  
+    }
+  });
+  </script>
+</html>

@@ -53,7 +53,7 @@ public void list(@ModelAttribute Dictinfo query,HttpServletResponse response,Htt
 			@RequestParam(required = false, value = "id" ) String id ) throws Exception{
  	VelocityContext velocityContext = new VelocityContext();
 	Dictinfo dic = new Dictinfo();
-	dic.setTypeid(Integer.parseInt("1"));
+	dic.setTypeid("1");
 
 	List<Dictinfo> dictlist = dictinfoService.queryList(dic);
 	velocityContext.put("dictlist",dictlist);

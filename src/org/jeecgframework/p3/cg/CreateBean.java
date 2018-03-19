@@ -323,7 +323,7 @@ public class CreateBean
     else if (dataType.contains("time"))
       dataType = "Date";
     else if (dataType.contains("clob"))
-      dataType = "Clob";
+      dataType = "String";
     else {
       dataType = "Object";
     }

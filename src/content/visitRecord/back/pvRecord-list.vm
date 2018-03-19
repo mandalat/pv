@@ -1,0 +1,540 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>随访列表</title> 
+	<meta http-equiv="X-UA-Compatible" content="IE=edge"> 
+  <meta charset="UTF-8"> 
+  <link rel="stylesheet" href="$!{basePath}/css/ele_ui.css">
+     <script src="$!{basePath}/script/qs.js"></script>
+  <script>
+  	var pvRecord = $!{pvRecord};
+  	var deptList = $!{deptList};
+  	var statusList = $!{statusList};
+      var pageinfo=[];
+	  		#if($!{pageInfos})
+				 #foreach($!{info} in $!{pageInfos}) 		
+					var info={};
+    				info.recordExtend2="$!{info.recordExtend2}";
+    				info.recordExtend1="$!{info.recordExtend1}";
+    				info.templateViewId="$!{info.templateViewId}";
+    				info.medicId="$!{info.medicId}";
+    				info.medicName="$!{info.medicName}";
+    				info.medicPhone="$!{info.medicPhone}";
+    				info.updateUserName="$!{info.updateUserName}";
+    				info.updateUserId="$!{info.updateUserId}";
+    				#if($!{info.updateTime})
+					info.updateTime={'time':new Date('$!dateTool.format("yyyy/MM/dd HH:mm:ss",$!{info.updateTime})').getTime()};
+					#else
+    				info.updateTime=null;
+    				#end
+    				info.createUserName="$!{info.createUserName}";
+    				info.createUserId="$!{info.createUserId}";
+    				#if($!{info.createTime})
+					info.createTime={'time':new Date('$!dateTool.format("yyyy/MM/dd HH:mm:ss",$!{info.createTime})').getTime()};
+					#else
+					info.createTime=null;
+    				#end
+    				info.subjectName="$!{info.subjectName}";
+    				info.stopReason="$!{info.stopReason}";
+    				info.subTemplateName="$!{info.subTemplateName}";
+    				info.cancelReminder="$!{info.cancelReminder}";
+    				#if($!{info.actualVisitDate})
+					info.actualVisitDate={'time':new Date('$!dateTool.format("yyyy/MM/dd HH:mm:ss",$!{info.actualVisitDate})').getTime()};
+					#else
+    				info.actualVisitDate=null;
+					#end
+    				#if($!{info.endVisitDate})
+					info.endVisitDate={'time':new Date('$!dateTool.format("yyyy/MM/dd HH:mm:ss",$!{info.endVisitDate})').getTime()};
+					#else    				
+					info.endVisitDate=null;
+					#end
+    				#if($!{info.beginVisitDate})
+					info.beginVisitDate={'time':new Date('$!dateTool.format("yyyy/MM/dd HH:mm:ss",$!{info.beginVisitDate})').getTime()};
+					#else
+    				info.beginVisitDate=null;
+    				#end
+    				#if($!{info.mustVisitDate})
+					info.mustVisitDate={'time':new Date('$!dateTool.format("yyyy/MM/dd HH:mm:ss",$!{info.mustVisitDate})').getTime()};
+					#else
+    				info.mustVisitDate=null;
+    				#end
+    				info.visitOrder="$!{info.visitOrder}";
+    				info.visitStatus="$!{info.visitStatus}";
+    				info.visitMode="$!{info.visitMode}";
+    				info.visitType="$!{info.visitType}";
+    				info.patientLinktel="$!{info.patientLinktel}";
+    				info.title="$!{info.title}";
+    				info.patientMainDoctor="$!{info.patientMainDoctor}";
+					info.patientCardid="$!{info.patientCardid}";
+					info.patientOutdate="$!{info.patientOutdate}";
+					info.patientIndate="$!{info.patientIndate}";
+					info.patientOutDiagnose="$!{info.patientOutDiagnose}";
+					info.patientInDiagnose="$!{info.patientInDiagnose}";
+					info.patientOffice="$!{info.patientOffice}";
+					info.patientAddress="$!{info.patientAddress}";
+					#if($!{info.patientBirthday})
+					info.patientBirthday={'time':new Date('$!dateTool.format("yyyy/MM/dd",$!{info.patientBirthday})').getTime()};
+					#else
+					info.patientBirthday=null;
+					#end
+					info.patientMarriage="$!{info.patientMarriage}";
+					info.patientSex="$!{info.patientSex}";
+					info.patientName="$!{info.patientName}";
+					info.patientId="$!{info.patientId}";
+					info.rid="$!{info.rid}";
+					pageinfo.push(info)
+	             #end
+	    	 #end
+  </script>
+</head>
+<style>
+body{
+ color: #606266;
+}
+   a ,  a:active ,  a:visited{
+display:none;
+}
+  .el-menu-vertical-demo:not(.el-menu--collapse) {
+    width: 220px;
+    min-height: 400px;
+  }
+  
+</style>
+<style>
+  .el-select .el-input {
+    width: 220px;
+  } 
+ .el-form-item{
+
+  float: left; 
+    margin-bottom: 22px;
+	}
+
+#addvisitLeftPanel .el-form-item{
+  width:230px;  
+    margin-bottom: 5px;
+	}
+
+	#addvisitLeftPanel .el-input{
+	width:130px;  
+	}
+.el-dialog__body { 
+    padding: 0px 20px 10px;
+}
+.el-dialog__footer{
+    text-align: center;
+}
+
+.el-menu-item a ,.el-menu-item a:active ,.el-menu-item a:visited{
+font-size: 14px;
+    color: #303133;
+    padding: 0 20px;
+    cursor: pointer;
+	text-decoration:none;
+	display:block;
+}
+
+.el-row{
+width:100%;
+}
+
+</style>
+<body>
+
+  <div id="app">
+  <el-container style="height: 70px;  width:100%;"> 
+<el-row :gutter="20" >
+  <el-col :span="16"><img alt="" src="./Content/Images/logo_login.png"></el-col>  
+  <el-col :span="8"><div style="line-height:70px; text-align:right;font-size:17px;">
+  <span>当前用户：李刚(医生)&nbsp;&nbsp;&nbsp;&nbsp;</span>
+  <el-dropdown @command="handleCommand"> 
+        <i class="el-icon-setting" style="margin-right: 15px;font-size:17px;">操作</i>
+        <el-dropdown-menu slot="dropdown">
+          <el-dropdown-item command="a">退出</el-dropdown-item> 
+        </el-dropdown-menu>
+      </el-dropdown>
+
+      </div></el-col> 
+</el-row> 				 
+ </el-container>
+<el-container style="height: 500px; border: 1px solid #eee">
+  <el-aside width="230px" style="background-color: rgb(238, 241, 246)">
+ 
+<el-menu default-active="2-1" class="el-menu-vertical-demo" @open="handleOpen" @close="handleClose" :collapse="isCollapse">
+  <el-submenu index="1">
+    <template slot="title">
+      <i class="el-icon-location"></i>
+      <span slot="title">医生专区</span>
+    </template>
+    <el-menu-item-group> 
+      <el-menu-item index="1-1"><a href="./PatientList.html" target="_self">病人列表</a></el-menu-item>
+	  <el-menu-item index="1-2"><a href="./PatientGroup.html" target="_self">病人分组</a></el-menu-item>
+      <el-menu-item index="1-3"><a href="./VisitList.html" target="_self">随访列表</a></el-menu-item>
+	  <el-menu-item index="1-4"><a href="./VisitList.html " target="_self">我发起的随访</a></el-menu-item>
+    </el-menu-item-group> 
+  </el-submenu>
+  <el-submenu index="2">
+  <template slot="title">
+    <i class="el-icon-menu"></i>
+    <span slot="title">病人专区</span>
+	</template>
+	    <el-menu-item-group> 
+      <el-menu-item index="2-1"><a href="./VisitList.html" target="_self">我的应访列表</a></el-menu-item>  
+    </el-menu-item-group> 
+  </el-submenu>
+
+</el-menu>
+ 
+
+ </el-aside>
+ <el-container>
+	 <el-header style="text-align: right; font-size: 12px ;padding:8px 0px 8px 0px;" height="120px">
+		<el-form :model="ruleForm" :rules="rules" ref="ruleForm" label-width="80px" class="demo-ruleForm" >
+
+		  <el-form-item label="出院科室" prop="region">
+			<el-select v-model="ruleForm.patientOffice" placeholder="请选择所属科室">
+			  <el-option v-for="item in keshidata" :label="item.dictname" :value="item.dictcode"></el-option> 
+			</el-select>
+		  </el-form-item>
+
+		  		  <el-form-item label="姓名" prop="patientName">
+			<el-input v-model="ruleForm.patientName" name="patientName"></el-input>
+		  </el-form-item>
+
+		  <el-form-item label="随访状态" prop="visitStatus">
+			<el-select v-model="ruleForm.visitStatus" placeholder="请选择随访状态">
+			  <el-option v-for="item in visitstatusdata" :label="item.dictname" :value="item.dictcode"></el-option> 
+			</el-select>
+		  </el-form-item>
+		  		  		  <el-form-item label="住院号" prop="patientId">
+			<el-input v-model="ruleForm.patientId" name="patientId" style="width:100px;"></el-input>
+		  </el-form-item>
+		  		  </el-form-item>
+		  <el-form-item label="应访日期"   > 
+			  <el-form-item prop="beginVisitDate">
+				<el-date-picker type="date" placeholder="选择日期" v-model="ruleForm.beginVisitDate" value-format="yyyy-MM-dd"></el-date-picker>
+			  </el-form-item>
+			  <span style="display:block;float:left;width:80px;text-align:center">~</span>  
+			  <el-form-item prop="endVisitDate">
+				<el-date-picker type="date" placeholder="选择日期" v-model="ruleForm.endVisitDate" value-format="yyyy-MM-dd"></el-date-picker>
+			  </el-form-item> 
+		  </el-form-item>
+ 	
+		 </el-form>
+	 </el-header>
+
+	 <el-header style="text-align: center; font-size: 12px ;padding:0px " height="50px">
+	<el-button type="primary" icon="el-icon-search"  @click="pageSize=10;currentPage4=1;getTableData();">查询</el-button>
+		<el-button plain @click="cancelClick()" type="primary" icon="el-icon-circle-plus-outline" >终止随访</el-button>  
+		<el-button plain @click="handleClick()" type="primary" icon="el-icon-circle-plus-outline" >随访明细</el-button>
+	</el-header>
+   
+   <el-table
+    :data="tableData3"
+    height="450"
+    border
+    style="width: 100%"
+	 :default-sort = "{prop: 'date', order: 'descending'}">
+
+   <el-table-column type="expand">
+      <template slot-scope="props">
+        <el-form label-position="left" inline class="demo-table-expand">
+          <el-form-item label="病人姓名:">
+            <span>{{ props.row.patientName }}</span> 
+          </el-form-item>
+          <el-form-item label="住院号:">
+            <span>{{ props.row.patientId }}</span>
+          </el-form-item>
+          <el-form-item label="主要诊断:">
+            <span>{{ props.row.patientOutDiagnose }}</span>
+          </el-form-item>
+          <el-form-item label="出院日期:">
+            <span>{{ props.row.patientOutdate }}</span>
+          </el-form-item>
+          <el-form-item label="联系方式: ">
+            <span>{{ props.row.patientLinktel }}</span>
+          </el-form-item>
+          <el-form-item label="表单名称:">
+            <span>{{ props.row.subTemplateName }}</span>
+          </el-form-item>
+          <el-form-item label="随访序数:">
+            <span>{{ props.row.visitOrder }}</span>
+          </el-form-item>
+          <el-form-item label="随访状态: ">
+            <span>{{ props.row.visitStatus }}</span>
+          </el-form-item>
+		            <el-form-item label="应访日期: ">
+            <span>{{ props.row.mustVisitDate }}</span>
+          </el-form-item> 
+		   <el-form-item label="实访日期: ">
+            <span>{{ props.row.actualVisitDate }}</span>
+          </el-form-item> 
+		   <el-form-item label="随访人: ">
+            <span>{{ props.row.updateUserName }}</span>
+          </el-form-item>  
+		  <div style="width: 100%; height: 50px; display: inline-block;">
+				<el-button plain @click="setCurrent(props.$index);cancelClick()" type="primary" icon="el-icon-circle-plus-outline" >终止随访</el-button>  
+				<el-button plain @click="setCurrent(props.$index);handleClick();" type="primary" icon="el-icon-circle-plus-outline" >随访明细</el-button>
+			    <el-button plain @click="handleClick(selectedPepole)" type="primary" icon="el-icon-circle-plus-outline" >查询当前病人随访记录</el-button> 
+		</div>
+        </el-form>
+      </template>
+    </el-table-column>
+
+
+    <el-table-column
+      prop="patientName"
+      label="姓名"
+	  sortable
+      width="120">
+    </el-table-column>
+	    <el-table-column
+      prop="patientId"
+      label="住院号"
+	  width="80">
+    </el-table-column>
+    <el-table-column
+      prop="subTemplateName"
+      label="表单名称"
+      width="180">
+    </el-table-column>
+ 
+	    <el-table-column
+      prop="visitOrder"
+      label="随访序数"
+	  sortable
+      width="120">
+    </el-table-column>
+		    <el-table-column
+      prop="visitStatus"
+      label="随访状态"
+      width="80">
+    </el-table-column>
+		    <el-table-column
+      prop="mustVisitDate"
+	  width="130" 
+	  :formatter="dateFormat"
+      label="应访日期" >
+    </el-table-column>
+			    <el-table-column
+      prop="actualVisitDate"
+      :formatter="dateFormat"
+	  width="130" 
+      label="实访日期" >
+    </el-table-column>
+			<el-table-column
+      prop="updateUserName"
+	  width="130"
+      label="随访人" >
+    </el-table-column>
+ <el-table-column
+      fixed="right"
+      label="选择"
+      width="60">
+      <template slot-scope="scope">
+       <el-radio v-model="radio" :label="scope.$index"  @click="setCurrent(scope.$index)" >&nbsp;</el-radio>
+      </template>
+    </el-table-column>
+  	
+ </el-container>
+
+ </el-container>
+   <div class="block" style="margin-top:20px;text-align: center;"> 
+		<el-pagination background
+		  @size-change="handleSizeChange"
+		  @current-change="handleCurrentChange"
+		  :current-page.sync="currentPage4"
+		  :page-sizes="[10, 20, 50,100]"
+		  :page-size.sync="pageSize"
+		  layout="total, sizes, prev, pager, next, jumper"
+		  :total.sync="total">
+		</el-pagination>
+	</div> 
+  </div>
+
+</body>
+ 
+  <script src="$!{basePath}/script/vue.js"></script>
+    <script src="$!{basePath}/script/axios.min.js"></script>
+  <!-- 引入组件库 -->
+  <script src="$!{basePath}/script/ele_ui.js"></script>
+
+  <script>   
+  axios.interceptors.request.use((request) => {
+  if (request.data && (request.headers['Content-Type'].indexOf('application/x-www-form-urlencoded') !== -1)) {
+    request.data = Qs.stringify(request.data);
+    console.log(request.data);
+  }
+  return request
+});
+    new Vue({
+      el: '#app',
+	      methods: {
+	  dateFormat:function(row, column) {  
+      var date = row[column.property];  
+          if (date == undefined) {  
+             return "";  
+          }  
+          if ('NaN' == date.time) {  
+             return "";  
+          }  
+          console.log(date.time);
+          return (new Date(date.time)).Format("yyyy-MM-dd");  
+      },
+      handleSizeChange(val) {
+        console.log(`每页 ${val} 条`);
+        this.pageSize=val;
+        this.getTableData();
+      },
+      handleCurrentChange(val) {
+        console.log(`当前页: ${val}`);
+        this.pageNo=val;
+        this.getTableData();
+      },
+	   handleOpen(key, keyPath) {
+        console.log(key, keyPath);
+      },
+      handleClose(key, keyPath) {
+        console.log(key, keyPath);
+      },
+	   submitForm(formName) {
+        this.$refs[formName].validate((valid) => {
+          if (valid) {
+            alert('submit!');
+          } else {
+            console.log('error submit!!');
+            return false;
+          }
+        });
+      },
+	        handleCommand(command) { 
+				window.location.href='./login.html';
+      }
+	  ,
+      resetForm(formName) {
+        this.$refs[formName].resetFields();
+      }
+	  ,cancelClick() {
+	  		var that=this;
+		  if(this.radio =='-1'){
+						          this.$notify.error({
+						title: '提示信息',
+						message: '请选择一条随访信息', 
+						offset:60
+				});
+		  }else{
+			  this.$confirm('此操作将会终止该随访记录, 是否继续?', '提示', {
+	          	confirmButtonText: '确定',
+	          	cancelButtonText: '取消',
+	          	type: 'warning'}).then(() => {
+	   					this.tableData3[this.radio].visitStatus='已终止';
+	   			        axios({
+							method: 'post',
+							url: this.updateUrl, 
+							params: {
+								rid: this.tableData3[this.radio].rid,
+								visitStatus: 'sf33'
+							}
+						}).then(function (response) {
+							 	that.$message({
+						            type: 'success',
+						            message: '操作成功!'
+					          	});
+						}).catch(function (error) {
+							 	  that.$message({
+						            type: 'info',
+						            message: '已取消'
+						          }); 
+						});
+
+	        	}).catch(() => {
+	          		this.$message({
+	            		type: 'info',
+	            		message: '已取消'
+	          		});          
+	        	});
+		  } 
+      },
+       getTableData:function(){
+       console.log(this.currentPage4);
+       console.log(this.pageSize);
+       var that = this ;
+          console.log(this.ruleForm);
+                    axios({
+						method: 'post',
+						url: this.getUrl, 
+						 headers: {
+						    'Content-Type': 'application/x-www-form-urlencoded;charset=UTF-8'
+						  },
+						data: {
+							patientName: that.ruleForm.patientName,
+							patientOffice: that.ruleForm.patientOffice,
+							pageNo:that.currentPage4,
+							pageSize:that.pageSize,
+							visitStatus:that.ruleForm.visitStatus,
+							patientId:that.ruleForm.patientId,
+							beginVisitDate:that.ruleForm.beginVisitDate,
+							endVisitDate:that.ruleForm.endVisitDate
+						}
+					}).then(function (response) {
+						console.log(response);
+						that.tableData3=response.data.data;
+						that.total= response.data.total;
+						that.pageSize=response.data.pageSize;
+						that.currentPage4=response.data.pageNo;
+						console.log(that.tableData3);
+						console.log(that.total);
+						console.log(that.pageSize);
+					}).catch(function (error) {
+						console.log(error);
+					});
+        }
+	  , handleClick() {
+		  if(this.radio =='-1' ){
+						this.$notify.error({
+						title: '提示信息',
+						message: '请选择一条随访信息', 
+						offset:60
+				});
+		  }else{
+		  		  window.open('$!{basePath}/visitRecord/back/pvRecord/visitView.html?rid='+this.tableData3[this.radio].rid);
+		  } 
+      }
+	  ,setCurrent(index){
+		  console.log(index);
+		this.radio=index;
+	  }
+    },
+      data: function() {
+        return {  
+            getUrl: '$!{basePath}/visitRecord/back/pvRecord/getList.html',
+            updateUrl:'$!{basePath}/visitRecord/back/pvRecord/doEdit.html',
+			radio:'-1', 
+			tableData3:  pageinfo,
+		keshidata:deptList,
+		visitstatusdata:statusList, 
+        currentPage4: $!{pageInfos.index} ,
+        total:$!{pageInfos.totalItem},
+        pageSize:10,
+		dialogTableVisible:false,
+		isCollapse: false,
+		ruleForm: pvRecord,
+		selectedPepole:{date: '',
+          name: '',
+          address: ''},
+        rules: {
+          patientName: [
+            { required: false, message: '请输入病人住院号', trigger: 'blur' },
+            { min: 3, max: 5, message: '长度在 3 到 5 个字符', trigger: 'blur' }
+          ],
+          patientOffice: [
+            { required: false, message: '请选择活动区域', trigger: 'change' }
+          ]
+        }
+		}
+      }
+    })
+  </script>
+</html>
+
+ 

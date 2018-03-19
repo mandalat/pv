@@ -1,0 +1,183 @@
+﻿<html>
+<head> 
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <style type="text/css">
+        body
+        {
+	        font-family: Arial;
+        }
+        table{border-collapse:collapse;border-spacing:0;border:2px solid #008579;background:#FAFAFA;}
+        th,td{border:2px solid #008579;padding:3px 5px;}
+        td{height:35px;}
+    </style>
+    <script language="javascript" type="text/javascript" src="js/checkUpdate.js"></script>
+   
+    <script type="text/javascript">
+        
+    </script>
+</head>
+
+<body>
+<form>
+<center>
+    <table width="100%">
+    <tr>
+	    <td colspan="3" style="font-size:22px; font-weight: bold; height:40px" align="center">
+            胸外科专科随访</td>
+    </tr>
+    <tr>
+        <td colspan="3">一、术前</td>
+    </tr>
+   
+    <tr>
+        <td width="200">1、吸烟史</td>
+        <td width="450" colspan="2">
+            <input type="radio" id="Radio1" name="吸烟史" value="否"  runat="server"/>否 &nbsp;&nbsp;
+            <input type="radio" id="Radio2" name="吸烟史" value="小于20支" runat="server"/>有 小于20支每天 &nbsp;&nbsp;
+            <input type="radio" id="Radio3" name="吸烟史" value="大于20支" runat="server"/>有 大于20支每天
+        </td>
+    </tr>
+    
+     <tr>
+        <td width="200">2、常规体检</td>
+        <td width="450" colspan="2">
+            <input type="radio" id="Radio4" name="常规体检" value="否"  runat="server"/>否 &nbsp;&nbsp;
+            <input type="radio" id="Radio5" name="常规体检" value="间隔小于1年" runat="server"/>有 间隔小于1年 &nbsp;&nbsp;
+            <input type="radio" id="Radio6" name="常规体检" value="1-2年" runat="server"/>有 1-2年 &nbsp;&nbsp;
+            <input type="radio" id="Radio13" name="常规体检" value="间隔超过2年" runat="server"/>有 间隔超过2年
+        </td>
+    </tr>
+    
+    <tr>
+        <td width="200">3、PET</td>
+        <td width="450" colspan="2">
+            <input type="radio" id="Radio7" name="PET" value="否"  runat="server"/>否 &nbsp;&nbsp;
+            <input type="radio" id="Radio8" name="PET" value="局部" runat="server"/>有 局部 &nbsp;&nbsp;
+            <input type="radio" id="Radio9" name="PET" value="全身" runat="server"/>有 全身 
+        </td>
+    </tr>
+    
+        <tr>
+        <td width="200">4、明确病理</td>
+        <td width="450" colspan="2">
+            <input type="radio" id="Radio10" name="明确病理" value="否"  runat="server"/>否 &nbsp;&nbsp;
+            <input type="radio" id="Radio11" name="明确病理" value="鳞癌" runat="server"/>有 鳞癌 &nbsp;&nbsp;
+            <input type="radio" id="Radio12" name="明确病理" value="腺癌" runat="server"/>有 腺癌 &nbsp;&nbsp;
+            <input type="radio" id="Radio14" name="明确病理" value="小细胞肺癌" runat="server"/>有 小细胞肺癌 &nbsp;&nbsp;
+            <input type="radio" id="Radio15" name="明确病理" value="其他" runat="server"/>有 其他
+        </td>
+    </tr>   
+    
+    <tr>
+        <td width="200">5、新辅助治疗</td>
+        <td width="450" colspan="2">
+            <input type="radio" id="Radio16" name="新辅助治疗" value="否"  runat="server"/>否 &nbsp;&nbsp;
+            <input type="radio" id="Radio17" name="新辅助治疗" value="化疗" runat="server"/>化疗 &nbsp;&nbsp;
+            <input type="radio" id="Radio18" name="新辅助治疗" value="放疗" runat="server"/>放疗 
+        </td>
+    </tr>
+    
+    <tr>
+        <td colspan="3">二、术后</td>
+    </tr>
+    <tr>
+        <td width="200" rowspan="2">1、手术类型</td>
+        <td width="100">R0切除</td>
+        <td width="350">
+            <input type="radio" id="Radio31" name="手术类型" value="肺叶"  runat="server"/>肺叶 &nbsp;&nbsp;
+            <input type="radio" id="Radio32" name="手术类型" value="肺段切除" runat="server"/>肺段切除 &nbsp;&nbsp;
+            <input type="radio" id="Radio33" name="手术类型" value="楔形切除" runat="server"/>楔形切除 
+        </td>
+    </tr>
+
+    <tr>
+        <td width="100">非R0切除</td>
+        <td width="350">
+            <input type="radio" id="Radio64" name="手术类型" value="全肺切除" runat="server"/>全肺切除 &nbsp;&nbsp;
+            <input type="radio" id="Radio65" name="手术类型" value="袖状切除" runat="server"/>袖状切除 
+            <input type="radio" id="Radio66" name="手术类型" value="开关" runat="server"/>开关 &nbsp;&nbsp;
+            <input type="radio" id="Radio67" name="手术类型" value="切缘阳性" runat="server"/>切缘阳性 
+        </td>
+    </tr>
+        
+    <tr>
+        <td width="200">2、淋巴结清扫</td>
+        <td width="450" colspan="2">
+            <input type="radio" id="Radio34" name="淋巴结清扫" value="否"  runat="server"/>否 &nbsp;&nbsp;
+            <input type="radio" id="Radio35" name="淋巴结清扫" value="采样" runat="server"/>采样 &nbsp;&nbsp;
+            <input type="radio" id="Radio36" name="淋巴结清扫" value="系统清扫" runat="server"/>系统清扫 
+        </td>
+    </tr>
+    
+    <tr>
+        <td width="200" rowspan="3">3、病理分期</td>
+        <td width="100">T型</td>
+        <td width="350">
+            <input type="radio" id="Radio37" name="病理分期" value="T0"  runat="server"/>0/is &nbsp;&nbsp;
+            <input type="radio" id="Radio38" name="病理分期" value="T1" runat="server"/>1 &nbsp;&nbsp;
+            <input type="radio" id="Radio39" name="病理分期" value="T2" runat="server"/>2 &nbsp;&nbsp;
+            <input type="radio" id="Radio59" name="病理分期" value="T3" runat="server"/>3 &nbsp;&nbsp;
+            <input type="radio" id="Radio60" name="病理分期" value="T4" runat="server"/>4 
+        </td>
+    </tr>
+ 
+     <tr>
+        <td width="100">N型</td>
+        <td width="350">
+            <input type="radio" id="Radio53" name="病理分期" value="N0"  runat="server"/>0 &nbsp;&nbsp;
+            <input type="radio" id="Radio54" name="病理分期" value="N1" runat="server"/>1 &nbsp;&nbsp;
+            <input type="radio" id="Radio55" name="病理分期" value="N2" runat="server"/>2 &nbsp;&nbsp;
+            <input type="radio" id="Radio61" name="病理分期" value="N3" runat="server"/>3 &nbsp;&nbsp;
+        </td>
+    </tr>   
+  
+    <tr>
+        <td width="100">M型</td>
+        <td width="350">
+            <input type="radio" id="Radio56" name="病理分期" value="M0"  runat="server"/>0 &nbsp;&nbsp;
+            <input type="radio" id="Radio57" name="病理分期" value="M1" runat="server"/>1 &nbsp;&nbsp;
+        </td>
+    </tr>
+    
+      
+    <tr>
+        <td width="200">4、术后病理类型</td>
+        <td width="450" colspan="2">
+            <input type="radio" id="Radio19" name="术后病理类型" value="鳞癌"  runat="server"/>鳞癌 &nbsp;&nbsp;
+            <input type="radio" id="Radio20" name="术后病理类型" value="腺癌" runat="server"/>腺癌 &nbsp;&nbsp;
+            <input type="radio" id="Radio21" name="术后病理类型" value="大细胞肺癌" runat="server"/>大细胞肺癌 &nbsp;&nbsp;
+            <input type="radio" id="Radio40" name="术后病理类型" value="小细胞肺癌" runat="server"/>小细胞肺癌 &nbsp;&nbsp;
+            <input type="radio" id="Radio41" name="术后病理类型" value="腺鳞癌" runat="server"/>腺鳞癌 &nbsp;&nbsp;
+            <input type="radio" id="Radio42" name="术后病理类型" value="其他" runat="server"/>其他 &nbsp;&nbsp;
+        </td>
+    </tr>
+    
+        <tr>
+        <td width="200">5、辅助治疗</td>
+        <td width="450" colspan="2">
+            <input type="radio" id="Radio22" name="辅助治疗" value="同步放化疗"  runat="server"/>同步放化疗 &nbsp;&nbsp;
+            <input type="radio" id="Radio23" name="辅助治疗" value="单纯化疗" runat="server"/>单纯化疗 &nbsp;&nbsp;
+            <input type="radio" id="Radio24" name="辅助治疗" value="单纯放疗" runat="server"/>单纯放疗 &nbsp;&nbsp;
+            <input type="radio" id="Radio43" name="辅助治疗" value="序贯放化疗" runat="server"/>序贯放化疗 &nbsp;&nbsp;
+            <input type="radio" id="Radio44" name="辅助治疗" value="靶向治疗" runat="server"/>靶向治疗 &nbsp;&nbsp;
+            <input type="radio" id="Radio45" name="辅助治疗" value="免疫治疗" runat="server"/>免疫治疗 &nbsp;&nbsp;
+            <input type="radio" id="Radio46" name="辅助治疗" value="维持治疗" runat="server"/>维持治疗 &nbsp;&nbsp;
+        </td>
+    </tr>
+    
+        <tr>
+        <td width="200">6、预后</td>
+        <td width="450" colspan="2">
+            <input type="radio" id="Radio25" name="预后" value="PFS"  runat="server"/>PFS &nbsp;&nbsp;
+            <input type="radio" id="Radio26" name="预后" value="OS" runat="server"/>OS &nbsp;&nbsp;
+            <input type="radio" id="Radio27" name="预后" value="复发" runat="server"/>复发 
+            <input type="radio" id="Radio47" name="预后" value="死亡" runat="server"/>死亡 &nbsp;&nbsp;
+            <input type="radio" id="Radio48" name="预后" value="新发" runat="server"/>新发 
+        </td>
+    </tr>
+       
+    </table>
+</center>
+</form>
+</body>
+</html>

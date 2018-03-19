@@ -185,7 +185,7 @@ public AjaxJson doDelete(@RequestParam(required = true, value = "id" ) String id
  */
 @RequestMapping(value = "/getCategroy",method ={RequestMethod.GET, RequestMethod.POST})
 @ResponseBody
-public String getCategroy(@RequestParam(required = true, value = "typeid" ) Integer typeid){
+public String getCategroy(@RequestParam(required = true, value = "typeid" ) String typeid){
 	net.sf.json.JSONObject js = new net.sf.json.JSONObject();
 	 net.sf.json.JSONArray ja = new net.sf.json.JSONArray();
 	try {
