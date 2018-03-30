@@ -1,5 +1,9 @@
 package com.mandala.patient.web.back;
 
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
 import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,8 +21,14 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import org.jeecgframework.p3.core.common.utils.AjaxJson;
 import org.jeecgframework.p3.core.utils.common.PageQuery;
+
+import com.mandala.dictinfo.entity.Dictinfo;
+import com.mandala.dictinfo.service.DictinfoService;
+import com.mandala.mbData.entity.PvTemplateView;
+import com.mandala.mbData.service.PvTemplateViewService;
 import com.mandala.patient.entity.ZyEmrBasy;
 import com.mandala.patient.service.ZyEmrBasyService;
+
 import org.jeecgframework.p3.core.web.BaseController;
 
  /**
@@ -33,6 +43,11 @@ public class ZyEmrBasyController extends BaseController{
   @Autowired
   private ZyEmrBasyService zyEmrBasyService;
   
+  @Autowired
+  private DictinfoService dictinfoService;
+  
+  @Autowired
+  private PvTemplateViewService pvTemplateViewService;
 /**
   * 列表页面
   * @return
@@ -45,19 +60,55 @@ public void list(@ModelAttribute ZyEmrBasy query,HttpServletResponse response,Ht
 	 	pageQuery.setPageNo(pageNo);
 	 	pageQuery.setPageSize(pageSize);
 	 	VelocityContext velocityContext = new VelocityContext();
-	 	if(query.getAdmdward() == null || query.getAdmdward() =="" ){
-	 		query.setAdmdward("W15胸外科");
-	 	}
+	 	//获取科室
+		Dictinfo dic = new Dictinfo();
+		dic.setTypeid("402881be6222014e016222014e500000");
+		List<Dictinfo> deptList = dictinfoService.queryList(dic);
+		net.sf.json.JSONArray deptArr = new net.sf.json.JSONArray();
+		velocityContext.put("deptList",deptArr.fromObject(deptList).toString());
+		
+		PvTemplateView mb = new PvTemplateView();
+		//mb.setDeptCode("W15胸外科");
+		List<PvTemplateView> mblist = pvTemplateViewService.queryList(mb);
+		net.sf.json.JSONArray mbdata = new net.sf.json.JSONArray();
+		velocityContext.put("mbdata",mbdata.fromObject(mblist).toString());
+		
 	 	if(query.getAdmsdate() == null || query.getAdmsdate() =="" ){
 	 		query.setAdmsdate("2018-02-09");
 	 		query.setAdmsdate2("2018-03-09");
 	 	}
-	 	
+	 	net.sf.json.JSONObject queryForm =new net.sf.json.JSONObject();
+		velocityContext.put("pvRecord",queryForm.fromObject(query).toString());
 		pageQuery.setQuery(query);
 		velocityContext.put("zyEmrBasy",query);
 		velocityContext.put("pageInfos",SystemTools.convertPaginatedList(zyEmrBasyService.queryPageList(pageQuery)));
-		String viewName = "patient/back/zyEmrBasy-list.vm";
+		String viewName = "patient/back/patientList.vm";
 		ViewVelocity.view(request,response,viewName,velocityContext);
+}
+@RequestMapping(value="getList",method = {RequestMethod.GET,RequestMethod.POST})
+@ResponseBody
+public String getList(@ModelAttribute ZyEmrBasy query,HttpServletResponse response,HttpServletRequest request,
+			@RequestParam(required = false, value = "pageNo", defaultValue = "1") int pageNo,
+			@RequestParam(required = false, value = "pageSize", defaultValue = "10") int pageSize) throws Exception{
+	 	PageQuery<ZyEmrBasy> pageQuery = new PageQuery<ZyEmrBasy>();
+	 	pageQuery.setPageNo(pageNo);
+	 	pageQuery.setPageSize(pageSize);
+	 	VelocityContext velocityContext = new VelocityContext();
+		pageQuery.setQuery(query);
+		if(query.getAdmsdate() != null && query.getAdmsdate() !="" ){
+	 		query.setAdmsdate(query.getAdmsdate().substring(0, 10));
+	 	}
+		if(query.getAdmsdate2() != null && query.getAdmsdate2() !="" ){
+	 		query.setAdmsdate2(query.getAdmsdate2().substring(0, 10));
+	 	}
+		net.sf.json.JSONArray dataArr = new net.sf.json.JSONArray();
+		net.sf.json.JSONObject dataobj = new net.sf.json.JSONObject();
+		dataobj.put("result", true);
+		dataobj.put("data", dataArr.fromObject(zyEmrBasyService.queryPageList(pageQuery).getValues()));
+		dataobj.put("total", SystemTools.convertPaginatedList(zyEmrBasyService.queryPageList(pageQuery)).getTotalItem()); 
+		dataobj.put("pageSize", pageSize);
+		dataobj.put("pageNo", pageNo);
+		return dataobj.toString();
 }
 
 @RequestMapping(value="patientInfo",method = {RequestMethod.GET,RequestMethod.POST})
@@ -68,9 +119,14 @@ public void patientInfo(@ModelAttribute ZyEmrBasy query,HttpServletResponse resp
 	 	pageQuery.setPageNo(pageNo);
 	 	pageQuery.setPageSize(pageSize);
 	 	VelocityContext velocityContext = new VelocityContext();
-	 	if(query.getPatname()== null|| query.getPatname()==""){
-	 		query.setPatname("丁光辉");
-	 		query.setInpatient("1914444");
+	 	String patname = (String) request.getSession().getAttribute("username");
+	 	String inpatient = (String) request.getSession().getAttribute("inpatient");
+	 	if(patname == null || query.getPatname()=="null"){
+	 		response.sendRedirect("/PatientVisit/system/login.html");
+	 		return;
+	 	}else{
+	 		query.setPatname(patname);
+	 		query.setInpatient(inpatient);
 	 	}
 		pageQuery.setQuery(query);
 		velocityContext.put("zyEmrBasy",query);
@@ -115,6 +171,70 @@ public AjaxJson doAdd(@ModelAttribute ZyEmrBasy zyEmrBasy){
 		zyEmrBasyService.doAdd(zyEmrBasy);
 		j.setMsg("保存成功");
 	} catch (Exception e) {
+		j.setSuccess(false);
+		j.setMsg("保存失败");
+	}
+	return j;
+}
+
+
+/**
+ * 保存信息
+ * @return
+ */
+@RequestMapping(value = "/doAddVisit",method ={RequestMethod.GET, RequestMethod.POST})
+@ResponseBody
+public AjaxJson doAddVisit(@RequestParam(required = true, value = "id" ) String id,HttpServletResponse response,HttpServletRequest request)throws Exception{
+	//ZyEmrBasy zyEmrBasy = zyEmrBasyService.queryById(id);
+	String inpatient = request.getParameter("inpatient");
+	String patname = request.getParameter("patname");
+	String admdward = request.getParameter("admdward");
+	String sex = request.getParameter("sex");
+	String marrycode = request.getParameter("marrycode");
+	String birthday = request.getParameter("birthday");
+	String credentialno = request.getParameter("credentialno");
+	String linkname = request.getParameter("linkname");
+	String linktelephone = request.getParameter("linktelephone");
+	String linkvillage = request.getParameter("linkvillage");
+	String admsdate = request.getParameter("admsdate");
+	String admddate = request.getParameter("admddate");
+	String attendingdesc = request.getParameter("attendingdesc");
+	String diagnosedesc1 = request.getParameter("diagnosedesc1");
+	String diagnosecode1 = request.getParameter("diagnosecode1");
+	String tempName = request.getParameter("tempName");
+	String deptCode = request.getParameter("deptCode");
+	String num = request.getParameter("num");
+	String visitDate = request.getParameter("date");
+	String state = "sf00";//待随访
+	AjaxJson j = new AjaxJson();
+	try {
+		Map<String, Object> conditionMap = new HashMap<String, Object>();
+		conditionMap.put("patname", patname);
+		conditionMap.put("inpatient", inpatient);
+		conditionMap.put("sex", sex);
+		conditionMap.put("marrycode", marrycode);
+		conditionMap.put("birthday", birthday);
+		conditionMap.put("linkvillage",linkvillage);
+		conditionMap.put("admdward", admdward);
+		conditionMap.put("diagnosedesc1", diagnosedesc1);
+		conditionMap.put("diagnosecode1", diagnosecode1);
+		conditionMap.put("admsdate", admsdate);
+		conditionMap.put("admddate", admddate);
+		conditionMap.put("credentialno", credentialno);
+		conditionMap.put("linkname", linkname);
+		conditionMap.put("linktelephone", linktelephone);
+		
+		conditionMap.put("attendingdesc", attendingdesc);
+		conditionMap.put("tempName", tempName);
+		conditionMap.put("deptCode", deptCode);
+		conditionMap.put("num", num);
+		conditionMap.put("date", visitDate);
+		conditionMap.put("state", state);
+		zyEmrBasyService.insertMap(conditionMap);
+		//zyEmrBasyService.doAddVisit(zyEmrBasy);
+		j.setMsg("保存成功");
+	} catch (Exception e) {
+		System.out.println(e);
 		j.setSuccess(false);
 		j.setMsg("保存失败");
 	}

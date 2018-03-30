@@ -1,6 +1,7 @@
 package com.mandala.patient.service.impl;
 
 import java.util.List;
+import java.util.Map;
 
 import javax.annotation.Resource;
 
@@ -10,6 +11,7 @@ import org.jeecgframework.p3.core.utils.common.PageList;
 import org.jeecgframework.p3.core.utils.common.PageQuery;
 import org.jeecgframework.p3.core.utils.common.Pagenation;
 import com.mandala.patient.service.ZyEmrBasyService;
+import com.mandala.visitRecord.entity.PvRecord;
 import com.mandala.patient.entity.ZyEmrBasy;
 import com.mandala.patient.dao.ZyEmrBasyDao;
 
@@ -35,8 +37,9 @@ public class ZyEmrBasyServiceImpl implements ZyEmrBasyService {
 
 	@Override
 	public ZyEmrBasy queryById(String id) {
-		ZyEmrBasy zyEmrBasy  = zyEmrBasyDao.get(id);
+		ZyEmrBasy zyEmrBasy  = (ZyEmrBasy) zyEmrBasyDao.queryById(id);
 		return zyEmrBasy;
+		
 	}
 
 	@Override
@@ -64,9 +67,23 @@ public class ZyEmrBasyServiceImpl implements ZyEmrBasyService {
 	}
 
 	@Override
-	public ZyEmrBasy queryByNameAndZyh(String patname, String visitno) {
-		ZyEmrBasy zyEmrBasy  = zyEmrBasyDao.queryByNameAndZyh(patname,visitno);
+	public List<ZyEmrBasy> queryByNameAndZyh(String patname, String visitno) {
+		List<ZyEmrBasy> zyEmrBasy  = (List<ZyEmrBasy>) zyEmrBasyDao.queryByNameAndZyh(patname,visitno);
 		return zyEmrBasy;
 	}
+
+	@Override
+	public void doAddVisit(ZyEmrBasy zyEmrBasy) {
+		zyEmrBasyDao.addVisit(zyEmrBasy);
+		
+	}
+
+	@Override
+	public PvRecord insertMap(Map<String, Object> conditionMap) {
+		PvRecord pvRecord = zyEmrBasyDao.insertMap(conditionMap);
+		return pvRecord;
+	}
+
+	
 	
 }

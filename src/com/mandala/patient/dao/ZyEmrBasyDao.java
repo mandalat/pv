@@ -1,11 +1,14 @@
 package com.mandala.patient.dao;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.jeecgframework.p3.core.utils.common.PageQuery;
 import org.jeecgframework.p3.core.utils.persistence.GenericDao;
 
 import com.mandala.patient.entity.ZyEmrBasy;
+import com.mandala.visitRecord.entity.PvRecord;
 
 /**
  * 描述：</b>ZyEmrBasyDao<br>
@@ -21,7 +24,13 @@ public interface ZyEmrBasyDao extends GenericDao<ZyEmrBasy>{
 	
 	public List<ZyEmrBasy> queryPatient(PageQuery<ZyEmrBasy> pageQuery,Integer itemCount);
 	
-	public ZyEmrBasy queryByNameAndZyh(String patname,String visitno);
+	public List<ZyEmrBasy> queryByNameAndZyh(String patname,String visitno);
+	
+	public ZyEmrBasy queryById(String id);
+	
+	public void addVisit(ZyEmrBasy zyEmrBasy);
+
+	public PvRecord insertMap(Map<String, Object> conditionMap);
 	
 }
 

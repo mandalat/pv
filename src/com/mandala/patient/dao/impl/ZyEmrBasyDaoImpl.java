@@ -11,6 +11,8 @@ import org.jeecgframework.p3.core.utils.persistence.mybatis.GenericDaoDefault;
 import org.springframework.stereotype.Repository;
 import com.mandala.patient.dao.ZyEmrBasyDao;
 import com.mandala.patient.entity.ZyEmrBasy;
+import com.mandala.visitRecord.entity.PvRecord;
+
 
 /**
  * 描述：</b>ZyEmrBasyDaoImpl<br>
@@ -20,7 +22,7 @@ import com.mandala.patient.entity.ZyEmrBasy;
  */
 @Repository("zyEmrBasyDao")
 public class ZyEmrBasyDaoImpl extends GenericDaoDefault<ZyEmrBasy> implements ZyEmrBasyDao{
-
+	
 	@Override
 	public Integer count(PageQuery<ZyEmrBasy> pageQuery) {
 		return (Integer) super.queryOne("count",pageQuery);
@@ -43,14 +45,34 @@ public class ZyEmrBasyDaoImpl extends GenericDaoDefault<ZyEmrBasy> implements Zy
 	}
 
 	@Override
-	public ZyEmrBasy queryByNameAndZyh(@Param("patname") String patname, @Param("visitno") String visitno) {
+	public List<ZyEmrBasy> queryByNameAndZyh(@Param("patname") String patname, @Param("visitno") String visitno) {
 		Map<String, Object> conditionMap = new HashMap<String, Object>();
 		conditionMap.put("patname", patname);
 		conditionMap.put("visitno", visitno);
-		ZyEmrBasy zyEmrBasy = (ZyEmrBasy) super.queryOne("queryByNameAndZyh",conditionMap); 
+		List<ZyEmrBasy> zyEmrBasy = (List<ZyEmrBasy>) super.query("queryByNameAndZyh",conditionMap); 
 		return zyEmrBasy; 
 	}
 
+	@Override
+	public void addVisit(ZyEmrBasy zyEmrBasy) {
+		super.add(zyEmrBasy);
+	}
+
+	@Override
+	public PvRecord insertMap(Map<String, Object> conditionMap) {
+		PvRecord pvRecord = (PvRecord) super.queryOne("insert",conditionMap);
+		return pvRecord;
+	}
+
+	@Override
+	public ZyEmrBasy queryById(String id) {
+		Map<String, Object> conditionMap = new HashMap<String, Object>();
+		conditionMap.put("id", id);
+		List<ZyEmrBasy> zyEmrBasy = (List<ZyEmrBasy>) super.query("queryById",conditionMap); 
+		return zyEmrBasy.get(0); 
+	}
+
+	
 
 }
 
