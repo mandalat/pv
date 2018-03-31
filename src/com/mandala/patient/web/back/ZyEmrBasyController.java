@@ -24,10 +24,15 @@ import org.jeecgframework.p3.core.utils.common.PageQuery;
 
 import com.mandala.dictinfo.entity.Dictinfo;
 import com.mandala.dictinfo.service.DictinfoService;
+import com.mandala.patientGroup.entity.PvGroupinfo;
+import com.mandala.patientGroup.service.PvGroupinfoService;
+import com.mandala.groupPatient.entity.PvGroupPatient;
 import com.mandala.mbData.entity.PvTemplateView;
 import com.mandala.mbData.service.PvTemplateViewService;
 import com.mandala.patient.entity.ZyEmrBasy;
 import com.mandala.patient.service.ZyEmrBasyService;
+import com.mandala.system.vo.LoginUserNew;
+import com.mandala.util.DateTimeUtils;
 
 import org.jeecgframework.p3.core.web.BaseController;
 
@@ -48,6 +53,9 @@ public class ZyEmrBasyController extends BaseController{
   
   @Autowired
   private PvTemplateViewService pvTemplateViewService;
+  
+  @Autowired
+  private PvGroupinfoService pvGroupinfoService;
 /**
   * 列表页面
   * @return
@@ -60,23 +68,49 @@ public void list(@ModelAttribute ZyEmrBasy query,HttpServletResponse response,Ht
 	 	pageQuery.setPageNo(pageNo);
 	 	pageQuery.setPageSize(pageSize);
 	 	VelocityContext velocityContext = new VelocityContext();
+	 	net.sf.json.JSONArray jsonArray = new net.sf.json.JSONArray();
 	 	//获取科室
 		Dictinfo dic = new Dictinfo();
 		dic.setTypeid("402881be6222014e016222014e500000");
 		List<Dictinfo> deptList = dictinfoService.queryList(dic);
-		net.sf.json.JSONArray deptArr = new net.sf.json.JSONArray();
-		velocityContext.put("deptList",deptArr.fromObject(deptList).toString());
+		velocityContext.put("deptList",jsonArray.fromObject(deptList).toString());
 		
 		PvTemplateView mb = new PvTemplateView();
 		//mb.setDeptCode("W15胸外科");
 		List<PvTemplateView> mblist = pvTemplateViewService.queryList(mb);
-		net.sf.json.JSONArray mbdata = new net.sf.json.JSONArray();
-		velocityContext.put("mbdata",mbdata.fromObject(mblist).toString());
+		velocityContext.put("mbdata",jsonArray.fromObject(mblist).toString());
 		
-	 	if(query.getAdmsdate() == null || query.getAdmsdate() =="" ){
-	 		query.setAdmsdate("2018-02-09");
-	 		query.setAdmsdate2("2018-03-09");
+		
+		LoginUserNew user = (LoginUserNew) request.getSession().getAttribute("LOGIN_USER");
+		if(user != null){
+			for (int i = 0; i < deptList.size(); i++) {
+				if(deptList.get(i).getDictname()==user.getKsName()){
+					query.setAdmdward(user.getKsName());
+				}
+			}
+		}else{
+			String viewName = "login/index.vm";
+			ViewVelocity.view(request,response,viewName,velocityContext);
+			return;
+		}
+		
+	 	if(query.getAdmdward() == null || query.getAdmdward() =="" ){
+	 		//query.setAdmdward(deptList.get(0).getDictname());
+	 		query.setDiswardcode(deptList.get(0).getDictcode());
 	 	}
+	 	DateTimeUtils time = new DateTimeUtils();
+	 	String today = time.getToday();
+	 	String lastMonthToday = time.getLastMonthToday("yyyy-MM-dd");
+	 	if(query.getAdmsdate() == null || query.getAdmsdate() =="" ){
+	 		query.setAdmsdate(lastMonthToday);
+	 		query.setAdmsdate2(today);
+	 	}
+	 	
+	 	PvGroupinfo group = new PvGroupinfo();
+		group.setGroupCreateUserid(user.getUserId());
+		List<PvGroupinfo> groupList = pvGroupinfoService.queryList(group);
+		velocityContext.put("groupName",jsonArray.fromObject(groupList).toString());
+		
 	 	net.sf.json.JSONObject queryForm =new net.sf.json.JSONObject();
 		velocityContext.put("pvRecord",queryForm.fromObject(query).toString());
 		pageQuery.setQuery(query);
@@ -186,9 +220,19 @@ public AjaxJson doAdd(@ModelAttribute ZyEmrBasy zyEmrBasy){
 @ResponseBody
 public AjaxJson doAddVisit(@RequestParam(required = true, value = "id" ) String id,HttpServletResponse response,HttpServletRequest request)throws Exception{
 	//ZyEmrBasy zyEmrBasy = zyEmrBasyService.queryById(id);
+	LoginUserNew user = (LoginUserNew) request.getSession().getAttribute("LOGIN_USER");
+	String createUserName = "";
+	String createUserId = "";
+	DateTimeUtils time = new DateTimeUtils();
+	String createTime = time.getCurrentTime("yyyy-MM-dd HH:mm:ss");
+	if(user != null){
+		createUserName = user.getUserName();
+		createUserId  = user.getUserId();
+				
+	}
 	String inpatient = request.getParameter("inpatient");
 	String patname = request.getParameter("patname");
-	String admdward = request.getParameter("admdward");
+	String diswardcode = request.getParameter("diswardcode");
 	String sex = request.getParameter("sex");
 	String marrycode = request.getParameter("marrycode");
 	String birthday = request.getParameter("birthday");
@@ -202,9 +246,10 @@ public AjaxJson doAddVisit(@RequestParam(required = true, value = "id" ) String 
 	String diagnosedesc1 = request.getParameter("diagnosedesc1");
 	String diagnosecode1 = request.getParameter("diagnosecode1");
 	String tempName = request.getParameter("tempName");
+	String tid = request.getParameter("tid");
 	String deptCode = request.getParameter("deptCode");
 	String num = request.getParameter("num");
-	String visitDate = request.getParameter("date");
+	String visitDate = request.getParameter("date").substring(0, 10);
 	String state = "sf00";//待随访
 	AjaxJson j = new AjaxJson();
 	try {
@@ -215,7 +260,7 @@ public AjaxJson doAddVisit(@RequestParam(required = true, value = "id" ) String 
 		conditionMap.put("marrycode", marrycode);
 		conditionMap.put("birthday", birthday);
 		conditionMap.put("linkvillage",linkvillage);
-		conditionMap.put("admdward", admdward);
+		conditionMap.put("diswardcode", diswardcode);
 		conditionMap.put("diagnosedesc1", diagnosedesc1);
 		conditionMap.put("diagnosecode1", diagnosecode1);
 		conditionMap.put("admsdate", admsdate);
@@ -223,13 +268,16 @@ public AjaxJson doAddVisit(@RequestParam(required = true, value = "id" ) String 
 		conditionMap.put("credentialno", credentialno);
 		conditionMap.put("linkname", linkname);
 		conditionMap.put("linktelephone", linktelephone);
-		
 		conditionMap.put("attendingdesc", attendingdesc);
 		conditionMap.put("tempName", tempName);
 		conditionMap.put("deptCode", deptCode);
+		conditionMap.put("tid", tid);
 		conditionMap.put("num", num);
-		conditionMap.put("date", visitDate);
+		conditionMap.put("visitDate", visitDate);
 		conditionMap.put("state", state);
+		conditionMap.put("createUserName", createUserName);
+		conditionMap.put("createUserId", createUserId);
+		conditionMap.put("createTime", createTime);
 		zyEmrBasyService.insertMap(conditionMap);
 		//zyEmrBasyService.doAddVisit(zyEmrBasy);
 		j.setMsg("保存成功");
@@ -237,6 +285,44 @@ public AjaxJson doAddVisit(@RequestParam(required = true, value = "id" ) String 
 		System.out.println(e);
 		j.setSuccess(false);
 		j.setMsg("保存失败");
+	}
+	return j;
+}
+
+//添加群组
+@RequestMapping(value = "/doAddGroup",method ={RequestMethod.GET, RequestMethod.POST})
+@ResponseBody
+public AjaxJson doAddGroup(HttpServletResponse response,HttpServletRequest request)throws Exception{
+	//ZyEmrBasy zyEmrBasy = zyEmrBasyService.queryById(id);
+	LoginUserNew user = (LoginUserNew) request.getSession().getAttribute("LOGIN_USER");
+	String groupCreateUserId = "";
+	DateTimeUtils time = new DateTimeUtils();
+	String createTime = time.getCurrentTime("yyyy-MM-dd HH:mm:ss");
+	if(user != null){
+		groupCreateUserId  = user.getUserId();
+	}
+	String inpatient = request.getParameter("inpatient");
+	String gid = request.getParameter("gid");
+	AjaxJson j = new AjaxJson();
+	try {
+		Map<String, Object> conditionMap = new HashMap<String, Object>();
+		conditionMap.put("gid", gid);
+		conditionMap.put("inpatient", inpatient);
+		conditionMap.put("groupCreateUserId", groupCreateUserId);
+		conditionMap.put("createTime", createTime);
+		List<PvGroupPatient> list = zyEmrBasyService.queryGroupMap(conditionMap);
+		if(list.size()>0){
+			j.setSuccess(false);
+			j.setMsg("添加失败，此病人已经在该群组中！");
+		}else{
+			zyEmrBasyService.insertGroupMap(conditionMap);
+			j.setMsg("添加成功");
+		}
+		
+	} catch (Exception e) {
+		System.out.println(e);
+		j.setSuccess(false);
+		j.setMsg("添加失败");
 	}
 	return j;
 }

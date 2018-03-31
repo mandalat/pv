@@ -1,0 +1,263 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//ibatis.apache.org//DTD iBatis Mapper 3.0 //EN" 
+	"http://ibatis.apache.org/dtd/ibatis-3-mapper.dtd">
+
+<mapper namespace="com.mandala.groupPatient.entity.PvGroupPatient">
+
+	<!-- Result Map-->
+	<resultMap id="PvGroupPatient" type="com.mandala.groupPatient.entity.PvGroupPatient" >
+		<result column="GP_EXTEND_1" property="gpExtend1" jdbcType="VARCHAR"/>
+		<result column="GP_EXTEND_0" property="gpExtend0" jdbcType="VARCHAR"/>
+		<result column="GP_CREATE_USERID" property="gpCreateUserid" jdbcType="VARCHAR"/>
+		<result column="GROUP_ID" property="groupId" jdbcType="VARCHAR"/>
+		<result column="PATIENT_ID" property="patientId" jdbcType="VARCHAR"/>
+		<result column="GPID" property="gpid" jdbcType="VARCHAR"/>
+	</resultMap>
+	
+		<resultMap id="PvGroupPatientInfo" type="com.mandala.groupPatient.entity.PvGroupPatientInfo" >
+			<result column="GP_EXTEND_1" property="gpExtend1" jdbcType="VARCHAR"/>
+			<result column="GP_EXTEND_0" property="gpExtend0" jdbcType="VARCHAR"/>
+			<result column="GP_CREATE_USERID" property="gpCreateUserid" jdbcType="VARCHAR"/>
+			<result column="GROUP_ID" property="groupId" jdbcType="VARCHAR"/>
+			<result column="PATIENT_ID" property="patientId" jdbcType="VARCHAR"/>
+			<result column="GPID" property="gpid" jdbcType="VARCHAR"/>
+			<result column="PATNAME" property="patname" jdbcType="VARCHAR" />
+			<result column="ADMDWARD" property="admdward" jdbcType="VARCHAR" />
+			<result column="ADMSDATE" property="admsdate" jdbcType="VARCHAR" />
+			<result column="ADMDDATE" property="admddate" jdbcType="VARCHAR" />
+			<result column="ADMDAYS" property="admdays" jdbcType="VARCHAR" />
+			<result column="SEX" property="sex" jdbcType="VARCHAR" />
+			<result column="MARRYCODE" property="marrycode" jdbcType="VARCHAR" />
+			<result column="NATION" property="nation" jdbcType="VARCHAR" />
+			<result column="NATIONALITY" property="nationality" jdbcType="VARCHAR" />
+			<result column="BIRTHDAY" property="birthday" jdbcType="VARCHAR" />
+			<result column="CREDENTIALNO" property="credentialno" jdbcType="VARCHAR" />	 
+			<result column="LINKNAME" property="linkname" jdbcType="VARCHAR" />	
+			<result column="LINKTELEPHONE" property="linktelephone" jdbcType="VARCHAR" />
+			<result column="LINKVILLAGE" property="linkvillage" jdbcType="VARCHAR" />
+			<result column="WORKDESC" property="workdesc" jdbcType="VARCHAR" />
+			<result column="ATTENDINGDESC" property="attendingdesc" jdbcType="VARCHAR" />	
+			<result column="DIAGNOSECODE1" property="diagnosecode1" jdbcType="VARCHAR"/>
+			<result column="DIAGNOSEDESC1" property="diagnosedesc1" jdbcType="VARCHAR"/>
+			<result column="DISWARDCODE" property="diswardcode" jdbcType="VARCHAR"/>	
+			<result column="ADMNO" property="admno" jdbcType="VARCHAR"/>	
+			<result column="medicId" property="medicId" jdbcType="VARCHAR"/>
+			<result column="medicName" property="medicName" jdbcType="VARCHAR"/>
+			<result column="medicPhone" property="medicPhone" jdbcType="VARCHAR"/>	
+ 		</resultMap>
+ 		
+ 		
+ 		
+	<!-- 查询条件 -->
+	<sql id="wherecontation">
+		<trim  suffixOverrides="," >
+				 <if test="query.gpExtend1 != null and query.gpExtend1 != ''" >
+	  		 		/* 备用字段 */
+			    	AND GP_EXTEND_1 =  #{query.gpExtend1,jdbcType=VARCHAR}
+				 </if>
+				 <if test="query.gpExtend0 != null and query.gpExtend0 != ''" >
+	  		 		/* 备用字段 */
+			    	AND GP_EXTEND_0 =  #{query.gpExtend0,jdbcType=VARCHAR}
+				 </if>
+				 <if test="query.gpCreateUserid != null and query.gpCreateUserid != ''" >
+	  		 		/* 记录创建人ID */
+			    	AND GP_CREATE_USERID =  #{query.gpCreateUserid,jdbcType=VARCHAR}
+				 </if>
+				 <if test="query.groupId != null and query.groupId != ''" >
+	  		 		/* 群组ID */
+			    	AND GROUP_ID =  #{query.groupId,jdbcType=VARCHAR}
+				 </if>
+				 <if test="query.patientId != null and query.patientId != ''" >
+	  		 		/* 病人住院号 */
+			    	AND PATIENT_ID =  #{query.patientId,jdbcType=VARCHAR}
+				 </if>
+				 <if test="query.gpid != null and query.gpid != ''" >
+	  		 		/* 主键ID */
+			    	AND GPID =  #{query.gpid,jdbcType=VARCHAR}
+				 </if>
+		</trim>
+	</sql>
+
+	<!--
+	方法名称: insert
+	调用路径: com.mandala.groupPatient.entity.PvGroupPatient.insert
+	开发信息: 
+	处理信息: 保存信息
+	-->
+	<insert id="insert" parameterType="Object" >
+	  INSERT  INTO  PV_GROUP_PATIENT   /*  */  
+					(	
+                      GP_EXTEND_1                   /* 备用字段 */ 
+                     ,GP_EXTEND_0                   /* 备用字段 */ 
+                     ,GP_CREATE_USERID              /* 记录创建人ID */ 
+                     ,GROUP_ID                      /* 群组ID */ 
+                     ,PATIENT_ID                    /* 病人住院号 */ 
+                     ,GPID                          /* 主键ID */ 
+					)
+			values (
+                      #{gpExtend1,jdbcType=VARCHAR}                     /* 备用字段 */ 
+                     ,#{gpExtend0,jdbcType=VARCHAR}                     /* 备用字段 */ 
+                     ,#{gpCreateUserid,jdbcType=VARCHAR}                /* 记录创建人ID */ 
+                     ,#{groupId,jdbcType=VARCHAR}                       /* 群组ID */ 
+                     ,#{patientId,jdbcType=VARCHAR}                     /* 病人住院号 */ 
+                     ,#{gpid,jdbcType=VARCHAR}                          /* 主键ID */ 
+					)
+	</insert>
+
+	
+	<!--
+	方法名称: update
+	调用路径: com.mandala.groupPatient.entity.PvGroupPatient.update
+	开发信息: 
+	处理信息: 修改信息
+	-->  
+	 <update id="update" parameterType="Object" >
+	  UPDATE   PV_GROUP_PATIENT  	/*  */
+	  			<trim   prefix="SET" suffixOverrides="," >
+						 <if test="gpExtend1 != null">
+		    		 		/* 备用字段 */ 
+	    		 			GP_EXTEND_1 = #{gpExtend1,jdbcType=VARCHAR},
+						 </if>
+						 <if test="gpExtend0 != null">
+		    		 		/* 备用字段 */ 
+	    		 			GP_EXTEND_0 = #{gpExtend0,jdbcType=VARCHAR},
+						 </if>
+						 <if test="gpCreateUserid != null">
+		    		 		/* 记录创建人ID */ 
+	    		 			GP_CREATE_USERID = #{gpCreateUserid,jdbcType=VARCHAR},
+						 </if>
+						 <if test="groupId != null">
+		    		 		/* 群组ID */ 
+	    		 			GROUP_ID = #{groupId,jdbcType=VARCHAR},
+						 </if>
+						 <if test="patientId != null">
+		    		 		/* 病人住院号 */ 
+	    		 			PATIENT_ID = #{patientId,jdbcType=VARCHAR},
+						 </if>
+						 <if test="gpid != null">
+		    		 		/* 主键ID */ 
+	    		 			GPID = #{gpid,jdbcType=VARCHAR},
+						 </if>
+	  	  		</trim>
+				WHERE
+	  	 		 		id = #{id}		/* 序号 */ 
+	 </update>
+	
+	<!--
+	方法名称: get
+	调用路径: com.mandala.groupPatient.entity.PvGroupPatient.get
+	开发信息: 
+	处理信息: 根据主键查询记录
+	-->
+	<select id="get" parameterType="Object"  resultMap="PvGroupPatient">
+		   SELECT   
+                   pgp.GP_EXTEND_1                   /* 备用字段 */ 
+                  ,pgp.GP_EXTEND_0                   /* 备用字段 */ 
+                  ,pgp.GP_CREATE_USERID              /* 记录创建人ID */ 
+                  ,pgp.GROUP_ID                      /* 群组ID */ 
+                  ,pgp.PATIENT_ID                    /* 病人住院号 */ 
+                  ,pgp.GPID                          /* 主键ID */ 
+		   FROM   PV_GROUP_PATIENT       pgp      /*  */ 
+		   WHERE
+				id = #{id}				/* 序号 */ 
+	</select>
+	
+	<!--
+	方法名称: delete
+	调用路径: com.mandala.groupPatient.entity.PvGroupPatient.delete
+	开发信息: 
+	处理信息: 删除记录
+	-->
+	<delete id="delete" parameterType="Object">
+		DELETE 	FROM PV_GROUP_PATIENT 	/*  */  
+		WHERE 
+			gpid = #{gpid}	/* 序号 */ 
+	</delete>
+
+	<delete id="deleteByIdAndUser" parameterType="Object">
+		DELETE 	FROM PV_GROUP_PATIENT 	/*  */  
+		WHERE 
+			gpid = #{gpid}	and 	GP_CREATE_USERID=#{gpCreateUserid}		/* 序号 */ 
+	</delete>
+	
+	<!--
+	方法名称: count
+	调用路径: com.mandala.groupPatient.entity.PvGroupPatient.count
+	开发信息: 
+	处理信息: 列表总数
+	-->
+	<select id="count" resultType="java.lang.Integer"  parameterType="Object">
+		SELECT count(*)  FROM  PV_GROUP_PATIENT    pgp      /*  */ 
+		 WHERE 1=1
+		    <include refid="wherecontation"/>
+	</select>
+  	
+  	<!--
+	方法名称: queryPageList
+	调用路径: com.mandala.groupPatient.entity.PvGroupPatient.queryPageList
+	开发信息: 
+	处理信息: 列表
+	-->
+	<select id="queryPageList" parameterType="Object"  resultMap="PvGroupPatient">
+	    SELECT 
+                   pgp.GP_EXTEND_1                   /* 备用字段 */ 
+                  ,pgp.GP_EXTEND_0                   /* 备用字段 */ 
+                  ,pgp.GP_CREATE_USERID              /* 记录创建人ID */ 
+                  ,pgp.GROUP_ID                      /* 群组ID */ 
+                  ,pgp.PATIENT_ID                    /* 病人住院号 */ 
+                  ,pgp.GPID                          /* 主键ID */ 
+		FROM  (
+SELECT A.*, ROWNUM RN 
+FROM (SELECT * FROM PV_GROUP_PATIENT where  1=1  <include refid="wherecontation"/>) A WHERE 
+#{startRow}  + #{pageSize}
+>= ROWNUM) pgp  
+WHERE pgp.RN >= #{startRow} 
+		
+			  
+	</select>
+	
+		<select id="queryPatientByGroup" parameterType="Object"  resultMap="PvGroupPatientInfo">
+      SELECT GP1.GPID, GP1.PATIENT_ID ,GP1.GROUP_ID ,GP1.GP_CREATE_USERID ,zeb.PATNAME,ZEB.ADMNO,
+      ZEB.ADMDWARD,
+      ZEB.ADMSDATE,
+      ZEB.ADMDDATE,
+      ZEB.ADMDAYS,ZEB.SEX,
+      ZEB.MARRYCODE,ZEB.NATION,
+      ZEB.NATIONALITY,ZEB.BIRTHDAY,
+      ZEB.CREDENTIALNO,ZEB.LINKNAME,ZEB.LINKTELEPHONE,ZEB.LINKVILLAGE,
+      ZEB.WORKDESC,ZEB.ATTENDINGDESC FROM
+      (select * from PV_GROUP_PATIENT GP  where GP.Group_ID= #{groupId}	AND GP.GP_CREATE_USERID=#{gpCreateUserid})
+      GP1  left join ZY_EMR_BASY zeb  on GP1.PATIENT_ID= ZEB.INPATIENT  order by ADMSDATE DESC
+		
+			  
+	</select>
+	
+			<select id="queryPatient" parameterType="Object"  resultMap="PvGroupPatientInfo">
+      SELECT	zeb.PATNAME,
+      ZEB.ADMDWARD,
+      ZEB.ADMSDATE,
+      ZEB.ADMDDATE,
+      ZEB.ADMDAYS,ZEB.SEX,
+      ZEB.MARRYCODE,ZEB.NATION,
+      ZEB.NATIONALITY,ZEB.BIRTHDAY,
+      ZEB.CREDENTIALNO,ZEB.LINKNAME,ZEB.LINKTELEPHONE,ZEB.LINKVILLAGE,
+      ZEB.WORKDESC,ZEB.ATTENDINGDESC,ZEB.DIAGNOSECODE1,ZEB.DIAGNOSEDESC1,ZEB.DISWARDCODE FROM  ZY_EMR_BASY zeb   where INPATIENT = #{patientId}	 AND ROWNUM = 1
+	</select>
+	
+				<select id="queryPatientAndMedic" parameterType="Object"  resultMap="PvGroupPatientInfo">
+SELECT A.* ,B."姓名" AS medicName ,B."手机号" AS medicPhone,B.USERNAME AS medicId  FROM ( SELECT  zeb.PATNAME,
+      ZEB.ADMDWARD,
+      ZEB.ADMSDATE,
+      ZEB.ADMDDATE,
+      ZEB.ADMDAYS,ZEB.SEX,
+      ZEB.MARRYCODE,ZEB.NATION,
+      ZEB.NATIONALITY,ZEB.BIRTHDAY,
+      ZEB.CREDENTIALNO,ZEB.LINKNAME,ZEB.LINKTELEPHONE,ZEB.LINKVILLAGE,
+      ZEB.WORKDESC,ZEB.ATTENDINGDESC,ZEB.DIAGNOSECODE1,ZEB.DIAGNOSEDESC1,ZEB.DISWARDCODE FROM 
+        /*由于每个病人在病案表里可能存在多条记录，为准确定位 具体的一条，就用admno ,inpatient组合查询 */
+       ZY_EMR_BASY zeb   where ADMNO = #{admno,jdbcType=VARCHAR} and INPATIENT = #{patientId,jdbcType=VARCHAR}) 
+       A LEFT JOIN SYS_USERINFO B ON A.DISWARDCODE =B."病区代码" AND A.ATTENDINGDESC= B."姓名" 
+	</select>
+			 
+	
+</mapper>

@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+#parse("content/base/back/common/head.vm")
+<body style='overflow:scroll;overflow-x:hidden'>
+	<div class="container bs-docs-container" style="width:100%;">
+		<div class="row">
+			<div class="panel panel-default">
+				<div class="panel-heading">详情</div>
+				  	<div class="panel-body">
+				   		<form class="form-horizontal" role="form">
+							  <fieldset disabled>
+							  																 <div class="form-group mno">
+													    <label for="inputEmail3" class="col-sm-1 control-label" style="text-align:left;"></label>
+													    <div class="col-sm-2">
+													      <input type="text" value="$!{pvTemplateView.tempExtend1}" name="tempExtend1" id="tempExtend1" class="form-control" />
+													    </div>
+													  </div>
+													 <div class="form-group mno">
+													    <label for="inputEmail3" class="col-sm-1 control-label" style="text-align:left;"></label>
+													    <div class="col-sm-2">
+													      <input type="text" value="$!{pvTemplateView.tempExtend0}" name="tempExtend0" id="tempExtend0" class="form-control" />
+													    </div>
+													  </div>
+													 <div class="form-group mno">
+													    <label for="inputEmail3" class="col-sm-1 control-label" style="text-align:left;">模板修改人ID</label>
+													    <div class="col-sm-2">
+													      <input type="text" value="$!{pvTemplateView.tempUpdateUserid}" name="tempUpdateUserid" id="tempUpdateUserid" class="form-control" />
+													    </div>
+													  </div>
+													 <div class="form-group mno">
+													    <label for="inputEmail3" class="col-sm-1 control-label" style="text-align:left;">模板创建人ID</label>
+													    <div class="col-sm-2">
+													      <input type="text" value="$!{pvTemplateView.tempCreateUserid}" name="tempCreateUserid" id="tempCreateUserid" class="form-control" />
+													    </div>
+													  </div>
+													 <div class="form-group mno">
+													    <label for="inputEmail3" class="col-sm-1 control-label" style="text-align:left;">模板修改时间</label>
+													    <div class="col-sm-2">
+													      <input type="text" value="$!{pvTemplateView.tempUpdatetime}" name="tempUpdatetime" id="tempUpdatetime" class="form-control" />
+													    </div>
+													  </div>
+													 <div class="form-group mno">
+													    <label for="inputEmail3" class="col-sm-1 control-label" style="text-align:left;">模板创建时间</label>
+													    <div class="col-sm-2">
+													      <input type="text" value="$!{pvTemplateView.tempCreatetiime}" name="tempCreatetiime" id="tempCreatetiime" class="form-control" />
+													    </div>
+													  </div>
+													 <div class="form-group mno">
+													    <label for="inputEmail3" class="col-sm-1 control-label" style="text-align:left;">主要诊断</label>
+													    <div class="col-sm-2">
+													      <input type="text" value="$!{pvTemplateView.mainDaignos}" name="mainDaignos" id="mainDaignos" class="form-control" />
+													    </div>
+													  </div>
+													 <div class="form-group mno">
+													    <label for="inputEmail3" class="col-sm-1 control-label" style="text-align:left;">模板存放路径</label>
+													    <div class="col-sm-2">
+													      <input type="text" value="$!{pvTemplateView.tempFileUrl}" name="tempFileUrl" id="tempFileUrl" class="form-control" />
+													    </div>
+													  </div>
+													 <div class="form-group mno">
+													    <label for="inputEmail3" class="col-sm-1 control-label" style="text-align:left;">模板名称</label>
+													    <div class="col-sm-2">
+													      <input type="text" value="$!{pvTemplateView.tempName}" name="tempName" id="tempName" class="form-control" />
+													    </div>
+													  </div>
+													 <div class="form-group mno">
+													    <label for="inputEmail3" class="col-sm-1 control-label" style="text-align:left;">所属科室编码</label>
+													    <div class="col-sm-2">
+													      <input type="text" value="$!{pvTemplateView.deptCode}" name="deptCode" id="deptCode" class="form-control" />
+													    </div>
+													  </div>
+													 <div class="form-group mno">
+													    <label for="inputEmail3" class="col-sm-1 control-label" style="text-align:left;">随访模板ID </label>
+													    <div class="col-sm-2">
+													      <input type="text" value="$!{pvTemplateView.tid}" name="tid" id="tid" class="form-control" />
+													    </div>
+													  </div>
+							  </fieldset>
+							  			<div class="form-group mno">
+											<div class="col-sm-offset-1 col-sm-6">
+												<button type="button" class="btn btn-default" id="formReturn" data-dismiss="modal" onclick="doUrl('$!{basePath}/mbData/back/pvTemplateView/list.html')">返回</button>
+        									 </div>
+        							    </div>
+						</form>
+					</div>
+			</div>
+		</div>
+	</div>
+</body>
+</html>

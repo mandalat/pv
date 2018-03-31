@@ -1,0 +1,269 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//ibatis.apache.org//DTD iBatis Mapper 3.0 //EN" 
+	"http://ibatis.apache.org/dtd/ibatis-3-mapper.dtd">
+
+<mapper namespace="com.mandala.patientGroup.entity.PvGroupinfo">
+
+	<!-- Result Map-->
+	<resultMap id="PvGroupinfo" type="com.mandala.patientGroup.entity.PvGroupinfo" >
+		<result column="GROUP_DES" property="groupDes" jdbcType="VARCHAR"/>
+		<result column="GROUP_EXTEND_1" property="groupExtend1" jdbcType="VARCHAR"/>
+		<result column="GROUP_EXTEND_0" property="groupExtend0" jdbcType="VARCHAR"/>
+		<result column="GROUP_STATUS" property="groupStatus" jdbcType="VARCHAR"/>
+		<result column="GROUP_UPDATETIME" property="groupUpdatetime" jdbcType="TIMESTAMP"/>
+		<result column="GROUP_CREATETIME" property="groupCreatetime" jdbcType="TIMESTAMP"/>
+		<result column="GROUP_UPDATE_USERID" property="groupUpdateUserid" jdbcType="VARCHAR"/>
+		<result column="GROUP_CREATE_USERID" property="groupCreateUserid" jdbcType="VARCHAR"/>
+		<result column="GROUP_ORDER" property="groupOrder" jdbcType="INTEGER"/>
+		<result column="GROUP_TEMP_ID" property="groupTempId" jdbcType="VARCHAR"/>
+		<result column="GROUP_NAME" property="groupName" jdbcType="VARCHAR"/>
+		<result column="GID" property="gid" jdbcType="VARCHAR"/>
+	</resultMap>
+	
+	<!-- 查询条件 -->
+	<sql id="wherecontation">
+		<trim  suffixOverrides="," >
+				 <if test="query.groupDes != null and query.groupDes != ''" >
+	  		 		/* 群组描述 */
+			    	AND GROUP_DES =  #{query.groupDes,jdbcType=VARCHAR}
+				 </if>
+				 <if test="query.groupExtend1 != null and query.groupExtend1 != ''" >
+	  		 		/* 备用字段 */
+			    	AND GROUP_EXTEND_1 =  #{query.groupExtend1,jdbcType=VARCHAR}
+				 </if>
+				 <if test="query.groupExtend0 != null and query.groupExtend0 != ''" >
+	  		 		/* 备用字段 */
+			    	AND GROUP_EXTEND_0 =  #{query.groupExtend0,jdbcType=VARCHAR}
+				 </if>
+				 <if test="query.groupStatus != null and query.groupStatus != ''" >
+	  		 		/* 群组状态 */
+			    	AND GROUP_STATUS =  #{query.groupStatus,jdbcType=VARCHAR}
+				 </if>
+				 <if test="query.groupUpdatetime != null and query.groupUpdatetime != ''" >
+	  		 		/* 群组更新时间 */
+			    	AND GROUP_UPDATETIME =  #{query.groupUpdatetime,jdbcType=TIMESTAMP}
+				 </if>
+				 <if test="query.groupCreatetime != null and query.groupCreatetime != ''" >
+	  		 		/* 群组创建时间 */
+			    	AND GROUP_CREATETIME =  #{query.groupCreatetime,jdbcType=TIMESTAMP}
+				 </if>
+				 <if test="query.groupUpdateUserid != null and query.groupUpdateUserid != ''" >
+	  		 		/* 群组修改人 */
+			    	AND GROUP_UPDATE_USERID =  #{query.groupUpdateUserid,jdbcType=VARCHAR}
+				 </if>
+				 <if test="query.groupCreateUserid != null and query.groupCreateUserid != ''" >
+	  		 		/* 群组创建人 */
+			    	AND GROUP_CREATE_USERID =  #{query.groupCreateUserid,jdbcType=VARCHAR}
+				 </if>
+				 <if test="query.groupOrder != null and query.groupOrder != ''" >
+	  		 		/* 群组排序 */
+			    	AND GROUP_ORDER =  #{query.groupOrder,jdbcType=INTEGER}
+				 </if>
+				 <if test="query.groupTempId != null and query.groupTempId != ''" >
+	  		 		/* 群组随访模板ID */
+			    	AND GROUP_TEMP_ID =  #{query.groupTempId,jdbcType=VARCHAR}
+				 </if>
+				 <if test="query.groupName != null and query.groupName != ''" >
+	  		 		/* 群组名称 */
+			    	AND GROUP_NAME =  #{query.groupName,jdbcType=VARCHAR}
+				 </if>
+				 <if test="query.gid != null and query.gid != ''" >
+	  		 		/* 主键ID */
+			    	AND GID =  #{query.gid,jdbcType=VARCHAR}
+				 </if>
+		</trim>
+	</sql>
+
+	<!--
+	方法名称: insert
+	调用路径: com.mandala.patientGroup.entity.PvGroupinfo.insert
+	开发信息: 
+	处理信息: 保存信息
+	-->
+	<insert id="insert" parameterType="Object"  >
+	  INSERT  INTO  PV_GROUPINFO   /*  */  
+					(	
+                      GROUP_DES                     /* 群组描述 */ 
+                     ,GROUP_EXTEND_1                /* 备用字段 */ 
+                     ,GROUP_EXTEND_0                /* 备用字段 */ 
+                     ,GROUP_STATUS                  /* 群组状态 */ 
+                     ,GROUP_UPDATETIME              /* 群组更新时间 */ 
+                     ,GROUP_CREATETIME              /* 群组创建时间 */ 
+                     ,GROUP_UPDATE_USERID           /* 群组修改人 */ 
+                     ,GROUP_CREATE_USERID           /* 群组创建人 */ 
+                     ,GROUP_ORDER                   /* 群组排序 */ 
+                     ,GROUP_TEMP_ID                 /* 群组随访模板ID */ 
+                     ,GROUP_NAME                    /* 群组名称 */ 
+                     ,GID                           /* 主键ID */ 
+					)
+			values (
+                      #{groupDes,jdbcType=VARCHAR}                      /* 群组描述 */ 
+                     ,#{groupExtend1,jdbcType=VARCHAR}                  /* 备用字段 */ 
+                     ,#{groupExtend0,jdbcType=VARCHAR}                  /* 备用字段 */ 
+                     ,#{groupStatus,jdbcType=VARCHAR}                   /* 群组状态 */ 
+                     ,#{groupUpdatetime,jdbcType=TIMESTAMP}               /* 群组更新时间 */ 
+                     ,#{groupCreatetime,jdbcType=TIMESTAMP}               /* 群组创建时间 */ 
+                     ,#{groupUpdateUserid,jdbcType=VARCHAR}             /* 群组修改人 */ 
+                     ,#{groupCreateUserid,jdbcType=VARCHAR}             /* 群组创建人 */ 
+                     ,#{groupOrder,jdbcType=INTEGER}                    /* 群组排序 */ 
+                     ,#{groupTempId,jdbcType=VARCHAR}                   /* 群组随访模板ID */ 
+                     ,#{groupName,jdbcType=VARCHAR}                     /* 群组名称 */ 
+                     ,#{gid,jdbcType=VARCHAR}                           /* 主键ID */ 
+					)
+	</insert>
+
+	
+	<!--
+	方法名称: update
+	调用路径: com.mandala.patientGroup.entity.PvGroupinfo.update
+	开发信息: 
+	处理信息: 修改信息
+	-->  
+	 <update id="update" parameterType="Object" >
+	  UPDATE   PV_GROUPINFO  	/*  */
+	  			<trim   prefix="SET" suffixOverrides="," >
+						 <if test="groupDes != null">
+		    		 		/* 群组描述 */ 
+	    		 			GROUP_DES = #{groupDes,jdbcType=VARCHAR},
+						 </if>
+						 <if test="groupExtend1 != null">
+		    		 		/* 备用字段 */ 
+	    		 			GROUP_EXTEND_1 = #{groupExtend1,jdbcType=VARCHAR},
+						 </if>
+						 <if test="groupExtend0 != null">
+		    		 		/* 备用字段 */ 
+	    		 			GROUP_EXTEND_0 = #{groupExtend0,jdbcType=VARCHAR},
+						 </if>
+						 <if test="groupStatus != null">
+		    		 		/* 群组状态 */ 
+	    		 			GROUP_STATUS = #{groupStatus,jdbcType=VARCHAR},
+						 </if>
+						 <if test="groupUpdatetime != null">
+		    		 		/* 群组更新时间 */ 
+	    		 			GROUP_UPDATETIME = #{groupUpdatetime,jdbcType=TIMESTAMP},
+						 </if>
+						 <if test="groupCreatetime != null">
+		    		 		/* 群组创建时间 */ 
+	    		 			GROUP_CREATETIME = #{groupCreatetime,jdbcType=TIMESTAMP},
+						 </if>
+						 <if test="groupUpdateUserid != null">
+		    		 		/* 群组修改人 */ 
+	    		 			GROUP_UPDATE_USERID = #{groupUpdateUserid,jdbcType=VARCHAR},
+						 </if>
+						 <if test="groupCreateUserid != null">
+		    		 		/* 群组创建人 */ 
+	    		 			GROUP_CREATE_USERID = #{groupCreateUserid,jdbcType=VARCHAR},
+						 </if>
+						 <if test="groupOrder != null">
+		    		 		/* 群组排序 */ 
+	    		 			GROUP_ORDER = #{groupOrder,jdbcType=INTEGER},
+						 </if>
+						 <if test="groupTempId != null">
+		    		 		/* 群组随访模板ID */ 
+	    		 			GROUP_TEMP_ID = #{groupTempId,jdbcType=VARCHAR},
+						 </if>
+						 <if test="groupName != null">
+		    		 		/* 群组名称 */ 
+	    		 			GROUP_NAME = #{groupName,jdbcType=VARCHAR},
+						 </if> 
+	  	  		</trim>
+				WHERE
+	  	 		 		gid = #{gid}		/* 序号 */ 
+	 </update>
+	
+	<!--
+	方法名称: get
+	调用路径: com.mandala.patientGroup.entity.PvGroupinfo.get
+	开发信息: 
+	处理信息: 根据主键查询记录
+	-->
+	<select id="get" parameterType="Object"  resultMap="PvGroupinfo">
+		   SELECT   
+                   pg.GROUP_DES                     /* 群组描述 */ 
+                  ,pg.GROUP_EXTEND_1                /* 备用字段 */ 
+                  ,pg.GROUP_EXTEND_0                /* 备用字段 */ 
+                  ,pg.GROUP_STATUS                  /* 群组状态 */ 
+                  ,pg.GROUP_UPDATETIME              /* 群组更新时间 */ 
+                  ,pg.GROUP_CREATETIME              /* 群组创建时间 */ 
+                  ,pg.GROUP_UPDATE_USERID           /* 群组修改人 */ 
+                  ,pg.GROUP_CREATE_USERID           /* 群组创建人 */ 
+                  ,pg.GROUP_ORDER                   /* 群组排序 */ 
+                  ,pg.GROUP_TEMP_ID                 /* 群组随访模板ID */ 
+                  ,pg.GROUP_NAME                    /* 群组名称 */ 
+                  ,pg.GID                           /* 主键ID */ 
+		   FROM   PV_GROUPINFO       pg      /*  */ 
+		   WHERE
+				gid = #{gid}				/* 序号 */ 
+	</select>
+	
+	<!--
+	方法名称: delete
+	调用路径: com.mandala.patientGroup.entity.PvGroupinfo.delete
+	开发信息: 
+	处理信息: 删除记录
+	-->
+	<delete id="delete" parameterType="Object">
+		DELETE 	FROM PV_GROUPINFO 	/*  */  
+		WHERE 
+			gid = #{gid}					/* 序号 */ 
+	</delete>
+	
+	<!--
+	方法名称: count
+	调用路径: com.mandala.patientGroup.entity.PvGroupinfo.count
+	开发信息: 
+	处理信息: 列表总数
+	-->
+	<select id="count" resultType="java.lang.Integer"  parameterType="Object">
+		SELECT count(*)  FROM  PV_GROUPINFO    pg      /*  */ 
+		 WHERE 1=1
+		    <include refid="wherecontation"/>
+	</select>
+  	
+  	<!--
+	方法名称: queryPageList
+	调用路径: com.mandala.patientGroup.entity.PvGroupinfo.queryPageList
+	开发信息: 
+	处理信息: 列表
+	-->
+	<select id="queryPageList" parameterType="Object"  resultMap="PvGroupinfo">
+	    SELECT 
+                   pg.GROUP_DES                     /* 群组描述 */ 
+                  ,pg.GROUP_EXTEND_1                /* 备用字段 */ 
+                  ,pg.GROUP_EXTEND_0                /* 备用字段 */ 
+                  ,pg.GROUP_STATUS                  /* 群组状态 */ 
+                  ,pg.GROUP_UPDATETIME              /* 群组更新时间 */ 
+                  ,pg.GROUP_CREATETIME              /* 群组创建时间 */ 
+                  ,pg.GROUP_UPDATE_USERID           /* 群组修改人 */ 
+                  ,pg.GROUP_CREATE_USERID           /* 群组创建人 */ 
+                  ,pg.GROUP_ORDER                   /* 群组排序 */ 
+                  ,pg.GROUP_TEMP_ID                 /* 群组随访模板ID */ 
+                  ,pg.GROUP_NAME                    /* 群组名称 */ 
+                  ,pg.GID                           /* 主键ID */ 
+		FROM  (
+SELECT A.*, ROWNUM RN 
+FROM (SELECT * FROM PV_GROUPINFO where  1=1  <include refid="wherecontation"/> order by GROUP_ORDER asc) A WHERE 
+#{startRow}  + #{pageSize}
+>= ROWNUM) pg  
+WHERE pg.RN >= #{startRow}   
+	</select>
+	 
+		<select id="queryALL" parameterType="Object"  resultMap="PvGroupinfo">
+		   SELECT   
+                   pg.GROUP_DES                     /* 群组描述 */ 
+                  ,pg.GROUP_EXTEND_1                /* 备用字段 */ 
+                  ,pg.GROUP_EXTEND_0                /* 备用字段 */ 
+                  ,pg.GROUP_STATUS                  /* 群组状态 */ 
+                  ,pg.GROUP_UPDATETIME              /* 群组更新时间 */ 
+                  ,pg.GROUP_CREATETIME              /* 群组创建时间 */ 
+                  ,pg.GROUP_UPDATE_USERID           /* 群组修改人 */ 
+                  ,pg.GROUP_CREATE_USERID           /* 群组创建人 */ 
+                  ,pg.GROUP_ORDER                   /* 群组排序 */ 
+                  ,pg.GROUP_TEMP_ID                 /* 群组随访模板ID */ 
+                  ,pg.GROUP_NAME                    /* 群组名称 */ 
+                  ,pg.GID                           /* 主键ID */ 
+		   FROM   PV_GROUPINFO       pg      /*  */
+		    where GROUP_STATUS='1' order by GROUP_ORDER asc
+	</select>
+	
+</mapper>

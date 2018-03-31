@@ -1,0 +1,87 @@
+#parse("content/base/back/common/macro.vm")
+<!DOCTYPE html>
+<html lang="en">
+#parse("content/base/back/common/head.vm")
+<body style='overflow:scroll;overflow-x:hidden'>
+	<div class="container bs-docs-container" style="width:100%;">
+		<div class="row">
+			<form role="form" class="form-inline" action="$!{basePath}/mbData/back/pvTemplateView/list.html" method="post"  id="formSubmit">
+				<div  class="col-md-10" style="width:100%">
+								<div class="panel panel-default">
+								  <div class="panel-heading">配置列表</div>
+								  <div class="panel-body">
+								  		<div class="search">
+															  
+															 <div class="form-group col-sm-3">
+															    <label for="tempName" class="control-label col-sm-3 line34">模板名称</label>
+															     <div class="col-sm-8">
+															    <input type="text" name="tempName" id="tempName" value="$!{pvTemplateView.tempName}" class="form-control">
+															  	</div>
+															 </div>
+															 <div class="form-group col-sm-3">
+															    <label for="deptCode" class="control-label col-sm-3 line34">所属科室</label>
+															     <div class="col-sm-8"> 
+														 <select name="deptCode" id="deptCode"  value="$!{pvTemplateView.deptCode}" class="form-control" >
+														  <option value="" >选择所属科室</option>
+				       										#if($!{deptListInfos})
+											                #foreach($!{info} in $!{deptListInfos})
+															<option value="$!{info.dictcode}" #if($!{pvTemplateView.deptCode} eq $!{info.dictcode})selected#end>$!{info.dictname}</option>
+												             #end
+												    	 	#end
+													      </select>
+															  	</div>
+															 </div> 
+											  <button type="submit" class="btn btn-primary">搜  索</button>
+											  <div class="clearfix"></div>
+								  		</div>
+								  		<div id="legend">
+								          <legend  class="le"><button type="button" class="btn btn-primary" onclick="doUrl('$!{basePath}/mbData/back/pvTemplateView/toAdd.html')" >新增</button></legend> 
+								        </div>
+								        <table class="table table-striped">
+									        <thead>  
+													<th>模板名称</th>
+													<th>所属科室</th> 
+													<th>模板预览</th>
+													<th>主要诊断</th>
+						                			<th>模板创建时间</th>
+						                			<th>模板创建人ID</th>
+						                			<th>模板修改人ID</th> 
+													<th>模板修改时间</th>
+														<th>操作</th>
+									        </thead>
+									        <tobody>
+									    	  #if($!{pageInfos})
+								                #foreach($!{info} in $!{pageInfos})
+									            	<tr>			  
+																	<td>$!{info.tempName}</td>
+																	<td>$!{info.deptCode}</td> 
+																	<td>#if($!{info.tempFileUrl})<a href="$!{info.tempFileUrl}" target="_blank">模板预览</a>#else 无模板  #end</td>
+																	<td>$!{info.mainDaignos}</td>
+																	<td>$!{info.tempCreateUserid}</td>
+																	<td>$!{info.tempCreatetiime}</td>
+																	<td>$!{info.tempUpdateUserid}</td>
+																	<td>$!{info.tempUpdatetime}</td>
+										                <td class="last">
+							                			<a href="javascript:doUrl('$!{basePath}/mbData/back/pvTemplateView/toEdit.html?tid=$!{info.tid}')" >编辑</a>
+							                			<a href="javascript:delData('$!{basePath}/mbData/back/pvTemplateView/doDelete.html?tid=$!{info.tid}')">删除</a>
+							                			<a href="javascript:doUrl('$!{basePath}/mbData/back/pvTemplateView/toDetail.html?tid=$!{info.tid}')">详情</a>
+						                				</td>
+									           		</tr>
+									             #end
+									    	 #end
+									         </tobody>
+									    </table>
+										<div class="text-right">
+											<!--公用翻页代码-->
+							                #set($attr='formSubmit')
+							            	#showPageList($pageInfos $attr)
+							                <!--END公用翻页代码-->
+										</div>
+								  </div>	
+								</div>
+				</div>  
+				</form>
+		</div>
+	</div>
+</body>
+</html>

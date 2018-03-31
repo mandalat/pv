@@ -1,0 +1,99 @@
+#parse("content/base/back/common/macro.vm")
+<!DOCTYPE html>
+<html lang="en">
+#parse("content/base/back/common/head.vm")
+<body style='overflow:scroll;overflow-x:hidden'>
+	<div class="container bs-docs-container" style="width:100%;">
+		<div class="row">
+			<form role="form" class="form-inline" action="$!{basePath}/groupPatient/back/pvGroupPatient/list.html" method="post"  id="formSubmit">
+				<div  class="col-md-10" style="width:100%">
+								<div class="panel panel-default">
+								  <div class="panel-heading">砍价活动配置列表</div>
+								  <div class="panel-body">
+								  		<div class="search">
+															 <div class="form-group col-sm-3">
+															    <label for="gpExtend1" class="control-label col-sm-3 line34">备用字段</label>
+															     <div class="col-sm-8">
+															    <input type="text" name="gpExtend1" id="gpExtend1" value="$!{pvGroupPatient.gpExtend1}" class="form-control">
+															  	</div>
+															 </div>
+															 <div class="form-group col-sm-3">
+															    <label for="gpExtend0" class="control-label col-sm-3 line34">备用字段</label>
+															     <div class="col-sm-8">
+															    <input type="text" name="gpExtend0" id="gpExtend0" value="$!{pvGroupPatient.gpExtend0}" class="form-control">
+															  	</div>
+															 </div>
+															 <div class="form-group col-sm-3">
+															    <label for="gpCreateUserid" class="control-label col-sm-3 line34">记录创建人ID</label>
+															     <div class="col-sm-8">
+															    <input type="text" name="gpCreateUserid" id="gpCreateUserid" value="$!{pvGroupPatient.gpCreateUserid}" class="form-control">
+															  	</div>
+															 </div>
+															 <div class="form-group col-sm-3">
+															    <label for="groupId" class="control-label col-sm-3 line34">群组ID</label>
+															     <div class="col-sm-8">
+															    <input type="text" name="groupId" id="groupId" value="$!{pvGroupPatient.groupId}" class="form-control">
+															  	</div>
+															 </div>
+															 <div class="form-group col-sm-3">
+															    <label for="patientId" class="control-label col-sm-3 line34">病人住院号</label>
+															     <div class="col-sm-8">
+															    <input type="text" name="patientId" id="patientId" value="$!{pvGroupPatient.patientId}" class="form-control">
+															  	</div>
+															 </div>
+															 <div class="form-group col-sm-3">
+															    <label for="gpid" class="control-label col-sm-3 line34">主键ID</label>
+															     <div class="col-sm-8">
+															    <input type="text" name="gpid" id="gpid" value="$!{pvGroupPatient.gpid}" class="form-control">
+															  	</div>
+															 </div>
+											  <button type="submit" class="btn btn-primary">搜  索</button>
+											  <div class="clearfix"></div>
+								  		</div>
+								  		<div id="legend">
+								          <legend  class="le"><button type="button" class="btn btn-primary" onclick="doUrl('$!{basePath}/groupPatient/back/pvGroupPatient/toAdd.html')" >新增</button></legend> 
+								        </div>
+								        <table class="table table-striped">
+									        <thead>
+													<th>备用字段</th>
+													<th>备用字段</th>
+													<th>记录创建人ID</th>
+													<th>群组ID</th>
+													<th>病人住院号</th>
+													<th>主键ID</th>
+						                			<th>操作</th>
+									        </thead>
+									        <tobody>
+									    	  #if($!{pageInfos})
+								                #foreach($!{info} in $!{pageInfos})
+									            	<tr>			
+																	<td>$!{info.gpExtend1}</td>
+																	<td>$!{info.gpExtend0}</td>
+																	<td>$!{info.gpCreateUserid}</td>
+																	<td>$!{info.groupId}</td>
+																	<td>$!{info.patientId}</td>
+																	<td>$!{info.gpid}</td>
+										                <td class="last">
+							                			<a href="javascript:doUrl('$!{basePath}/groupPatient/back/pvGroupPatient/toEdit.html?id=$!{info.id}')" >编辑</a>
+							                			<a href="javascript:delData('$!{basePath}/groupPatient/back/pvGroupPatient/doDelete.html?id=$!{info.id}')">删除</a>
+							                			<a href="javascript:doUrl('$!{basePath}/groupPatient/back/pvGroupPatient/toDetail.html?id=$!{info.id}')">详情</a>
+						                				</td>
+									           		</tr>
+									             #end
+									    	 #end
+									         </tobody>
+									    </table>
+										<div class="text-right">
+											<!--公用翻页代码-->
+							                #set($attr='formSubmit')
+							            	#showPageList($pageInfos $attr)
+							                <!--END公用翻页代码-->
+										</div>
+								  </div>	
+								</div>
+				</div>  
+				</form>
+		</div>
+	</div>
+</body>
+</html>

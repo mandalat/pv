@@ -19,5 +19,9 @@ public interface PvRecordDao extends GenericDao<PvRecord>{
 	
 	public List<PvRecord> queryPageList(PageQuery<PvRecord> pageQuery,Integer itemCount);
 	
+	public Integer countToDo(PageQuery<PvRecord> pageQuery);
+	
+	public List<PvRecord> queryPageListToDo(PageQuery<PvRecord> pageQuery,Integer itemCount);
+	
 }
 

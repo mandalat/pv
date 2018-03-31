@@ -5,6 +5,8 @@ import java.util.Map;
 
 import org.jeecgframework.p3.core.utils.common.PageList;
 import org.jeecgframework.p3.core.utils.common.PageQuery;
+
+import com.mandala.groupPatient.entity.PvGroupPatient;
 import com.mandala.patient.entity.ZyEmrBasy;
 import com.mandala.visitRecord.entity.PvRecord;
 
@@ -34,5 +36,9 @@ public interface ZyEmrBasyService {
 	public void doAddVisit(ZyEmrBasy zyEmrBasy);
 	
 	public PvRecord insertMap(Map<String, Object> conditionMap);
+	
+	public PvGroupPatient insertGroupMap(Map<String, Object> conditionMap);
+	
+	public List<PvGroupPatient> queryGroupMap(Map<String, Object> conditionMap);
 }
 

@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+#parse("content/base/back/common/head.vm")
+<body style='overflow:scroll;overflow-x:hidden'>
+	<div class="container bs-docs-container" style="width:100%;">
+		<div class="row">
+			<div class="panel panel-default">
+				<div class="panel-heading">编辑</div>
+				<div class="panel-body">
+					<form class="form-horizontal" role="form" id="dailogForm" action="$!{basePath}/patientGroup/back/pvGroupinfo/doEdit.html" method="POST">
+						 <input type="hidden" id="btn_sub" class="btn_sub" />
+						 <input type="hidden" value="$!{pvGroupinfo.id}" name="id" id="id" />
+												<div class="form-group mno">
+												    <label for="inputEmail3" class="col-sm-2 control-label" style="text-align:left;">群组描述</label>
+												    <div class="col-sm-8">
+												      <input type="text" value="$!{pvGroupinfo.groupDes}" name="groupDes" id="groupDes" class="form-control"/>
+												    </div>
+												</div>
+												<div class="form-group mno">
+												    <label for="inputEmail3" class="col-sm-2 control-label" style="text-align:left;">备用字段</label>
+												    <div class="col-sm-8">
+												      <input type="text" value="$!{pvGroupinfo.groupExtend1}" name="groupExtend1" id="groupExtend1" class="form-control"/>
+												    </div>
+												</div>
+												<div class="form-group mno">
+												    <label for="inputEmail3" class="col-sm-2 control-label" style="text-align:left;">备用字段</label>
+												    <div class="col-sm-8">
+												      <input type="text" value="$!{pvGroupinfo.groupExtend0}" name="groupExtend0" id="groupExtend0" class="form-control"/>
+												    </div>
+												</div>
+												<div class="form-group mno">
+												    <label for="inputEmail3" class="col-sm-2 control-label" style="text-align:left;">群组状态</label>
+												    <div class="col-sm-8">
+												      <input type="text" value="$!{pvGroupinfo.groupStatus}" name="groupStatus" id="groupStatus" class="form-control"/>
+												    </div>
+												</div>
+												<div class="form-group mno">
+												    <label for="inputEmail3" class="col-sm-2 control-label" style="text-align:left;">群组更新时间</label>
+												    <div class="col-sm-8">
+												      <input type="text" value="$!{pvGroupinfo.groupUpdatetime}" name="groupUpdatetime" id="groupUpdatetime" class="form-control"/>
+												    </div>
+												</div>
+												<div class="form-group mno">
+												    <label for="inputEmail3" class="col-sm-2 control-label" style="text-align:left;">群组创建时间</label>
+												    <div class="col-sm-8">
+												      <input type="text" value="$!{pvGroupinfo.groupCreatetime}" name="groupCreatetime" id="groupCreatetime" class="form-control"/>
+												    </div>
+												</div>
+												<div class="form-group mno">
+												    <label for="inputEmail3" class="col-sm-2 control-label" style="text-align:left;">群组修改人</label>
+												    <div class="col-sm-8">
+												      <input type="text" value="$!{pvGroupinfo.groupUpdateUserid}" name="groupUpdateUserid" id="groupUpdateUserid" class="form-control"/>
+												    </div>
+												</div>
+												<div class="form-group mno">
+												    <label for="inputEmail3" class="col-sm-2 control-label" style="text-align:left;">群组创建人</label>
+												    <div class="col-sm-8">
+												      <input type="text" value="$!{pvGroupinfo.groupCreateUserid}" name="groupCreateUserid" id="groupCreateUserid" class="form-control"/>
+												    </div>
+												</div>
+												<div class="form-group mno">
+												    <label for="inputEmail3" class="col-sm-2 control-label" style="text-align:left;">群组排序</label>
+												    <div class="col-sm-8">
+												      <input type="text" value="$!{pvGroupinfo.groupOrder}" name="groupOrder" id="groupOrder" class="form-control"/>
+												    </div>
+												</div>
+												<div class="form-group mno">
+												    <label for="inputEmail3" class="col-sm-2 control-label" style="text-align:left;">群组随访模板ID</label>
+												    <div class="col-sm-8">
+												      <input type="text" value="$!{pvGroupinfo.groupTempId}" name="groupTempId" id="groupTempId" class="form-control"/>
+												    </div>
+												</div>
+												<div class="form-group mno">
+												    <label for="inputEmail3" class="col-sm-2 control-label" style="text-align:left;">群组名称</label>
+												    <div class="col-sm-8">
+												      <input type="text" value="$!{pvGroupinfo.groupName}" name="groupName" id="groupName" class="form-control"/>
+												    </div>
+												</div>
+												<div class="form-group mno">
+												    <label for="inputEmail3" class="col-sm-2 control-label" style="text-align:left;">主键ID</label>
+												    <div class="col-sm-8">
+												      <input type="text" value="$!{pvGroupinfo.gid}" name="gid" id="gid" class="form-control"/>
+												    </div>
+												</div>
+									<div class="form-group mno">
+											<div class="col-sm-offset-1 col-sm-6">
+												<button type="button" class="btn btn-default" id="formReturn" data-dismiss="modal" onclick="doUrl('$!{basePath}/patientGroup/back/pvGroupinfo/list.html')">返回</button>
+	        									<button type="button" class="btn btn-primary" id="formSubmit">提交</button>
+        									 </div>
+        							</div>
+					</form>
+				</div>
+			</div>
+		</div>
+	</div>
+</body>
+</html>
+<script type="text/javascript" src="$!{basePath}/plug-in/js/Validform_v5.3.2.js"></script> 
+<script type="text/javascript" src="$!{basePath}/plug-in/js/forminit.p3.js"></script>  

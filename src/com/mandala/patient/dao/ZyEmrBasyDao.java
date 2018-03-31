@@ -7,6 +7,7 @@ import java.util.Map;
 import org.jeecgframework.p3.core.utils.common.PageQuery;
 import org.jeecgframework.p3.core.utils.persistence.GenericDao;
 
+import com.mandala.groupPatient.entity.PvGroupPatient;
 import com.mandala.patient.entity.ZyEmrBasy;
 import com.mandala.visitRecord.entity.PvRecord;
 
@@ -31,6 +32,10 @@ public interface ZyEmrBasyDao extends GenericDao<ZyEmrBasy>{
 	public void addVisit(ZyEmrBasy zyEmrBasy);
 
 	public PvRecord insertMap(Map<String, Object> conditionMap);
+	
+	public PvGroupPatient insertGroupMap(Map<String, Object> conditionMap);
+	
+	public List<PvGroupPatient> queryGroupMap(Map<String, Object> conditionMap);
 	
 }
 

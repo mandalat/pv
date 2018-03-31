@@ -44,8 +44,8 @@ var serverroot = "$!{basePath}";
 <script type="text/javascript" src="$!{basePath}/login_reg_files/jquery-1.7.2.min.js "></script>
 <script type="text/javascript" src="$!{basePath}/login_reg_files/jquery.cookie.min.js "></script>
 <script type="text/javascript" src="$!{basePath}/login_reg_files/jquery.deparam.js "></script>
-<script type="text/javascript" src="$!{basePath}/login_reg_files/login.js "></script>
 <script type="text/javascript" src="$!{basePath}/login_reg_files/patientlogin.js "></script>
+<script type="text/javascript" src="$!{basePath}/script/doctorLogin.js "></script>
  
 </head>
 <body>
@@ -54,10 +54,6 @@ var serverroot = "$!{basePath}";
 	    
 		<div class="right_content" style="background-color: #fff;">
 			
-		    <ul class="right_nav">
-		    	<li class="active"><a href="javascript:;">登录</a></li>
-		    	
-		    </ul>
 		    <div class="rightWrap">
 		    	<ul class="login_tab">
 			    	<li class="active"><a href="javascript:;">医护登录</a></li>
@@ -67,7 +63,7 @@ var serverroot = "$!{basePath}";
 			   <!-- 医护登录 -->
 			   
 			   <div class="code_login">
-			   <form id="loginForm" class="ui-buttonset" action="$!{basePath}/system/checklogin.html" 
+			   <form id="loginForm" class="ui-buttonset" action="$!{basePath}/system/checkDoctorLogin.html" 
 
 method="post">
 				      <input class="user_name" type="text" id="signin-username" placeholder="用户名" checktype="user_name" 
@@ -134,12 +130,12 @@ $(".tel-verification-code").on('click',function(){
 <script>
 /*第一次读取最新通知*/
   setTimeout(function() {
-             Push();
+            // Push();
            },
         200);
       /*30轮询读取函数*/
         setInterval(function() {
-            Push();
+           // Push();
     },
         3000);
 

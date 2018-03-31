@@ -6,7 +6,9 @@
 <meta charset="UTF-8"> 
 <link rel="stylesheet" href="$!{basePath}/css/ele_ui.css">
 <link rel="stylesheet" href="$!{basePath}/css/vue_upload.css">
+       <script src="$!{basePath}/script/polyfill.min.js"></script>
 <script src="$!{basePath}/script/qs.js"></script>
+
 <script> 
 					var info={};
     				info.recordExtend2="$!{pvRecord.recordExtend2}";
@@ -82,20 +84,21 @@
     <div class="vue-uploader">
         <div class="file-list">
             <section v-for="(file, index) of files" class="file-item draggable-item">
-                <img :src="file.src" alt="" ondragstart="return false;">
+                <a :href="file.src" target="_blank">
+               	<img :src="file.src" alt="" ondragstart="return false;" onerror="this.src='$!{basePath}/img/file.jpg';this.onerror=null">
+                </a>
                 <p class="file-name" alt="点击修改名称"><input v-model=files[index].name></p>
-                <span class="file-remove" @click="remove(index)">+</span>
+                <span class="file-remove" @click="remove(index)"  v-if="('sf00'==visitStatus || 'sf11'==visitStatus)" >+</span>
             </section>
             <section v-if="status == 'ready'" class="file-item">
-                <div @click="add" class="add">
+                <div @click="add" class="add"  v-if="('sf00'==visitStatus || 'sf11'==visitStatus)">
                     <span>+</span>
                 </div>
             </section>
         </div>
-
         <section v-if="files.length != 0" class="upload-func">
             <div class="operation-box">
-                <input type="button" v-if="status == 'ready'" @click="uploadpic" value="上传"> 
+                <input type="button" v-if="(status == 'ready' && ('sf00'==visitStatus || 'sf11'==visitStatus))" @click="uploadpic" value="上传"> 
                 <input type="button" v-if="status == 'finished'" @click="finished" value="完成 ">
             </div>
             <div class="progress-bar">
@@ -103,7 +106,7 @@
             </div>
 
         </section>
-        <input type="file" accept="image/gif,image/jpeg,image/jpg,image/png,image/svg" @change="fileChanged" ref="fileopen" multiple="multiple">
+        <input type="file" accept="image/gif,image/jpeg,image/jpg,image/png,image/svg,application/msword,application/pdf" @change="fileChanged" ref="fileopen" multiple="multiple">
 <input type="hidden" v-model="JSON.stringify(files)"  name="xfProjectcol" id="xfProjectcol" class="form-control" />	
     </div>
 </script>
@@ -333,11 +336,19 @@
 
 </style>
 <body>
-   <div style="width: 282px; position: absolute;    right: 30px;    top: 63px;" id="picslide">
+   <div style="width: 282px; position: absolute;    right: 30px;    top: 180px;" id="picslide">
+   		<el-button round icon="el-icon-download"   style="background:#008579; color:#ffffff;margin: 0px auto;display: block;">附件信息</el-button>
 		 <uploader :src="'$!{basePath}/system/back/SystemProject/doPlUpload.html'"></uploader>
 	</div>
 	      													    
   <div id="app">
+     <div style="width: 282px; position: absolute;    right: 30px;    top:10px;"  >
+   		<el-button round icon="el-icon-download"   style="background:#008579; color:#ffffff;margin: 0px auto;display: block;">病人信息</el-button> 
+   				<h4>	病人姓名：$!{pvRecord.patientName}</br>
+					病人住院号：$!{pvRecord.patientId}</br>
+					主要诊断：$!{pvRecord.patientOutDiagnose}</br> 
+					联系方式：$!{pvRecord.patientLinktel}</h4>
+	</div>
 <el-container style="height: 640px; border: 1px solid #eee">
    <el-header style="text-align:  center; font-size: 12px; color:#ffffff;height:45px;">
 	<el-button round icon="el-icon-circle-check-outline" @click="submitView(0)" style="background:#008579; color:#ffffff" v-if="'sf00'==visitStatus">提交</el-button>
@@ -350,7 +361,7 @@
    </el-header>
 
 	<el-main style="padding:0px!important;"> 
-<iframe id="mainFrame" src="$!{basePath}$!{pvRecord.templateViewId}" frameborder="0" width="710" scrolling="no" onload="setIframeHeight(this)" height="700" style="display: flex; float: right;
+<iframe id="mainFrame" src="$!{pvRecord.templateViewId}" frameborder="0" width="70%" scrolling="no" onload="setIframeHeight(this)" height="700" style="display: flex; float: right;
     margin-right: 285px; "></iframe>
   
 	</el-main>
@@ -366,72 +377,87 @@
 
   <script>
   
-   axios.interceptors.request.use((request) => {
+   axios.interceptors.request.use(function(request){
   if (request.data && (request.headers['Content-Type'].indexOf('application/x-www-form-urlencoded') !== -1)) {
     request.data = Qs.stringify(request.data);
     console.log(request.data);
   }
   return request
 });
-    new Vue({
+   var vm =  new Vue({
       el: '#app',
 	      methods: { 
-      submitView(i) {
+      submitView:function(i) {
     	this.content=getIframeJsonContent();
     	var visitStatus='';
     	var stopReason='';
     	var recordContent=''; 
+    	var tip=''
     	if(i==0){
     		visitStatus='sf11';
     		recordContent=this.content;
+    		tip='提交';
     	}
     	if(i==1){
     		visitStatus='';
     		recordContent=this.content;
+    		tip='修改';
     	}
     	//审核操作
     	if(i==2){
     		visitStatus='sf22';
+    		tip='审核';
     	}
     	//终止操作
     	if(i==3){
     		visitStatus='sf33';
     		stopReason='zz00';
+    		tip='终止';
     	}
     	
     	console.log(this.content);
     	var that=this;
-    				  this.$confirm('此操作将会终止该随访记录, 是否继续?', '提示', {
+    				  this.$confirm('您正在进行'+tip+'操作, 是否继续?', '提示', {
 	          	confirmButtonText: '确定',
 	          	cancelButtonText: '取消',
-	          	type: 'warning'}).then(() => { 
+	          	type: 'warning'}).then(function(){
 	   			        axios({
 							method: 'post',
-							url: this.updateUrl, 
+							url: that.updateUrl, 
 							headers: {
 						   		 'Content-Type': 'application/x-www-form-urlencoded;charset=UTF-8'
 						  	},
 							data: {
-								rid: this.rid,
+								rid: that.rid,
 								visitStatus: visitStatus,
 								recordContent:recordContent,
 								stopReason:stopReason
 							}
 						}).then(function (response) {
+							if(response.data.success){
 						    	if(i==0){
 						    		that.visitStatus='sf11';
+						    		vm1.visitStatus='sf11';
 						    	}
 						    	if(i==2){
 						    		that.visitStatus='sf22';
+						    		vm1.visitStatus='sf22';
 						    	}
 						    	if(i==3){
     								that.visitStatus='sf33';
+    								vm1.visitStatus='sf33';
     							}
 								console.log(response);
 							 	that.$message({
 						            type: 'success',
 						            message: '操作成功!'
 					          	});
+					        }else{
+					        	that.$message({
+						            type: 'info',
+						            message: '操作失败!'
+					          	});
+					        }
 						}).catch(function (error) {
 								console.log(error);
 							 	  that.$message({
@@ -439,8 +465,8 @@
 						            message: '已取消'
 						          }); 
 						});
-
-	        	}).catch(() => {
+					}
+	        	).catch(function(){
 	          		this.$message({
 	            		type: 'info',
 	            		message: '已取消'
@@ -449,12 +475,12 @@
     	
       }
       , 
-      resetForm(formName) {
+      resetForm:function(formName) {
         this.$refs[formName].resetFields();
       } 
       ,
       //打印IFRMAE
-      printpage(myDiv){    
+      printpage:function(myDiv){    
 		  if (window.frames[myDiv]== null) { 
 		       document.getElementById(myDiv).focus();
 		       document.getElementById(myDiv).contentWindow.print();
@@ -464,7 +490,7 @@
 		  }
 	  },
 	  //另存IFRAME
-	  travelSave(myDiv){ 
+	  travelSave:function(myDiv){ 
 	    b = window.open(); 
 	    b.document.open();
 	    	  console.log(document.getElementById(myDiv));
@@ -477,7 +503,7 @@
         return {  
 			radio:'-1' ,
 			rid:'$!{pvRecord.rid}',
-			loginType:0,
+			loginType:#if($!{LOGIN_USER.loginType})$!{LOGIN_USER.loginType}#else-1#end,
 			visitStatus:'$!{pvRecord.visitStatus}',
 			content:'',
 			updateUrl:'$!{basePath}/visitRecord/back/pvRecord/doEdit.html',
@@ -509,20 +535,22 @@
                 files: #if($!{pvRecord.recordExtend1})$!{pvRecord.recordExtend1}#else[]#end,
                 point: {},
                 uploading: false,
-                percent: 0
+                percent: 0,
+                visitStatus:'$!{pvRecord.visitStatus}'
             } 
          },  
-        methods:{
-            add(){
+        methods:{ 
+            add:function(){
                 this.$refs.fileopen.click();
+                console.log(vm.visitStatus);
             },
-            uploadpic(){
+            uploadpic:function(){
                 if (this.files.length === 0) {
                     console.warn('no file!');
                     return
                 }
                 const formData = new FormData()
-                this.files.forEach((item) => {
+                this.files.forEach(function(item){
                     formData.append(item.name, item.file);
                 })
                 const xhr = new XMLHttpRequest();
@@ -530,70 +558,74 @@
                 xhr.open('POST', this.src, true);
                 this.uploading = true;
                 xhr.send(formData);
-                xhr.onload = () => {
-                    this.uploading = false;
+                var that = this;
+                xhr.onload = function(){
+                    that.uploading = false;
                     if (xhr.status === 200 || xhr.status === 304) {
                     	var obj = JSON.parse(xhr.responseText);
-                    	if(obj.success){
-                    		 this.status = 'finished';
-                                 console.log('upload success!');
-                                 for (let i = 0; i < this.files.length; i++) {
-					                    if (this.files[i].size) {
-					                    	this.files.splice(i, 1);
-					                    	i = i-1;
-					                    }
-					                }
-                                  for (let i = 0; i < obj.obj.length; i++) {
-					                        const item = {
-					                            name: obj.obj[i].name,
-					                            src: obj.obj[i].src,
-					                        }
-					                        this.files.push(item);
-					                }
-					            //上传成功后修改数据库字段 extend_1
-					            var that = this;
-					            axios({
-							method: 'post',
-							url: '$!{basePath}/visitRecord/back/pvRecord/doEdit.html', 
-							headers: {
-						   		 'Content-Type': 'application/x-www-form-urlencoded;charset=UTF-8'
-						  	},
-							data: {
-								rid: '$!{pvRecord.rid}',
-								recordExtend1: JSON.stringify(this.files) 
-							}
-						}).then(function (response) {
-								console.log(response);
-							 	that.$message({
-						            type: 'success',
-						            message: '上传成功!'
-					          	});
-						}).catch(function (error) {
-								console.log(error);
-							 	  that.$message({
-						            type: 'info',
-						            message: '上传失败'
-						          }); 
-						});
-					            
-                    	}else{
-                    		
-                    	}
-                       
+	                    	if(obj.success){
+	                    		 this.status = 'finished';
+	                                 console.log('upload success!');
+	                                 console.log( that.files.length);
+	                                 for (let i = 0; i < that.files.length; i++) {
+						                    if (that.files[i].size) {
+						                    	that.files.splice(i, 1);
+						                    	i = i-1;
+						                    }
+						                }
+	                                  for (let i = 0; i < obj.obj.length; i++) {
+						                        const item = {
+						                            name: obj.obj[i].name,
+						                            src: obj.obj[i].src,
+						                        }
+						                        that.files.push(item);
+						                }
+						            //上传成功后修改数据库字段 extend_1 
+										            axios({
+												method: 'post',
+												url: '$!{basePath}/visitRecord/back/pvRecord/doEdit.html', 
+												headers: {
+											   		 'Content-Type': 'application/x-www-form-urlencoded;charset=UTF-8'
+											  	},
+												data: {
+													rid: '$!{pvRecord.rid}',
+													recordExtend1: JSON.stringify(that.files) 
+												}
+											}).then(function (response) {
+													//console.log(response);
+												 	that.$message({
+											            type: 'success',
+											            message: '上传成功!'
+										          	});
+											}).catch(function (error) {
+													console.log(error);
+												 	  that.$message({
+											            type: 'info',
+											            message: '上传失败'
+											          }); 
+											});
+						            
+	                    	}else{
+	                    			that.$message({
+							            type: 'info',
+							            message: '上传失败，只持jpg,gif,png,ico,bmp,jpeg,svg,doc,docx,pdf,html类型文件!'
+						          	});
+	                    	}
+	                       
                     } else {
-                        console.log('error：error code ${xhr.status}');
+                       // console.log('error：error code ${xhr.status}');
                     }
                 }
             },
-            finished(){
+            finished:function(){
                 
                 this.status = 'ready';
             },
-            remove(index){
+            remove:function(index){
                 this.files.splice(index, 1);
             },
-            fileChanged(){
-                const list = this.$refs.fileopen.files
+            fileChanged:function(){
+                const list = this.$refs.fileopen.files;
                 for (let i = 0; i < list.length; i++) {
                     if (!this.isContain(list[i])) {
                         const item = {
@@ -608,22 +640,23 @@
                 this.$refs.fileopen.value = '';
             },
             // 将图片文件转成BASE64格式
-            html5Reader(file, item){
+            html5Reader:function(file, item){
                 const reader = new FileReader();
-                reader.onload = (e) => {
-                    this.$set(item, 'src', e.target.result);
+                var that = this;
+                reader.onload = function(e) {
+                    that.$set(item, 'src', e.target.result);
                 }
                 reader.readAsDataURL(file);
             },
-            isContain(file){
-                this.files.forEach((item) => {
+            isContain:function(file){
+                this.files.forEach(function(item){
                     if(item.name === file.name && item.size === file.size) {
                         return true;
                     }
                 })
                 return false;
             },
-            uploadProgress(evt){
+            uploadProgress:function(evt){
                 const component = this
                 if (evt.lengthComputable) {
                     const percentComplete = Math.round((evt.loaded * 100) / evt.total);

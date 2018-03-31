@@ -13,6 +13,7 @@ import org.jeecgframework.p3.core.utils.common.Pagenation;
 import com.mandala.patient.service.ZyEmrBasyService;
 import com.mandala.visitRecord.entity.PvRecord;
 import com.mandala.patient.entity.ZyEmrBasy;
+import com.mandala.groupPatient.entity.PvGroupPatient;
 import com.mandala.patient.dao.ZyEmrBasyDao;
 
 @Service("zyEmrBasyService")
@@ -82,6 +83,18 @@ public class ZyEmrBasyServiceImpl implements ZyEmrBasyService {
 	public PvRecord insertMap(Map<String, Object> conditionMap) {
 		PvRecord pvRecord = zyEmrBasyDao.insertMap(conditionMap);
 		return pvRecord;
+	}
+
+	@Override
+	public PvGroupPatient insertGroupMap(Map<String, Object> conditionMap) {
+		PvGroupPatient pvGroupPatient = zyEmrBasyDao.insertGroupMap(conditionMap);
+		return pvGroupPatient;
+	}
+
+	@Override
+	public List<PvGroupPatient> queryGroupMap(Map<String, Object> conditionMap) {
+		List<PvGroupPatient> pvGroupPatientList = (List<PvGroupPatient>) zyEmrBasyDao.queryGroupMap(conditionMap);
+		return pvGroupPatientList;
 	}
 
 	

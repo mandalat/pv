@@ -1,0 +1,267 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//ibatis.apache.org//DTD iBatis Mapper 3.0 //EN" 
+	"http://ibatis.apache.org/dtd/ibatis-3-mapper.dtd">
+
+<mapper namespace="com.mandala.mbData.entity.PvTemplateView">
+
+	<!-- Result Map-->
+	<resultMap id="PvTemplateView" type="com.mandala.mbData.entity.PvTemplateView" >
+		<result column="TEMP_EXTEND_1" property="tempExtend1" jdbcType="VARCHAR"/>
+		<result column="TEMP_EXTEND_0" property="tempExtend0" jdbcType="VARCHAR"/>
+		<result column="TEMP_UPDATE_USERID" property="tempUpdateUserid" jdbcType="VARCHAR"/>
+		<result column="TEMP_CREATE_USERID" property="tempCreateUserid" jdbcType="VARCHAR"/>
+		<result column="TEMP_UPDATETIME" property="tempUpdatetime" jdbcType="TIMESTAMP"/>
+		<result column="TEMP_CREATETIIME" property="tempCreatetiime" jdbcType="TIMESTAMP"/>
+		<result column="MAIN_DAIGNOS" property="mainDaignos" jdbcType="VARCHAR"/>
+		<result column="TEMP_FILE_URL" property="tempFileUrl" jdbcType="VARCHAR"/>
+		<result column="TEMP_NAME" property="tempName" jdbcType="VARCHAR"/>
+		<result column="DEPT_CODE" property="deptCode" jdbcType="VARCHAR"/>
+		<result column="TID" property="tid" jdbcType="VARCHAR"/>
+	</resultMap>
+	
+	<!-- 查询条件 -->
+	<sql id="wherecontation">
+		<trim  suffixOverrides="," >
+				 <if test="query.tempExtend1 != null and query.tempExtend1 != ''" >
+	  		 		/*  */
+			    	AND TEMP_EXTEND_1 =  #{query.tempExtend1,jdbcType=VARCHAR}
+				 </if>
+				 <if test="query.tempExtend0 != null and query.tempExtend0 != ''" >
+	  		 		/*  */
+			    	AND TEMP_EXTEND_0 =  #{query.tempExtend0,jdbcType=VARCHAR}
+				 </if>
+				 <if test="query.tempUpdateUserid != null and query.tempUpdateUserid != ''" >
+	  		 		/* 模板修改人ID */
+			    	AND TEMP_UPDATE_USERID =  #{query.tempUpdateUserid,jdbcType=VARCHAR}
+				 </if>
+				 <if test="query.tempCreateUserid != null and query.tempCreateUserid != ''" >
+	  		 		/* 模板创建人ID */
+			    	AND TEMP_CREATE_USERID =  #{query.tempCreateUserid,jdbcType=VARCHAR}
+				 </if>
+				 <if test="query.tempUpdatetime != null and query.tempUpdatetime != ''" >
+	  		 		/* 模板修改时间 */
+			    	AND TEMP_UPDATETIME =  #{query.tempUpdatetime,jdbcType=TIMESTAMP}
+				 </if>
+				 <if test="query.tempCreatetiime != null and query.tempCreatetiime != ''" >
+	  		 		/* 模板创建时间 */
+			    	AND TEMP_CREATETIIME =  #{query.tempCreatetiime,jdbcType=TIMESTAMP}
+				 </if>
+				 <if test="query.mainDaignos != null and query.mainDaignos != ''" >
+	  		 		/* 主要诊断 */
+			    	AND MAIN_DAIGNOS =  #{query.mainDaignos,jdbcType=VARCHAR}
+				 </if>
+				 <if test="query.tempFileUrl != null and query.tempFileUrl != ''" >
+	  		 		/* 模板存放路径 */
+			    	AND TEMP_FILE_URL =  #{query.tempFileUrl,jdbcType=VARCHAR}
+				 </if>
+				 <if test="query.tempName != null and query.tempName != ''" >
+	  		 		/* 模板名称 */
+			    	AND TEMP_NAME =  #{query.tempName,jdbcType=VARCHAR}
+				 </if>
+				 <if test="query.deptCode != null and query.deptCode != ''" >
+	  		 		/* 所属科室编码 */
+			    	AND DEPT_CODE =  #{query.deptCode,jdbcType=VARCHAR}
+				 </if>
+				 <if test="query.tid != null and query.tid != ''" >
+	  		 		/* 随访模板ID  */
+			    	AND TID =  #{query.tid,jdbcType=VARCHAR}
+				 </if>
+		</trim>
+	</sql>
+
+	<!--
+	方法名称: insert
+	调用路径: com.mandala.mbData.entity.PvTemplateView.insert
+	开发信息: 
+	处理信息: 保存信息
+	-->
+	<insert id="insert" parameterType="Object" >
+	  INSERT  INTO  PV_TEMPLATE_VIEW   /*  */  
+					(	
+                      TEMP_EXTEND_1                 /*  */ 
+                     ,TEMP_EXTEND_0                 /*  */ 
+                     ,TEMP_UPDATE_USERID            /* 模板修改人ID */ 
+                     ,TEMP_CREATE_USERID            /* 模板创建人ID */ 
+                     ,TEMP_UPDATETIME               /* 模板修改时间 */ 
+                     ,TEMP_CREATETIIME              /* 模板创建时间 */ 
+                     ,MAIN_DAIGNOS                  /* 主要诊断 */ 
+                     ,TEMP_FILE_URL                 /* 模板存放路径 */ 
+                     ,TEMP_NAME                     /* 模板名称 */ 
+                     ,DEPT_CODE                     /* 所属科室编码 */ 
+                     ,TID                           /* 随访模板ID  */ 
+					)
+			values (
+                      #{tempExtend1,jdbcType=VARCHAR}                   /*  */ 
+                     ,#{tempExtend0,jdbcType=VARCHAR}                   /*  */ 
+                     ,#{tempUpdateUserid,jdbcType=VARCHAR}              /* 模板修改人ID */ 
+                     ,#{tempCreateUserid,jdbcType=VARCHAR}              /* 模板创建人ID */ 
+                     ,#{tempUpdatetime,jdbcType=TIMESTAMP}                /* 模板修改时间 */ 
+                     ,#{tempCreatetiime,jdbcType=TIMESTAMP}               /* 模板创建时间 */ 
+                     ,#{mainDaignos,jdbcType=VARCHAR}                   /* 主要诊断 */ 
+                     ,#{tempFileUrl,jdbcType=VARCHAR}                   /* 模板存放路径 */ 
+                     ,#{tempName,jdbcType=VARCHAR}                      /* 模板名称 */ 
+                     ,#{deptCode,jdbcType=VARCHAR}                      /* 所属科室编码 */ 
+                     ,#{tid,jdbcType=VARCHAR}                           /* 随访模板ID  */ 
+					)
+	</insert>
+
+	
+	<!--
+	方法名称: update
+	调用路径: com.mandala.mbData.entity.PvTemplateView.update
+	开发信息: 
+	处理信息: 修改信息
+	-->  
+	 <update id="update" parameterType="Object" >
+	  UPDATE   PV_TEMPLATE_VIEW  	/*  */
+	  			<trim   prefix="SET" suffixOverrides="," >
+						 <if test="tempExtend1 != null">
+		    		 		/*  */ 
+	    		 			TEMP_EXTEND_1 = #{tempExtend1,jdbcType=VARCHAR},
+						 </if>
+						 <if test="tempExtend0 != null">
+		    		 		/*  */ 
+	    		 			TEMP_EXTEND_0 = #{tempExtend0,jdbcType=VARCHAR},
+						 </if>
+						 <if test="tempUpdateUserid != null">
+		    		 		/* 模板修改人ID */ 
+	    		 			TEMP_UPDATE_USERID = #{tempUpdateUserid,jdbcType=VARCHAR},
+						 </if>
+						 <if test="tempCreateUserid != null">
+		    		 		/* 模板创建人ID */ 
+	    		 			TEMP_CREATE_USERID = #{tempCreateUserid,jdbcType=VARCHAR},
+						 </if>
+						 <if test="tempUpdatetime != null">
+		    		 		/* 模板修改时间 */ 
+	    		 			TEMP_UPDATETIME = #{tempUpdatetime,jdbcType=TIMESTAMP},
+						 </if>
+						 <if test="tempCreatetiime != null">
+		    		 		/* 模板创建时间 */ 
+	    		 			TEMP_CREATETIIME = #{tempCreatetiime,jdbcType=TIMESTAMP},
+						 </if>
+						 <if test="mainDaignos != null">
+		    		 		/* 主要诊断 */ 
+	    		 			MAIN_DAIGNOS = #{mainDaignos,jdbcType=VARCHAR},
+						 </if>
+						 <if test="tempFileUrl != null">
+		    		 		/* 模板存放路径 */ 
+	    		 			TEMP_FILE_URL = #{tempFileUrl,jdbcType=VARCHAR},
+						 </if>
+						 <if test="tempName != null">
+		    		 		/* 模板名称 */ 
+	    		 			TEMP_NAME = #{tempName,jdbcType=VARCHAR},
+						 </if>
+						 <if test="deptCode != null">
+		    		 		/* 所属科室编码 */ 
+	    		 			DEPT_CODE = #{deptCode,jdbcType=VARCHAR},
+						 </if>
+						 <if test="tid != null">
+		    		 		/* 随访模板ID  */ 
+	    		 			TID = #{tid,jdbcType=VARCHAR},
+						 </if>
+	  	  		</trim>
+				WHERE
+	  	 		 		tid = #{tid}		/* 序号 */ 
+	 </update>
+	
+	<!--
+	方法名称: get
+	调用路径: com.mandala.mbData.entity.PvTemplateView.get
+	开发信息: 
+	处理信息: 根据主键查询记录
+	-->
+	<select id="get" parameterType="Object"  resultMap="PvTemplateView">
+		   SELECT   
+                   ptv.TEMP_EXTEND_1                 /*  */ 
+                  ,ptv.TEMP_EXTEND_0                 /*  */ 
+                  ,ptv.TEMP_UPDATE_USERID            /* 模板修改人ID */ 
+                  ,ptv.TEMP_CREATE_USERID            /* 模板创建人ID */ 
+                  ,ptv.TEMP_UPDATETIME               /* 模板修改时间 */ 
+                  ,ptv.TEMP_CREATETIIME              /* 模板创建时间 */ 
+                  ,ptv.MAIN_DAIGNOS                  /* 主要诊断 */ 
+                  ,ptv.TEMP_FILE_URL                 /* 模板存放路径 */ 
+                  ,ptv.TEMP_NAME                     /* 模板名称 */ 
+                  ,ptv.DEPT_CODE                     /* 所属科室编码 */ 
+                  ,ptv.TID                           /* 随访模板ID  */ 
+		   FROM   PV_TEMPLATE_VIEW       ptv      /*  */ 
+		   WHERE
+				tid = #{tid}				/* 序号 */ 
+	</select>
+	
+	<!--
+	方法名称: delete
+	调用路径: com.mandala.mbData.entity.PvTemplateView.delete
+	开发信息: 
+	处理信息: 删除记录
+	-->
+	<delete id="delete" parameterType="Object">
+		DELETE 	FROM PV_TEMPLATE_VIEW 	/*  */  
+		WHERE 
+			tid = #{tid}					/* 序号 */ 
+	</delete>
+	
+	<!--
+	方法名称: count
+	调用路径: com.mandala.mbData.entity.PvTemplateView.count
+	开发信息: 
+	处理信息: 列表总数
+	-->
+	<select id="count" resultType="java.lang.Integer"  parameterType="Object">
+		SELECT count(*)  FROM  PV_TEMPLATE_VIEW    ptv      /*  */ 
+		 WHERE 1=1
+		    <include refid="wherecontation"/>
+	</select>
+  	
+  	<!--
+	方法名称: queryPageList
+	调用路径: com.mandala.mbData.entity.PvTemplateView.queryPageList
+	开发信息: 
+	处理信息: 列表
+	-->
+	<select id="queryPageList" parameterType="Object"  resultMap="PvTemplateView">
+	    SELECT 
+                   ptv.TEMP_EXTEND_1                 /*  */ 
+                  ,ptv.TEMP_EXTEND_0                 /*  */ 
+                  ,ptv.TEMP_UPDATE_USERID            /* 模板修改人ID */ 
+                  ,ptv.TEMP_CREATE_USERID            /* 模板创建人ID */ 
+                  ,ptv.TEMP_UPDATETIME               /* 模板修改时间 */ 
+                  ,ptv.TEMP_CREATETIIME              /* 模板创建时间 */ 
+                  ,ptv.MAIN_DAIGNOS                  /* 主要诊断 */ 
+                  ,ptv.TEMP_FILE_URL                 /* 模板存放路径 */ 
+                  ,ptv.TEMP_NAME                     /* 模板名称 */ 
+                  ,(select dictname from dictinfo where dictcode =ptv.DEPT_CODE) as   DEPT_CODE                  /* 所属科室编码 */ 
+                  ,ptv.TID                           /* 随访模板ID  */ 
+		FROM  (
+SELECT A.*, ROWNUM RN 
+FROM (SELECT * FROM PV_TEMPLATE_VIEW where  1=1  <include refid="wherecontation"/>) A WHERE 
+#{startRow}  + #{pageSize}
+>= ROWNUM) ptv  
+WHERE ptv.RN >= #{startRow} 
+		
+			  
+	</select>
+	
+	<select id="queryList" parameterType="Object"  resultMap="PvTemplateView">
+	    SELECT 
+                   ptv.TEMP_EXTEND_1                 /*  */ 
+                  ,ptv.TEMP_EXTEND_0                 /*  */ 
+                  ,ptv.TEMP_UPDATE_USERID            /* 模板修改人ID */ 
+                  ,ptv.TEMP_CREATE_USERID            /* 模板创建人ID */ 
+                  ,ptv.TEMP_UPDATETIME               /* 模板修改时间 */ 
+                  ,ptv.TEMP_CREATETIIME              /* 模板创建时间 */ 
+                  ,ptv.MAIN_DAIGNOS                  /* 主要诊断 */ 
+                  ,ptv.TEMP_FILE_URL                 /* 模板存放路径 */ 
+                  ,ptv.TEMP_NAME                     /* 模板名称 */ 
+                  ,(select dictname from dictinfo where dictcode =ptv.DEPT_CODE) as   DEPT_CODE        /* 所属科室编码 */ 
+                  ,ptv.TID                           /* 随访模板ID  */ 
+		FROM PV_TEMPLATE_VIEW  ptv 
+		 inner join  dictinfo d on ptv.dept_code = d.dictcode 
+		WHERE 1=1  
+		<if test="deptCode != null">
+ 		 		/* 所属科室编码 */ 
+		 		d.dictcode = #{deptCode,jdbcType=VARCHAR},
+	     </if>
+			  
+	</select>
+	
+</mapper>

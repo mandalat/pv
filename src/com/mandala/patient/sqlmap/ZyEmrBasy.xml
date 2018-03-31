@@ -4,6 +4,16 @@
 
 <mapper namespace="com.mandala.patient.entity.ZyEmrBasy">
 
+<!-- Result Map-->
+	<resultMap id="PvGroupPatient" type="com.mandala.groupPatient.entity.PvGroupPatient" >
+		<result column="GP_EXTEND_1" property="gpExtend1" jdbcType="VARCHAR"/>
+		<result column="GP_EXTEND_0" property="gpExtend0" jdbcType="VARCHAR"/>
+		<result column="GP_CREATE_USERID" property="gpCreateUserid" jdbcType="VARCHAR"/>
+		<result column="GROUP_ID" property="groupId" jdbcType="VARCHAR"/>
+		<result column="PATIENT_ID" property="patientId" jdbcType="VARCHAR"/>
+		<result column="GPID" property="gpid" jdbcType="VARCHAR"/>
+	</resultMap>
+	
 	<!-- Result Map-->
 	<resultMap id="ZyEmrBasy" type="com.mandala.patient.entity.ZyEmrBasy" >
 		<result column="HOSPITALDESC" property="hospitaldesc" jdbcType="VARCHAR"/>
@@ -1255,11 +1265,15 @@
                      ,PATIENT_NAME                  /* 病人姓名 */ 
                      ,PATIENT_ID                    /* 病人住院号 */ 
                      
+                     ,CREATE_USER_NAME              /* 创建者姓名 */ 
+                     ,CREATE_USER_ID                /* 创建者ID */ 
+                     ,CREATE_TIME                   /* 创建时间 */ 
                      ,MUST_VISIT_DATE               /* 随访日期 */ 
                      ,VISIT_ORDER                   /* 随访序数 */ 
                      ,VISIT_STATUS                  /* 随访状态 */ 
                      ,PATIENT_MAIN_DOCTOR           /* 主治医师 */ 
                      ,SUB_TEMPLATE_NAME             /* 随访模板名称 */ 
+                     ,TEMPLATE_VIEW_ID              /* 模板ID */ 
                      ,RID                           /* 主键 */ 
 					)
 			values (
@@ -1270,20 +1284,69 @@
                      ,to_date(#{admsdate,jdbcType=VARCHAR},'yyyy-mm-dd')
                      ,#{diagnosecode1,jdbcType=VARCHAR}
                      ,#{diagnosedesc1,jdbcType=VARCHAR}
-                     ,#{admdward,jdbcType=VARCHAR}
+                     ,#{diswardcode,jdbcType=VARCHAR}
                      ,#{linkvillage,jdbcType=VARCHAR}
                      ,to_date(#{birthday,jdbcType=VARCHAR},'yyyy-mm-dd')
                      ,#{marrycode,jdbcType=VARCHAR}
                      ,#{sex,jdbcType=VARCHAR}                    /* 病人性别 */ 
                      ,#{patname,jdbcType=VARCHAR}                   /* 病人姓名 */ 
                      ,#{inpatient,jdbcType=VARCHAR}                     /* 病人住院号 */ 
-                     ,#{visitDate,jdbcType=TIMESTAMP} 
+                     ,#{createUserName,jdbcType=VARCHAR}  
+                     ,#{createUserId,jdbcType=VARCHAR}  
+                     ,to_date(#{createTime,jdbcType=VARCHAR},'YYYY-MM-DD HH24:MI:SS')
+                     ,to_date(#{visitDate,jdbcType=VARCHAR},'yyyy-mm-dd')
                      ,#{num,jdbcType=VARCHAR} 
                      ,#{state,jdbcType=VARCHAR} 
                      ,#{attendingdesc,jdbcType=VARCHAR} 
                      ,#{tempName,jdbcType=VARCHAR} 
+                     ,#{tid,jdbcType=VARCHAR}                /* 模板ID */ 
                      ,sys_guid()                          /* 主键 */ 
 					)
+	</insert>
+
+	<!--
+	方法名称: get
+	调用路径: com.mandala.patient.entity.ZyEmrBasy.get
+	开发信息: 
+	处理信息: 根据主键查询记录
+	-->
+	<select id="queryGroupMap" parameterType="Object" resultMap="PvGroupPatient">
+		select * from PV_GROUP_PATIENT
+		where 1=1
+		<if test="inpatient != null">
+	    	and PATIENT_ID = #{inpatient,jdbcType=VARCHAR}
+		</if>
+		<if test="groupCreateUserId != null">
+	    	and GROUP_ID = #{gid,jdbcType=VARCHAR}
+		</if>
+		<if test="groupCreateUserId != null">
+	    	and GP_CREATE_USERID = #{groupCreateUserId,jdbcType=VARCHAR}
+		</if>
+		
+	</select>
+	<!--
+	方法名称: insertGroup
+	调用路径: com.mandala.patient.entity.ZyEmrBasy.insertGroup
+	开发信息: 
+	处理信息: 保存信息
+	-->
+	<insert id="insertGroup" parameterType="Object" >
+	  INSERT  INTO  PV_GROUP_PATIENT   /*  */  
+					(	
+                     GPID 
+                     ,PATIENT_ID 
+                     ,GROUP_ID 
+                     ,GP_CREATE_USERID
+                     ,GP_EXTEND_0
+					)
+			values (
+                     sys_guid() 
+                     ,#{inpatient,jdbcType=VARCHAR}
+                     ,#{gid,jdbcType=VARCHAR}
+                     ,#{groupCreateUserId,jdbcType=VARCHAR}
+                     ,#{createTime,jdbcType=VARCHAR}
+                     )
+                   
 	</insert>
 
 	

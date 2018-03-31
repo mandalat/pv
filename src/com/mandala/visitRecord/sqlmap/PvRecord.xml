@@ -219,6 +219,172 @@
 		</trim>
 	</sql>
 
+
+<sql id="wherecontationtodo">
+		<trim  suffixOverrides="," >
+				 <if test="query.recordExtend2 != null and query.recordExtend2 != ''" >
+	  		 		/* 备用字段2 */
+			    	AND RECORD_EXTEND_2 =  #{query.recordExtend2,jdbcType=VARCHAR}
+				 </if>
+				 <if test="query.recordExtend1 != null and query.recordExtend1 != ''" >
+	  		 		/* 备用字段1 */
+			    	AND RECORD_EXTEND_1 =  #{query.recordExtend1,jdbcType=VARCHAR}
+				 </if>
+				 <if test="query.templateViewId != null and query.templateViewId != ''" >
+	  		 		/* 模板ID */
+			    	AND TEMPLATE_VIEW_ID =  #{query.templateViewId,jdbcType=VARCHAR}
+				 </if>
+				 <if test="query.medicId != null and query.medicId != ''" >
+	  		 		/* 医生ID */
+			    	AND MEDIC_ID =  #{query.medicId,jdbcType=VARCHAR}
+				 </if>
+				 <if test="query.medicName != null and query.medicName != ''" >
+	  		 		/* 医生姓名 */
+			    	AND MEDIC_NAME =  #{query.medicName,jdbcType=VARCHAR}
+				 </if>
+				 <if test="query.medicPhone != null and query.medicPhone != ''" >
+	  		 		/* 医生电话 */
+			    	AND MEDIC_PHONE =  #{query.medicPhone,jdbcType=VARCHAR}
+				 </if>
+				 <if test="query.updateUserName != null and query.updateUserName != ''" >
+	  		 		/* 更新者姓名 */
+			    	AND UPDATE_USER_NAME =  #{query.updateUserName,jdbcType=VARCHAR}
+				 </if>
+				 <if test="query.updateUserId != null and query.updateUserId != ''" >
+	  		 		/* 更新者ID */
+			    	AND UPDATE_USER_ID =  #{query.updateUserId,jdbcType=VARCHAR}
+				 </if>
+				 <if test="query.updateTime != null and query.updateTime != ''" >
+	  		 		/* 更新时间 */
+			    	AND UPDATE_TIME =  #{query.updateTime,jdbcType=TIMESTAMP}
+				 </if>
+				 <if test="query.createUserName != null and query.createUserName != ''" >
+	  		 		/* 创建者姓名 */
+			    	AND CREATE_USER_NAME =  #{query.createUserName,jdbcType=VARCHAR}
+				 </if>
+				 <if test="query.createUserId != null and query.createUserId != ''" >
+	  		 		/* 创建者ID */
+			    	AND CREATE_USER_ID =  #{query.createUserId,jdbcType=VARCHAR}
+				 </if>
+				 <if test="query.createTime != null and query.createTime != ''" >
+	  		 		/* 创建时间 */
+			    	AND CREATE_TIME =  #{query.createTime,jdbcType=TIMESTAMP}
+				 </if>
+				 <if test="query.subjectName != null and query.subjectName != ''" >
+	  		 		/* 科研随访课题名称 */
+			    	AND SUBJECT_NAME =  #{query.subjectName,jdbcType=VARCHAR}
+				 </if>
+				 <if test="query.stopReason != null and query.stopReason != ''" >
+	  		 		/* 终止随访理由 */
+			    	AND STOP_REASON =  #{query.stopReason,jdbcType=VARCHAR}
+				 </if>
+				 <if test="query.recordContent != null and query.recordContent != ''" >
+	  		 		/* 随访表单内容 */
+			    	AND RECORD_CONTENT =  #{query.recordContent,jdbcType=VARCHAR}
+				 </if>
+				 <if test="query.subTemplateName != null and query.subTemplateName != ''" >
+	  		 		/* 随访模板名称 */
+			    	AND SUB_TEMPLATE_NAME =  #{query.subTemplateName,jdbcType=VARCHAR}
+				 </if>
+				 <if test="query.cancelReminder != null and query.cancelReminder != ''" >
+	  		 		/* 取消随访提醒 */
+			    	AND CANCEL_REMINDER =  #{query.cancelReminder,jdbcType=VARCHAR}
+				 </if>
+				 <if test="query.actualVisitDate != null and query.actualVisitDate != ''" >
+	  		 		/* 实际随访日期 */
+			    	AND ACTUAL_VISIT_DATE =  #{query.actualVisitDate,jdbcType=TIMESTAMP}
+				 </if>
+				 <if test="query.endVisitDate != null and query.endVisitDate != ''" >
+	  		 		/* 随访结束日期 */
+			    	AND   #{query.endVisitDate,jdbcType=TIMESTAMP} >=  MUST_VISIT_DATE
+				 </if>
+				 <if test="query.beginVisitDate != null and query.beginVisitDate != ''" >
+	  		 		/* 随访开始日期 */
+			    	AND MUST_VISIT_DATE >=  #{query.beginVisitDate,jdbcType=TIMESTAMP}
+				 </if>
+				 <if test="query.mustVisitDate != null and query.mustVisitDate != ''" >
+	  		 		/* 随访日期 */
+			    	AND MUST_VISIT_DATE =  #{query.mustVisitDate,jdbcType=TIMESTAMP}
+				 </if>
+				 <if test="query.visitOrder != null and query.visitOrder != ''" >
+	  		 		/* 随访序数 */
+			    	AND VISIT_ORDER =  #{query.visitOrder,jdbcType=INTEGER}
+				 </if>
+				 <if test="query.visitMode != null and query.visitMode != ''" >
+	  		 		/* 随访方式（暂未启用） */
+			    	AND VISIT_MODE =  #{query.visitMode,jdbcType=VARCHAR}
+				 </if>
+				 <if test="query.visitType != null and query.visitType != ''" >
+	  		 		/* 随访类型（暂未启用） */
+			    	AND VISIT_TYPE =  #{query.visitType,jdbcType=VARCHAR}
+				 </if>
+				 <if test="query.patientLinktel != null and query.patientLinktel != ''" >
+	  		 		/* 病人联系电话 */
+			    	AND PATIENT_LINKTEL =  #{query.patientLinktel,jdbcType=VARCHAR}
+				 </if>
+				 <if test="query.patientLinkman != null and query.patientLinkman != ''" >
+	  		 		/* 病人联系人 */
+			    	AND PATIENT_LINKMAN =  #{query.patientLinkman,jdbcType=VARCHAR}
+				 </if>
+				 <if test="query.patientMainDoctor != null and query.patientMainDoctor != ''" >
+	  		 		/* 主治医师 */
+			    	AND PATIENT_MAIN_DOCTOR =  #{query.patientMainDoctor,jdbcType=VARCHAR}
+				 </if>
+				 <if test="query.patientCardid != null and query.patientCardid != ''" >
+	  		 		/* 病人身份证 */
+			    	AND PATIENT_CARDID =  #{query.patientCardid,jdbcType=VARCHAR}
+				 </if>
+				 <if test="query.patientOutdate != null and query.patientOutdate != ''" >
+	  		 		/* 病人出院日 */
+			    	AND PATIENT_OUTDATE =  #{query.patientOutdate,jdbcType=TIMESTAMP}
+				 </if>
+				 <if test="query.patientIndate != null and query.patientIndate != ''" >
+	  		 		/* 病人入院日 */
+			    	AND PATIENT_INDATE =  #{query.patientIndate,jdbcType=TIMESTAMP}
+				 </if>
+				 <if test="query.patientOutDiagnose != null and query.patientOutDiagnose != ''" >
+	  		 		/* 病人出院诊断 */
+			    	AND PATIENT_OUT_DIAGNOSE =  #{query.patientOutDiagnose,jdbcType=VARCHAR}
+				 </if>
+				 <if test="query.patientInDiagnose != null and query.patientInDiagnose != ''" >
+	  		 		/* 病人入院诊断 */
+			    	AND PATIENT_IN_DIAGNOSE =  #{query.patientInDiagnose,jdbcType=VARCHAR}
+				 </if>
+				 <if test="query.patientOffice != null and query.patientOffice != ''" >
+	  		 		/* 病人科室 */
+			    	AND PATIENT_OFFICE =  #{query.patientOffice,jdbcType=VARCHAR}
+				 </if>
+				 <if test="query.patientAddress != null and query.patientAddress != ''" >
+	  		 		/* 病人住址 */
+			    	AND PATIENT_ADDRESS =  #{query.patientAddress,jdbcType=VARCHAR}
+				 </if>
+				 <if test="query.patientBirthday != null and query.patientBirthday != ''" >
+	  		 		/* 病人生日 */
+			    	AND PATIENT_BIRTHDAY =  #{query.patientBirthday,jdbcType=TIMESTAMP}
+				 </if>
+				 <if test="query.patientMarriage != null and query.patientMarriage != ''" >
+	  		 		/* 病人婚姻 */
+			    	AND PATIENT_MARRIAGE =  #{query.patientMarriage,jdbcType=VARCHAR}
+				 </if>
+				 <if test="query.patientSex != null and query.patientSex != ''" >
+	  		 		/* 病人性别 */
+			    	AND PATIENT_SEX =  #{query.patientSex,jdbcType=VARCHAR}
+				 </if>
+				 <if test="query.patientName != null and query.patientName != ''" >
+	  		 		/* 病人姓名 */
+			    	AND PATIENT_NAME =  #{query.patientName,jdbcType=VARCHAR}
+				 </if>
+				 <if test="query.patientId != null and query.patientId != ''" >
+	  		 		/* 病人住院号 */
+			    	AND PATIENT_ID =  #{query.patientId,jdbcType=VARCHAR}
+				 </if>
+				 <if test="query.rid != null and query.rid != ''" >
+	  		 		/* 主键 */
+			    	AND RID =  #{query.rid,jdbcType=VARCHAR}
+				 </if>
+		</trim>
+	</sql>
+
 	<!--
 	方法名称: insert
 	调用路径: com.mandala.visitRecord.entity.PvRecord.insert
@@ -500,7 +666,7 @@
 		   SELECT   
                    pr.RECORD_EXTEND_2               /* 备用字段2 */ 
                   ,pr.RECORD_EXTEND_1               /* 备用字段1 */ 
-                  ,pr.TEMPLATE_VIEW_ID              /* 模板ID */ 
+                  ,PTV.TEMP_FILE_URL AS TEMPLATE_VIEW_ID              /* 模板ID */ 
                   ,pr.MEDIC_ID                      /* 医生ID */ 
                   ,pr.MEDIC_NAME                    /* 医生姓名 */ 
                   ,pr.MEDIC_PHONE                   /* 医生电话 */ 
@@ -539,9 +705,10 @@
                   ,pr.PATIENT_NAME                  /* 病人姓名 */ 
                   ,pr.PATIENT_ID                    /* 病人住院号 */ 
                   ,pr.RID                           /* 主键 */ 
-		   FROM   PV_RECORD       pr      /*  */ 
+                 
+		   FROM   PV_RECORD       pr     left join PV_TEMPLATE_VIEW PTV ON pr.TEMPLATE_VIEW_ID=PTV.TID /*  */ 
 		   WHERE
-				RID = #{rid}				/* 序号 */ 
+				RID = #{rid}			/* 序号 */ 
 	</select>
 	
 	<!--
@@ -566,6 +733,12 @@
 		SELECT count(*)  FROM  PV_RECORD    pr      /*  */ 
 		 WHERE 1=1
 		    <include refid="wherecontation"/>
+	</select>
+	
+		<select id="countToDo" resultType="java.lang.Integer"  parameterType="Object">
+		SELECT count(*)  FROM  PV_RECORD    pr      /*  */ 
+		 WHERE 1=1
+		    <include refid="wherecontationtodo"/> and VISIT_STATUS !='sf22' and VISIT_STATUS !='sf33'
 	</select>
   	
   	<!--
@@ -619,12 +792,66 @@
                   ,pr.RID                           /* 主键 */ 
 		FROM  (
 SELECT A.*, ROWNUM RN 
-FROM (SELECT * FROM PV_RECORD where  1=1  <include refid="wherecontation"/>) A WHERE 
+FROM (SELECT * FROM PV_RECORD where  1=1  <include refid="wherecontation"/>  	order by MUST_VISIT_DATE asc	) A WHERE 
 #{startRow}  + #{pageSize}
 >= ROWNUM) pr  
-WHERE pr.RN >= #{startRow} 
+WHERE pr.RN > #{startRow} 
 		
 			  
 	</select>
+	
+		<select id="queryPageListToDo" parameterType="Object"  resultMap="PvRecord">
+	    SELECT 
+                   pr.RECORD_EXTEND_2               /* 备用字段2 */ 
+                  ,pr.RECORD_EXTEND_1               /* 备用字段1 */ 
+                  ,pr.TEMPLATE_VIEW_ID              /* 模板ID */ 
+                  ,pr.MEDIC_ID                      /* 医生ID */ 
+                  ,pr.MEDIC_NAME                    /* 医生姓名 */ 
+                  ,pr.MEDIC_PHONE                   /* 医生电话 */ 
+                  ,pr.UPDATE_USER_NAME              /* 更新者姓名 */ 
+                  ,pr.UPDATE_USER_ID                /* 更新者ID */ 
+                  ,pr.UPDATE_TIME                   /* 更新时间 */ 
+                  ,pr.CREATE_USER_NAME              /* 创建者姓名 */ 
+                  ,pr.CREATE_USER_ID                /* 创建者ID */ 
+                  ,pr.CREATE_TIME                   /* 创建时间 */ 
+                  ,pr.SUBJECT_NAME                  /* 科研随访课题名称 */ 
+                  ,pr.STOP_REASON                   /* 终止随访理由 */ 
+                  ,pr.RECORD_CONTENT                /* 随访表单内容 */ 
+                  ,pr.SUB_TEMPLATE_NAME             /* 随访模板名称 */ 
+                  ,pr.CANCEL_REMINDER               /* 取消随访提醒 */ 
+                  ,pr.ACTUAL_VISIT_DATE             /* 实际随访日期 */ 
+                  ,pr.END_VISIT_DATE                /* 随访结束日期 */ 
+                  ,pr.BEGIN_VISIT_DATE              /* 随访开始日期 */ 
+                  ,pr.MUST_VISIT_DATE               /* 随访日期 */ 
+                  ,pr.VISIT_ORDER                   /* 随访序数 */ 
+                  ,(select dictname from dictinfo d where pr.VISIT_STATUS = d.dictcode) as  VISIT_STATUS   /* 随访状态 */ 
+                  ,pr.VISIT_MODE                    /* 随访方式（暂未启用） */ 
+                  ,pr.VISIT_TYPE                    /* 随访类型（暂未启用） */ 
+                  ,pr.PATIENT_LINKTEL               /* 病人联系电话 */ 
+                  ,pr.PATIENT_LINKMAN               /* 病人联系人 */ 
+                  ,pr.PATIENT_MAIN_DOCTOR           /* 主治医师 */ 
+                  ,pr.PATIENT_CARDID                /* 病人身份证 */ 
+                  ,pr.PATIENT_OUTDATE               /* 病人出院日 */ 
+                  ,pr.PATIENT_INDATE                /* 病人入院日 */ 
+                  ,pr.PATIENT_OUT_DIAGNOSE          /* 病人出院诊断 */ 
+                  ,pr.PATIENT_IN_DIAGNOSE           /* 病人入院诊断 */ 
+                  ,(select dictname from dictinfo d where pr.PATIENT_OFFICE = d.dictcode) as   PATIENT_OFFICE              /* 病人科室 */ 
+                  ,pr.PATIENT_ADDRESS               /* 病人住址 */ 
+                  ,pr.PATIENT_BIRTHDAY              /* 病人生日 */ 
+                  ,pr.PATIENT_MARRIAGE              /* 病人婚姻 */ 
+                  ,pr.PATIENT_SEX                   /* 病人性别 */ 
+                  ,pr.PATIENT_NAME                  /* 病人姓名 */ 
+                  ,pr.PATIENT_ID                    /* 病人住院号 */ 
+                  ,pr.RID                           /* 主键 */ 
+		FROM  (
+SELECT A.*, ROWNUM RN 
+FROM (SELECT * FROM PV_RECORD where  1=1  <include refid="wherecontationtodo"/>  	order by MUST_VISIT_DATE asc	) A WHERE 
+#{startRow}  + #{pageSize}
+>= ROWNUM) pr  
+WHERE pr.RN > #{startRow} 
+		
+			  
+	</select>
+	
 	
 </mapper>

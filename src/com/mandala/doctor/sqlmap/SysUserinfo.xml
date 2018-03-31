@@ -1,0 +1,774 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//ibatis.apache.org//DTD iBatis Mapper 3.0 //EN" 
+	"http://ibatis.apache.org/dtd/ibatis-3-mapper.dtd">
+
+<mapper namespace="com.mandala.doctor.entity.SysUserinfo">
+
+	<!-- Result Map-->
+	<resultMap id="SysUserinfo" type="com.mandala.doctor.entity.SysUserinfo" >
+		<result column="是否医技" property="是否医技" jdbcType="VARCHAR"/>
+		<result column="发薪号" property="发薪号" jdbcType="VARCHAR"/>
+		<result column="ISADMIN" property="isadmin" jdbcType="VARCHAR"/>
+		<result column="APP_BI" property="appBi" jdbcType="VARCHAR"/>
+		<result column="病区名称" property="病区名称" jdbcType="VARCHAR"/>
+		<result column="病区代码" property="病区代码" jdbcType="VARCHAR"/>
+		<result column="UNIT" property="unit" jdbcType="VARCHAR"/>
+		<result column="是否专家" property="是否专家" jdbcType="VARCHAR"/>
+		<result column="手机号" property="手机号" jdbcType="VARCHAR"/>
+		<result column="U_ROLEID" property="uRoleid" jdbcType="VARCHAR"/>
+		<result column="状态" property="状态" jdbcType="VARCHAR"/>
+		<result column="修改时间" property="修改时间" jdbcType="TIMESTAMP"/>
+		<result column="修改人" property="修改人" jdbcType="VARCHAR"/>
+		<result column="创建时间" property="创建时间" jdbcType="TIMESTAMP"/>
+		<result column="创建人" property="创建人" jdbcType="VARCHAR"/>
+		<result column="备注" property="备注" jdbcType="VARCHAR"/>
+		<result column="专业" property="专业" jdbcType="VARCHAR"/>
+		<result column="人员类别" property="人员类别" jdbcType="VARCHAR"/>
+		<result column="所学专业" property="所学专业" jdbcType="VARCHAR"/>
+		<result column="最高学历毕业院校" property="最高学历毕业院校" jdbcType="VARCHAR"/>
+		<result column="最高学历" property="最高学历" jdbcType="VARCHAR"/>
+		<result column="第一学历毕业院校" property="第一学历毕业院校" jdbcType="VARCHAR"/>
+		<result column="第一学历" property="第一学历" jdbcType="VARCHAR"/>
+		<result column="是否为全科医生" property="是否为全科医生" jdbcType="VARCHAR"/>
+		<result column="执业单位名称" property="执业单位名称" jdbcType="VARCHAR"/>
+		<result column="执业证书号" property="执业证书号" jdbcType="VARCHAR"/>
+		<result column="执业资格名称" property="执业资格名称" jdbcType="VARCHAR"/>
+		<result column="职称名称" property="职称名称" jdbcType="VARCHAR"/>
+		<result column="职称代码" property="职称代码" jdbcType="VARCHAR"/>
+		<result column="职务名称" property="职务名称" jdbcType="VARCHAR"/>
+		<result column="职务代码" property="职务代码" jdbcType="VARCHAR"/>
+		<result column="科室名称" property="科室名称" jdbcType="VARCHAR"/>
+		<result column="科室代码" property="科室代码" jdbcType="VARCHAR"/>
+		<result column="参加工作时间" property="参加工作时间" jdbcType="TIMESTAMP"/>
+		<result column="身份证号码" property="身份证号码" jdbcType="VARCHAR"/>
+		<result column="出生日期" property="出生日期" jdbcType="VARCHAR"/>
+		<result column="性别" property="性别" jdbcType="VARCHAR"/>
+		<result column="姓名" property="姓名" jdbcType="VARCHAR"/>
+		<result column="工号" property="工号" jdbcType="VARCHAR"/>
+		<result column="行政区划名称" property="行政区划名称" jdbcType="VARCHAR"/>
+		<result column="行政区划编码" property="行政区划编码" jdbcType="VARCHAR"/>
+		<result column="医疗机构名称" property="医疗机构名称" jdbcType="VARCHAR"/>
+		<result column="医疗机构代码" property="医疗机构代码" jdbcType="VARCHAR"/>
+		<result column="权限属性" property="权限属性" jdbcType="VARCHAR"/>
+		<result column="PASSWORD" property="password" jdbcType="VARCHAR"/>
+		<result column="USERNAME" property="username" jdbcType="VARCHAR"/>
+		<result column="SN" property="sn" jdbcType="VARCHAR"/>
+	</resultMap>
+	
+	<!-- 查询条件 -->
+	<sql id="wherecontation">
+		<trim  suffixOverrides="," >
+				 <if test="query.是否医技 != null and query.是否医技 != ''" >
+	  		 		/*  */
+			    	AND 是否医技 =  #{query.是否医技,jdbcType=VARCHAR}
+				 </if>
+				 <if test="query.发薪号 != null and query.发薪号 != ''" >
+	  		 		/*  */
+			    	AND 发薪号 =  #{query.发薪号,jdbcType=VARCHAR}
+				 </if>
+				 <if test="query.isadmin != null and query.isadmin != ''" >
+	  		 		/*  */
+			    	AND ISADMIN =  #{query.isadmin,jdbcType=VARCHAR}
+				 </if>
+				 <if test="query.appBi != null and query.appBi != ''" >
+	  		 		/*  */
+			    	AND APP_BI =  #{query.appBi,jdbcType=VARCHAR}
+				 </if>
+				 <if test="query.病区名称 != null and query.病区名称 != ''" >
+	  		 		/*  */
+			    	AND 病区名称 =  #{query.病区名称,jdbcType=VARCHAR}
+				 </if>
+				 <if test="query.病区代码 != null and query.病区代码 != ''" >
+	  		 		/*  */
+			    	AND 病区代码 =  #{query.病区代码,jdbcType=VARCHAR}
+				 </if>
+				 <if test="query.unit != null and query.unit != ''" >
+	  		 		/*  */
+			    	AND UNIT =  #{query.unit,jdbcType=VARCHAR}
+				 </if>
+				 <if test="query.是否专家 != null and query.是否专家 != ''" >
+	  		 		/*  */
+			    	AND 是否专家 =  #{query.是否专家,jdbcType=VARCHAR}
+				 </if>
+				 <if test="query.手机号 != null and query.手机号 != ''" >
+	  		 		/*  */
+			    	AND 手机号 =  #{query.手机号,jdbcType=VARCHAR}
+				 </if>
+				 <if test="query.uRoleid != null and query.uRoleid != ''" >
+	  		 		/*  */
+			    	AND U_ROLEID =  #{query.uRoleid,jdbcType=VARCHAR}
+				 </if>
+				 <if test="query.状态 != null and query.状态 != ''" >
+	  		 		/*  */
+			    	AND 状态 =  #{query.状态,jdbcType=VARCHAR}
+				 </if>
+				 <if test="query.修改时间 != null and query.修改时间 != ''" >
+	  		 		/*  */
+			    	AND 修改时间 =  #{query.修改时间,jdbcType=TIMESTAMP}
+				 </if>
+				 <if test="query.修改人 != null and query.修改人 != ''" >
+	  		 		/*  */
+			    	AND 修改人 =  #{query.修改人,jdbcType=VARCHAR}
+				 </if>
+				 <if test="query.创建时间 != null and query.创建时间 != ''" >
+	  		 		/*  */
+			    	AND 创建时间 =  #{query.创建时间,jdbcType=TIMESTAMP}
+				 </if>
+				 <if test="query.创建人 != null and query.创建人 != ''" >
+	  		 		/*  */
+			    	AND 创建人 =  #{query.创建人,jdbcType=VARCHAR}
+				 </if>
+				 <if test="query.备注 != null and query.备注 != ''" >
+	  		 		/*  */
+			    	AND 备注 =  #{query.备注,jdbcType=VARCHAR}
+				 </if>
+				 <if test="query.专业 != null and query.专业 != ''" >
+	  		 		/*  */
+			    	AND 专业 =  #{query.专业,jdbcType=VARCHAR}
+				 </if>
+				 <if test="query.人员类别 != null and query.人员类别 != ''" >
+	  		 		/*  */
+			    	AND 人员类别 =  #{query.人员类别,jdbcType=VARCHAR}
+				 </if>
+				 <if test="query.所学专业 != null and query.所学专业 != ''" >
+	  		 		/*  */
+			    	AND 所学专业 =  #{query.所学专业,jdbcType=VARCHAR}
+				 </if>
+				 <if test="query.最高学历毕业院校 != null and query.最高学历毕业院校 != ''" >
+	  		 		/*  */
+			    	AND 最高学历毕业院校 =  #{query.最高学历毕业院校,jdbcType=VARCHAR}
+				 </if>
+				 <if test="query.最高学历 != null and query.最高学历 != ''" >
+	  		 		/*  */
+			    	AND 最高学历 =  #{query.最高学历,jdbcType=VARCHAR}
+				 </if>
+				 <if test="query.第一学历毕业院校 != null and query.第一学历毕业院校 != ''" >
+	  		 		/*  */
+			    	AND 第一学历毕业院校 =  #{query.第一学历毕业院校,jdbcType=VARCHAR}
+				 </if>
+				 <if test="query.第一学历 != null and query.第一学历 != ''" >
+	  		 		/*  */
+			    	AND 第一学历 =  #{query.第一学历,jdbcType=VARCHAR}
+				 </if>
+				 <if test="query.是否为全科医生 != null and query.是否为全科医生 != ''" >
+	  		 		/*  */
+			    	AND 是否为全科医生 =  #{query.是否为全科医生,jdbcType=VARCHAR}
+				 </if>
+				 <if test="query.执业单位名称 != null and query.执业单位名称 != ''" >
+	  		 		/*  */
+			    	AND 执业单位名称 =  #{query.执业单位名称,jdbcType=VARCHAR}
+				 </if>
+				 <if test="query.执业证书号 != null and query.执业证书号 != ''" >
+	  		 		/*  */
+			    	AND 执业证书号 =  #{query.执业证书号,jdbcType=VARCHAR}
+				 </if>
+				 <if test="query.执业资格名称 != null and query.执业资格名称 != ''" >
+	  		 		/*  */
+			    	AND 执业资格名称 =  #{query.执业资格名称,jdbcType=VARCHAR}
+				 </if>
+				 <if test="query.职称名称 != null and query.职称名称 != ''" >
+	  		 		/*  */
+			    	AND 职称名称 =  #{query.职称名称,jdbcType=VARCHAR}
+				 </if>
+				 <if test="query.职称代码 != null and query.职称代码 != ''" >
+	  		 		/*  */
+			    	AND 职称代码 =  #{query.职称代码,jdbcType=VARCHAR}
+				 </if>
+				 <if test="query.职务名称 != null and query.职务名称 != ''" >
+	  		 		/*  */
+			    	AND 职务名称 =  #{query.职务名称,jdbcType=VARCHAR}
+				 </if>
+				 <if test="query.职务代码 != null and query.职务代码 != ''" >
+	  		 		/*  */
+			    	AND 职务代码 =  #{query.职务代码,jdbcType=VARCHAR}
+				 </if>
+				 <if test="query.科室名称 != null and query.科室名称 != ''" >
+	  		 		/*  */
+			    	AND 科室名称 =  #{query.科室名称,jdbcType=VARCHAR}
+				 </if>
+				 <if test="query.科室代码 != null and query.科室代码 != ''" >
+	  		 		/*  */
+			    	AND 科室代码 =  #{query.科室代码,jdbcType=VARCHAR}
+				 </if>
+				 <if test="query.参加工作时间 != null and query.参加工作时间 != ''" >
+	  		 		/*  */
+			    	AND 参加工作时间 =  #{query.参加工作时间,jdbcType=TIMESTAMP}
+				 </if>
+				 <if test="query.身份证号码 != null and query.身份证号码 != ''" >
+	  		 		/*  */
+			    	AND 身份证号码 =  #{query.身份证号码,jdbcType=VARCHAR}
+				 </if>
+				 <if test="query.出生日期 != null and query.出生日期 != ''" >
+	  		 		/*  */
+			    	AND 出生日期 =  #{query.出生日期,jdbcType=VARCHAR}
+				 </if>
+				 <if test="query.性别 != null and query.性别 != ''" >
+	  		 		/*  */
+			    	AND 性别 =  #{query.性别,jdbcType=VARCHAR}
+				 </if>
+				 <if test="query.姓名 != null and query.姓名 != ''" >
+	  		 		/*  */
+			    	AND 姓名 =  #{query.姓名,jdbcType=VARCHAR}
+				 </if>
+				 <if test="query.工号 != null and query.工号 != ''" >
+	  		 		/*  */
+			    	AND 工号 =  #{query.工号,jdbcType=VARCHAR}
+				 </if>
+				 <if test="query.行政区划名称 != null and query.行政区划名称 != ''" >
+	  		 		/*  */
+			    	AND 行政区划名称 =  #{query.行政区划名称,jdbcType=VARCHAR}
+				 </if>
+				 <if test="query.行政区划编码 != null and query.行政区划编码 != ''" >
+	  		 		/*  */
+			    	AND 行政区划编码 =  #{query.行政区划编码,jdbcType=VARCHAR}
+				 </if>
+				 <if test="query.医疗机构名称 != null and query.医疗机构名称 != ''" >
+	  		 		/*  */
+			    	AND 医疗机构名称 =  #{query.医疗机构名称,jdbcType=VARCHAR}
+				 </if>
+				 <if test="query.医疗机构代码 != null and query.医疗机构代码 != ''" >
+	  		 		/*  */
+			    	AND 医疗机构代码 =  #{query.医疗机构代码,jdbcType=VARCHAR}
+				 </if>
+				 <if test="query.权限属性 != null and query.权限属性 != ''" >
+	  		 		/*  */
+			    	AND 权限属性 =  #{query.权限属性,jdbcType=VARCHAR}
+				 </if>
+				 <if test="query.password != null and query.password != ''" >
+	  		 		/*  */
+			    	AND PASSWORD =  #{query.password,jdbcType=VARCHAR}
+				 </if>
+				 <if test="query.username != null and query.username != ''" >
+	  		 		/*  */
+			    	AND USERNAME =  #{query.username,jdbcType=VARCHAR}
+				 </if>
+				 <if test="query.sn != null and query.sn != ''" >
+	  		 		/*  */
+			    	AND SN =  #{query.sn,jdbcType=VARCHAR}
+				 </if>
+		</trim>
+	</sql>
+
+	<!--
+	方法名称: insert
+	调用路径: com.mandala.doctor.entity.SysUserinfo.insert
+	开发信息: 
+	处理信息: 保存信息
+	-->
+	<insert id="insert" parameterType="Object" >
+	  INSERT  INTO  sys_userinfo   /*  */  
+					(	
+                      是否医技                          /*  */ 
+                     ,发薪号                           /*  */ 
+                     ,ISADMIN                       /*  */ 
+                     ,APP_BI                        /*  */ 
+                     ,病区名称                          /*  */ 
+                     ,病区代码                          /*  */ 
+                     ,UNIT                          /*  */ 
+                     ,是否专家                          /*  */ 
+                     ,手机号                           /*  */ 
+                     ,U_ROLEID                      /*  */ 
+                     ,状态                            /*  */ 
+                     ,修改时间                          /*  */ 
+                     ,修改人                           /*  */ 
+                     ,创建时间                          /*  */ 
+                     ,创建人                           /*  */ 
+                     ,备注                            /*  */ 
+                     ,专业                            /*  */ 
+                     ,人员类别                          /*  */ 
+                     ,所学专业                          /*  */ 
+                     ,最高学历毕业院校                      /*  */ 
+                     ,最高学历                          /*  */ 
+                     ,第一学历毕业院校                      /*  */ 
+                     ,第一学历                          /*  */ 
+                     ,是否为全科医生                       /*  */ 
+                     ,执业单位名称                        /*  */ 
+                     ,执业证书号                         /*  */ 
+                     ,执业资格名称                        /*  */ 
+                     ,职称名称                          /*  */ 
+                     ,职称代码                          /*  */ 
+                     ,职务名称                          /*  */ 
+                     ,职务代码                          /*  */ 
+                     ,科室名称                          /*  */ 
+                     ,科室代码                          /*  */ 
+                     ,参加工作时间                        /*  */ 
+                     ,身份证号码                         /*  */ 
+                     ,出生日期                          /*  */ 
+                     ,性别                            /*  */ 
+                     ,姓名                            /*  */ 
+                     ,工号                            /*  */ 
+                     ,行政区划名称                        /*  */ 
+                     ,行政区划编码                        /*  */ 
+                     ,医疗机构名称                        /*  */ 
+                     ,医疗机构代码                        /*  */ 
+                     ,权限属性                          /*  */ 
+                     ,PASSWORD                      /*  */ 
+                     ,USERNAME                      /*  */ 
+                     ,SN                            /*  */ 
+					)
+			values (
+                      #{是否医技,jdbcType=VARCHAR}                          /*  */ 
+                     ,#{发薪号,jdbcType=VARCHAR}                           /*  */ 
+                     ,#{isadmin,jdbcType=VARCHAR}                       /*  */ 
+                     ,#{appBi,jdbcType=VARCHAR}                         /*  */ 
+                     ,#{病区名称,jdbcType=VARCHAR}                          /*  */ 
+                     ,#{病区代码,jdbcType=VARCHAR}                          /*  */ 
+                     ,#{unit,jdbcType=VARCHAR}                          /*  */ 
+                     ,#{是否专家,jdbcType=VARCHAR}                          /*  */ 
+                     ,#{手机号,jdbcType=VARCHAR}                           /*  */ 
+                     ,#{uRoleid,jdbcType=VARCHAR}                       /*  */ 
+                     ,#{状态,jdbcType=VARCHAR}                            /*  */ 
+                     ,#{修改时间,jdbcType=TIMESTAMP}                          /*  */ 
+                     ,#{修改人,jdbcType=VARCHAR}                           /*  */ 
+                     ,#{创建时间,jdbcType=TIMESTAMP}                          /*  */ 
+                     ,#{创建人,jdbcType=VARCHAR}                           /*  */ 
+                     ,#{备注,jdbcType=VARCHAR}                            /*  */ 
+                     ,#{专业,jdbcType=VARCHAR}                            /*  */ 
+                     ,#{人员类别,jdbcType=VARCHAR}                          /*  */ 
+                     ,#{所学专业,jdbcType=VARCHAR}                          /*  */ 
+                     ,#{最高学历毕业院校,jdbcType=VARCHAR}                      /*  */ 
+                     ,#{最高学历,jdbcType=VARCHAR}                          /*  */ 
+                     ,#{第一学历毕业院校,jdbcType=VARCHAR}                      /*  */ 
+                     ,#{第一学历,jdbcType=VARCHAR}                          /*  */ 
+                     ,#{是否为全科医生,jdbcType=VARCHAR}                       /*  */ 
+                     ,#{执业单位名称,jdbcType=VARCHAR}                        /*  */ 
+                     ,#{执业证书号,jdbcType=VARCHAR}                         /*  */ 
+                     ,#{执业资格名称,jdbcType=VARCHAR}                        /*  */ 
+                     ,#{职称名称,jdbcType=VARCHAR}                          /*  */ 
+                     ,#{职称代码,jdbcType=VARCHAR}                          /*  */ 
+                     ,#{职务名称,jdbcType=VARCHAR}                          /*  */ 
+                     ,#{职务代码,jdbcType=VARCHAR}                          /*  */ 
+                     ,#{科室名称,jdbcType=VARCHAR}                          /*  */ 
+                     ,#{科室代码,jdbcType=VARCHAR}                          /*  */ 
+                     ,#{参加工作时间,jdbcType=TIMESTAMP}                        /*  */ 
+                     ,#{身份证号码,jdbcType=VARCHAR}                         /*  */ 
+                     ,#{出生日期,jdbcType=VARCHAR}                          /*  */ 
+                     ,#{性别,jdbcType=VARCHAR}                            /*  */ 
+                     ,#{姓名,jdbcType=VARCHAR}                            /*  */ 
+                     ,#{工号,jdbcType=VARCHAR}                            /*  */ 
+                     ,#{行政区划名称,jdbcType=VARCHAR}                        /*  */ 
+                     ,#{行政区划编码,jdbcType=VARCHAR}                        /*  */ 
+                     ,#{医疗机构名称,jdbcType=VARCHAR}                        /*  */ 
+                     ,#{医疗机构代码,jdbcType=VARCHAR}                        /*  */ 
+                     ,#{权限属性,jdbcType=VARCHAR}                          /*  */ 
+                     ,#{password,jdbcType=VARCHAR}                      /*  */ 
+                     ,#{username,jdbcType=VARCHAR}                      /*  */ 
+                     ,#{sn,jdbcType=VARCHAR}                            /*  */ 
+					)
+	</insert>
+
+	
+	<!--
+	方法名称: update
+	调用路径: com.mandala.doctor.entity.SysUserinfo.update
+	开发信息: 
+	处理信息: 修改信息
+	-->  
+	 <update id="update" parameterType="Object" >
+	  UPDATE   sys_userinfo  	/*  */
+	  			<trim   prefix="SET" suffixOverrides="," >
+						 <if test="是否医技 != null">
+		    		 		/*  */ 
+	    		 			是否医技 = #{是否医技,jdbcType=VARCHAR},
+						 </if>
+						 <if test="发薪号 != null">
+		    		 		/*  */ 
+	    		 			发薪号 = #{发薪号,jdbcType=VARCHAR},
+						 </if>
+						 <if test="isadmin != null">
+		    		 		/*  */ 
+	    		 			ISADMIN = #{isadmin,jdbcType=VARCHAR},
+						 </if>
+						 <if test="appBi != null">
+		    		 		/*  */ 
+	    		 			APP_BI = #{appBi,jdbcType=VARCHAR},
+						 </if>
+						 <if test="病区名称 != null">
+		    		 		/*  */ 
+	    		 			病区名称 = #{病区名称,jdbcType=VARCHAR},
+						 </if>
+						 <if test="病区代码 != null">
+		    		 		/*  */ 
+	    		 			病区代码 = #{病区代码,jdbcType=VARCHAR},
+						 </if>
+						 <if test="unit != null">
+		    		 		/*  */ 
+	    		 			UNIT = #{unit,jdbcType=VARCHAR},
+						 </if>
+						 <if test="是否专家 != null">
+		    		 		/*  */ 
+	    		 			是否专家 = #{是否专家,jdbcType=VARCHAR},
+						 </if>
+						 <if test="手机号 != null">
+		    		 		/*  */ 
+	    		 			手机号 = #{手机号,jdbcType=VARCHAR},
+						 </if>
+						 <if test="uRoleid != null">
+		    		 		/*  */ 
+	    		 			U_ROLEID = #{uRoleid,jdbcType=VARCHAR},
+						 </if>
+						 <if test="状态 != null">
+		    		 		/*  */ 
+	    		 			状态 = #{状态,jdbcType=VARCHAR},
+						 </if>
+						 <if test="修改时间 != null">
+		    		 		/*  */ 
+	    		 			修改时间 = #{修改时间,jdbcType=TIMESTAMP},
+						 </if>
+						 <if test="修改人 != null">
+		    		 		/*  */ 
+	    		 			修改人 = #{修改人,jdbcType=VARCHAR},
+						 </if>
+						 <if test="创建时间 != null">
+		    		 		/*  */ 
+	    		 			创建时间 = #{创建时间,jdbcType=TIMESTAMP},
+						 </if>
+						 <if test="创建人 != null">
+		    		 		/*  */ 
+	    		 			创建人 = #{创建人,jdbcType=VARCHAR},
+						 </if>
+						 <if test="备注 != null">
+		    		 		/*  */ 
+	    		 			备注 = #{备注,jdbcType=VARCHAR},
+						 </if>
+						 <if test="专业 != null">
+		    		 		/*  */ 
+	    		 			专业 = #{专业,jdbcType=VARCHAR},
+						 </if>
+						 <if test="人员类别 != null">
+		    		 		/*  */ 
+	    		 			人员类别 = #{人员类别,jdbcType=VARCHAR},
+						 </if>
+						 <if test="所学专业 != null">
+		    		 		/*  */ 
+	    		 			所学专业 = #{所学专业,jdbcType=VARCHAR},
+						 </if>
+						 <if test="最高学历毕业院校 != null">
+		    		 		/*  */ 
+	    		 			最高学历毕业院校 = #{最高学历毕业院校,jdbcType=VARCHAR},
+						 </if>
+						 <if test="最高学历 != null">
+		    		 		/*  */ 
+	    		 			最高学历 = #{最高学历,jdbcType=VARCHAR},
+						 </if>
+						 <if test="第一学历毕业院校 != null">
+		    		 		/*  */ 
+	    		 			第一学历毕业院校 = #{第一学历毕业院校,jdbcType=VARCHAR},
+						 </if>
+						 <if test="第一学历 != null">
+		    		 		/*  */ 
+	    		 			第一学历 = #{第一学历,jdbcType=VARCHAR},
+						 </if>
+						 <if test="是否为全科医生 != null">
+		    		 		/*  */ 
+	    		 			是否为全科医生 = #{是否为全科医生,jdbcType=VARCHAR},
+						 </if>
+						 <if test="执业单位名称 != null">
+		    		 		/*  */ 
+	    		 			执业单位名称 = #{执业单位名称,jdbcType=VARCHAR},
+						 </if>
+						 <if test="执业证书号 != null">
+		    		 		/*  */ 
+	    		 			执业证书号 = #{执业证书号,jdbcType=VARCHAR},
+						 </if>
+						 <if test="执业资格名称 != null">
+		    		 		/*  */ 
+	    		 			执业资格名称 = #{执业资格名称,jdbcType=VARCHAR},
+						 </if>
+						 <if test="职称名称 != null">
+		    		 		/*  */ 
+	    		 			职称名称 = #{职称名称,jdbcType=VARCHAR},
+						 </if>
+						 <if test="职称代码 != null">
+		    		 		/*  */ 
+	    		 			职称代码 = #{职称代码,jdbcType=VARCHAR},
+						 </if>
+						 <if test="职务名称 != null">
+		    		 		/*  */ 
+	    		 			职务名称 = #{职务名称,jdbcType=VARCHAR},
+						 </if>
+						 <if test="职务代码 != null">
+		    		 		/*  */ 
+	    		 			职务代码 = #{职务代码,jdbcType=VARCHAR},
+						 </if>
+						 <if test="科室名称 != null">
+		    		 		/*  */ 
+	    		 			科室名称 = #{科室名称,jdbcType=VARCHAR},
+						 </if>
+						 <if test="科室代码 != null">
+		    		 		/*  */ 
+	    		 			科室代码 = #{科室代码,jdbcType=VARCHAR},
+						 </if>
+						 <if test="参加工作时间 != null">
+		    		 		/*  */ 
+	    		 			参加工作时间 = #{参加工作时间,jdbcType=TIMESTAMP},
+						 </if>
+						 <if test="身份证号码 != null">
+		    		 		/*  */ 
+	    		 			身份证号码 = #{身份证号码,jdbcType=VARCHAR},
+						 </if>
+						 <if test="出生日期 != null">
+		    		 		/*  */ 
+	    		 			出生日期 = #{出生日期,jdbcType=VARCHAR},
+						 </if>
+						 <if test="性别 != null">
+		    		 		/*  */ 
+	    		 			性别 = #{性别,jdbcType=VARCHAR},
+						 </if>
+						 <if test="姓名 != null">
+		    		 		/*  */ 
+	    		 			姓名 = #{姓名,jdbcType=VARCHAR},
+						 </if>
+						 <if test="工号 != null">
+		    		 		/*  */ 
+	    		 			工号 = #{工号,jdbcType=VARCHAR},
+						 </if>
+						 <if test="行政区划名称 != null">
+		    		 		/*  */ 
+	    		 			行政区划名称 = #{行政区划名称,jdbcType=VARCHAR},
+						 </if>
+						 <if test="行政区划编码 != null">
+		    		 		/*  */ 
+	    		 			行政区划编码 = #{行政区划编码,jdbcType=VARCHAR},
+						 </if>
+						 <if test="医疗机构名称 != null">
+		    		 		/*  */ 
+	    		 			医疗机构名称 = #{医疗机构名称,jdbcType=VARCHAR},
+						 </if>
+						 <if test="医疗机构代码 != null">
+		    		 		/*  */ 
+	    		 			医疗机构代码 = #{医疗机构代码,jdbcType=VARCHAR},
+						 </if>
+						 <if test="权限属性 != null">
+		    		 		/*  */ 
+	    		 			权限属性 = #{权限属性,jdbcType=VARCHAR},
+						 </if>
+						 <if test="password != null">
+		    		 		/*  */ 
+	    		 			PASSWORD = #{password,jdbcType=VARCHAR},
+						 </if>
+						 <if test="username != null">
+		    		 		/*  */ 
+	    		 			USERNAME = #{username,jdbcType=VARCHAR},
+						 </if>
+						 <if test="sn != null">
+		    		 		/*  */ 
+	    		 			SN = #{sn,jdbcType=VARCHAR},
+						 </if>
+	  	  		</trim>
+				WHERE
+	  	 		 		id = #{id}		/* 序号 */ 
+	 </update>
+	
+	<!--
+	方法名称: get
+	调用路径: com.mandala.doctor.entity.SysUserinfo.get
+	开发信息: 
+	处理信息: 根据主键查询记录
+	-->
+	<select id="get" parameterType="Object"  resultMap="SysUserinfo">
+		   SELECT   
+                   su.是否医技                          /*  */ 
+                  ,su.发薪号                           /*  */ 
+                  ,su.ISADMIN                       /*  */ 
+                  ,su.APP_BI                        /*  */ 
+                  ,su.病区名称                          /*  */ 
+                  ,su.病区代码                          /*  */ 
+                  ,su.UNIT                          /*  */ 
+                  ,su.是否专家                          /*  */ 
+                  ,su.手机号                           /*  */ 
+                  ,su.U_ROLEID                      /*  */ 
+                  ,su.状态                            /*  */ 
+                  ,su.修改时间                          /*  */ 
+                  ,su.修改人                           /*  */ 
+                  ,su.创建时间                          /*  */ 
+                  ,su.创建人                           /*  */ 
+                  ,su.备注                            /*  */ 
+                  ,su.专业                            /*  */ 
+                  ,su.人员类别                          /*  */ 
+                  ,su.所学专业                          /*  */ 
+                  ,su.最高学历毕业院校                      /*  */ 
+                  ,su.最高学历                          /*  */ 
+                  ,su.第一学历毕业院校                      /*  */ 
+                  ,su.第一学历                          /*  */ 
+                  ,su.是否为全科医生                       /*  */ 
+                  ,su.执业单位名称                        /*  */ 
+                  ,su.执业证书号                         /*  */ 
+                  ,su.执业资格名称                        /*  */ 
+                  ,su.职称名称                          /*  */ 
+                  ,su.职称代码                          /*  */ 
+                  ,su.职务名称                          /*  */ 
+                  ,su.职务代码                          /*  */ 
+                  ,su.科室名称                          /*  */ 
+                  ,su.科室代码                          /*  */ 
+                  ,su.参加工作时间                        /*  */ 
+                  ,su.身份证号码                         /*  */ 
+                  ,su.出生日期                          /*  */ 
+                  ,su.性别                            /*  */ 
+                  ,su.姓名                            /*  */ 
+                  ,su.工号                            /*  */ 
+                  ,su.行政区划名称                        /*  */ 
+                  ,su.行政区划编码                        /*  */ 
+                  ,su.医疗机构名称                        /*  */ 
+                  ,su.医疗机构代码                        /*  */ 
+                  ,su.权限属性                          /*  */ 
+                  ,su.PASSWORD                      /*  */ 
+                  ,su.USERNAME                      /*  */ 
+                  ,su.SN                            /*  */ 
+		   FROM   sys_userinfo       su      /*  */ 
+		   WHERE
+				id = #{id}				/* 序号 */ 
+	</select>
+	
+	<!--
+	方法名称: delete
+	调用路径: com.mandala.doctor.entity.SysUserinfo.delete
+	开发信息: 
+	处理信息: 删除记录
+	-->
+	<delete id="delete" parameterType="Object">
+		DELETE 	FROM sys_userinfo 	/*  */  
+		WHERE 
+			id = #{id}					/* 序号 */ 
+	</delete>
+	
+	<!--
+	方法名称: count
+	调用路径: com.mandala.doctor.entity.SysUserinfo.count
+	开发信息: 
+	处理信息: 列表总数
+	-->
+	<select id="count" resultType="java.lang.Integer"  parameterType="Object">
+		SELECT count(*)  FROM  sys_userinfo    su      /*  */ 
+		 WHERE 1=1
+		    <include refid="wherecontation"/>
+	</select>
+  	
+  	<!--
+	方法名称: queryPageList
+	调用路径: com.mandala.doctor.entity.SysUserinfo.queryPageList
+	开发信息: 
+	处理信息: 列表
+	-->
+	<select id="queryPageList" parameterType="Object"  resultMap="SysUserinfo">
+	    SELECT 
+                   su.是否医技                          /*  */ 
+                  ,su.发薪号                           /*  */ 
+                  ,su.ISADMIN                       /*  */ 
+                  ,su.APP_BI                        /*  */ 
+                  ,su.病区名称                          /*  */ 
+                  ,su.病区代码                          /*  */ 
+                  ,su.UNIT                          /*  */ 
+                  ,su.是否专家                          /*  */ 
+                  ,su.手机号                           /*  */ 
+                  ,su.U_ROLEID                      /*  */ 
+                  ,su.状态                            /*  */ 
+                  ,su.修改时间                          /*  */ 
+                  ,su.修改人                           /*  */ 
+                  ,su.创建时间                          /*  */ 
+                  ,su.创建人                           /*  */ 
+                  ,su.备注                            /*  */ 
+                  ,su.专业                            /*  */ 
+                  ,su.人员类别                          /*  */ 
+                  ,su.所学专业                          /*  */ 
+                  ,su.最高学历毕业院校                      /*  */ 
+                  ,su.最高学历                          /*  */ 
+                  ,su.第一学历毕业院校                      /*  */ 
+                  ,su.第一学历                          /*  */ 
+                  ,su.是否为全科医生                       /*  */ 
+                  ,su.执业单位名称                        /*  */ 
+                  ,su.执业证书号                         /*  */ 
+                  ,su.执业资格名称                        /*  */ 
+                  ,su.职称名称                          /*  */ 
+                  ,su.职称代码                          /*  */ 
+                  ,su.职务名称                          /*  */ 
+                  ,su.职务代码                          /*  */ 
+                  ,su.科室名称                          /*  */ 
+                  ,su.科室代码                          /*  */ 
+                  ,su.参加工作时间                        /*  */ 
+                  ,su.身份证号码                         /*  */ 
+                  ,su.出生日期                          /*  */ 
+                  ,su.性别                            /*  */ 
+                  ,su.姓名                            /*  */ 
+                  ,su.工号                            /*  */ 
+                  ,su.行政区划名称                        /*  */ 
+                  ,su.行政区划编码                        /*  */ 
+                  ,su.医疗机构名称                        /*  */ 
+                  ,su.医疗机构代码                        /*  */ 
+                  ,su.权限属性                          /*  */ 
+                  ,su.PASSWORD                      /*  */ 
+                  ,su.USERNAME                      /*  */ 
+                  ,su.SN                            /*  */ 
+		FROM  (
+SELECT A.*, ROWNUM RN 
+FROM (SELECT * FROM sys_userinfo where  1=1  <include refid="wherecontation"/>) A WHERE 
+#{startRow}  + #{pageSize}
+>= ROWNUM) su  
+WHERE su.RN >= #{startRow} 
+		
+			  
+	</select>
+	
+	
+	<!--
+	方法名称: queryByDoctorAndPwd
+	调用路径: com.mandala.doctor.entity.SysUserinfo.queryByDoctorAndPwd
+	开发信息: 
+	处理信息: 列表
+	-->
+	<select id="queryByDoctorAndPwd" parameterType="Object"  resultMap="SysUserinfo">
+		   SELECT   
+                   su.是否医技                          /*  */ 
+                  ,su.发薪号                           /*  */ 
+                  ,su.ISADMIN                       /*  */ 
+                  ,su.APP_BI                        /*  */ 
+                  ,su.病区名称                          /*  */ 
+                  ,su.病区代码                          /*  */ 
+                  ,su.UNIT                          /*  */ 
+                  ,su.是否专家                          /*  */ 
+                  ,su.手机号                           /*  */ 
+                  ,su.U_ROLEID                      /*  */ 
+                  ,su.状态                            /*  */ 
+                  ,su.修改时间                          /*  */ 
+                  ,su.修改人                           /*  */ 
+                  ,su.创建时间                          /*  */ 
+                  ,su.创建人                           /*  */ 
+                  ,su.备注                            /*  */ 
+                  ,su.专业                            /*  */ 
+                  ,su.人员类别                          /*  */ 
+                  ,su.所学专业                          /*  */ 
+                  ,su.最高学历毕业院校                      /*  */ 
+                  ,su.最高学历                          /*  */ 
+                  ,su.第一学历毕业院校                      /*  */ 
+                  ,su.第一学历                          /*  */ 
+                  ,su.是否为全科医生                       /*  */ 
+                  ,su.执业单位名称                        /*  */ 
+                  ,su.执业证书号                         /*  */ 
+                  ,su.执业资格名称                        /*  */ 
+                  ,su.职称名称                          /*  */ 
+                  ,su.职称代码                          /*  */ 
+                  ,su.职务名称                          /*  */ 
+                  ,su.职务代码                          /*  */ 
+                  ,su.科室名称                          /*  */ 
+                  ,su.科室代码                          /*  */ 
+                  ,su.参加工作时间                        /*  */ 
+                  ,su.身份证号码                         /*  */ 
+                  ,su.出生日期                          /*  */ 
+                  ,su.性别                            /*  */ 
+                  ,su.姓名                            /*  */ 
+                  ,su.工号                            /*  */ 
+                  ,su.行政区划名称                        /*  */ 
+                  ,su.行政区划编码                        /*  */ 
+                  ,su.医疗机构名称                        /*  */ 
+                  ,su.医疗机构代码                        /*  */ 
+                  ,su.权限属性                          /*  */ 
+                  ,su.PASSWORD                      /*  */ 
+                  ,su.USERNAME                      /*  */ 
+                  ,su.SN                            /*  */ 
+		   FROM   sys_userinfo       su      /*  */ 
+		   WHERE
+				USERNAME = #{username,jdbcType=VARCHAR}				
+				and PASSWORD = #{password,jdbcType=VARCHAR}
+	</select>
+	
+</mapper>

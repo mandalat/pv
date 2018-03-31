@@ -9,6 +9,8 @@ import org.jeecgframework.p3.core.utils.common.PageQuery;
 import org.jeecgframework.p3.core.utils.common.PageQueryWrapper;
 import org.jeecgframework.p3.core.utils.persistence.mybatis.GenericDaoDefault;
 import org.springframework.stereotype.Repository;
+
+import com.mandala.groupPatient.entity.PvGroupPatient;
 import com.mandala.patient.dao.ZyEmrBasyDao;
 import com.mandala.patient.entity.ZyEmrBasy;
 import com.mandala.visitRecord.entity.PvRecord;
@@ -70,6 +72,18 @@ public class ZyEmrBasyDaoImpl extends GenericDaoDefault<ZyEmrBasy> implements Zy
 		conditionMap.put("id", id);
 		List<ZyEmrBasy> zyEmrBasy = (List<ZyEmrBasy>) super.query("queryById",conditionMap); 
 		return zyEmrBasy.get(0); 
+	}
+
+	@Override
+	public PvGroupPatient insertGroupMap(Map<String, Object> conditionMap) {
+		PvGroupPatient pvGroupPatient = (PvGroupPatient) super.queryOne("insertGroup",conditionMap);
+		return pvGroupPatient;
+	}
+
+	@Override
+	public List<PvGroupPatient> queryGroupMap(Map<String, Object> conditionMap) {
+		List<PvGroupPatient> pvGroupPatientList = (List<PvGroupPatient>) super.query("queryGroupMap",conditionMap);
+		return pvGroupPatientList;
 	}
 
 	

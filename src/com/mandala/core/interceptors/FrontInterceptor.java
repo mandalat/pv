@@ -19,6 +19,11 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.web.servlet.HandlerInterceptor;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.jeecg.p3.system.vo.LoginUser;
+import com.mandala.doctor.entity.SysUserinfo;
+import com.mandala.patient.entity.ZyEmrBasy;
+import com.mandala.system.vo.LoginUserNew;
+
 public class FrontInterceptor
   implements HandlerInterceptor
 {
@@ -87,6 +92,16 @@ public class FrontInterceptor
     }
     if ((requestPath != null) && (requestPath.indexOf(".html") > -1)) {
       if ((requestPath != null) && (requestPath.indexOf("/back/") > -1)) {
+    	  LoginUser user = (LoginUser)request.getSession().getAttribute("OPERATE_WEB_LOGIN_USER");
+          //张亮增加
+          ZyEmrBasy patient = (ZyEmrBasy)request.getSession().getAttribute("PATIENT_LOGIN_USER");
+          SysUserinfo doctor = (SysUserinfo) request.getSession().getAttribute("DOCTOR_LOGIN_USER");
+          LoginUserNew userNew = (LoginUserNew) request.getSession().getAttribute("LOGIN_USER");
+          if (user == null && patient== null && doctor==null && userNew==null) {
+            String url = basePath + "/system/login.html";
+            response.sendRedirect(url);
+            return false;
+          }
         return true;
       }
      

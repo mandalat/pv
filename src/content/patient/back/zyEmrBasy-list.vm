@@ -15,11 +15,7 @@
 												    <label for="diaDisicd3" class="control-label col-sm-3 line34">科室</label>
 												    <input type="text" name="admdward" id="admdward" value="" class="form-control">
 												 </div>
-												 <div class="form-group col-sm-3">
-												    <label for="diaDisdesc4" class="control-label col-sm-3 line34">入院时间</label>
-												    <input type="text" name="admsdate" id="admsdate" value="" class="form-control">
-												 	<input type="text" name="admsdate2" id="admsdat2" value="" class="form-control">
-												 </div>
+												 
 												 <div class="form-group col-sm-3">
 												    <label for="diaDisicd4" class="control-label col-sm-3 line34">住院号</label>
 												    <input type="text" name="visitno" id="visitno" value="$!{info.visitno}" class="form-control">
@@ -48,7 +44,7 @@
 								                #foreach($!{info} in $!{pageInfos})
 									            	<tr>			
 																	
-														<td></td>
+														<td>$!{info.visit_state}</td>
 														<td>$!{info.admdward}</td>
 														<td>$!{info.patname}</td>
 														<td>$!{info.diagnosedesc1}</td>
@@ -58,9 +54,10 @@
 														<td>$!{info.admddate}</td>
 														<td>$!{info.admdays}</td>
 										                <td class="last">
-							                			<a href="javascript:doUrl('$!{basePath}/patient/back/zyEmrBasy/toEdit.html?id=$!{info.id}')" >编辑</a>
-							                			<a href="javascript:delData('$!{basePath}/patient/back/zyEmrBasy/doDelete.html?id=$!{info.id}')">删除</a>
-							                			<a href="javascript:doUrl('$!{basePath}/patient/back/zyEmrBasy/toDetail.html?id=$!{info.id}')">详情</a>
+							                			<a href="javascript:doUrl('$!{basePath}/patient/back/zyEmrBasy/toEdit.html?id=$!{info.inpatient}')" >编辑</a>
+							                			<a href="javascript:delData('$!{basePath}/patient/back/zyEmrBasy/doDelete.html?id=$!{info.inpatient}')">删除</a>
+							                			<a href="javascript:doUrl('$!{basePath}/patient/back/zyEmrBasy/toDetail.html?id=$!{info.inpatient}')">详情</a>
+							                			<a href="javascript:doUrl('$!{basePath}/patient/back/zyEmrBasy/doAddVisit.html?id=$!{info.inpatient}')">添加随访</a>
 						                				</td>
 									           		</tr>
 									             #end
@@ -79,5 +76,6 @@
 				</form>
 		</div>
 	</div>
+	
 </body>
 </html>

@@ -1,0 +1,209 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head id="Head1" runat="server">
+    <title>随访系统登录</title>
+  <link rel="stylesheet" href="$!{basePath}/css/ele_ui.css">
+    <style type="text/css"> 
+	span{display:none;} 
+        body
+        {
+            background-image: url('$!{basePath}/Content/Images/ycbldydl.png');
+            background-repeat: no-repeat;
+            font-family: "Trebuchet MS" , "Helvetica" , "Arial" , "Verdana" , "sans-serif";
+            font-size: 70%;
+        }
+        #logindiv
+        {
+            background-color: White;
+            width: 380px;
+            height: 300px; 
+            margin-top: 70px;
+            margin-left: 550px;
+        }
+        #logoimg
+        {
+            margin-top: 80px;
+            width: 400px;
+            margin-right: 400px;
+        }
+        #logbottom
+        {
+            width: 500px;
+            margin-top: 40px;
+            margin-left: 360px;
+        }
+        #rbllist
+        {
+            padding-left: 100px;
+        }
+        #btnsub
+        {
+            width:84px;
+            height:31px;
+            background-image:url($!{basePath}/Content/Images/submit.png);
+            background-repeat:no-repeat;
+            border:0px;
+            }
+        #erMsg
+        {
+            color:Red;
+            margin:3px;
+            font-size:12px;
+            }
+        select
+        {
+            width:202px;
+            }
+            
+            
+        .custom-combobox
+        {
+            margin-left:0px;
+            position: relative;
+            display: inline-block;
+        }
+        
+        .custom-combobox-toggle
+        {
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            margin-left: -1px;
+            padding: 0;
+        }
+        
+        .custom-combobox-input
+        {
+            margin: 0;
+            padding: 3px 10px;
+        }
+        .ui-state-default
+        {
+            background: none;
+        }
+        .ui-menu-item
+        {
+            line-height: 20px;
+        }
+        #ui-id-1, #ui-id-2
+        {
+            width: 300px;
+        }
+		.el-form-item{
+		margin-top:30px;
+		}
+			.el-tabs span{display:block }
+    </style>
+
+
+</head>
+<body>
+<div  id="app">
+    <form id="formmain" method="post" action="$!{basePath}/PatientList.html"  onsubmit="return check()" >
+    <center>
+
+        <div id="logbg">
+            <div id="logoimg"  >
+                <img alt="" src="$!{basePath}/img/logo_login.png" />
+            </div>
+
+
+
+
+            <div id="logindiv">
+
+			<el-tabs type="border-card" style="height:300px;">
+  <el-tab-pane>
+    <span slot="label"><i class="el-icon-date"></i> 医护登录</span> 
+<el-form :label-position="labelPosition" :rules="rules"  ref="ruleForm1"  label-width="80px" :model="doctorLoginForm">
+  <el-form-item label="用户名" prop="username">
+    <el-input v-model="doctorLoginForm.username"></el-input>
+  </el-form-item> 
+  <el-form-item label="密码"  prop="password">
+    <el-input v-model="doctorLoginForm.password"></el-input>
+  </el-form-item>
+  	<div> 
+  <el-button type="primary"  @click="submitForm('ruleForm1')" >登录</el-button>
+  <el-button type="primary"  @click="resetForm('ruleForm1')" >取消</el-button> 
+</div>
+</el-form>
+
+  </el-tab-pane>
+  <el-tab-pane label="病人登录"> 
+<el-form :label-position="labelPosition" :rules="rules"  ref="ruleForm2"  label-width="80px" :model="patientLoiginForm">
+  <el-form-item label="病人姓名"  prop="patientname">
+    <el-input v-model="patientLoiginForm.patientname"></el-input>
+  </el-form-item> 
+  <el-form-item label="住院号"  prop="zyh">
+    <el-input v-model="patientLoiginForm.zyh"></el-input>
+  </el-form-item>
+  	<div> 
+  <el-button type="primary"  @click="submitForm('ruleForm2')">登录</el-button>
+  <el-button type="primary" @click="resetForm('ruleForm2')">取消</el-button> 
+</div>
+</el-form>
+</el-tab-pane> 
+</el-tabs>
+			
+               
+            </div>
+            <div id="logbottom">
+                <div id="errDiv" style="float: left; color: Red;">
+                </div>
+                <div style="float: right; color: #626262; font-size: 12px;">
+                   江 苏 曼 荼 罗 软 件 有 限 公 司 
+                </div>
+            </div>
+        </div>
+    </center>
+    </form>
+</div>   
+
+<script src="$!{basePath}/script/vue.js"></script>
+  <!-- 引入组件库 -->
+  <script src="$!{basePath}/script/ele_ui.js"></script>
+  <script>
+    new Vue({
+      el: '#app',
+      data: function() {
+        return {
+			labelPosition:'left',
+			doctorLoginForm:{username:'',password:''},
+			patientLoiginForm:{patientname:'',zyh:''},
+			 rules: {
+          username: [
+            { required: true, message: '请输入用户名', trigger: 'blur' }
+          ],
+          password: [
+            { required: true, message: '请输入密码', trigger: 'blur' },
+            { min: 8, max: 16, message: '长度在 8 到 16 个字符', trigger: 'blur' }
+          ],
+          patientname: [
+            { type: 'date', required: true, message: '请输入病人姓名', trigger: 'blur' }
+          ],
+          zyh: [
+            { type: 'date', required: true, message: '请输入住院号', trigger: 'blur' }
+          ]
+		  }
+		}
+	  },
+	  methods: {
+      submitForm(formName) {
+        this.$refs[formName].validate((valid) => {
+          if (valid) {
+            window.location.href='$!{basePath}/PatientList.html';
+          } else {
+            console.log('error submit!!');
+            return false;
+          }
+        });
+      },
+      resetForm(formName) {
+        this.$refs[formName].resetFields();
+      }
+    }
+	})
+</script>
+</body>
+</html>

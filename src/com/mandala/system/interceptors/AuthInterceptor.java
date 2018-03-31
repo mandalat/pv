@@ -2,6 +2,10 @@ package com.mandala.system.interceptors;
 
 import com.jeecg.p3.system.service.JwSystemAuthService;
 import com.jeecg.p3.system.vo.LoginUser;
+import com.mandala.doctor.entity.SysUserinfo;
+import com.mandala.patient.entity.ZyEmrBasy;
+import com.mandala.system.vo.LoginUserNew;
+
 import java.util.List;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -64,17 +68,21 @@ public class AuthInterceptor
     }if ((requestPath != null) && (requestPath.indexOf(".html") > -1)) {
       if ((requestPath != null) && (requestPath.indexOf("/back/") > -1)) {
         LoginUser user = (LoginUser)request.getSession().getAttribute("OPERATE_WEB_LOGIN_USER");
-        if (user == null) {
+        //张亮增加
+        ZyEmrBasy patient = (ZyEmrBasy)request.getSession().getAttribute("PATIENT_LOGIN_USER");
+        SysUserinfo doctor = (SysUserinfo) request.getSession().getAttribute("DOCTOR_LOGIN_USER");
+        LoginUserNew userNew = (LoginUserNew) request.getSession().getAttribute("LOGIN_USER");
+        if (user == null && patient== null && doctor==null && userNew==null) {
           String url = basePath + "/system/login.html";
           response.sendRedirect(url);
           return false;
         }
-
-        if (!checkUriAuth(requestPath, user.getUserId())) {
+      //张亮屏蔽
+        /*if (!checkUriAuth(requestPath, user.getUserId())) {
           logger.debug("无操作权限！");
           response.setStatus(401);
           return false;
-        }
+        }*/
         return true;
       }
       return true;

@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="en">
+#parse("content/base/back/common/head.vm")
+<body style='overflow:scroll;overflow-x:hidden'>
+	<div class="container bs-docs-container" style="width:100%;">
+		<div class="row">
+			<div class="panel panel-default">
+				<div class="panel-heading">编辑</div>
+				<div class="panel-body">
+					<form class="form-horizontal" role="form" id="dailogForm" action="$!{basePath}/doctor/back/sysUserinfo/doEdit.html" method="POST">
+						 <input type="hidden" id="btn_sub" class="btn_sub" />
+						 <input type="hidden" value="$!{sysUserinfo.id}" name="id" id="id" />
+												<div class="form-group mno">
+												    <label for="inputEmail3" class="col-sm-2 control-label" style="text-align:left;"></label>
+												    <div class="col-sm-8">
+												      <input type="text" value="$!{sysUserinfo.是否医技}" name="是否医技" id="是否医技" class="form-control"/>
+												    </div>
+												</div>
+												<div class="form-group mno">
+												    <label for="inputEmail3" class="col-sm-2 control-label" style="text-align:left;"></label>
+												    <div class="col-sm-8">
+												      <input type="text" value="$!{sysUserinfo.发薪号}" name="发薪号" id="发薪号" class="form-control"/>
+												    </div>
+												</div>
+												<div class="form-group mno">
+												    <label for="inputEmail3" class="col-sm-2 control-label" style="text-align:left;"></label>
+												    <div class="col-sm-8">
+												      <input type="text" value="$!{sysUserinfo.isadmin}" name="isadmin" id="isadmin" class="form-control"/>
+												    </div>
+												</div>
+												<div class="form-group mno">
+												    <label for="inputEmail3" class="col-sm-2 control-label" style="text-align:left;"></label>
+												    <div class="col-sm-8">
+												      <input type="text" value="$!{sysUserinfo.appBi}" name="appBi" id="appBi" class="form-control"/>
+												    </div>
+												</div>
+												<div class="form-group mno">
+												    <label for="inputEmail3" class="col-sm-2 control-label" style="text-align:left;"></label>
+												    <div class="col-sm-8">
+												      <input type="text" value="$!{sysUserinfo.病区名称}" name="病区名称" id="病区名称" class="form-control"/>
+												    </div>
+												</div>
+												<div class="form-group mno">
+												    <label for="inputEmail3" class="col-sm-2 control-label" style="text-align:left;"></label>
+												    <div class="col-sm-8">
+												      <input type="text" value="$!{sysUserinfo.病区代码}" name="病区代码" id="病区代码" class="form-control"/>
+												    </div>
+												</div>
+												<div class="form-group mno">
+												    <label for="inputEmail3" class="col-sm-2 control-label" style="text-align:left;"></label>
+												    <div class="col-sm-8">
+												      <input type="text" value="$!{sysUserinfo.unit}" name="unit" id="unit" class="form-control"/>
+												    </div>
+												</div>
+												<div class="form-group mno">
+												    <label for="inputEmail3" class="col-sm-2 control-label" style="text-align:left;"></label>
+												    <div class="col-sm-8">
+												      <input type="text" value="$!{sysUserinfo.是否专家}" name="是否专家" id="是否专家" class="form-control"/>
+												    </div>
+												</div>
+												<div class="form-group mno">
+												    <label for="inputEmail3" class="col-sm-2 control-label" style="text-align:left;"></label>
+												    <div class="col-sm-8">
+												      <input type="text" value="$!{sysUserinfo.手机号}" name="手机号" id="手机号" class="form-control"/>
+												    </div>
+												</div>
+												<div class="form-group mno">
+												    <label for="inputEmail3" class="col-sm-2 control-label" style="text-align:left;"></label>
+												    <div class="col-sm-8">
+												      <input type="text" value="$!{sysUserinfo.uRoleid}" name="uRoleid" id="uRoleid" class="form-control"/>
+												    </div>
+												</div>
+												<div class="form-group mno">
+												    <label for="inputEmail3" class="col-sm-2 control-label" style="text-align:left;"></label>
+												    <div class="col-sm-8">
+												      <input type="text" value="$!{sysUserinfo.状态}" name="状态" id="状态" class="form-control"/>
+												    </div>
+												</div>
+												<div class="form-group mno">
+												    <label for="inputEmail3" class="col-sm-2 control-label" style="text-align:left;"></label>
+												    <div class="col-sm-8">
+												      <input type="text" value="$!{sysUserinfo.修改时间}" name="修改时间" id="修改时间" class="form-control"/>
+												    </div>
+												</div>
+												<div class="form-group mno">
+												    <label for="inputEmail3" class="col-sm-2 control-label" style="text-align:left;"></label>
+												    <div class="col-sm-8">
+												      <input type="text" value="$!{sysUserinfo.修改人}" name="修改人" id="修改人" class="form-control"/>
+												    </div>
+												</div>
+												<div class="form-group mno">
+												    <label for="inputEmail3" class="col-sm-2 control-label" style="text-align:left;"></label>
+												    <div class="col-sm-8">
+												      <input type="text" value="$!{sysUserinfo.创建时间}" name="创建时间" id="创建时间" class="form-control"/>
+												    </div>
+												</div>
+												<div class="form-group mno">
+												    <label for="inputEmail3" class="col-sm-2 control-label" style="text-align:left;"></label>
+												    <div class="col-sm-8">
+												      <input type="text" value="$!{sysUserinfo.创建人}" name="创建人" id="创建人" class="form-control"/>
+												    </div>
+												</div>
+												<div class="form-group mno">
+												    <label for="inputEmail3" class="col-sm-2 control-label" style="text-align:left;"></label>
+												    <div class="col-sm-8">
+												      <input type="text" value="$!{sysUserinfo.备注}" name="备注" id="备注" class="form-control"/>
+												    </div>
+												</div>
+												<div class="form-group mno">
+												    <label for="inputEmail3" class="col-sm-2 control-label" style="text-align:left;"></label>
+												    <div class="col-sm-8">
+												      <input type="text" value="$!{sysUserinfo.专业}" name="专业" id="专业" class="form-control"/>
+												    </div>
+												</div>
+												<div class="form-group mno">
+												    <label for="inputEmail3" class="col-sm-2 control-label" style="text-align:left;"></label>
+												    <div class="col-sm-8">
+												      <input type="text" value="$!{sysUserinfo.人员类别}" name="人员类别" id="人员类别" class="form-control"/>
+												    </div>
+												</div>
+												<div class="form-group mno">
+												    <label for="inputEmail3" class="col-sm-2 control-label" style="text-align:left;"></label>
+												    <div class="col-sm-8">
+												      <input type="text" value="$!{sysUserinfo.所学专业}" name="所学专业" id="所学专业" class="form-control"/>
+												    </div>
+												</div>
+												<div class="form-group mno">
+												    <label for="inputEmail3" class="col-sm-2 control-label" style="text-align:left;"></label>
+												    <div class="col-sm-8">
+												      <input type="text" value="$!{sysUserinfo.最高学历毕业院校}" name="最高学历毕业院校" id="最高学历毕业院校" class="form-control"/>
+												    </div>
+												</div>
+												<div class="form-group mno">
+												    <label for="inputEmail3" class="col-sm-2 control-label" style="text-align:left;"></label>
+												    <div class="col-sm-8">
+												      <input type="text" value="$!{sysUserinfo.最高学历}" name="最高学历" id="最高学历" class="form-control"/>
+												    </div>
+												</div>
+												<div class="form-group mno">
+												    <label for="inputEmail3" class="col-sm-2 control-label" style="text-align:left;"></label>
+												    <div class="col-sm-8">
+												      <input type="text" value="$!{sysUserinfo.第一学历毕业院校}" name="第一学历毕业院校" id="第一学历毕业院校" class="form-control"/>
+												    </div>
+												</div>
+												<div class="form-group mno">
+												    <label for="inputEmail3" class="col-sm-2 control-label" style="text-align:left;"></label>
+												    <div class="col-sm-8">
+												      <input type="text" value="$!{sysUserinfo.第一学历}" name="第一学历" id="第一学历" class="form-control"/>
+												    </div>
+												</div>
+												<div class="form-group mno">
+												    <label for="inputEmail3" class="col-sm-2 control-label" style="text-align:left;"></label>
+												    <div class="col-sm-8">
+												      <input type="text" value="$!{sysUserinfo.是否为全科医生}" name="是否为全科医生" id="是否为全科医生" class="form-control"/>
+												    </div>
+												</div>
+												<div class="form-group mno">
+												    <label for="inputEmail3" class="col-sm-2 control-label" style="text-align:left;"></label>
+												    <div class="col-sm-8">
+												      <input type="text" value="$!{sysUserinfo.执业单位名称}" name="执业单位名称" id="执业单位名称" class="form-control"/>
+												    </div>
+												</div>
+												<div class="form-group mno">
+												    <label for="inputEmail3" class="col-sm-2 control-label" style="text-align:left;"></label>
+												    <div class="col-sm-8">
+												      <input type="text" value="$!{sysUserinfo.执业证书号}" name="执业证书号" id="执业证书号" class="form-control"/>
+												    </div>
+												</div>
+												<div class="form-group mno">
+												    <label for="inputEmail3" class="col-sm-2 control-label" style="text-align:left;"></label>
+												    <div class="col-sm-8">
+												      <input type="text" value="$!{sysUserinfo.执业资格名称}" name="执业资格名称" id="执业资格名称" class="form-control"/>
+												    </div>
+												</div>
+												<div class="form-group mno">
+												    <label for="inputEmail3" class="col-sm-2 control-label" style="text-align:left;"></label>
+												    <div class="col-sm-8">
+												      <input type="text" value="$!{sysUserinfo.职称名称}" name="职称名称" id="职称名称" class="form-control"/>
+												    </div>
+												</div>
+												<div class="form-group mno">
+												    <label for="inputEmail3" class="col-sm-2 control-label" style="text-align:left;"></label>
+												    <div class="col-sm-8">
+												      <input type="text" value="$!{sysUserinfo.职称代码}" name="职称代码" id="职称代码" class="form-control"/>
+												    </div>
+												</div>
+												<div class="form-group mno">
+												    <label for="inputEmail3" class="col-sm-2 control-label" style="text-align:left;"></label>
+												    <div class="col-sm-8">
+												      <input type="text" value="$!{sysUserinfo.职务名称}" name="职务名称" id="职务名称" class="form-control"/>
+												    </div>
+												</div>
+												<div class="form-group mno">
+												    <label for="inputEmail3" class="col-sm-2 control-label" style="text-align:left;"></label>
+												    <div class="col-sm-8">
+												      <input type="text" value="$!{sysUserinfo.职务代码}" name="职务代码" id="职务代码" class="form-control"/>
+												    </div>
+												</div>
+												<div class="form-group mno">
+												    <label for="inputEmail3" class="col-sm-2 control-label" style="text-align:left;"></label>
+												    <div class="col-sm-8">
+												      <input type="text" value="$!{sysUserinfo.科室名称}" name="科室名称" id="科室名称" class="form-control"/>
+												    </div>
+												</div>
+												<div class="form-group mno">
+												    <label for="inputEmail3" class="col-sm-2 control-label" style="text-align:left;"></label>
+												    <div class="col-sm-8">
+												      <input type="text" value="$!{sysUserinfo.科室代码}" name="科室代码" id="科室代码" class="form-control"/>
+												    </div>
+												</div>
+												<div class="form-group mno">
+												    <label for="inputEmail3" class="col-sm-2 control-label" style="text-align:left;"></label>
+												    <div class="col-sm-8">
+												      <input type="text" value="$!{sysUserinfo.参加工作时间}" name="参加工作时间" id="参加工作时间" class="form-control"/>
+												    </div>
+												</div>
+												<div class="form-group mno">
+												    <label for="inputEmail3" class="col-sm-2 control-label" style="text-align:left;"></label>
+												    <div class="col-sm-8">
+												      <input type="text" value="$!{sysUserinfo.身份证号码}" name="身份证号码" id="身份证号码" class="form-control"/>
+												    </div>
+												</div>
+												<div class="form-group mno">
+												    <label for="inputEmail3" class="col-sm-2 control-label" style="text-align:left;"></label>
+												    <div class="col-sm-8">
+												      <input type="text" value="$!{sysUserinfo.出生日期}" name="出生日期" id="出生日期" class="form-control"/>
+												    </div>
+												</div>
+												<div class="form-group mno">
+												    <label for="inputEmail3" class="col-sm-2 control-label" style="text-align:left;"></label>
+												    <div class="col-sm-8">
+												      <input type="text" value="$!{sysUserinfo.性别}" name="性别" id="性别" class="form-control"/>
+												    </div>
+												</div>
+												<div class="form-group mno">
+												    <label for="inputEmail3" class="col-sm-2 control-label" style="text-align:left;"></label>
+												    <div class="col-sm-8">
+												      <input type="text" value="$!{sysUserinfo.姓名}" name="姓名" id="姓名" class="form-control"/>
+												    </div>
+												</div>
+												<div class="form-group mno">
+												    <label for="inputEmail3" class="col-sm-2 control-label" style="text-align:left;"></label>
+												    <div class="col-sm-8">
+												      <input type="text" value="$!{sysUserinfo.工号}" name="工号" id="工号" class="form-control"/>
+												    </div>
+												</div>
+												<div class="form-group mno">
+												    <label for="inputEmail3" class="col-sm-2 control-label" style="text-align:left;"></label>
+												    <div class="col-sm-8">
+												      <input type="text" value="$!{sysUserinfo.行政区划名称}" name="行政区划名称" id="行政区划名称" class="form-control"/>
+												    </div>
+												</div>
+												<div class="form-group mno">
+												    <label for="inputEmail3" class="col-sm-2 control-label" style="text-align:left;"></label>
+												    <div class="col-sm-8">
+												      <input type="text" value="$!{sysUserinfo.行政区划编码}" name="行政区划编码" id="行政区划编码" class="form-control"/>
+												    </div>
+												</div>
+												<div class="form-group mno">
+												    <label for="inputEmail3" class="col-sm-2 control-label" style="text-align:left;"></label>
+												    <div class="col-sm-8">
+												      <input type="text" value="$!{sysUserinfo.医疗机构名称}" name="医疗机构名称" id="医疗机构名称" class="form-control"/>
+												    </div>
+												</div>
+												<div class="form-group mno">
+												    <label for="inputEmail3" class="col-sm-2 control-label" style="text-align:left;"></label>
+												    <div class="col-sm-8">
+												      <input type="text" value="$!{sysUserinfo.医疗机构代码}" name="医疗机构代码" id="医疗机构代码" class="form-control"/>
+												    </div>
+												</div>
+												<div class="form-group mno">
+												    <label for="inputEmail3" class="col-sm-2 control-label" style="text-align:left;"></label>
+												    <div class="col-sm-8">
+												      <input type="text" value="$!{sysUserinfo.权限属性}" name="权限属性" id="权限属性" class="form-control"/>
+												    </div>
+												</div>
+												<div class="form-group mno">
+												    <label for="inputEmail3" class="col-sm-2 control-label" style="text-align:left;"></label>
+												    <div class="col-sm-8">
+												      <input type="text" value="$!{sysUserinfo.password}" name="password" id="password" class="form-control"/>
+												    </div>
+												</div>
+												<div class="form-group mno">
+												    <label for="inputEmail3" class="col-sm-2 control-label" style="text-align:left;"></label>
+												    <div class="col-sm-8">
+												      <input type="text" value="$!{sysUserinfo.username}" name="username" id="username" class="form-control"/>
+												    </div>
+												</div>
+												<div class="form-group mno">
+												    <label for="inputEmail3" class="col-sm-2 control-label" style="text-align:left;"></label>
+												    <div class="col-sm-8">
+												      <input type="text" value="$!{sysUserinfo.sn}" name="sn" id="sn" class="form-control"/>
+												    </div>
+												</div>
+									<div class="form-group mno">
+											<div class="col-sm-offset-1 col-sm-6">
+												<button type="button" class="btn btn-default" id="formReturn" data-dismiss="modal" onclick="doUrl('$!{basePath}/doctor/back/sysUserinfo/list.html')">返回</button>
+	        									<button type="button" class="btn btn-primary" id="formSubmit">提交</button>
+        									 </div>
+        							</div>
+					</form>
+				</div>
+			</div>
+		</div>
+	</div>
+</body>
+</html>
+<script type="text/javascript" src="$!{basePath}/plug-in/js/Validform_v5.3.2.js"></script> 
+<script type="text/javascript" src="$!{basePath}/plug-in/js/forminit.p3.js"></script>  

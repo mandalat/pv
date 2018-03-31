@@ -5,10 +5,10 @@ import java.util.List;
 import javax.annotation.Resource;
 
 import org.springframework.stereotype.Service;
-
 import org.jeecgframework.p3.core.utils.common.PageList;
 import org.jeecgframework.p3.core.utils.common.PageQuery;
 import org.jeecgframework.p3.core.utils.common.Pagenation;
+
 import com.mandala.visitRecord.service.PvRecordService;
 import com.mandala.visitRecord.entity.PvRecord;
 import com.mandala.visitRecord.dao.PvRecordDao;
@@ -45,6 +45,19 @@ public class PvRecordServiceImpl implements PvRecordService {
 		PageList<PvRecord> result = new PageList<PvRecord>();
 		Integer itemCount = pvRecordDao.count(pageQuery);
 		List<PvRecord> list = pvRecordDao.queryPageList(pageQuery,itemCount);
+		Pagenation pagenation = new Pagenation(pageQuery.getPageNo(), itemCount, pageQuery.getPageSize());
+		result.setPagenation(pagenation);
+		result.setValues(list);
+		return result;
+	}
+	
+
+	@Override
+	public PageList<PvRecord> queryPageListToDo(PageQuery<PvRecord> pageQuery ) {
+		// TODO Auto-generated method stub
+		PageList<PvRecord> result = new PageList<PvRecord>();
+		Integer itemCount = pvRecordDao.countToDo(pageQuery);
+		List<PvRecord> list = pvRecordDao.queryPageListToDo(pageQuery,itemCount);
 		Pagenation pagenation = new Pagenation(pageQuery.getPageNo(), itemCount, pageQuery.getPageSize());
 		result.setPagenation(pagenation);
 		result.setValues(list);

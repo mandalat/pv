@@ -5,17 +5,18 @@
 	<meta http-equiv="X-UA-Compatible" content="IE=edge"> 
   <meta charset="UTF-8"> 
   <link rel="stylesheet" href="$!{basePath}/css/ele_ui.css">
+       <script src="$!{basePath}/script/polyfill.min.js"></script>
      <script src="$!{basePath}/script/qs.js"></script>
   <script>
-  	var pvRecord = $!{pvRecord};
-  	var deptList = $!{deptList};
-  	var statusList = $!{statusList};
+  	var pvRecord = #if($!{pvRecord})$!{pvRecord}#else{}#end;
+  	var deptList = #if($!{deptList})$!{deptList}#else[]#end;
+  	var statusList = #if($!{statusList})$!{statusList}#else[]#end; 
       var pageinfo=[];
 	  		#if($!{pageInfos})
 				 #foreach($!{info} in $!{pageInfos}) 		
 					var info={};
     				info.recordExtend2="$!{info.recordExtend2}";
-    				info.recordExtend1="$!{info.recordExtend1}";
+    				info.recordExtend1=#if($!{info.recordExtend1})$!{info.recordExtend1}#else[]#end;
     				info.templateViewId="$!{info.templateViewId}";
     				info.medicId="$!{info.medicId}";
     				info.medicName="$!{info.medicName}";
@@ -25,14 +26,14 @@
     				#if($!{info.updateTime})
 					info.updateTime={'time':new Date('$!dateTool.format("yyyy/MM/dd HH:mm:ss",$!{info.updateTime})').getTime()};
 					#else
-    				info.updateTime=null;
+    				info.updateTime={};
     				#end
     				info.createUserName="$!{info.createUserName}";
     				info.createUserId="$!{info.createUserId}";
     				#if($!{info.createTime})
 					info.createTime={'time':new Date('$!dateTool.format("yyyy/MM/dd HH:mm:ss",$!{info.createTime})').getTime()};
 					#else
-					info.createTime=null;
+					info.createTime={};
     				#end
     				info.subjectName="$!{info.subjectName}";
     				info.stopReason="$!{info.stopReason}";
@@ -41,22 +42,22 @@
     				#if($!{info.actualVisitDate})
 					info.actualVisitDate={'time':new Date('$!dateTool.format("yyyy/MM/dd HH:mm:ss",$!{info.actualVisitDate})').getTime()};
 					#else
-    				info.actualVisitDate=null;
+    				info.actualVisitDate={};
 					#end
     				#if($!{info.endVisitDate})
 					info.endVisitDate={'time':new Date('$!dateTool.format("yyyy/MM/dd HH:mm:ss",$!{info.endVisitDate})').getTime()};
 					#else    				
-					info.endVisitDate=null;
+					info.endVisitDate={};
 					#end
     				#if($!{info.beginVisitDate})
 					info.beginVisitDate={'time':new Date('$!dateTool.format("yyyy/MM/dd HH:mm:ss",$!{info.beginVisitDate})').getTime()};
 					#else
-    				info.beginVisitDate=null;
+    				info.beginVisitDate={};
     				#end
     				#if($!{info.mustVisitDate})
 					info.mustVisitDate={'time':new Date('$!dateTool.format("yyyy/MM/dd HH:mm:ss",$!{info.mustVisitDate})').getTime()};
 					#else
-    				info.mustVisitDate=null;
+    				info.mustVisitDate={};
     				#end
     				info.visitOrder="$!{info.visitOrder}";
     				info.visitStatus="$!{info.visitStatus}";
@@ -66,8 +67,18 @@
     				info.title="$!{info.title}";
     				info.patientMainDoctor="$!{info.patientMainDoctor}";
 					info.patientCardid="$!{info.patientCardid}";
-					info.patientOutdate="$!{info.patientOutdate}";
-					info.patientIndate="$!{info.patientIndate}";
+					
+					#if($!{info.patientOutdate})
+					info.patientOutdate={'time':new Date('$!dateTool.format("yyyy/MM/dd HH:mm:ss",$!{info.patientOutdate})').getTime()};
+					#else
+    				info.patientOutdate={};
+    				#end 
+					
+					#if($!{info.patientIndate})
+					info.patientIndate={'time':new Date('$!dateTool.format("yyyy/MM/dd HH:mm:ss",$!{info.patientIndate})').getTime()};
+					#else
+    				info.patientIndate={};
+    				#end 
 					info.patientOutDiagnose="$!{info.patientOutDiagnose}";
 					info.patientInDiagnose="$!{info.patientInDiagnose}";
 					info.patientOffice="$!{info.patientOffice}";
@@ -75,7 +86,7 @@
 					#if($!{info.patientBirthday})
 					info.patientBirthday={'time':new Date('$!dateTool.format("yyyy/MM/dd",$!{info.patientBirthday})').getTime()};
 					#else
-					info.patientBirthday=null;
+					info.patientBirthday={};
 					#end
 					info.patientMarriage="$!{info.patientMarriage}";
 					info.patientSex="$!{info.patientSex}";
@@ -101,13 +112,11 @@ display:none;
   
 </style>
 <style>
-  .el-select .el-input {
-    width: 220px;
-  } 
+ 
  .el-form-item{
 
   float: left; 
-    margin-bottom: 22px;
+    margin-bottom: 11px;
 	}
 
 #addvisitLeftPanel .el-form-item{
@@ -142,54 +151,12 @@ width:100%;
 <body>
 
   <div id="app">
-  <el-container style="height: 70px;  width:100%;"> 
-<el-row :gutter="20" >
-  <el-col :span="16"><img alt="" src="./Content/Images/logo_login.png"></el-col>  
-  <el-col :span="8"><div style="line-height:70px; text-align:right;font-size:17px;">
-  <span>当前用户：李刚(医生)&nbsp;&nbsp;&nbsp;&nbsp;</span>
-  <el-dropdown @command="handleCommand"> 
-        <i class="el-icon-setting" style="margin-right: 15px;font-size:17px;">操作</i>
-        <el-dropdown-menu slot="dropdown">
-          <el-dropdown-item command="a">退出</el-dropdown-item> 
-        </el-dropdown-menu>
-      </el-dropdown>
-
-      </div></el-col> 
-</el-row> 				 
- </el-container>
-<el-container style="height: 500px; border: 1px solid #eee">
-  <el-aside width="230px" style="background-color: rgb(238, 241, 246)">
  
-<el-menu default-active="2-1" class="el-menu-vertical-demo" @open="handleOpen" @close="handleClose" :collapse="isCollapse">
-  <el-submenu index="1">
-    <template slot="title">
-      <i class="el-icon-location"></i>
-      <span slot="title">医生专区</span>
-    </template>
-    <el-menu-item-group> 
-      <el-menu-item index="1-1"><a href="./PatientList.html" target="_self">病人列表</a></el-menu-item>
-	  <el-menu-item index="1-2"><a href="./PatientGroup.html" target="_self">病人分组</a></el-menu-item>
-      <el-menu-item index="1-3"><a href="./VisitList.html" target="_self">随访列表</a></el-menu-item>
-	  <el-menu-item index="1-4"><a href="./VisitList.html " target="_self">我发起的随访</a></el-menu-item>
-    </el-menu-item-group> 
-  </el-submenu>
-  <el-submenu index="2">
-  <template slot="title">
-    <i class="el-icon-menu"></i>
-    <span slot="title">病人专区</span>
-	</template>
-	    <el-menu-item-group> 
-      <el-menu-item index="2-1"><a href="./VisitList.html" target="_self">我的应访列表</a></el-menu-item>  
-    </el-menu-item-group> 
-  </el-submenu>
-
-</el-menu>
+<el-container style="border: 1px solid #eee; display:block ">
  
-
- </el-aside>
- <el-container>
-	 <el-header style="text-align: right; font-size: 12px ;padding:8px 0px 8px 0px;" height="120px">
-		<el-form :model="ruleForm" :rules="rules" ref="ruleForm" label-width="80px" class="demo-ruleForm" >
+ <el-container style="display:block">
+	 <el-header style="text-align: right; font-size: 12px ;padding:8px 0px 8px 0px;height:auto;display:flex;">
+		<el-form :model="ruleForm" ref="ruleForm" label-width="80px" class="demo-ruleForm" style="width: 100%;">
 
 		  <el-form-item label="出院科室" prop="region">
 			<el-select v-model="ruleForm.patientOffice" placeholder="请选择所属科室">
@@ -197,7 +164,10 @@ width:100%;
 			</el-select>
 		  </el-form-item>
 
-		  		  <el-form-item label="姓名" prop="patientName">
+		 <el-form-item label="住院号" prop="patientId">
+			<el-input v-model="ruleForm.patientId" name="patientId" ></el-input>
+		  </el-form-item>
+		  <el-form-item label="姓名" prop="patientName">
 			<el-input v-model="ruleForm.patientName" name="patientName"></el-input>
 		  </el-form-item>
 
@@ -206,15 +176,12 @@ width:100%;
 			  <el-option v-for="item in visitstatusdata" :label="item.dictname" :value="item.dictcode"></el-option> 
 			</el-select>
 		  </el-form-item>
-		  		  		  <el-form-item label="住院号" prop="patientId">
-			<el-input v-model="ruleForm.patientId" name="patientId" style="width:100px;"></el-input>
-		  </el-form-item>
-		  		  </el-form-item>
+
 		  <el-form-item label="应访日期"   > 
 			  <el-form-item prop="beginVisitDate">
 				<el-date-picker type="date" placeholder="选择日期" v-model="ruleForm.beginVisitDate" value-format="yyyy-MM-dd"></el-date-picker>
 			  </el-form-item>
-			  <span style="display:block;float:left;width:80px;text-align:center">~</span>  
+			  <span style="display:block;float:left;width:60px;text-align:center">~</span>  
 			  <el-form-item prop="endVisitDate">
 				<el-date-picker type="date" placeholder="选择日期" v-model="ruleForm.endVisitDate" value-format="yyyy-MM-dd"></el-date-picker>
 			  </el-form-item> 
@@ -223,17 +190,35 @@ width:100%;
 		 </el-form>
 	 </el-header>
 
-	 <el-header style="text-align: center; font-size: 12px ;padding:0px " height="50px">
-	<el-button type="primary" icon="el-icon-search"  @click="pageSize=10;currentPage4=1;getTableData();">查询</el-button>
-		<el-button plain @click="cancelClick()" type="primary" icon="el-icon-circle-plus-outline" >终止随访</el-button>  
-		<el-button plain @click="handleClick()" type="primary" icon="el-icon-circle-plus-outline" >随访明细</el-button>
+	 <el-header style="text-align: center; font-size: 12px ;padding:0px ;height:auto;margin-bottom: 11px;display:block;">
+	 	<el-button type="primary" icon="el-icon-search"  @click="pageSize=10;currentPage4=1;getTableData();">查询</el-button>
+	 <el-button plain icon="el-icon-refresh"  @click="ruleForm={}">重置</el-button>
+		<el-button plain @click="cancelClick()" icon="el-icon-close" >终止</el-button>  
+		<el-button plain @click="handleClick()"  icon="el-icon-tickets" >详细</el-button>
+		<el-button plain @click="deleteClick()" icon="el-icon-delete" >删除</el-button>
 	</el-header>
+   
+   <el-dialog title="终止随访" :visible.sync="dialogAddGroupVisible"   > 
+   		<el-form :model="cancelForm" :rules="rules"  ref="cancelForm"   label-width="80px" class="demo-ruleForm" >
+	       <el-form-item label="终止原因" :label-width="formLabelWidth"  prop="stopReason" style="padding-top: 20px;">
+	       		<el-select v-model="cancelForm.stopReason" placeholder="请选择随访状态">
+	       			<el-option v-for="item in cancelList" :label="item.dictname" :value="item.dictcode"></el-option> 
+	       		</el-select>
+			</el-from-item>
+		</el-form>
+		
+	  <div slot="footer" class="dialog-footer">
+	    <el-button @click="dialogAddGroupVisible = false;cancelForm.stopReason=''">取 消</el-button>
+	    <el-button type="primary" @click="doCancel()">确 定</el-button>
+	  </div>
+	</el-dialog>
    
    <el-table
     :data="tableData3"
-    height="450"
+    v-loading.fullscreen.lock="loading"
+    height="350"
     border
-    style="width: 100%"
+    style="width: 100%;margin-bottom: 50px;"
 	 :default-sort = "{prop: 'date', order: 'descending'}">
 
    <el-table-column type="expand">
@@ -249,7 +234,7 @@ width:100%;
             <span>{{ props.row.patientOutDiagnose }}</span>
           </el-form-item>
           <el-form-item label="出院日期:">
-            <span>{{ props.row.patientOutdate }}</span>
+            <span>{{ timeFormat(props.row.patientOutdate) }}</span>
           </el-form-item>
           <el-form-item label="联系方式: ">
             <span>{{ props.row.patientLinktel }}</span>
@@ -264,19 +249,15 @@ width:100%;
             <span>{{ props.row.visitStatus }}</span>
           </el-form-item>
 		            <el-form-item label="应访日期: ">
-            <span>{{ props.row.mustVisitDate }}</span>
+            <span>{{ timeFormat(props.row.mustVisitDate)}}</span>
           </el-form-item> 
 		   <el-form-item label="实访日期: ">
-            <span>{{ props.row.actualVisitDate }}</span>
+            <span>{{ timeFormat(props.row.actualVisitDate)  }}</span>
           </el-form-item> 
 		   <el-form-item label="随访人: ">
             <span>{{ props.row.updateUserName }}</span>
           </el-form-item>  
-		  <div style="width: 100%; height: 50px; display: inline-block;">
-				<el-button plain @click="setCurrent(props.$index);cancelClick()" type="primary" icon="el-icon-circle-plus-outline" >终止随访</el-button>  
-				<el-button plain @click="setCurrent(props.$index);handleClick();" type="primary" icon="el-icon-circle-plus-outline" >随访明细</el-button>
-			    <el-button plain @click="handleClick(selectedPepole)" type="primary" icon="el-icon-circle-plus-outline" >查询当前病人随访记录</el-button> 
-		</div>
+		
         </el-form>
       </template>
     </el-table-column>
@@ -286,7 +267,7 @@ width:100%;
       prop="patientName"
       label="姓名"
 	  sortable
-      width="120">
+      width="80">
     </el-table-column>
 	    <el-table-column
       prop="patientId"
@@ -301,30 +282,29 @@ width:100%;
  
 	    <el-table-column
       prop="visitOrder"
-      label="随访序数"
+      label="序数"
 	  sortable
-      width="120">
+      width="80">
     </el-table-column>
 		    <el-table-column
       prop="visitStatus"
-      label="随访状态"
+      label="状态"
       width="80">
     </el-table-column>
 		    <el-table-column
       prop="mustVisitDate"
-	  width="130" 
+	  width="110" 
 	  :formatter="dateFormat"
       label="应访日期" >
     </el-table-column>
 			    <el-table-column
       prop="actualVisitDate"
       :formatter="dateFormat"
-	  width="130" 
+	  width="110" 
       label="实访日期" >
     </el-table-column>
 			<el-table-column
-      prop="updateUserName"
-	  width="130"
+      prop="updateUserName" 
       label="随访人" >
     </el-table-column>
  <el-table-column
@@ -339,7 +319,7 @@ width:100%;
  </el-container>
 
  </el-container>
-   <div class="block" style="margin-top:20px;text-align: center;"> 
+   <div class="block" style="width: 100%; height: 35px; text-align: center; bottom: 0px; line-height: 35px; position: fixed; z-index: 1000; background-color: rgb(255, 255, 255);"> 
 		<el-pagination background
 		  @size-change="handleSizeChange"
 		  @current-change="handleCurrentChange"
@@ -360,7 +340,7 @@ width:100%;
   <script src="$!{basePath}/script/ele_ui.js"></script>
 
   <script>   
-  axios.interceptors.request.use((request) => {
+   axios.interceptors.request.use(function(request){
   if (request.data && (request.headers['Content-Type'].indexOf('application/x-www-form-urlencoded') !== -1)) {
     request.data = Qs.stringify(request.data);
     console.log(request.data);
@@ -371,98 +351,129 @@ width:100%;
       el: '#app',
 	      methods: {
 	  dateFormat:function(row, column) {  
-      var date = row[column.property];  
-          if (date == undefined) {  
+      		var date = row[column.property];  
+      		//console.log(date);
+          if (null == date || date == {} || undefined == date.time || null == date.time || date.time=='' ) {  
              return "";  
-          }  
-          if ('NaN' == date.time) {  
-             return "";  
-          }  
-          console.log(date.time);
+          }   
+         // console.log(date.time);
           return (new Date(date.time)).Format("yyyy-MM-dd");  
       },
-      handleSizeChange(val) {
-        console.log(`每页 ${val} 条`);
+      timeFormat:function(str) { 
+      //console.log(str);   
+          if (null == str || {} == str  || undefined == str.time || str.time=='' ) {  
+             return "";  
+          } 
+           return (new Date(str.time)).Format("yyyy-MM-dd"); 
+      }
+      ,
+      handleSizeChange:function(val) {
+       // console.log(`每页 ${val} 条`);
         this.pageSize=val;
         this.getTableData();
       },
-      handleCurrentChange(val) {
-        console.log(`当前页: ${val}`);
+      handleCurrentChange:function(val) {
+        //console.log(`当前页: ${val}`);
         this.pageNo=val;
         this.getTableData();
       },
-	   handleOpen(key, keyPath) {
+	   handleOpen:function(key, keyPath) {
         console.log(key, keyPath);
       },
-      handleClose(key, keyPath) {
+      handleClose:function(key, keyPath) {
         console.log(key, keyPath);
       },
-	   submitForm(formName) {
-        this.$refs[formName].validate((valid) => {
+	   submitForm:function(formName) {
+        var valid = this.$refs[formName].validate()  ;
           if (valid) {
-            alert('submit!');
           } else {
             console.log('error submit!!');
             return false;
-          }
-        });
+          } 
       },
-	        handleCommand(command) { 
+	        handleCommand:function(command) { 
 				window.location.href='./login.html';
       }
 	  ,
-      resetForm(formName) {
+      resetForm:function(formName) {
         this.$refs[formName].resetFields();
       }
-	  ,cancelClick() {
-	  		var that=this;
+	  ,cancelClick:function() {
 		  if(this.radio =='-1'){
-						          this.$notify.error({
+				this.$notify.error({
 						title: '提示信息',
 						message: '请选择一条随访信息', 
 						offset:60
 				});
 		  }else{
-			  this.$confirm('此操作将会终止该随访记录, 是否继续?', '提示', {
-	          	confirmButtonText: '确定',
-	          	cancelButtonText: '取消',
-	          	type: 'warning'}).then(() => {
-	   					this.tableData3[this.radio].visitStatus='已终止';
-	   			        axios({
-							method: 'post',
-							url: this.updateUrl, 
-							params: {
-								rid: this.tableData3[this.radio].rid,
-								visitStatus: 'sf33'
-							}
-						}).then(function (response) {
-							 	that.$message({
-						            type: 'success',
-						            message: '操作成功!'
-					          	});
-						}).catch(function (error) {
-							 	  that.$message({
-						            type: 'info',
-						            message: '已取消'
-						          }); 
-						});
-
-	        	}).catch(() => {
-	          		this.$message({
-	            		type: 'info',
-	            		message: '已取消'
-	          		});          
-	        	});
+		  this.dialogAddGroupVisible = true; 
 		  } 
       },
+      doCancel:function(){
+        var that=this;
+             var valid=this.$refs['cancelForm'].validate(function(valid){
+          			if (valid) { 
+						that.$confirm('此操作将会终止该随访记录, 是否继续?', '提示', {
+							          	confirmButtonText: '确定',
+							          	cancelButtonText: '取消',
+							          	type: 'warning'}).then(function(){
+							   					that.tableData3[that.radio].visitStatus='已终止';
+							   					console.log("开始AXIOS");
+							   			        axios({
+													method: 'post',
+													url: that.updateUrl, 
+													params: {
+														rid: that.tableData3[that.radio].rid,
+														visitStatus: 'sf33',
+														stopReason:that.cancelForm.stopReason
+													}
+												}).then(function (response) {
+													if(response.data.success){
+															that.$message({
+													            type: 'success',
+													            message: '操作成功!'
+												          	});
+												          	that.dialogAddGroupVisible = false;
+												          	that.cancelForm.stopReason='';
+													}else{
+														that.$message({
+												            type: 'info',
+												            message: '操作失败!'
+												          }); 
+												          that.cancelForm.stopReason='';
+													}
+
+												}).catch(function (error) {
+													 	  that.$message({
+												            type: 'info',
+												            message: '操作失败!'
+												          }); 
+												          that.cancelForm.stopReason='';
+												});
+						
+							        	}).catch(function(){
+							          		that.$message({
+							            		type: 'info',
+							            		message: '已取消'
+							          		});          
+							          		that.cancelForm.stopReason='';
+					});
+
+          } else {
+            console.log('error submit!!');
+            return false;
+          } })
+      }
+      ,
        getTableData:function(){
+       this.loading=true;
        console.log(this.currentPage4);
        console.log(this.pageSize);
        var that = this ;
           console.log(this.ruleForm);
                     axios({
 						method: 'post',
-						url: this.getUrl, 
+						url: that.getUrl, 
 						 headers: {
 						    'Content-Type': 'application/x-www-form-urlencoded;charset=UTF-8'
 						  },
@@ -485,11 +496,13 @@ width:100%;
 						console.log(that.tableData3);
 						console.log(that.total);
 						console.log(that.pageSize);
+						that.loading=false;
 					}).catch(function (error) {
 						console.log(error);
+						 that.loading=false;
 					});
         }
-	  , handleClick() {
+	  , handleClick: function() {
 		  if(this.radio =='-1' ){
 						this.$notify.error({
 						title: '提示信息',
@@ -499,8 +512,59 @@ width:100%;
 		  }else{
 		  		  window.open('$!{basePath}/visitRecord/back/pvRecord/visitView.html?rid='+this.tableData3[this.radio].rid);
 		  } 
+      },
+      deleteClick: function() {
+		  if(this.radio =='-1' ){
+						this.$notify.error({
+						title: '提示信息',
+						message: '请选择一条随访信息', 
+						offset:60
+				});
+		  }else{
+		  var that = this;
+		  		  this.$confirm('此操作将会删除该随访记录, 是否继续?', '提示', {
+							          	confirmButtonText: '确定',
+							          	cancelButtonText: '取消',
+							          	type: 'warning'}).then(function() { 
+							   			        axios({
+													method: 'post',
+													url: that.deleteUrl, 
+													params: {
+														rid: that.tableData3[that.radio].rid 
+													}
+												}).then(function (response) {
+													if(response.data.success){
+														that.tableData3.splice(that.radio, 1); 
+														that.total= that.total-1;
+													 	that.$message({
+												            type: 'success',
+												            message: '操作成功!'
+											          	});
+													}else{
+														that.$message({
+												            type: 'info',
+												            message: '操作失败!'
+												          }); 
+													}
+
+												}).catch(function (error) {
+													 	  that.$message({
+												            type: 'info',
+												            message: '操作失败!'
+												          }); 
+												});
+						
+							        	}).catch(function(){
+							          		that.$message({
+							            		type: 'info',
+							            		message: '已取消'
+							          		});           
+					});
+		  		  
+		  		  
+		  } 
       }
-	  ,setCurrent(index){
+	  ,setCurrent: function(index){
 		  console.log(index);
 		this.radio=index;
 	  }
@@ -509,9 +573,14 @@ width:100%;
         return {  
             getUrl: '$!{basePath}/visitRecord/back/pvRecord/getList.html',
             updateUrl:'$!{basePath}/visitRecord/back/pvRecord/doEdit.html',
+            deleteUrl:'$!{basePath}/visitRecord/back/pvRecord/doDelete.html',
 			radio:'-1', 
 			tableData3:  pageinfo,
+			formLabelWidth: '120px',
 		keshidata:deptList,
+		canceldata:'',
+		cancelList:#if($!{cancelList})$!{cancelList}#else[]#end,
+		dialogAddGroupVisible:false,
 		visitstatusdata:statusList, 
         currentPage4: $!{pageInfos.index} ,
         total:$!{pageInfos.totalItem},
@@ -519,9 +588,8 @@ width:100%;
 		dialogTableVisible:false,
 		isCollapse: false,
 		ruleForm: pvRecord,
-		selectedPepole:{date: '',
-          name: '',
-          address: ''},
+		cancelForm:{stopReason: ''},
+		loading:false,
         rules: {
           patientName: [
             { required: false, message: '请输入病人住院号', trigger: 'blur' },
@@ -529,6 +597,9 @@ width:100%;
           ],
           patientOffice: [
             { required: false, message: '请选择活动区域', trigger: 'change' }
+          ],
+          stopReason: [
+            { required: true, message: '请选择终止原因', trigger: 'change' }
           ]
         }
 		}

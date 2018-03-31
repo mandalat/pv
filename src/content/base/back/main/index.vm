@@ -16,7 +16,7 @@
 </head>
 <!-- END HEAD -->
 <!-- BEGIN BODY -->
-<body class="fixed-top">
+<body class="fixed-top" onload="autoclick()">
    <!-- BEGIN HEADER -->
    <div id="header" class="navbar navbar-inverse navbar-fixed-top">
        <!-- BEGIN TOP NAVIGATION BAR -->
@@ -29,7 +29,7 @@
                <!--END SIDEBAR TOGGLE-->
                <!-- BEGIN LOGO -->
                <a class="brand" href="">
-                   <img src="$!{basePath}/login_home_files/files/logo.png" alt="Metro Lab">
+                   <img src="$!{basePath}/img/logo.png" alt="Metro Lab">
                </a>
                <!-- END LOGO -->
                <!-- BEGIN RESPONSIVE MENU TOGGLER -->
@@ -39,132 +39,7 @@
                    <span class="icon-bar"></span>
                    <span class="arrow"></span>
                </a>
-               <!-- END RESPONSIVE MENU TOGGLER 
-               <div id="top_menu" class="nav notify-row">
-                   <ul class="nav top-menu">
-                       <li class="dropdown">
-                           <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                               <i class="icon-tasks"></i>
-                               <span class="badge badge-important">6</span>
-                           </a>
-                           <ul class="dropdown-menu extended tasks-bar">
-                               <li>
-                                   <p>你有6条任务</p>
-                               </li>
-                               <li>
-                                   <a href="#">
-                                       <div class="task-info">
-                                         <div class="desc">控制台</div>
-                                         <div class="percent">44%</div>
-                                       </div>
-                                       <div class="progress progress-striped active no-margin-bot">
-                                           <div class="bar" style="width: 44%;"></div>
-                                       </div>
-                                   </a>
-                               </li>
-                               <li>
-                                   <a href="#">
-                                       <div class="task-info">
-                                           <div class="desc">数据库更新</div>
-                                           <div class="percent">65%</div>
-                                       </div>
-                                       <div class="progress progress-striped progress-success active no-margin-bot">
-                                           <div class="bar" style="width: 65%;"></div>
-                                       </div>
-                                   </a>
-                               </li>
-                               <li>
-                                   <a href="#">
-                                       <div class="task-info">
-                                           <div class="desc">手机开发进度</div>
-                                           <div class="percent">87%</div>
-                                       </div>
-                                       <div class="progress progress-striped progress-info active no-margin-bot">
-                                           <div class="bar" style="width: 87%;"></div>
-                                       </div>
-                                   </a>
-                               </li>
-                               <li>
-                                   <a href="#">
-                                       <div class="task-info">
-                                           <div class="desc">手机App进度</div>
-                                           <div class="percent">33%</div>
-                                       </div>
-                                       <div class="progress progress-striped progress-warning active no-margin-bot">
-                                           <div class="bar" style="width: 33%;"></div>
-                                       </div>
-                                   </a>
-                               </li>
-                               <li>
-                                   <a href="#">
-                                       <div class="task-info">
-                                           <div class="desc">控制台</div>
-                                           <div class="percent">90%</div>
-                                       </div>
-                                       <div class="progress progress-striped progress-danger active no-margin-bot">
-                                           <div class="bar" style="width: 90%;"></div>
-                                       </div>
-                                   </a>
-                               </li>
-                               <li class="external">
-                                   <a href="#">查看所有任务</a>
-                               </li>
-                           </ul>
-                       </li>
-                       
-                       <li class="dropdown" id="header_notification_bar">
-                           <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-
-                               <i class="icon-bell-alt"></i>
-                               <span class="badge badge-warning">7</span>
-                           </a>
-                           <ul class="dropdown-menu extended notification">
-                               <li>
-                                   <p>你有7条提示信息</p>
-                               </li>
-                               <li>
-                                   <a href="#">
-                                       <span class="label label-important"><i class="icon-bolt"></i></span>
-                                       Server #3 overloaded.
-                                       <span class="small italic">34 mins</span>
-                                   </a>
-                               </li>
-                               <li>
-                                   <a href="#">
-                                       <span class="label label-warning"><i class="icon-bell"></i></span>
-                                       Server #10 not respoding.
-                                       <span class="small italic">1 Hours</span>
-                                   </a>
-                               </li>
-                               <li>
-                                   <a href="#">
-                                       <span class="label label-important"><i class="icon-bolt"></i></span>
-                                       Database overloaded 24%.
-                                       <span class="small italic">4 hrs</span>
-                                   </a>
-                               </li>
-                               <li>
-                                   <a href="#">
-                                       <span class="label label-success"><i class="icon-plus"></i></span>
-                                       New user registered.
-                                       <span class="small italic">Just now</span>
-                                   </a>
-                               </li>
-                               <li>
-                                   <a href="#">
-                                       <span class="label label-info"><i class="icon-bullhorn"></i></span>
-                                       Application error.
-                                       <span class="small italic">10 mins</span>
-                                   </a>
-                               </li>
-                               <li>
-                                   <a href="#">See all notifications</a>
-                               </li>
-                           </ul>
-                       </li>
-
-                   </ul>
-               </div>-->
+               
                <!-- END  NOTIFICATION -->
                <div class="top-nav ">
                    <ul class="nav pull-right top-menu">
@@ -180,9 +55,13 @@
                            </a>
                        </li>
                        <li class="dropdown mtop5">
-                           <a class="dropdown-toggle element" data-placement="bottom" data-toggle="tooltip" href="#" data-original-title="Help">
+                           <a class="dropdown-toggle element" data-placement="bottom" data-toggle="dropdown" href="#" data-original-title="Help">
                                <i class="icon-headphones"></i>
                            </a>
+                           <ul class="dropdown-menu extended logout">
+                           	 <li><a href="$!{basePath}/Content/install/GoogleChromeframe.msi"><i class="icon-key"></i>谷歌浏览器下载</a></li>
+                           	 <li><a href="$!{basePath}/Content/install/360aqllq_9.1.0.406.exe"><i class="icon-key"></i>360浏览器下载</a></li>
+                           </ul>
                        </li>
                        <!-- END SUPPORT -->
                        <!-- BEGIN USER LOGIN DROPDOWN -->
@@ -191,9 +70,9 @@
                             #if("$!{OPERATE_WEB_LOGIN_USER.userIcon}" != "" ) 
                                	<img src="${OPERATE_WEB_LOGIN_USER.userIcon}" style="border-radius: 50px;width:35px;height:35px;" alt="">
                             #else
-                            	<img src="/P3-Web/content/system/default_family.jpg" style="border-radius: 50px;width:35px;height:35px;" alt="">
+                            	<img src="$!{basePath}/login_home_files/files/default_family.jpg" style="border-radius: 50px;width:35px;height:35px;" alt="">
                             #end
-                               &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp &nbsp$!{username} </span>
+                               &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp &nbsp<span>$!{LOGIN_USER.userName}($!{LOGIN_USER.zwName})</span>
                                <b class="caret"></b>
                            </a>
                            <ul class="dropdown-menu extended logout">
@@ -212,38 +91,7 @@
    </div>
    <!-- END HEADER -->
    <!-- END HEADER -->
-   <!--beagin modal fade-->
-   <div class="modal fade" id="myModal" tabindex="-1" role="dialog" 
-	   aria-labelledby="myModalLabel" aria-hidden="true">
-	   <div class="modal-dialog">
-	      <div class="modal-content">
-	         <div class="modal-header">
-	            <button type="button" class="close" data-dismiss="modal" 
-	               aria-hidden="true">×
-	            </button>
-	            <h4 class="modal-title" id="myModalLabel">
-	               模态框（Modal）标题
-	            </h4>
-	         </div>
-	         	         <iframe src="#" id="bindacount" width="100%" height="400px" style="display:none"></iframe>
-	         <div class="modal-body" id="myModalContent"  style="word-break:break-all">
-	         系统检测 到您还未绑定公共号，若不绑定已认证的服务号和订阅号，你将无法创建关注后参加的活动
-	       <a href="javascript:void(0);" onclick="tobind()">  点击绑定进行绑定操作</a>
-	         点击关闭，取消绑定
-	            按下 ESC 按钮退出。
-	         </div>
-	         <div class="modal-footer">
-	            <button type="button" class="btn btn-default" 
-	               data-dismiss="modal">关闭
-	            </button>
-	            <button type="button" class="btn btn-primary" style="display:none;">
-	              复制
-	            </button>
-	         </div>
-	      </div><!-- /.modal-content -->
-	   </div><!-- /.modal-dialog -->
-	</div><!-- /.modal -->
-	<!--end modal fade-->
+   
    
    <!-- BEGIN CONTAINER -->
    <div id="container" class="row-fluid">
@@ -261,9 +109,9 @@
           <!-- BEGIN SIDEBAR MENU -->
           <ul class="sidebar-menu">
               <li class="sub-menu active">
-                  <a class="" href="">
+                  <a id="firstPage" class="" href="javascript:loadContent('$!{basePath}/system/firstPage.html')">
                       <i class="icon-dashboard"></i>
-                      <span>控制台</span>
+                      <span>系统首页</span>
                   </a>
               </li>
                #foreach($entry in $OPERATE_WEB_MENU_TREE.entrySet())
@@ -309,7 +157,9 @@
          <!-- BEGIN PAGE CONTAINER-->
          <div class="container-fluid">
 
-		 <iframe frameborder="0" id="mainFrame" name="mainFrame" src="" style="width:100%;height:530px;padding-top:10px;"></iframe>
+		 <iframe frameborder="0" id="mainFrame" name="mainFrame" src="" style="width:100%;height:500px;padding-top:10px;">
+		
+		 </iframe>
             <!-- BEGIN PAGE HEADER-->   
      
          </div>
@@ -321,7 +171,7 @@
 
    <!-- BEGIN FOOTER -->
    <div id="footer">
-       2017 © 百花网络科技有限公司.
+      	版权所有：华中科技大学同济医学院附属协和医院    &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;  技术支持: 2018 © 江苏曼荼罗软件有限公司
    </div>
    <!-- END FOOTER -->
 
@@ -341,23 +191,11 @@
     function loadContent(url){
 			$("#mainFrame").attr("src",url);
 	}
-	
+	function autoclick(){
+		loadContent('$!{basePath}/system/firstPage.html');
+	}
 </script>
 <script>
-function dialogDiv(modalId,title){ 
- 	$('#'+modalId+'Label').html(title);
-	$('#'+modalId).modal({show:true,backdrop:false}); 
-}
-var serverroot='$!{basePath}';
-function tobind(){
-$('#myModalContent').attr('style','display:none;');
 
-$('#bindacount').attr('src',serverroot+'/weixinaccount/back/jwWebJwid/toAdd.html');
-$('#bindacount').attr('style','');
-}
-var isbind = $!{isbind};
-//if(!isbind){
-//dialogDiv('myModal','友情提示');
-//}
 </script>
 </body></html>

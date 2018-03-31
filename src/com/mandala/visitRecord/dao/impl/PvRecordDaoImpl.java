@@ -6,6 +6,7 @@ import org.jeecgframework.p3.core.utils.common.PageQuery;
 import org.jeecgframework.p3.core.utils.common.PageQueryWrapper;
 import org.jeecgframework.p3.core.utils.persistence.mybatis.GenericDaoDefault;
 import org.springframework.stereotype.Repository;
+
 import com.mandala.visitRecord.dao.PvRecordDao;
 import com.mandala.visitRecord.entity.PvRecord;
 
@@ -29,6 +30,19 @@ public class PvRecordDaoImpl extends GenericDaoDefault<PvRecord> implements PvRe
 			PageQuery<PvRecord> pageQuery,Integer itemCount) {
 		PageQueryWrapper<PvRecord> wrapper = new PageQueryWrapper<PvRecord>(pageQuery.getPageNo(), pageQuery.getPageSize(),itemCount, pageQuery.getQuery());
 		return (List<PvRecord>)super.query("queryPageList",wrapper);
+	}
+
+	@Override
+	public Integer countToDo(PageQuery<PvRecord> pageQuery) {
+		// TODO Auto-generated method stub
+		return (Integer) super.queryOne("countToDo",pageQuery);
+	}
+
+	@Override
+	public List<PvRecord> queryPageListToDo(PageQuery<PvRecord> pageQuery,
+			Integer itemCount) {
+		PageQueryWrapper<PvRecord> wrapper = new PageQueryWrapper<PvRecord>(pageQuery.getPageNo(), pageQuery.getPageSize(),itemCount, pageQuery.getQuery());
+		return (List<PvRecord>)super.query("queryPageListToDo",wrapper);
 	}
 
 

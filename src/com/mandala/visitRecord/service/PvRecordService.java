@@ -1,7 +1,10 @@
 package com.mandala.visitRecord.service;
 
+import java.util.List;
+
 import org.jeecgframework.p3.core.utils.common.PageList;
 import org.jeecgframework.p3.core.utils.common.PageQuery;
+
 import com.mandala.visitRecord.entity.PvRecord;
 
 /**
@@ -22,5 +25,7 @@ public interface PvRecordService {
 	public PvRecord queryById(String id);
 	
 	public PageList<PvRecord> queryPageList(PageQuery<PvRecord> pageQuery);
+	
+	public PageList<PvRecord> queryPageListToDo(PageQuery<PvRecord> pageQuery);
 }
 

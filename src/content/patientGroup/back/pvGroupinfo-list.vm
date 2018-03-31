@@ -1,0 +1,772 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>病人群组</title> 
+<meta http-equiv="X-UA-Compatible" content="IE=edge"> 
+<meta charset="UTF-8"> 
+<link rel="stylesheet" href="$!{basePath}/css/ele_ui.css">
+       <script src="$!{basePath}/script/polyfill.min.js"></script>
+<script src="$!{basePath}/script/qs.js"></script>
+</head>
+<style>
+	a ,  a:active ,  a:visited{
+		display:none;
+	} 
+	.el-menu-vertical-demo:not(.el-menu--collapse) {
+	    width: 220px;
+	    min-height: 400px;
+	}  
+	#groupPanel   .el-menu-vertical-demo:not(.el-menu--collapse) {
+	    width: 220px;
+	    min-height: 280px;
+	}  
+	#groupPanel .el-table__row td{
+		height:37px;
+		line-height:37px;
+		padding:0px 0px ;
+	} 
+	.el-select .el-input {
+    	width: 220px;
+	} 
+	.el-form-item{ 
+		float: left; 
+	    margin-bottom: 22px;
+	} 
+	.demo-table-expand .el-form-item{ 
+	    margin-bottom: 0px!important;
+	} 
+	#addvisitLeftPanel .el-form-item{
+		width:230px;  
+	    margin-bottom: 5px;
+	} 
+	#addvisitLeftPanel .el-input{
+		width:130px;  
+	}
+	.el-dialog__body { 
+	    padding: 0px 20px 10px;
+	}
+	.el-dialog__footer{
+	    text-align: center;
+	}
+	.el-menu-item a ,.el-menu-item a:active ,.el-menu-item a:visited{
+		font-size: 14px;
+	    color: #303133;
+	    padding: 0 20px;
+	    cursor: pointer;
+		text-decoration:none;
+		display:block;
+	}
+	#app{
+		display:block;
+	}
+	body{
+		color: #606266;
+	}
+	.el-row{
+		width:100%;
+		font-size:16px;
+	} 
+	#addGroup .el-form-item{
+		width:100%;
+	} 
+	#patientInfo .el-form-item{
+		margin-bottom: 0px;
+	}
+	#yfform .el-input__inner{
+    	width: 183px!important;
+	}
+	  .el-tag {
+    margin-left: 10px;
+    float: left;
+    margin-top:10px;
+  }
+</style>
+<script>
+var pageinfo=[];
+#if($!{pageInfos})
+pageinfo=$!{pageInfos}
+#end
+ 
+</script>
+<body> 
+  <div id="app">
+  <el-container style="height: 450px; border: 1px solid #eee">
+ <el-container> 
+   <el-aside width="210px" style="background-color: rgb(238, 241, 246)" id="groupPanel">  
+
+    <el-table :data="groupList" height="442" border style="width: 100%"  :default-sort = "{prop: 'groupOrder', order: 'descending'}"     highlight-current-row
+    @current-change="handleCurrentChange" :row-class-name="tableRowClassName">
+	    <el-table-column prop="groupName" label="群组名"  width="130"> </el-table-column>
+		<el-table-column fixed="right"  label="选择"   width="60">
+	      <template slot-scope="scope">
+	             <el-radio v-model="groupRadio" :label="scope.$index" >&nbsp;</el-radio>
+	      </template>
+	    </el-table-column>
+	</el-table>
+  </el-aside>
+<el-container> 
+	<el-header style="text-align: left; font-size: 12px ;  height:auto; background-color: rgb(238, 241, 246)" >
+	<i class="el-icon-location" style="color: #606266;width:230px; line-height:48px;
+    margin: 0 20px;
+    font-size: 1.5em;
+    vertical-align: middle;">当前群组-> {{groupForm.groupName}}</i>
+	</el-header>
+	<el-header style="text-align: center; font-size: 12px ;padding:8px 0px 8px 0px; height:auto;  " >
+				  <el-button @click="addVisitPanel()" type="primary" icon="el-icon-plus" >添加随访</el-button> 
+		  <el-button plain  @click="dialogAddGroupVisible=true;optype=0; groupForm={}"  icon="el-icon-plus" >添加组</el-button>
+	    <el-button plain  @click="deleteGroup(groupRadio)"  icon="el-icon-delete" >删除组</el-button>
+	        <el-button plain  @click="openEditDailog(groupRadio);"  icon="el-icon-edit" >编辑</el-button>
+			  <el-button plain @click="removePepole()" icon="el-icon-minus"  >移除成员</el-button> 
+	</el-header>
+   <el-table
+    :data="patientList"
+    v-loading.fullscreen.lock="loading"
+    height="450"
+    border
+    style="width: 100%"
+	 :default-sort = "{prop: 'admddate', order: 'descending'}"> 
+   <el-table-column type="expand">
+      <template slot-scope="props">
+        <el-form label-position="left" inline class="demo-table-expand"> 
+<el-form-item label="病人姓名:"  > 
+	            <span>{{ props.row.patname }}</span>
+	</el-form-item>  
+   <el-form-item label="所属科室: "> 
+              <span>{{ props.row.admdward }}</span>
+  	</el-form-item>  
+     <el-form-item label="性别: "> 
+	            <span>{{ props.row.sex }}</span>
+  	</el-form-item>
+  <el-form-item label="婚姻: ">  
+              <span>{{ props.row.marrycode }}</span>
+  	</el-form-item>
+    <el-form-item label="民族:  ">   
+              <span>{{ props.row.nation }}</span>
+  </el-form-item>
+     <el-form-item label="出生日期:">  
+	            <span>{{ props.row.birthday }}</span>
+ </el-form-item>
+      <el-form-item label="身份证:">  
+              <span>{{ props.row.credentialno }}</span>
+   </el-form-item> 
+      <el-form-item label="联系人:">    
+              <span>{{ props.row.linkname }}</span>
+  </el-form-item>
+        <el-form-item label="联系电话:">    
+              <span>{{ props.row.linktelephone }}</span>
+  </el-form-item>
+        <el-form-item label="联系地址:">    
+              <span>{{ props.row.linkvillage }}</span>
+  </el-form-item>
+        <el-form-item label="工作单位:">    
+              <span>{{ props.row.workdesc }}</span>
+  </el-form-item>
+        <el-form-item label="住院号:">    
+              <span>{{ props.row.patientId }}</span>
+  </el-form-item>
+ 
+          <el-form-item label="住院日期:">    
+              <span>{{ props.row.admsdate }}</span>
+  </el-form-item>
+            <el-form-item label="出院日期:">    
+            <span>{{ props.row.admddate }}</span>
+  </el-form-item>
+            <el-form-item label="主治医师:">    
+              <span>{{ props.row.attendingdesc }}</span>
+  </el-form-item>  
+        </el-form>
+      </template>
+    </el-table-column> 
+    <el-table-column
+      prop="patname"
+      label="姓名"
+	  sortable
+      width="80">
+    </el-table-column> 
+    <el-table-column
+      prop="admdward"
+      label="科室" >
+    </el-table-column>  
+	 <el-table-column
+      prop="admsdate" 
+	   sortable
+      label="住院日期" >
+    </el-table-column>
+	<el-table-column
+      prop="admddate" 
+	  sortable
+      label="出院日期" >
+    </el-table-column>
+	  <el-table-column
+      prop="admdays" 
+	  width="105"
+      label="住院天数"
+	  sortable>
+    </el-table-column> 
+	 <el-table-column
+	 width="70"
+	 fixed="right"
+      label="请选择">
+      <template slot-scope="scope">
+       <el-radio v-model="radio" :label="scope.$index"  >&nbsp;</el-radio>
+      </template>
+    </el-table-column> 
+	 </el-container>
+ </el-container>
+
+ </el-container>
+  
+
+<el-dialog title="添加群组" :visible.sync="dialogAddGroupVisible"   >
+ <el-form :model="groupForm"  style="height: 250px;  " id="addGroup" :rules="rules" ref="groupForm" >
+    <el-form-item label="群组名称" prop="groupName" :label-width="formLabelWidth">
+      <el-input v-model="groupForm.groupName" auto-complete="off"></el-input>
+    </el-form-item>
+	<el-form-item label="群组描述"  prop="groupDes" :label-width="formLabelWidth">
+      <el-input v-model="groupForm.groupDes" auto-complete="off"></el-input>
+    </el-form-item>
+
+	<el-form-item label="排序"  prop="groupOrder" :label-width="formLabelWidth">
+	 <el-input-number v-model="groupForm.groupOrder"  :min="1" :max="20" label="描述文字"></el-input-number>
+	</el-form-item>
+
+	<el-form-item label="群组模板" prop="groupTempId" :label-width="formLabelWidth">
+      <el-select v-model="groupForm.groupTempId" placeholder="请选择随访表单模板">
+		<el-option v-for="item in templateList" :label="item.tempName" :value="item.tid"></el-option>
+      </el-select> 
+    </el-form-item>
+  </el-form>
+  <div slot="footer" class="dialog-footer">
+    <el-button @click="dialogAddGroupVisible = false;groupForm={}">取 消</el-button>
+    <el-button v-if="0==optype" type="primary" @click="addGroup()">新增</el-button>
+	<el-button v-if="1==optype" type="primary" @click="editGroup()">修改</el-button>
+  </div>
+</el-dialog>
+
+
+
+<el-dialog title="添加随访" :visible.sync="visitPanelVisible" width="830px" top="30px"  >
+<el-container style="height: 90px; border: 1px solid #eee">
+<el-aside width="106px" style="line-height:90px;height:90px;text-align:center;border-right:1px solid #eee;">
+	已选择的病人
+</el-aside>
+<el-container>
+	<div style="width:100%;line-height: 90px;  height: 90px;text-align: center;    overflow-y: scroll;">
+		<el-tag
+		  :key="tag.patname"
+		  v-for="tag in patientTags"
+		  closable
+		  :disable-transitions="false"
+		  @close="handleClose(tag)">
+		  {{tag.patname+'('+tag.admddate+')'}}
+		</el-tag>
+	</div>
+</el-container>
+</el-container>
+<el-container style="height: 246px; border: 1px solid #eee"> 
+<el-container style="width:500px;">
+   <el-table
+    :data="templateList"
+    height="244"
+    border
+    style="width: 100%;border-top:0px!important;border-bottom:0px!important;"
+	 :default-sort = "{prop: 'tempCreatetiime', order: 'descending'}"> 
+	    <el-table-column
+      prop="deptCode"
+      label="适用科室"
+	  width="105">
+    </el-table-column>
+    <el-table-column
+      prop="tempName"
+      label="模板名称"
+      width="150">
+    </el-table-column> 
+	    <el-table-column
+      prop="mainDaignos"
+      label="主要诊断" >
+    </el-table-column> 
+ <el-table-column
+      fixed="right"
+      label="选择"
+      width="50">
+      <template slot-scope="scope">
+       <el-radio v-model="radioMb" :label="scope.row.tid"  >&nbsp;</el-radio>
+      </template>
+    </el-table-column>
+	</el-table>
+  </el-container>
+  
+  
+ <el-container  style="width:250px;">
+		<el-form :model="yfdata" :rules="rules" ref="yfdata" id="yfform" label-width="80px" class="demo-ruleForm demo-form-inline " style=" padding-top: 40px;" > 
+					 <el-form-item label="随访序数"   style="width:100%;">
+						<el-form-item prop="num" >
+							<el-input-number v-model="yfdata.num"  :min="1" :max="10" label="描述文字" style="float: left;"></el-input-number>  
+						</el-form-item> 
+					  </el-form-item> 
+					
+					  <el-form-item label="应访日期"   style="width:100%;" >
+						 <el-form-item prop="date"  >
+							<el-date-picker type="date" placeholder="选择日期" v-model="yfdata.date"  value-format="yyyy-MM-dd"></el-date-picker>
+						  </el-form-item> 
+					  </el-form-item> 
+		</el-form>
+	</el-container>
+ 
+ </el-container>
+ 
+   <span slot="footer" class="dialog-footer">
+    <el-button @click="visitPanelVisible = false">取 消</el-button>
+    <el-button type="primary" @click="doAddVisit();">确 定</el-button>
+  </span> 
+</el-dialog>
+  </div>
+
+</body>
+	<script src="$!{basePath}/script/vue.js"></script>
+	<script src="$!{basePath}/script/axios.min.js"></script>
+	<!-- 引入组件库 -->
+	<script src="$!{basePath}/script/ele_ui.js"></script>
+	<!-- 引入组件库 -->
+	<script>
+	axios.interceptors.request.use(function(request) {
+		if (request.data && (request.headers['Content-Type'].indexOf('application/x-www-form-urlencoded') !== -1)) {
+		    request.data = Qs.stringify(request.data);
+		    console.log(request.data);
+		}
+		return request;
+	}); 
+	new Vue({
+      el: '#app',
+	      methods: {
+   
+	   submitForm:function(formName) {
+               var valid = this.$refs[formName].validate() ;
+          if (valid) {
+            window.location.href='./PatientList.html';
+          } else {
+            console.log('error submit!!');
+            return false;
+          } 
+      },
+      resetForm:function(formName) {
+        this.$refs[formName].resetFields();
+      },
+        tableRowClassName:function(row, index) {
+            //把每一行的索引放进row
+            row.row.index=row.rowIndex;
+        }
+      ,
+      addVisitPanel:function(){
+      	if(this.groupForm && this.patientList.length>0 ){
+      	console.log(this.groupForm);
+      	console.log(this.patientList);
+      		      	this.visitPanelVisible=true;
+      		      	this.patientTags=JSON.parse(JSON.stringify(this.patientList));
+      		      	this.radioMb =this.groupForm.groupTempId;
+      	}else{
+      					this.$notify.error({
+						title: '提示信息',
+						message: '请选择一个群组,或群组不能为空！', 
+						offset:60
+				});
+      	}
+      },
+      doAddVisit:function(){
+	      var that = this ;
+	      	 if(that.radioMb=='-1'||that.radioMb=='undefined'){
+					this.$confirm('请选择随访模板！', '提示', {
+		          	confirmButtonText: '确定',
+		          	cancelButtonText: '取消',
+		         	type: 'warning'
+		         	}).catch(function(){
+				          this.$message({
+				            type: 'info',
+				            message: '已取消'
+				          });          
+				        });
+				    return;
+			  }else if(that.yfdata.date==""){
+					this.$confirm('请填写随访日期！', '提示', {
+		          	confirmButtonText: '确定',
+		          	cancelButtonText: '取消',
+		         	type: 'warning'
+		         	}).catch(function(){
+				          this.$message({
+				            type: 'info',
+				            message: '已取消'
+				          });          
+				        });
+				    return;
+			  }
+			  if(that.patientTags.length<=0){
+			  	that.$notify.error({
+						title: '提示信息',
+						message: '请选择一个群组,或群组不能为空！', 
+						offset:60
+				});
+				return;
+			  }
+			  var ids='';
+			  for(i=0;i<that.patientTags.length;i++){
+			  	if(i==that.patientTags.length-1){
+			  		ids=ids+that.patientTags[i].patientId;
+			  	}else{
+			  		ids=ids+that.patientTags[i].patientId+',';
+			  	} 
+			  }
+			  var admnos='';
+			  for(i=0;i<that.patientTags.length;i++){
+			  	if(i==that.patientTags.length-1){
+			  		admnos=admnos+that.patientTags[i].admno;
+			  	}else{
+			  		admnos=admnos+that.patientTags[i].admno+',';
+			  	} 
+			  }
+			  var obj = {};
+				this.templateList.forEach(function (v,i) {
+				    obj[v.tid] = v;
+				});
+			  console.log(ids);
+	            axios({
+					method: 'post',
+					url: that.doVisitUrl,
+					 headers: {
+							    'Content-Type': 'application/x-www-form-urlencoded;charset=UTF-8'
+							  },
+					data: {
+						patientIds:ids
+					   ,num:that.yfdata.num
+					   ,date:that.yfdata.date
+					   ,templateViewId:that.radioMb
+					   ,templateName:obj[that.radioMb].tempName
+					   ,admnos:admnos
+					}
+				}).then(function (response) {
+					console.log(response);
+					that.success=response.data.success;
+					if(that.success){
+						that.$message({
+				            type: 'success',
+				            message: '添加成功!'
+				          });
+				    	that.visitPanelVisible = false;
+					}else{
+						that.$message({
+				            type: 'success',
+				            message: '添加失败!'
+				          });
+					}
+					
+					
+				}).catch(function (error) {
+					console.log(error);
+				});
+	  }
+	  ,  
+	  removePepole:function() {
+var that = this;
+		  if(this.radio ==-1  ){
+				this.$notify.error({
+						title: '提示信息',
+						message: '请选择一个群组成员', 
+						offset:60
+				});
+		  }else{ 
+					this.$confirm('此操作将会从群组中移除该记录, 是否继续?', '提示', {
+					  confirmButtonText: '确定',
+					  cancelButtonText: '取消',
+					  type: 'warning'
+					}).then(function(){ 
+							  	  console.log('a');
+												console.log(that.radio);
+					             				axios({
+													method: 'post',
+													url: that.removePepoleUrl,  
+													params: {
+														gpid: that.patientList[that.radio].gpid
+													}
+												}).then(function (response) {
+														if(response.data.success){
+															that.patientList.splice(that.radio, that.radio+1); 
+														 	that.$message({
+													            type: 'success',
+													            message: '操作成功!'
+												          	}); 		
+												          	that.radio=-1; 												
+														}else{
+														  that.$message({
+												            type: 'info',
+												            message: '操作失败!'
+												          }); 
+														}
+
+												}).catch(function (error) {
+													 	  that.$message({
+												            type: 'info',
+												            message: '操作失败!'
+												          }); 
+												});
+        }).catch(function(){
+          that.$message({
+            type: 'info',
+            message: '已取消删除'
+          });         
+        });
+	 } 
+
+      }
+	  ,
+	  addGroup:function(){
+	  	var that = this;
+	  	 this.$refs['groupForm'].validate(function(valid){
+          if (valid) {
+            							   		axios({
+													method: 'post',
+													url: that.addGroupUrl, 
+													headers: {
+													    'Content-Type': 'application/x-www-form-urlencoded;charset=UTF-8'
+													},
+													data: {
+														groupName: that.groupForm.groupName,
+														groupDes: that.groupForm.groupDes,
+														groupOrder: that.groupForm.groupOrder,
+														groupTempId: that.groupForm.groupTempId
+													}
+												}).then(function (response) {
+												if(response.data.success){
+													that.$message({
+												            type: 'success',
+												            message: '操作成功!'
+											          	});
+											          	that.dialogAddGroupVisible = false;
+											          	var groupForm=response.data.obj;
+											          	that.groupList.push(groupForm);
+											          	that.patientList=[];
+											          	that.groupRadio=that.groupList.length-1;
+												}else{
+													 	  that.$message({
+												            type: 'info',
+												            message: '操作失败!'
+												          }); 
+												}
+													 	
+												}).catch(function (error) {
+													 	  that.$message({
+												            type: 'info',
+												            message: '操作失败!'
+												          }); 
+												});
+          } else {
+            console.log('error submit!!');
+            return false;
+          }
+        });
+	  },
+	  openEditDailog:function(index){
+	  	        this.dialogAddGroupVisible=true;
+	  	        this.groupForm= this.groupList[index];
+	  	        this.optype=1;
+	  },
+	  editGroup:function(){
+	  	var that = this;
+	  	if(this.groupForm.gid ==''){
+	  													that.$message({
+												            type: 'info',
+												            message: '操作失败!'
+												          }); 
+												        console.log('gid不能为空');
+												        return false; 
+	  	};
+	  	 this.$refs['groupForm'].validate(function(valid){
+   				       if (valid) {
+            							   		axios({
+													method: 'post',
+													url: that.editGroupUrl, 
+													headers: {
+													    'Content-Type': 'application/x-www-form-urlencoded;charset=UTF-8'
+													},
+													data: {
+														groupName: that.groupForm.groupName,
+														gid: that.groupForm.gid,
+														groupDes: that.groupForm.groupDes,
+														groupOrder: that.groupForm.groupOrder,
+														groupTempId: that.groupForm.groupTempId
+													}
+												}).then(function (response) {
+												if(response.data.success){
+													 	that.$message({
+												            type: 'success',
+												            message: '操作成功!'
+											          	});
+											          	that.dialogAddGroupVisible = false; 
+											     }else{
+											      		that.$message({
+												            type: 'info',
+												            message: '操作失败!'
+												          }); 
+											     }
+												}).catch(function (error) {
+													 	  that.$message({
+												            type: 'info',
+												            message: '操作失败!'
+												          }); 
+												});
+			          } else {
+			            console.log('error submit!!');
+			            return false;
+			          }
+        });
+	  },
+	  deleteGroup:function(index){
+	  console.log(this.patientList.length);
+	  if(this.patientList.length>0){
+	  					this.$notify.error({
+						title: '提示信息',
+						message: '该群组不为空，请移出人员后，再执行此操作！', 
+						offset:60
+				});
+	  }else{
+	  	var that=this;
+	  			this.$confirm('此操作将会删除群组, 是否继续?', '提示', {
+							          	confirmButtonText: '确定',
+							          	cancelButtonText: '取消',
+							          	type: 'warning'}).then(function(){ 
+							   			        axios({
+													method: 'post',
+													url: that.editGroupUrl, 
+													params: {
+														gid: that.groupList[index].gid,
+														groupStatus: '0'
+													}
+												}).then(function (response) {
+												if(response.data.success){
+													 	that.$message({
+												            type: 'success',
+												            message: '操作成功!'
+											          	});
+											          	that.groupList.splice(index, 1);
+											          	that.groupForm={};
+											          	that.patientList=[];
+											          	that.groupRadio=-1;
+												}else{
+													 	  that.$message({
+												            type: 'info',
+												            message: '操作失败!'
+												          }); 
+												}
+												
+												}).catch(function (error) {
+													 	  that.$message({
+												            type: 'info',
+												            message: '操作失败!'
+												          });  
+												});
+						
+							        	}).catch(function(){
+							          		that.$message({
+							            		type: 'info',
+							            		message: '已取消'
+							          		});           
+					});
+	  }
+	  },
+	  handleCurrentChange:function(val){
+	  	  	this.loading=true;
+	  	this.groupForm = val; 
+	  	this.groupRadio=val.index;
+	  	var that = this;
+	  											axios({
+													method: 'post',
+													url: that.getPatientUrl, 
+													params: {
+														groupId: that.groupForm.gid 
+													}
+												}).then(function (response) {
+												
+													 	that.$message({
+												            type: 'success',
+												            message: '获取成功!'
+											          	});
+											          	that.patientList=response.data.data;
+											          	console.log(that.patientList);
+											          	that.loading=false;
+												}).catch(function (error) {
+													 	  that.$message({
+												            type: 'info',
+												            message: '获取失败!'
+												          });  
+												          that.loading=false;
+												});
+													  	
+						
+	  },
+	  handleClose:function(tag) {
+        this.patientTags.splice(this.patientTags.indexOf(tag), 1);
+      }
+    },
+      data: function() {
+        return {  
+        		groupList:pageinfo,
+        		templateList:$!{templateList},
+        		groupForm:{gid:'',
+        			groupName:'',
+        			groupTempId:'',
+        			groupOrder:'',
+        			groupCreateUserid:'',
+        			groupUpdateUserid:'',
+        			groupCreatetime:'',
+        			groupUpdatetime:'',
+        			groupStatus:'',
+        			groupExtend0:'',
+        			groupExtend1:'',
+        			groupDes:''
+        		},
+        		yfdata:{
+					num:'',
+		          	date: ''
+				},
+				radioMb:'-1',
+				groupRadio:'-1',
+	         	optype:0,//0为新增 1为修改
+				dialogAddGroupVisible:false,
+				formLabelWidth: '120px',
+				addGroupUrl:'$!{basePath}/patientGroup/back/pvGroupinfo/doAdd.html',
+				editGroupUrl:'$!{basePath}/patientGroup/back/pvGroupinfo/doEdit.html',
+				getPatientUrl:'$!{basePath}/groupPatient/back/pvGroupPatient/getPatientByGroup.html',
+				removePepoleUrl:'$!{basePath}/groupPatient/back/pvGroupPatient/doDelete.html',
+				doVisitUrl:'$!{basePath}/groupPatient/back/pvGroupPatient/doAddVisitBatch.html',
+				patientList:[],
+				patientTags:[], 
+        loading:false,
+			radio:-1,   
+		visitPanelVisible:false,
+		isCollapse: false, 
+        rules: {
+          name: [
+            { required: false, message: '请输入病人住院号', trigger: 'blur' },
+            { min: 3, max: 5, message: '长度在 3 到 5 个字符', trigger: 'blur' }
+          ],
+          groupName: [
+            { required: true, message: '请输入群组名', trigger: 'blur' },
+            { min: 3, max: 10, message: '长度在 3 到 10 个字符', trigger: 'blur' }
+          ],
+          groupTempId: [
+            { required: true, message: '请选择随访表单模板', trigger: 'blur' } 
+          ],
+          region: [
+            { required: true, message: '请选择活动区域', trigger: 'change' }
+          ],
+          date1: [
+            { type: 'date', required: false, message: '请选择日期', trigger: 'change' }
+          ],
+          date2: [
+            { type: 'date', required: false, message: '请选择日期', trigger: 'change' }
+          ] 
+        }
+		}
+      }
+    })
+  </script>
+</html>
+ 

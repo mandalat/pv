@@ -346,6 +346,12 @@ public class SystemProjectController extends BaseController
              ext="";  
          }  
          String newName=body+ext;  
+         boolean flag = checkFile(newName);
+         if(!flag){
+             j.setSuccess(false);
+             j.setMsg("上传文件失败");
+             return j;
+         }
          File uploadedFile = new File(uploadDir + sep + newName);
 
          FileCopyUtils.copy(bytes, uploadedFile);
@@ -669,4 +675,16 @@ public class SystemProjectController extends BaseController
     }
     return j;
   }
+  
+  private  boolean checkFile(String fileName){  
+      boolean flag=false;  
+      String suffixList="jpg,gif,png,ico,bmp,jpeg,svg,doc,docx,pdf,html";   
+      //获取文件后缀  
+      String suffix=fileName.substring(fileName.lastIndexOf(".")+1, fileName.length());  
+        
+      if(suffixList.contains(suffix.trim().toLowerCase())){  
+          flag=true;  
+      }  
+      return flag;  
+  } 
 }
