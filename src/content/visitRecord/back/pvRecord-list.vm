@@ -315,7 +315,7 @@ width:100%;
        <el-radio v-model="radio" :label="scope.$index"  @click="setCurrent(scope.$index)" >&nbsp;</el-radio>
       </template>
     </el-table-column>
-  	
+</el-table>
  </el-container>
 
  </el-container>

@@ -128,15 +128,24 @@ public class CreateBean
     throws SQLException
   {
 	  String SQLColumns = "";
+	  String SQLGETPK = "";
+	  Connection con = getConnection();
+	  String pkcol="";
 	  if(CodeResourceUtil.getDIVER_NAME().indexOf("oracle")>-1){
 		//ORACLE
 	  SQLColumns = " select a.column_name ,a.data_type ,b.column_comment,a.precision,a.scale ,a.data_length, a.nullable, '' as columnKey from (select utc.column_name ,utc.data_type, utc.data_precision as precision  ,utc.data_scale as scale,utc.data_length,utc.nullable from all_tab_columns UTC  where   table_name=upper('"+ tableName +"') and  UTC.owner='"+CodeResourceUtil.getUSERNAME() +"') a inner join  (select ACC.column_name ,ACC.comments as column_comment from  all_col_comments acc WHERE acc.table_name=upper('"+ tableName +"') and acc.owner='"+CodeResourceUtil.getUSERNAME() +"') b on a.column_name = b.column_name";
+	  SQLGETPK =   "select cu.* from user_cons_columns cu, user_constraints au where cu.constraint_name = au.constraint_name and au.constraint_type = 'P' and au.table_name =upper('"+tableName+"')";
+	    PreparedStatement ps = con.prepareStatement(SQLGETPK);
+	    ResultSet rs = ps.executeQuery();
+	    while (rs.next()) {
+	    	pkcol=rs.getString(4);
+	    }
 	  }else{
 		  //mysql
 	SQLColumns = "select column_name ,data_type,column_comment,0,0,character_maximum_length,is_nullable nullable,COLUMN_KEY from information_schema.columns where table_name =  '" + tableName + "' " + "and table_schema =  '" + CodeResourceUtil.DATABASE_NAME + "'";
 
 	  }
-	  Connection con = getConnection();
+
     PreparedStatement ps = con.prepareStatement(SQLColumns);
     List columnList = new ArrayList();
     ResultSet rs = ps.executeQuery();
@@ -151,6 +160,11 @@ public class CreateBean
       String charmaxLength = rs.getString(6) == null ? "" : rs.getString(6);
       String nullable = TableConvert.getNullAble(rs.getString(7));
       String columnKey = rs.getString(8) == null ? "" : rs.getString(8);
+	  if(CodeResourceUtil.getDIVER_NAME().indexOf("oracle")>-1){
+		  if(name.equals(pkcol)){
+			  columnKey="PRI";
+		  }
+	  }
       String dataType = getType(type, precision, scale);
       String domainPropertyName = getcolumnNameToDomainPropertyName(name);
       String jdbcType = getJdbcType(type, precision, scale);

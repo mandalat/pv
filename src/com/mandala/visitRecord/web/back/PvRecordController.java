@@ -22,6 +22,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.jeecgframework.p3.core.common.utils.AjaxJson;
+import org.jeecgframework.p3.core.utils.common.PageList;
 import org.jeecgframework.p3.core.utils.common.PageQuery;
 
 import com.mandala.dictinfo.entity.Dictinfo;
@@ -159,6 +160,45 @@ public String  getMyList(@ModelAttribute PvRecord query,HttpServletResponse resp
 		return dataobj.toString();
 }
 
+@RequestMapping(value="getMyToDoList",method = {RequestMethod.GET,RequestMethod.POST})
+@ResponseBody
+public String  getMyToDoList(@ModelAttribute PvRecord query,HttpServletResponse response,HttpServletRequest request,
+			@RequestParam(required = false, value = "pageNo", defaultValue = "1") int pageNo,
+			@RequestParam(required = false, value = "pageSize", defaultValue = "10") int pageSize) throws Exception{
+	 	PageQuery<PvRecord> pageQuery = new PageQuery<PvRecord>();
+	 	String type = request.getParameter("type");
+		LoginUserNew user = (LoginUserNew)request.getSession().getAttribute("LOGIN_USER");
+		if(null != user){
+			if(user.getLoginType().equals("0")){
+			 	//如果当前用户是医生
+			 	query.setCreateUserId(user.getUserId());
+			}
+			if(user.getLoginType().equals("1")){
+			 	//如果当前用户是病人
+			 	query.setPatientId(user.getUserId());
+			}
+		}
+	 	pageQuery.setPageNo(pageNo);
+	 	pageQuery.setPageSize(pageSize);
+	 	VelocityContext velocityContext = new VelocityContext();
+	 	if(null !=type && type.equals("0")){
+		 	query.setEndVisitDate(new Date());
+	 	}
+	 	if(null !=type && type.equals("1")){
+			query.setEndVisitDate(null);
+			query.setBeginVisitDate(new Date());
+	 	}
+
+		pageQuery.setQuery(query);
+		net.sf.json.JSONArray dataArr = new net.sf.json.JSONArray();
+		net.sf.json.JSONObject dataobj = new net.sf.json.JSONObject();
+		dataobj.put("result", true);
+		dataobj.put("data", dataArr.fromObject(pvRecordService.queryPageListToDo(pageQuery).getValues()));
+		dataobj.put("total", SystemTools.convertPaginatedList(pvRecordService.queryPageListToDo(pageQuery)).getTotalItem()); 
+		return dataobj.toString();
+}
+
+
 @RequestMapping(value="getList",method = {RequestMethod.GET,RequestMethod.POST})
 @ResponseBody
 public String  getList(@ModelAttribute PvRecord query,HttpServletResponse response,HttpServletRequest request,
@@ -171,9 +211,10 @@ public String  getList(@ModelAttribute PvRecord query,HttpServletResponse respon
 		pageQuery.setQuery(query);
 		net.sf.json.JSONArray dataArr = new net.sf.json.JSONArray();
 		net.sf.json.JSONObject dataobj = new net.sf.json.JSONObject();
+		 PageList<PvRecord> pl = pvRecordService.queryPageList(pageQuery);
 		dataobj.put("result", true);
-		dataobj.put("data", dataArr.fromObject(pvRecordService.queryPageList(pageQuery).getValues()));
-		dataobj.put("total", SystemTools.convertPaginatedList(pvRecordService.queryPageList(pageQuery)).getTotalItem()); 
+		dataobj.put("data", dataArr.fromObject(pl.getValues()));
+		dataobj.put("total", SystemTools.convertPaginatedList(pl).getTotalItem()); 
 		dataobj.put("pageSize", pageSize);
 		dataobj.put("pageNo", pageNo);
 		return dataobj.toString();

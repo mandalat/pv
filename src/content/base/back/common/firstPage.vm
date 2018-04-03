@@ -183,19 +183,7 @@
 	    	 #end
   </script>
 </head>
-<style>
-body{
- color: #606266;
-}
-   a ,  a:active ,  a:visited{
-display:none;
-}
-  .el-menu-vertical-demo:not(.el-menu--collapse) {
-    width: 220px;
-    min-height: 400px;
-  }
-  
-</style>
+ 
 <style>
  
 
@@ -204,29 +192,121 @@ display:none;
 <body>
 						<div id="app">
 							
-							<el-card class="box-card"  style="height:220px;">
+							<el-card class="box-card"  style="height:440px;float:left;width:48%; ">
 							  <div slot="header" class="clearfix"> 
 								<el-badge :value="expTotal" class="item">
 								  <el-button size="small">已逾期</el-button>
 								</el-badge>
-							    <el-button style="float: right; padding: 3px 0" type="text">刷新</el-button>
-							    <el-button style="float: right; padding: 3px 0" type="text">更多</el-button>
+							    <el-button style="float: right; padding: 3px 10px; font-size: 25px;" type="text" @click="getTableData(0)"><i class="el-icon-refresh"></i></el-button>
+							    <a style="float: right; padding: 0px 10px; font-size: 25px;"  href="$!{basePath}/visitRecord/back/pvRecord/myList.html" ><i class="el-icon-more"></i></a>
 							  </div>
-							  <div v-for="o in pageInfosExp"  class="text item">
-							    {{o.patientName }}
+							  <div  class="text item">
+								   <el-table
+    :data="pageInfosExp"
+    v-loading.fullscreen.lock="exploading"
+    height="350"
+    border
+    style="width: 100%;margin-bottom: 50px;"
+	 :default-sort = "{prop: 'date', order: 'descending'}">
+  
+    <el-table-column
+      prop="patientName"
+      label="姓名"
+	  sortable
+      width="80">
+    </el-table-column>
+	    <el-table-column
+      prop="patientId"
+      label="住院号"
+	  width="80">
+    </el-table-column>
+ 
+	    <el-table-column
+      prop="visitOrder"
+      label="序数"
+	  sortable
+      width="80">
+    </el-table-column>
+		    <el-table-column
+      prop="visitStatus"
+      label="状态"
+      width="80">
+    </el-table-column>
+		    <el-table-column
+      prop="mustVisitDate"
+	  width="110" 
+	  :formatter="dateFormat"
+      label="应访日期" >
+    </el-table-column>
+ <el-table-column
+      fixed="right"
+      label="操作"
+      width="60">
+      <template slot-scope="scope">
+      <a :href="'$!{basePath}/visitRecord/back/pvRecord/visitView.html?rid='+scope.row.rid" target="_blank" >查看</a>
+      </template>
+    </el-table-column>
+</el-table>
+							   
 							  </div>
 							</el-card>
 
-							<el-card class="box-card" style="margin-top:10px;height:220px;">
+							<el-card class="box-card" style="height:440px; float:left;width:48%;margin-left: 10px;">
 							  <div slot="header" class="clearfix"> 
 								<el-badge :value="toDoTotal" class="item">
 								  <el-button size="small">待随访</el-button>
 								</el-badge>
-							    <el-button style="float: right; padding: 3px 0" type="text">刷新</el-button>
-							    <el-button style="float: right; padding: 3px 0" type="text">更多</el-button>
+							    <el-button style="float: right; padding: 3px 10px; font-size: 25px;" type="text"  @click="getTableData(1)"><i class="el-icon-refresh"></i></el-button>
+							    <a style="float: right; padding: 0px 10px; font-size: 25px;"  href="$!{basePath}/visitRecord/back/pvRecord/myList.html" ><i class="el-icon-more"></i></a>
 							  </div>
-							  <div v-for="o in pageInfosToDo"   class="text item">
-							    {{o.patientName }}
+							  <div  class="text item">
+ <el-table
+    :data="pageInfosToDo"
+    v-loading.fullscreen.lock="toDoloading"
+    height="350"
+    border
+    style="width: 100%;margin-bottom: 50px;"
+	 :default-sort = "{prop: 'date', order: 'descending'}">
+  
+    <el-table-column
+      prop="patientName"
+      label="姓名"
+	  sortable
+      width="80">
+    </el-table-column>
+	    <el-table-column
+      prop="patientId"
+      label="住院号"
+	  width="80">
+    </el-table-column>
+ 
+	    <el-table-column
+      prop="visitOrder"
+      label="序数"
+	  sortable
+      width="80">
+    </el-table-column>
+		    <el-table-column
+      prop="visitStatus"
+      label="状态"
+      width="80">
+    </el-table-column>
+		    <el-table-column
+      prop="mustVisitDate"
+	  width="110" 
+	  :formatter="dateFormat"
+      label="应访日期" >
+    </el-table-column>
+	
+ <el-table-column
+      fixed="right"
+      label="选择"
+      width="60">
+      <template slot-scope="scope">
+            <a :href="'$!{basePath}/visitRecord/back/pvRecord/visitView.html?rid='+scope.row.rid" target="_blank" >查看</a>
+      </template>
+    </el-table-column>
+</el-table>
 							  </div>
 							</el-card>
 						</div>
@@ -264,41 +344,53 @@ display:none;
            return (new Date(str.time)).Format("yyyy-MM-dd"); 
       }
       ,    
-       getTableData:function(){
-       this.loading=true;
-       console.log(this.currentPage4);
-       console.log(this.pageSize);
-       var that = this ;
-          console.log(this.ruleForm);
+       getTableData:function(type){
+       if(type == 0){
+       	exploading=true;
+       }else{
+       	toDoloading=true;
+       } 
+       var that = this ; 
                     axios({
 						method: 'post',
 						url: that.getUrl, 
 						 headers: {
 						    'Content-Type': 'application/x-www-form-urlencoded;charset=UTF-8'
 						  },
-						data: {
-							patientName: that.ruleForm.patientName,
-							patientOffice: that.ruleForm.patientOffice,
-							pageNo:that.currentPage4,
-							pageSize:that.pageSize,
-							visitStatus:that.ruleForm.visitStatus,
-							patientId:that.ruleForm.patientId,
-							beginVisitDate:that.ruleForm.beginVisitDate,
-							endVisitDate:that.ruleForm.endVisitDate
+						data: { 
+							type:type
 						}
 					}).then(function (response) {
 						console.log(response);
-						that.tableData3=response.data.data;
-						that.total= response.data.total;
-						that.pageSize=response.data.pageSize;
-						that.currentPage4=response.data.pageNo;
-						console.log(that.tableData3);
-						console.log(that.total);
-						console.log(that.pageSize);
-						that.loading=false;
+						if(response.data.result){
+														  if(type == 0){
+												       							that.pageInfosExp=response.data.data;
+												       							that.expTotal=response.data.total;
+												       							that.exploading=false;
+													       }else{
+												       							that.pageInfosToDo=response.data.data;
+												       							that.toDoTotal=response.data.total;
+												       							that.toDoloading=false;
+													       } 
+													 	that.$message({
+												            type: 'success',
+												            message: '操作成功!'
+											          	});
+													}else{
+														that.$message({
+												            type: 'info',
+												            message: '操作失败!'
+												          }); 
+													}
+						     
 					}).catch(function (error) {
 						console.log(error);
-						 that.loading=false;
+						 that.exploading=false;
+						 that.toDoloading=false;
+						 that.$message({
+												            type: 'info',
+												            message: '操作失败!'
+						}); 
 					});
         }
 	   ,
@@ -306,32 +398,14 @@ display:none;
     },
       data: function() {
         return {  
-            getUrl: '$!{basePath}/visitRecord/back/pvRecord/getMyList.html',
-            updateUrl:'$!{basePath}/visitRecord/back/pvRecord/doEdit.html',
-            deleteUrl:'$!{basePath}/visitRecord/back/pvRecord/doDelete.html',
-			radio:'-1',  
+            getUrl: '$!{basePath}/visitRecord/back/pvRecord/getMyToDoList.html',
 			formLabelWidth: '120px',
+			toDoloading:false,
 		pageInfosToDo:pageInfosToDo,
 		pageInfosExp:pageInfosExp,
 		expTotal:expTotal,
 		toDoTotal:toDoTotal, 
-        pageSize:10,
-		dialogTableVisible:false,
-		isCollapse: false, 
-		cancelForm:{stopReason: ''},
-		loading:false,
-        rules: {
-          patientName: [
-            { required: false, message: '请输入病人住院号', trigger: 'blur' },
-            { min: 3, max: 5, message: '长度在 3 到 5 个字符', trigger: 'blur' }
-          ],
-          patientOffice: [
-            { required: false, message: '请选择活动区域', trigger: 'change' }
-          ],
-          stopReason: [
-            { required: true, message: '请选择终止原因', trigger: 'change' }
-          ]
-        }
+		exploading:false,
 		}
       }
     })

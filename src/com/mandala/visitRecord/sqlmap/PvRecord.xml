@@ -845,7 +845,7 @@ WHERE pr.RN > #{startRow}
                   ,pr.RID                           /* 主键 */ 
 		FROM  (
 SELECT A.*, ROWNUM RN 
-FROM (SELECT * FROM PV_RECORD where  1=1  <include refid="wherecontationtodo"/>  	order by MUST_VISIT_DATE asc	) A WHERE 
+FROM (SELECT * FROM PV_RECORD where  1=1  <include refid="wherecontationtodo"/>  and VISIT_STATUS !='sf22' and VISIT_STATUS !='sf33'  	order by MUST_VISIT_DATE asc	) A WHERE 
 #{startRow}  + #{pageSize}
 >= ROWNUM) pr  
 WHERE pr.RN > #{startRow} 
